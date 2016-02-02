@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>xpdAcq documentation &mdash; xpdAcq 1.0 documentation</title>
+  <title>Overview of xpd acquisition environment &mdash; xpdAcq 1.0 documentation</title>
   
 
   
@@ -30,8 +30,7 @@
   
 
   
-    <link rel="top" title="xpdAcq 1.0 documentation" href="#"/>
-        <link rel="next" title="Beamline Staff Only" href="beamlinestaff.html"/> 
+    <link rel="top" title="xpdAcq 1.0 documentation" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -49,7 +48,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> xpdAcq
+            <a href="index.html" class="icon icon-home"> xpdAcq
           
 
           
@@ -97,7 +96,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">xpdAcq</a>
+        <a href="index.html">xpdAcq</a>
       </nav>
 
 
@@ -112,13 +111,13 @@
 
 <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="#">Docs</a> &raquo;</li>
+    <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>xpdAcq documentation</li>
+    <li>Overview of xpd acquisition environment</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/sb_overview.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -128,52 +127,70 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="xpdacq-documentation">
-<h1>xpdAcq documentation<a class="headerlink" href="#xpdacq-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="beamlinestaff.html#start-beamtime">Start Beamtime</a></li>
-<li class="toctree-l2"><a class="reference internal" href="beamlinestaff.html#end-beamtime">End Beamtime</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#set-up-beamtime">Set up beamtime</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#set-up-experiment">Set up experiment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#set-up-samples">Set up samples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#calibration">Calibration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#run-scans">Run scans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#view-data">View data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#analysis">Analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#take-out-your-data">Take out your data</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<p>Not ready yet</p>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span>Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
-</ul>
+  <div class="section" id="overview-of-xpd-acquisition-environment">
+<span id="sb-overview"></span><h1>Overview of xpd acquisition environment<a class="headerlink" href="#overview-of-xpd-acquisition-environment" title="Permalink to this headline">¶</a></h1>
+<p>All experiments will be carried out in the <code class="docutils literal"><span class="pre">~/xpdUsers</span></code> directory tree.</p>
+<p>At the beginning of the beamtime we will present to users a set of empty directories
+inside  <code class="docutils literal"><span class="pre">~/xpdUsers</span></code>.  These will be</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">directory name</th>
+<th class="head">contents</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Import</td>
+<td>User places their pre-made beamtime metata in a file called
+<code class="docutils literal"><span class="pre">&lt;PIname&gt;_&lt;saf#&gt;_config.yml</span></code></td>
+</tr>
+<tr class="row-odd"><td>Export</td>
+<td>A zipped tar file will be placed here at the end of the
+beamtime containing <em>everything</em> that the user created in
+in any directory below <code class="docutils literal"><span class="pre">~/xpdUser</span></code>. This is for the user
+to take home on their hard-drive</td>
+</tr>
+<tr class="row-even"><td>config_base</td>
+<td>This contains the config file used by <code class="docutils literal"><span class="pre">xPDFsuite</span></code>.
+xPDFsuite will write this file.  The user should not edit or
+add anything to this directory</td>
+</tr>
+<tr class="row-odd"><td>tif_base</td>
+<td>This is where all the image files (.tiff) are stored <em>that</em>
+<em>the user extracts</em> from the database using the dataBroker
+scripts during the experiment.</td>
+</tr>
+<tr class="row-even"><td>dark_base</td>
+<td>This is where image files from dark-exposures are stored</td>
+</tr>
+<tr class="row-odd"><td>userScripts</td>
+<td>This is a handy space where the users can write their own
+experiment scripts and save them. They will be bundled up
+at the end of the experiment for shipping home</td>
+</tr>
+<tr class="row-even"><td>userAnalysis</td>
+<td>Users can create any sets of directories under here for
+storing analyzed files (for example, saved by xPDFsuite).
+it is expected that most of these will be 1D files such as
+raw 1D diffraction intensities, g(r) and F(Q) files.</td>
+</tr>
+<tr class="row-odd"><td>...</td>
+<td>Actually, the users can create any directories and files
+they want and they will be bundled, tarred and zipped at the
+end for them to take home.</td>
+</tr>
+</tbody>
+</table>
+<p>return to <a class="reference internal" href="beamlinestaff.html#bls"><span>Beamline Staff Only</span></a></p>
 </div>
 
 
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="beamlinestaff.html" class="btn btn-neutral float-right" title="Beamline Staff Only" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-    </div>
   
 
   <hr/>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>xpdAcq documentation &mdash; xpdAcq 1.0 documentation</title>
+  <title>Initializing a new beamtime for a user &mdash; xpdAcq 1.0 documentation</title>
   
 
   
@@ -30,8 +30,7 @@
   
 
   
-    <link rel="top" title="xpdAcq 1.0 documentation" href="#"/>
-        <link rel="next" title="Beamline Staff Only" href="beamlinestaff.html"/> 
+    <link rel="top" title="xpdAcq 1.0 documentation" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -49,7 +48,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> xpdAcq
+            <a href="index.html" class="icon icon-home"> xpdAcq
           
 
           
@@ -97,7 +96,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">xpdAcq</a>
+        <a href="index.html">xpdAcq</a>
       </nav>
 
 
@@ -112,13 +111,13 @@
 
 <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="#">Docs</a> &raquo;</li>
+    <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>xpdAcq documentation</li>
+    <li>Initializing a new beamtime for a user</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/sb_newBeamtime.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -128,52 +127,68 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="xpdacq-documentation">
-<h1>xpdAcq documentation<a class="headerlink" href="#xpdacq-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="beamlinestaff.html#start-beamtime">Start Beamtime</a></li>
-<li class="toctree-l2"><a class="reference internal" href="beamlinestaff.html#end-beamtime">End Beamtime</a></li>
+  <div class="section" id="initializing-a-new-beamtime-for-a-user">
+<span id="sb-newbeamtime"></span><h1>Initializing a new beamtime for a user<a class="headerlink" href="#initializing-a-new-beamtime-for-a-user" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="required-information">
+<h2>Required Information<a class="headerlink" href="#required-information" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>last name of the PI of the beamtime</li>
+<li>SAF number</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#set-up-beamtime">Set up beamtime</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#set-up-experiment">Set up experiment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#set-up-samples">Set up samples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#calibration">Calibration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#run-scans">Run scans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#view-data">View data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#analysis">Analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#take-out-your-data">Take out your data</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
-</ul>
+</div></blockquote>
 </div>
+<div class="section" id="goals-of-the-setup">
+<h2>Goals of the Setup<a class="headerlink" href="#goals-of-the-setup" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Ensure that all the information from the previous user has been archived and deleted</li>
+<li>Create empty directories with the correct directory structure</li>
+<li>Prepopulate the directories with configuration files as needed</li>
+<li>Initialize the metadata stack (the list of metadata) with beamtime level information</li>
+</ol>
+</div></blockquote>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<p>Not ready yet</p>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span>Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
-</ul>
+<div class="section" id="setup-steps">
+<h2>Setup Steps<a class="headerlink" href="#setup-steps" title="Permalink to this headline">¶</a></h2>
+<p>1. [return to this later]
+1. We are still finalizing the steps to automate this process. For now:</p>
+<blockquote>
+<div><p>1. run the start_beamtime script to initialize directories
+1. Ensure that under xpdUsers there are no directories except for Import, Export</p>
+<blockquote>
+<div>tif_base, dark_base, config_base, script_base</div></blockquote>
+<p>1. Ensure that all those directories are empty.
+1. If you have a .yml file from the user (probably won&#8217;t yet) place it in the</p>
+<blockquote>
+<div>Import directory.</div></blockquote>
+</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">loadsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">loadsim</span>
+<span class="go">    Traceback (most recent call last):</span>
+<span class="go">      File &quot;&lt;pyshell#3&gt;&quot;, line 1, in &lt;module&gt;</span>
+<span class="go">        import loadsim</span>
+<span class="go">      File &quot;c:\users\billinge\documents\github\xpdsim\loadsim.py&quot;, line 17, in &lt;module&gt;</span>
+<span class="go">        from xpdacq.beamtime import BeamTime</span>
+<span class="go">    ImportError: No module named &#39;xpdacq.beamtime&#39;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>then do it again</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">)</span>
+<span class="go">here</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">icollection</span></code> Typed at the command prompt from any directory.  This starts an ipython session and preloads all the packages needed for XPD data acquisition|</p>
+<p>return to <a class="reference internal" href="beamlinestaff.html#bls"><span>Beamline Staff Only</span></a></p>
+</div>
 </div>
 
 
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="beamlinestaff.html" class="btn btn-neutral float-right" title="Beamline Staff Only" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-    </div>
   
 
   <hr/>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>xpdAcq documentation &mdash; xpdAcq 1.0 documentation</title>
+  <title>XPD Users &mdash; xpdAcq 1.0 documentation</title>
   
 
   
@@ -30,8 +30,9 @@
   
 
   
-    <link rel="top" title="xpdAcq 1.0 documentation" href="#"/>
-        <link rel="next" title="Beamline Staff Only" href="beamlinestaff.html"/> 
+    <link rel="top" title="xpdAcq 1.0 documentation" href="index.html"/>
+        <link rel="next" title="Troubleshooting" href="troubleshooting.html"/>
+        <link rel="prev" title="Beamline Staff Only" href="beamlinestaff.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -49,7 +50,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> xpdAcq
+            <a href="index.html" class="icon icon-home"> xpdAcq
           
 
           
@@ -80,9 +81,19 @@
           
             
             
-                <ul>
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a></li>
-<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">XPD Users</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#set-up-beamtime">Set up beamtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-up-experiment">Set up experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-up-samples">Set up samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#calibration">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-scans">Run scans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#view-data">View data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#take-out-your-data">Take out your data</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 
@@ -97,7 +108,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">xpdAcq</a>
+        <a href="index.html">xpdAcq</a>
       </nav>
 
 
@@ -112,13 +123,13 @@
 
 <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="#">Docs</a> &raquo;</li>
+    <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>xpdAcq documentation</li>
+    <li>XPD Users</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/xpdusers.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -128,39 +139,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="xpdacq-documentation">
-<h1>xpdAcq documentation<a class="headerlink" href="#xpdacq-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="beamlinestaff.html#start-beamtime">Start Beamtime</a></li>
-<li class="toctree-l2"><a class="reference internal" href="beamlinestaff.html#end-beamtime">End Beamtime</a></li>
+  <div class="section" id="xpd-users">
+<span id="xpdu"></span><h1>XPD Users<a class="headerlink" href="#xpd-users" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="sb_overview.html#sb-overview"><span>Overview of xpd acquisition environment</span></a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#set-up-beamtime">Set up beamtime</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#set-up-experiment">Set up experiment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#set-up-samples">Set up samples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#calibration">Calibration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#run-scans">Run scans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#view-data">View data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#analysis">Analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xpdusers.html#take-out-your-data">Take out your data</a></li>
+</div></blockquote>
+<div class="section" id="set-up-beamtime">
+<h2>Set up beamtime<a class="headerlink" href="#set-up-beamtime" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><span class="xref std std-ref">usb</span></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
-</ul>
+</div></blockquote>
 </div>
+<div class="section" id="set-up-experiment">
+<h2>Set up experiment<a class="headerlink" href="#set-up-experiment" title="Permalink to this headline">¶</a></h2>
+<p><em>contents</em></p>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<p>Not ready yet</p>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span>Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
-</ul>
+<div class="section" id="set-up-samples">
+<h2>Set up samples<a class="headerlink" href="#set-up-samples" title="Permalink to this headline">¶</a></h2>
+<p><em>contents</em></p>
+</div>
+<div class="section" id="calibration">
+<h2>Calibration<a class="headerlink" href="#calibration" title="Permalink to this headline">¶</a></h2>
+<p><em>contents</em></p>
+</div>
+<div class="section" id="run-scans">
+<h2>Run scans<a class="headerlink" href="#run-scans" title="Permalink to this headline">¶</a></h2>
+<p>scans</p>
+</div>
+<div class="section" id="view-data">
+<h2>View data<a class="headerlink" href="#view-data" title="Permalink to this headline">¶</a></h2>
+<p><em>contents</em></p>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p><em>contents</em></p>
+</div>
+<div class="section" id="take-out-your-data">
+<h2>Take out your data<a class="headerlink" href="#take-out-your-data" title="Permalink to this headline">¶</a></h2>
+<p><em>contents</em></p>
+</div>
 </div>
 
 
@@ -170,8 +191,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="beamlinestaff.html" class="btn btn-neutral float-right" title="Beamline Staff Only" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="beamlinestaff.html" class="btn btn-neutral" title="Beamline Staff Only" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
