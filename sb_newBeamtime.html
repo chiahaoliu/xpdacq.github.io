@@ -1,0 +1,248 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Initializing a new beamtime for a user &mdash; xpdAcq 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="xpdAcq 1.0 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> xpdAcq
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">xpdAcq</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Initializing a new beamtime for a user</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/sb_newBeamtime.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="initializing-a-new-beamtime-for-a-user">
+<span id="sb-newbeamtime"></span><h1>Initializing a new beamtime for a user<a class="headerlink" href="#initializing-a-new-beamtime-for-a-user" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="required-information">
+<h2>Required Information<a class="headerlink" href="#required-information" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>last name of the PI of the beamtime</li>
+<li>SAF number</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="goals-of-the-setup">
+<h2>Goals of the Setup<a class="headerlink" href="#goals-of-the-setup" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Ensure that all the information from the previous user has been archived and deleted</li>
+<li>Create empty directories with the correct directory structure</li>
+<li>Prepopulate the directories with configuration files as needed</li>
+<li>Initialize the metadata stack (the list of metadata) with beamtime level information</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="setup-steps">
+<h2>Setup Steps<a class="headerlink" href="#setup-steps" title="Permalink to this headline">¶</a></h2>
+<p>1. [return to this later]
+1. We are still finalizing the steps to automate this process. For now:</p>
+<blockquote>
+<div><p>1. run the start_beamtime script to initialize directories
+1. Ensure that under xpdUsers there are no directories except for Import, Export</p>
+<blockquote>
+<div>tif_base, dark_base, config_base, script_base</div></blockquote>
+<p>1. Ensure that all those directories are empty.
+1. If you have a .yml file from the user (probably won&#8217;t yet) place it in the</p>
+<blockquote>
+<div>Import directory.</div></blockquote>
+</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">loadsim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">loadsim</span>
+<span class="go">    Traceback (most recent call last):</span>
+<span class="go">      File &quot;&lt;pyshell#3&gt;&quot;, line 1, in &lt;module&gt;</span>
+<span class="go">        import loadsim</span>
+<span class="go">      File &quot;c:\users\billinge\documents\github\xpdsim\loadsim.py&quot;, line 17, in &lt;module&gt;</span>
+<span class="go">        from xpdacq.beamtime import BeamTime</span>
+<span class="go">    ImportError: No module named &#39;xpdacq.beamtime&#39;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>then do it again</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">)</span>
+<span class="go">here</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">icollection</span></code> Typed at the command prompt from any directory.  This starts an ipython session and preloads all the packages needed for XPD data acquisition|</p>
+<p>return to <a class="reference internal" href="beamlinestaff.html#bls"><span>Beamline Staff Only</span></a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright (c) 2016 trustees of Columbia University in the City of New York.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
