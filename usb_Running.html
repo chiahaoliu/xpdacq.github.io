@@ -129,6 +129,74 @@
             
   <div class="section" id="running-scans">
 <span id="usb-running"></span><h1>Running scans<a class="headerlink" href="#running-scans" title="Permalink to this headline">¶</a></h1>
+<p>The hard work of the experimental setup is now creating all the objects, making
+it easy and low overhead to run the scans.  There are just a few xpdAcq
+run engines that you need.  Each on you simply give a Sample object and
+a ScanPlan object and hit return, and your scan will be carried out.</p>
+<p>The allowed scan types are:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">prun</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">scan</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dark</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">scan</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">scan</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dryrun</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">scan</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">prun</span></code> stands for &#8220;production run&#8221; which is a normal run.  <code class="docutils literal"><span class="pre">dark</span></code> collects dark frames.
+Strictly speaking the sample is irrelevant here because the shutter is closed, but
+it is left in the definition for consistency.  <code class="docutils literal"><span class="pre">setupscan</span></code> is for testing things
+before you are ready to get production data, such as trying out different exposures
+on a sample to find the best exposure time.  <code class="docutils literal"><span class="pre">dryrun</span></code> does not execute any scan
+but tells you what is going to be run when you give the same Sample and Scan objects
+to any of the other runs.  It may be used for validating your scan objects, and
+also for estimating how long a <code class="docutils literal"><span class="pre">tseries</span></code> or <code class="docutils literal"><span class="pre">Tramp</span></code> might take.</p>
+<p>Here are some examples of a workflow.  Assume a GaAs sample is loaded on the diffractometer
+and the <code class="docutils literal"><span class="pre">'GaAs'</span></code> Sample object is created as well as all the ScanPlans we need.
+We will start by doing a dry-run on our <code class="docutils literal"><span class="pre">'ct2&quot;</span></code> count ScanPlan.</p>
+<p>. code-block:: python</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<span class="go">bt object bt has list index  0</span>
+<span class="go">ex object InGaAsAlloyPD has list index  1</span>
+<span class="go">ex object ProteinFolding has list index  2</span>
+<span class="go">sa object GaAs has list index  3</span>
+<span class="go">sa object IGA75-25 has list index  4</span>
+<span class="go">sa object In0.25Ga0.75As has list index  5</span>
+<span class="go">sa object InAs has list index  6</span>
+<span class="go">sa object InGaAs-5050 has list index  7</span>
+<span class="go">sc object ct1.5 has list index  8</span>
+<span class="go">sc object ct1.5_nosh has list index  9</span>
+<span class="go">sc object ct100.5_nolt has list index  10</span>
+<span class="go">sc object ct2 has list index  11</span>
+<span class="go">sc object ct2_vw has list index  12</span>
+<span class="go">sc object ct2_vw_nos has list index  13</span>
+<span class="go">sc object ct2_vw_nosh has list index  14</span>
+<span class="go">Use bt.get(index) to get the one you want</span>
+</pre></div>
+</div>
+<p>The Sample object I want has list index 3 and the ScanPlan has list index 11.
+Let&#8217;s try a dryrun to make sure everything is ok.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">dryrun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>
+<span class="go">[Fixme] output here</span>
+</pre></div>
+</div>
+<p>OK, it seems to work, lets do some testing to see how much intensity we need.
+We will do three setup scans with 1.5 second, 2 seconds and 100.5 seconds exposure
+and then compare them.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>   <span class="c1">#1.5 seconds</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>  <span class="c1">#2 seconds</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1">#100.5 seconds</span>
+<span class="go">[Fixme] output here</span>
+</pre></div>
+</div>
+<p>what is nice about these is that they are tagged with an <code class="docutils literal"><span class="pre">'xp_isprun':False</span></code> metadata field
+which means that, by default, they will not be retrieved when searching for production data.  It
+keeps our setup scans and production scans nicely separated in the database, though
+the underlying scans that are carried out are all still there and can be retrieved if need
+be.</p>
+<p>It seems that the 2 second scans are the best, so let&#8217;s do a production run
+to get the first data-set.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>  <span class="c1">#2 seconds</span>
+<span class="go">[Fixme] output here</span>
+</pre></div>
+</div>
 </div>
 
 
