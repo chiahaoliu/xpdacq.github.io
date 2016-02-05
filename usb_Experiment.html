@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Setting up your Experiment Objects &mdash; xpdAcq 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="xpdAcq 1.0 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> xpdAcq
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">xpdAcq</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Setting up your Experiment Objects</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/usb_Experiment.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="setting-up-your-experiment-objects">
+<span id="usb-experiment"></span><h1>Setting up your Experiment Objects<a class="headerlink" href="#setting-up-your-experiment-objects" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="required-information">
+<h2>Required Information<a class="headerlink" href="#required-information" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>a name for your beamtime object.  Let&#8217;s assume it is <code class="docutils literal"><span class="pre">mybt</span></code> for now.</li>
+<li>last name of the PI of the beamtime</li>
+<li>SAF number</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="goals-of-the-setup">
+<h2>Goals of the Setup<a class="headerlink" href="#goals-of-the-setup" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Create your own beamtime python object.</li>
+<li>Load into it all &#8220;beamtime-level&#8221; metadata.</li>
+</ol>
+</div>
+<div class="section" id="setup-steps">
+<h2>Setup Steps<a class="headerlink" href="#setup-steps" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="arabic simple">
+<li>make sure you are familiar with the background information in <a class="reference internal" href="sb_overview.html#sb-overview"><span>Overview of xpd acquisition environment</span></a>
+and <a class="reference internal" href="sb_icollection.html#sb-icollection"><span>Overview of the icollection+xpdacq environment</span></a></li>
+</ol>
+<p>1. make sure you are in directory <code class="docutils literal"><span class="pre">xpdUser</span></code>
+1. make sure you are in the <code class="docutils literal"><span class="pre">collection</span></code> ipython environment (see <code class="docutils literal"><span class="pre">[collection]</span></code> at the beginning of the line).</p>
+<blockquote>
+<div>If you are not already in the <code class="docutils literal"><span class="pre">collection</span></code> environment, type <code class="docutils literal"><span class="pre">icollection</span></code>
+at the command prompt (see [here](<a class="reference internal" href="sb_icollection.html#sb-icollection"><span>Overview of the icollection+xpdacq environment</span></a>) if you don&#8217;t know what that means)</div></blockquote>
+<ol class="arabic simple">
+<li>time to create our own instance of Beamtime:</li>
+</ol>
+</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mybt</span> <span class="o">=</span> <span class="n">Beamtime</span><span class="p">(</span><span class="s1">&#39;&lt;PIlastname&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;saf#&gt;&#39;</span><span class="p">)</span>
+<span class="go">output here</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>for example, for me it might be</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">simonbt</span> <span class="o">=</span> <span class="n">Beamtime</span><span class="p">(</span><span class="s1">&#39;Billinge&#39;</span><span class="p">,</span><span class="s1">&#39;300438&#39;</span><span class="p">)</span>
+<span class="go">output here</span>
+</pre></div>
+</div>
+<p>Next: <a class="reference internal" href="#usb-experiment"><span>Setting up your Experiment Objects</span></a></p>
+</div>
+<div class="section" id="id1">
+<h2>Required Information<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>a name for your beamtime object.  Let&#8217;s assume it is <code class="docutils literal"><span class="pre">mybt</span></code> for now.</li>
+<li>last name of the PI of the beamtime</li>
+<li>SAF number</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>Goals of the Setup<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Create your own beamtime python object.</li>
+<li>Load into it all &#8220;beamtime-level&#8221; metadata.</li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h2>Setup Steps<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="arabic simple">
+<li>make sure you are familiar with the background information in <a class="reference internal" href="sb_overview.html#sb-overview"><span>Overview of xpd acquisition environment</span></a> and <a class="reference internal" href="sb_icollection.html#sb-icollection"><span>Overview of the icollection+xpdacq environment</span></a></li>
+<li>make sure you are in directory <code class="docutils literal"><span class="pre">xpdUser</span></code></li>
+<li>make sure you are in the <code class="docutils literal"><span class="pre">collection</span></code> ipython environment (e.g., see <code class="docutils literal"><span class="pre">(collection)</span></code> at the beginning of the command line).  If you are not already in the <code class="docutils literal"><span class="pre">collection</span></code> environment, type <code class="docutils literal"><span class="pre">icollection</span></code> at the command prompt (see <a class="reference internal" href="sb_icollection.html#sb-icollection"><span>here</span></a> if you don&#8217;t know what that means)</li>
+<li>time to create our own instance of Beamtime:</li>
+</ol>
+</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mybt</span> <span class="o">=</span> <span class="n">Beamtime</span><span class="p">(</span><span class="s1">&#39;&lt;PIlastname&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;saf#&gt;&#39;</span><span class="p">)</span>
+<span class="go">output here</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>for example, for me it might be</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">simonbt</span> <span class="o">=</span> <span class="n">Beamtime</span><span class="p">(</span><span class="s1">&#39;Billinge&#39;</span><span class="p">,</span><span class="s1">&#39;300438&#39;</span><span class="p">)</span>
+<span class="go">output here</span>
+
+
+
+<span class="go">  &gt;&gt;&gt; print(&#39;here&#39;)</span>
+<span class="go">  here</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">icollection</span></code> Typed at the command prompt from any directory.  This starts an ipython session and preloads all the packages needed for XPD data acquisition|</p>
+<p>return to <a class="reference internal" href="xpdusers.html#xpdu"><span>XPD Users</span></a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright (c) 2016 trustees of Columbia University in the City of New York.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
