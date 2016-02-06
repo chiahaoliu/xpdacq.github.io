@@ -226,8 +226,8 @@ For the InGaAs phase diagram study for example, we may have to make 5 samples:</
 <span class="go">&#39;bt_safN&#39;: 300256,</span>
 <span class="go">&#39;bt_uid&#39;: &#39;9b0c5878-cba4-11e5-8984-28b2bd4521c0&#39;,</span>
 <span class="go">&#39;bt_wavelength&#39;: 0.1818,</span>
-<span class="go">&#39;ex_name&#39;: &#39;ProteinFolding&#39;,</span>
-<span class="go">&#39;ex_uid&#39;: &#39;c89120dc-cbc8-11e5-ac9b-28b2bd4521c0&#39;,</span>
+<span class="go">&#39;ex_name&#39;: &#39;InGaAsAlloyPD&#39;,</span>
+<span class="go">&#39;ex_uid&#39;: &#39;4e45bf3e-cbc7-11e5-8b67-28b2bd4521c0</span>
 <span class="go">&#39;sa_name&#39;: &#39;InAs&#39;,</span>
 <span class="go">&#39;sa_uid&#39;: &#39;415f8e06-cbca-11e5-92fe-28b2bd4521c0&#39;}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s3</span><span class="o">.</span><span class="n">md</span>
@@ -236,21 +236,29 @@ For the InGaAs phase diagram study for example, we may have to make 5 samples:</
 <span class="go">&#39;bt_safN&#39;: 300256,</span>
 <span class="go">&#39;bt_uid&#39;: &#39;9b0c5878-cba4-11e5-8984-28b2bd4521c0&#39;,</span>
 <span class="go">&#39;bt_wavelength&#39;: 0.1818,</span>
-<span class="go">&#39;ex_name&#39;: &#39;ProteinFolding&#39;,</span>
-<span class="go">&#39;ex_uid&#39;: &#39;c89120dc-cbc8-11e5-ac9b-28b2bd4521c0&#39;,</span>
+<span class="go">&#39;ex_name&#39;: &#39;InGaAsAlloyPD&#39;,</span>
+<span class="go">&#39;ex_uid&#39;: &#39;4e45bf3e-cbc7-11e5-8b67-28b2bd4521c0</span>
 <span class="go">&#39;sa_name&#39;: &#39;InAs&#39;,</span>
 <span class="go">&#39;sa_uid&#39;: &#39;7c73f3a7-cbca-11e5-a0cb-28b2bd4521c0&#39;}</span>
 </pre></div>
 </div>
 <p>Hopefully you are getting the picture.  We will hand these sample
-objects to the run engine when each scan or count is launched and
-all the metadata will be associated with each scan, easily allowing
-us to search, for example, for all the scans done on a sample as
-part of this experiment.</p>
+objects to the run engine when each scan is launched and
+all the metadata up the stack will be associated with each scan, easily allowing
+us to search, for example, for &#8220;all the scans done on sample <code class="docutils literal"><span class="pre">'InGas'</span></code> as
+part of this beamtime&#8221; or perhaps &#8220;all the scans done in experiment <code class="docutils literal"><span class="pre">'ProteinFolding'</span></code>.
+Other metadata is saved such as date-time at the time of running, so we could
+search for &#8220;the scan that was running at 5pm on Friday&#8221;.  We also differentiate
+production runs and setup scans.  By default the search will not return the
+setup scans, though they can be retrieved if and when needed.  You can also
+store any other metadata that you want at each level so you can tag data
+and search in a very powerful way.  The search capabilities in the xpdAcq suite
+are still under development, so please share your requests (<a class="reference external" href="mailto:sb2896&#37;&#52;&#48;columbia&#46;edu">sb2896<span>&#64;</span>columbia<span>&#46;</span>edu</a>).</p>
 <p>At the time of writing, each object, such as Sample, is a container
 for the barest minimum of metadata.  As time goes on we will increase
 the number of things that you may save about samples and experiments.
-Send us your requests (<a class="reference external" href="mailto:sb2896&#37;&#52;&#48;columbia&#46;edu">sb2896<span>&#64;</span>columbia<span>&#46;</span>edu</a>)!</p>
+Send us your requests here too (<a class="reference external" href="mailto:sb2896&#37;&#52;&#48;columbia&#46;edu">sb2896<span>&#64;</span>columbia<span>&#46;</span>edu</a>)!</p>
+<p><a class="reference internal" href="usb_Where.html#usb-where"><span>moving on...</span></a></p>
 <p>return to <a class="reference internal" href="xpdusers.html#xpdu"><span>XPD Users</span></a></p>
 </div>
 </div>

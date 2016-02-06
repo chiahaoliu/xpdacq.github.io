@@ -129,10 +129,14 @@
             
   <div class="section" id="running-scans">
 <span id="usb-running"></span><h1>Running scans<a class="headerlink" href="#running-scans" title="Permalink to this headline">¶</a></h1>
-<p>The hard work of the experimental setup is now creating all the objects, making
-it easy and low overhead to run the scans.  There are just a few xpdAcq
-run engines that you need.  Each on you simply give a Sample object and
-a ScanPlan object and hit return, and your scan will be carried out.</p>
+<p>The hard work of the experimental setup is now done.  It involved creating all the
+rich metadata container and scan objects, but with this in the past it makes
+it easy and low overhead to run the scans, allowing the experimenter to concentrate
+on the science and not the experimental process.</p>
+<p>To run scans there are just a few xpdAcq
+run engines that you need.  To run a scan you simply pick the run engine you want
+and give it a predefined Sample object and
+a predefined ScanPlan object, then hit return and sit back, your scan will be carried out.</p>
 <p>The allowed scan types are:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">prun</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">scan</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dark</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span><span class="n">scan</span><span class="p">)</span>
@@ -150,8 +154,8 @@ to any of the other runs.  It may be used for validating your scan objects, and
 also for estimating how long a <code class="docutils literal"><span class="pre">tseries</span></code> or <code class="docutils literal"><span class="pre">Tramp</span></code> might take.</p>
 <p>Here are some examples of a workflow.  Assume a GaAs sample is loaded on the diffractometer
 and the <code class="docutils literal"><span class="pre">'GaAs'</span></code> Sample object is created as well as all the ScanPlans we need.
-We will start by doing a dry-run on our <code class="docutils literal"><span class="pre">'ct2&quot;</span></code> count ScanPlan.</p>
-<p>. code-block:: python</p>
+We will start by doing a dry-run on our <code class="docutils literal"><span class="pre">'ct2'</span></code> count ScanPlan.</p>
+<p>Remember, always start with <code class="docutils literal"><span class="pre">bt.list()</span></code></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 <span class="go">bt object bt has list index  0</span>
 <span class="go">ex object InGaAsAlloyPD has list index  1</span>
@@ -197,6 +201,8 @@ to get the first data-set.</p>
 <span class="go">[Fixme] output here</span>
 </pre></div>
 </div>
+<p>Let&#8217;s <a class="reference internal" href="usb_QuickAssess.html#usb-quickassess"><span>take a quick look at our data</span></a></p>
+<p>return to <a class="reference internal" href="xpdusers.html#xpdu"><span>XPD Users</span></a></p>
 </div>
 
 

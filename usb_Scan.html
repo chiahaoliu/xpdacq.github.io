@@ -137,7 +137,7 @@ the information <a class="reference internal" href="usb_Experiment.html#usb-expe
 contain just one exposure (we call that a count scan, <code class="docutils literal"><span class="pre">'ct'</span></code> ).  Or it may be a series of exposures
 taken one after the other, possibly with a delay between.  We
 call that a time-series (or <code class="docutils literal"><span class="pre">'tseries'</span></code> ).  Another popular one that is supported is the
-a temperature series, or temperature ramp, <code class="docutils literal"><span class="pre">Tramp'</span></code>.  More are also on the way, but
+a temperature series, or temperature ramp, <code class="docutils literal"><span class="pre">'Tramp'</span></code>.  More are also on the way, but
 these simple scans may also be combined together in scripts, giving the user significant
 control over how to construct their experiment.</p>
 <p>To run a scan we need a <em>Scan-Plan</em> and a <em>sample</em>.  The Scan-Plan is the detailed description of
@@ -198,16 +198,16 @@ arguments are.  The docstring is documentation written in the code itself by the
 programmer and may be more or less valuable and accurate (though good programmers
 write good Docstrings!).  The <code class="docutils literal"><span class="pre">Init</span> <span class="pre">signature</span></code> is absolutely accurate and
 up to date, so if they are not 100% in agreement, go with the signature.</p>
-<p>The arguments types are given in the Docstring. <code class="docutils literal"><span class="pre">self</span></code> is always ignored, so
-the first given argument is <code class="docutils literal"><span class="pre">scanname</span></code> and is a string (make sure to enclose it in
+<p>The argument types are given in the Docstring. <code class="docutils literal"><span class="pre">self</span></code> is always ignored, so
+the first given argument is <code class="docutils literal"><span class="pre">scanname</span></code> and is a string (make sure to enclose strings in
 single or double quotes when you give it, i.e., <code class="docutils literal"><span class="pre">'myscan'</span></code> or <code class="docutils literal"><span class="pre">&quot;myscan&quot;</span></code> will
 work but <code class="docutils literal"><span class="pre">myscan</span></code> will not).  The second argument is a string that denotes the scan type. At the time
-or writing the only ones available are &#8216;ct&#8217;, &#8216;tseries&#8217; and &#8216;Tramp&#8217;.  If you give
+or writing the only ones available are <code class="docutils literal"><span class="pre">'ct'</span></code>, <code class="docutils literal"><span class="pre">'tseries'</span></code> and <code class="docutils literal"><span class="pre">'Tramp'</span></code>.  If you give
 any other string values the ScanPlan will be created no problem, but it
 will not run if you try it!  The third and last given required-argument is <code class="docutils literal"><span class="pre">scan_params</span></code>
 and is a dictionary that contains one or more key:value pairs.  In this case
-the keys are fixed quantities, and the required keys depends on the scan-type.  Please see
-the examples below.  The values are the values of those parameters that you want
+the &#8220;keys&#8221; are fixed quantities, where the required keys depends on the scan-type.  Please see
+the examples below.  The &#8220;values&#8221; are the values of those parameters that you want
 for your particular scan-plan.  Python dictionaries are written in the form <code class="docutils literal"><span class="pre">{key1:value1,key2:value2,....,lastkey:lastvalue}</span></code></p>
 <p><em>Count scan</em></p>
 <p>Here are some examples of valid count-type ScanPlan definitions:</p>
@@ -223,11 +223,13 @@ for your particular scan-plan.  Python dictionaries are written in the form <cod
 <blockquote>
 <div><ul class="simple">
 <li>Because all these are count ScanPlans, the second argument is <code class="docutils literal"><span class="pre">'ct'</span></code> for all of them.</li>
-<li><strong>They all have different names</strong> (the first argument!).  This is necessary in xpdAcq!  On a side note, though it is not OK in Python in general, it is OK for you to make the assignment <code class="docutils literal"><span class="pre">sc</span> <span class="pre">=</span> <span class="pre">...</span></code> the same in each case. This would be bad in regular python programming because you would be repeatedly reassigning the same python object (<code class="docutils literal"><span class="pre">sc</span></code>) with different definitions and they will all be lost except the most recent definition.  However, in xpdAcq we should always reference our objects using <code class="docutils literal"><span class="pre">bt.list()</span></code> then <code class="docutils literal"><span class="pre">bt.get()</span></code> (<a class="reference internal" href="usb_Where.html#usb-where"><span>remember?</span></a>).  This means that the objects instantiated this way are all saved correctly even with the same assignment, <em>as long as they have different names</em>. We can even do some Python insanity such as the last ScanPlan definition shown in the examples.  This object is created with no assignment so there is no way for Python to reference it, but we can in xpdAcq with <code class="docutils literal"><span class="pre">bt.list()</span></code> and <code class="docutils literal"><span class="pre">bt.get()</span></code>.</li>
+<li><strong>They all have different names</strong> (the first argument!).  This is necessary in xpdAcq!  On a side note, though it is not OK in Python in general, in xpdAcq it <em>is</em> OK for you to make the assignment (i.e., <code class="docutils literal"><span class="pre">sc</span> <span class="pre">=</span> <span class="pre">...</span></code>) the same in each case. This would be bad in regular python programming because you would be repeatedly reassigning the same python object (<code class="docutils literal"><span class="pre">sc</span></code>) with different definitions and they will all be lost except the most recent definition.  However, in xpdAcq we should always reference our objects using <code class="docutils literal"><span class="pre">bt.list()</span></code> then <code class="docutils literal"><span class="pre">bt.get()</span></code> (<a class="reference internal" href="usb_Where.html#usb-where"><span>remember?</span></a>).  This means that the objects instantiated this way are all saved correctly even with the same assignment, <em>as long as they have different names</em>. We can even do some Python insanity such as the last ScanPlan definition shown in the examples.  This object is created with no assignment so there is no way for Python to reference it, but we can in xpdAcq with <code class="docutils literal"><span class="pre">bt.list()</span></code> and <code class="docutils literal"><span class="pre">bt.get()</span></code>.</li>
 <li>It is quite possible to successfully define an incorrectly composed ScanPlan object. You will only know this when you try and run it.  later we will give tools that can validate your scan objects for you, but for now you have to do it by hand.  You can do this by running them in <code class="docutils literal"><span class="pre">dryrun()</span></code>, see <a class="reference internal" href="usb_Running.html#usb-running"><span>Running scans</span></a>.</li>
 <li>The scan_params syntax is a bit clunky and delicate.  Please just be careful for now.  Later we will give helper functions and maybe a GUI (if we can get funding for a summer student).  Let&#8217;s all pray to the funding gods!</li>
 </ul>
 </div></blockquote>
+<p>OK, it is time to <a class="reference internal" href="usb_Running.html#usb-running"><span>run our scans</span></a></p>
+<p>return to <a class="reference internal" href="xpdusers.html#xpdu"><span>XPD Users</span></a></p>
 </div>
 </div>
 

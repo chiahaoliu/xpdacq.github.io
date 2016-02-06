@@ -134,7 +134,7 @@
 objects, and now they have suddenly disappeared!  This
 is a disaster!</p>
 <p>As Douglas Adams taught us <cite>DON&#8217;T PANIC</cite> .  This is actually
-<cite>normal</cite> (or at least <cite>expected</cite> ) behavior.  Remember that
+<cite>normal</cite> (or at least <cite>expected</cite> ) behavior in xpdAcq.  Remember that
 one of the design goals of the software project was to minimize
 users&#8217; typing.  The design had to take into account that the
 collection ipython environment is not so stable
@@ -147,7 +147,7 @@ automatically reloaded, but not the other acquisition objects.
 But don&#8217;t worry, they are all safe and sound.</p>
 </div>
 <div class="section" id="bt-list-and-bt-get-are-your-friends">
-<span id="usb-bt-list"></span><h1>bt_list() and bt_get() are your friends<a class="headerlink" href="#bt-list-and-bt-get-are-your-friends" title="Permalink to this headline">¶</a></h1>
+<span id="usb-bt-list"></span><h1>bt.list() and bt.get() are your friends<a class="headerlink" href="#bt-list-and-bt-get-are-your-friends" title="Permalink to this headline">¶</a></h1>
 <p>To see what xpdAcquire acquisition objects you have available
 to you, type <code class="docutils literal"><span class="pre">bt.list()</span></code> .  This lists the name and type of all
 the acquisition objects that are on the hard-drive and available
@@ -178,7 +178,7 @@ to refer to them directly. For example, consider the following sequence of code 
 <span class="go">NameError: name &#39;s1&#39; is not defined</span>
 </pre></div>
 </div>
-<p>Oh no, my <code class="docutils literal"><span class="pre">s1</span></code> sample object, which as my sampled named <cite>GaAs</cite> , has disappeared!  <code class="docutils literal"><span class="pre">bt.list()</span></code> to the rescue...</p>
+<p>Oh no, my <code class="docutils literal"><span class="pre">s1</span></code> sample object, which as my sample named <cite>GaAs</cite> , has disappeared!  <code class="docutils literal"><span class="pre">bt.list()</span></code> to the rescue...</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 <span class="go">bt object bt has list index  0</span>
 <span class="go">ex object InGaAsAlloyPD has list index  1</span>
@@ -195,7 +195,7 @@ to refer to them directly. For example, consider the following sequence of code 
 Just to be sane, let&#8217;s reload it. We can give it any name, it doesn&#8217;t have to be
 the same name as last time, so let&#8217;s reload it as <code class="docutils literal"><span class="pre">s1_again</span></code> :</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s1_again</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span><span class="o">.</span><span class="n">name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s1_again</span><span class="o">.</span><span class="n">name</span>
 <span class="go">&#39;GaAs&#39;</span>
 </pre></div>
 </div>
@@ -236,7 +236,7 @@ type <code class="docutils literal"><span class="pre">bt.list('sa')</span></code
 <p>Make sure to refer to that object by the written index number and not where you see it on the returned list!</p>
 </div>
 <div class="section" id="bt-list-and-bt-get-gotchas">
-<span id="usb-gotchas"></span><h1>bt_list() and bt_get() Gotchas<a class="headerlink" href="#bt-list-and-bt-get-gotchas" title="Permalink to this headline">¶</a></h1>
+<span id="usb-gotchas"></span><h1>bt.list() and bt.get() Gotchas<a class="headerlink" href="#bt-list-and-bt-get-gotchas" title="Permalink to this headline">¶</a></h1>
 <p>Once you get used to this design we hope you will like it, but there are a
 couple of important <cite>Gotchas</cite> that you should bear in mind that could lead to
 confusion until you get used to them.</p>
@@ -247,8 +247,12 @@ confusion until you get used to them.</p>
 </li>
 <li><p class="first">Objects may change their position in the <code class="docutils literal"><span class="pre">bt.list()</span></code> as new objects are created.  Just because the object you want was in position <code class="docutils literal"><span class="pre">4</span></code> before, doesn&#8217;t mean it will be now. <strong>So get used to always typing</strong> <code class="docutils literal"><span class="pre">bt.list()</span></code> <strong>FIRST then</strong> <code class="docutils literal"><span class="pre">bt.get()</span></code> .</p>
 </li>
+<li><p class="first">At the time of writing, our xpdacq objects incorporate metadata from higher in the stack (e.g., Sample inheriting Experiment metadata) statically at the time they are created.  If you update information higher in the stack, for example, add some experiment information, the new information will only appear in objects created (or updated by reinstantiating) after this upstream change.  We hope to fix this in the future.</p>
+</li>
 </ol>
 </div></blockquote>
+<p>go to <a class="reference internal" href="usb_Scan.html#usb-scan"><span>Setting up your scan objects</span></a></p>
+<p>go to <a class="reference internal" href="usb_Running.html#usb-running"><span>Running scans</span></a></p>
 <p>return to <a class="reference internal" href="xpdusers.html#xpdu"><span>XPD Users</span></a></p>
 </div>
 
