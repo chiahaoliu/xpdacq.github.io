@@ -81,6 +81,7 @@
             
                 <ul>
 <li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
@@ -129,15 +130,6 @@
             
   <div class="section" id="initializing-a-new-beamtime-for-a-user">
 <span id="sb-newbeamtime"></span><h1>Initializing a new beamtime for a user<a class="headerlink" href="#initializing-a-new-beamtime-for-a-user" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="required-information">
-<h2>Required Information<a class="headerlink" href="#required-information" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li>last name of the PI of the beamtime</li>
-<li>SAF number</li>
-</ul>
-</div></blockquote>
-</div>
 <div class="section" id="goals-of-the-setup">
 <h2>Goals of the Setup<a class="headerlink" href="#goals-of-the-setup" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -149,39 +141,92 @@
 </ol>
 </div></blockquote>
 </div>
-<div class="section" id="setup-steps">
-<h2>Setup Steps<a class="headerlink" href="#setup-steps" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>[return to this later]</li>
-<li>We are still finalizing the steps to automate this process. For now:</li>
-</ol>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><strong>Prepare beamtime config files:</strong>
+This may be done at the beginning of the cycle or whenever the info from PASS is available.  Just leave multiple <code class="docutils literal"><span class="pre">yml</span></code> files in the <code class="docutils literal"><span class="pre">~/xpdConfig</span></code> directory each with a different saf-number, one for each beamtime. In the future, this step will be replaced with something where the information is obtained directly from the PASS database....that is the plan...</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>run the start_beamtime script to initialize directories</li>
-<li>Ensure that under xpdUsers there are no directories except for Import, Export, tif_base, dark_base, config_base, script_base</li>
-<li>Ensure that all those directories are empty.</li>
-<li>If you have a .yml file from the user (probably won&#8217;t yet) place it in the Import directory.</li>
+<li>look in <code class="docutils literal"><span class="pre">~/xpdConfig</span></code> for a file called <code class="docutils literal"><span class="pre">saf123.yml</span></code></li>
+<li>this is a template.  Make a copy with a new name <code class="docutils literal"><span class="pre">saf&lt;saf</span> <span class="pre">number&gt;.yml</span></code> where you replace <code class="docutils literal"><span class="pre">&lt;saf</span> <span class="pre">number&gt;</span></code> with the SAF number, e.g., <code class="docutils literal"><span class="pre">saf300456.yml</span></code>.</li>
+<li>edit the file with the actual information, such as &#8220;PI last name&#8221;, &#8220;experimenter list&#8221;, and so on, following the template.</li>
+<li>make sure the final version is saved back into <code class="docutils literal"><span class="pre">~/xpdConfig</span></code> with the correct name (<code class="docutils literal"><span class="pre">xpdAcq</span></code> will use this standard naming scheme to search for the config files).</li>
 </ol>
 </div></blockquote>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">loadsim</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">loadsim</span>
-<span class="go">    Traceback (most recent call last):</span>
-<span class="go">      File &quot;&lt;pyshell#3&gt;&quot;, line 1, in &lt;module&gt;</span>
-<span class="go">        import loadsim</span>
-<span class="go">      File &quot;c:\users\billinge\documents\github\xpdsim\loadsim.py&quot;, line 17, in &lt;module&gt;</span>
-<span class="go">        from xpdacq.beamtime import BeamTime</span>
-<span class="go">    ImportError: No module named &#39;xpdacq.beamtime&#39;</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
-<li>then do it again</li>
+</li>
+<li><p class="first"><strong>New user will show up tomorrow or today:</strong>
+On xpd computer,</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">type <code class="docutils literal"><span class="pre">icollection</span></code> to start the <code class="docutils literal"><span class="pre">(collection)</span></code> environment and get the <code class="docutils literal"><span class="pre">In[1]:</span></code> prompt.</p>
+</li>
+<li><p class="first">type <code class="docutils literal"><span class="pre">bt</span> <span class="pre">=</span> <span class="pre">_start_collection(&lt;saf_number&gt;)</span></code>
+e.g., <code class="docutils literal"><span class="pre">bt</span> <span class="pre">=</span> <span class="pre">_start_collection(300456)</span></code></p>
+</li>
+<li><dl class="first docutils">
+<dt>there will be two possible outcomes</dt>
+<dd><ol class="first last arabic simple">
+<li>the environment has already been cleaned from the previous user and there will be no error message</li>
+<li>the previous beamtime has not been properly ended (or testing took place in between, whatever).  Then the program will exit asking you to run <code class="docutils literal"><span class="pre">_end_beamtime()</span></code></li>
 </ol>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">)</span>
-<span class="go">here</span>
-</pre></div>
-</div>
-<p><code class="docutils literal"><span class="pre">icollection</span></code> Typed at the command prompt from any directory.  This starts an ipython session and preloads all the packages needed for XPD data acquisition|</p>
-<p>return to <a class="reference internal" href="beamlinestaff.html#bls"><span>Beamline Staff Only</span></a></p>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt><strong>if (2.3) results in outcome 2.:</strong></dt>
+<dd><ol class="first last arabic simple">
+<li>still in the <code class="docutils literal"><span class="pre">(collection)</span></code> environment, type <code class="docutils literal"><span class="pre">_end_beamtime()</span></code> and follow the prompts.</li>
+<li>rerun the start-beamtime sequence =&gt; <code class="docutils literal"><span class="pre">bt</span> <span class="pre">=</span> <span class="pre">_start_beamtime(&lt;saf</span> <span class="pre">number&gt;)</span></code>.  this time it should result in outcome 1.</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Wavelength calibration:</strong></dt>
+<dd><ol class="first last arabic simple">
+<li>Do what you have to do to do a wavelength calibration.  Write the wavelength on a bit of paper.</li>
+<li>in <code class="docutils literal"><span class="pre">(collection)</span></code> type <code class="docutils literal"><span class="pre">bt.set_wavelength(&lt;wavelength&gt;)</span></code>,
+e.g., <code class="docutils literal"><span class="pre">bt.set_wavelength(0.18448)</span></code></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[not implemented yet].  If the users have provided you with yaml files containing their pre-prepared beamtime objects:</dt>
+<dd><ol class="first last arabic simple">
+<li>copy them to the directory <code class="docutils literal"><span class="pre">~/xpdUser/config_base/yml</span></code>.  They can be in the form of a series of <code class="docutils literal"><span class="pre">yml</span></code> files, or they may by a <code class="docutils literal"><span class="pre">tar</span></code> or <code class="docutils literal"><span class="pre">tar.gz</span></code> file.</li>
+<li>type <code class="docutils literal"><span class="pre">bt.import_objects()</span></code></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>At this point, you can hand off to the users.  However, to give the users a better experience, the next step is to do a detector geometry calibration.  If you do this the calibration information will be saved in each data-file allowing automated integration [not yet implemented]</dt>
+<dd><ol class="first last arabic simple">
+<li>load the desired calibration sample and open the shutter</li>
+<li>[not implemented yet] type <code class="docutils literal"><span class="pre">calibration(&lt;calibrant</span> <span class="pre">sample</span> <span class="pre">object&gt;,</span> <span class="pre">&lt;desired</span> <span class="pre">count</span> <span class="pre">object&gt;)</span></code></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+<dl class="docutils">
+<dt>for now,</dt>
+<dd><ol class="first last arabic simple">
+<li>[not implemented yet]find the sample object for your calibrant sample in <code class="docutils literal"><span class="pre">bt.list()</span></code> or create it if it is not there.</li>
+<li>type <code class="docutils literal"><span class="pre">bt.list()</span></code>. Find the index number of your desired count-length (preloaded defaults are 0.1s, 0.5s, 1s, 5s, 10s, 30s [fixme]). e.g., I think &#8216;ct30s&#8217; is index 10</li>
+<li>type <code class="docutils literal"><span class="pre">prun(&lt;sample</span> <span class="pre">object&gt;,&lt;scan</span> <span class="pre">object&gt;)</span></code>, e.g., <code class="docutils literal"><span class="pre">prun(bt.get(2),bt.get(10))</span></code> where index 2 in the object list is the lazy-user sample and index 10 is the 30s count scan (pls check though)</li>
+<li>when complete, type <code class="docutils literal"><span class="pre">save_last_tiff()</span></code> to save it as a tiff image.  It should reside in <code class="docutils literal"><span class="pre">~/xpdUser/tiff_base</span></code>.</li>
+<li>load it in <code class="docutils literal"><span class="pre">xPDFsuite</span></code> or <code class="docutils literal"><span class="pre">Fit2D</span></code> and do the calibration</li>
+<li>save the resulting calibration config file in <code class="docutils literal"><span class="pre">~/xpdUser/config_base</span></code> (note, it goes in config_base, not in <code class="docutils literal"><span class="pre">config_base/yml</span></code> with the (default) file extension <code class="docutils literal"><span class="pre">.cfg</span></code>)</li>
+</ol>
+</dd>
+</dl>
+<p>return to <a class="reference internal" href="quickstart.html#bls"><span>Quick Start</span></a></p>
 </div>
 </div>
 
