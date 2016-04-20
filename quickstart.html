@@ -31,8 +31,8 @@
 
   
     <link rel="top" title="xpdAcq 1.0 documentation" href="index.html"/>
-        <link rel="next" title="XPD Users" href="xpdusers.html"/>
-        <link rel="prev" title="Beamline Staff Only" href="beamlinestaff.html"/> 
+        <link rel="next" title="Troubleshooting" href="troubleshooting.html"/>
+        <link rel="prev" title="XPD Users" href="xpdusers.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -81,8 +81,13 @@
           
             
             
-                <ul class="current">
+                <ul>
 <li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
+</ul>
+<ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">Quick Start</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#checklist">Checklist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#collecting-data-quickstart">Collecting Data Quickstart</a></li>
@@ -90,7 +95,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 
@@ -155,7 +161,6 @@ for you.  Let&#8217;s check if it is the case.</p>
 <ol class="arabic simple">
 <li>OK, you are in.  Make sure that that the instrument scientist has initiated your beamtime. type <code class="docutils literal"><span class="pre">bt.md</span></code> and hit return. You should see the beamtime (<code class="docutils literal"><span class="pre">bt</span></code>) metadata (<code class="docutils literal"><span class="pre">md</span></code>) that has been pre-stored by the IS, and it should contain things like the last name of the PI on the proposal and the SAF number for the beamtime.  If not, please seek out the IS to get your session initialized.</li>
 <li>Check that the wavelength has been set.  Does the correct x-ray wavelength appear in <code class="docutils literal"><span class="pre">bt.md</span></code> <code class="docutils literal"><span class="pre">['bt_wavelength']</span></code> field, or does it say <code class="docutils literal"><span class="pre">None</span></code>.  If the latter, you can still collect scans but automated data reduction may not work, so best to grab the IS again.</li>
-<li>Has a calibration already been carried out?  [FIXME]</li>
 <li>Check that the Perkin Elmer detector is correctly set up.</li>
 </ol>
 <blockquote>
@@ -165,7 +170,7 @@ for you.  Let&#8217;s check if it is the case.</p>
 </ol>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li>There are other setups that you can do to make your experiment run smoothly,  but you seem to be set up ok, so let&#8217;s go and collect some data.</li>
+<li>There are other setups that you can do to make your experiment run smoothly, but you seem to be set up ok, so let&#8217;s go and collect some data.</li>
 </ol>
 </div></blockquote>
 </div>
@@ -195,7 +200,7 @@ for you.  Let&#8217;s check if it is the case.</p>
 <li>To use data analysis tools on the XPD computer, in a new terminal window,</li>
 </ol>
 <blockquote>
-<div>1. type <code class="docutils literal"><span class="pre">xpdfsuite</span></code> [FIXME, I don&#8217;t know how to start xpdfsuite on the xpd computer].
+<div>1. type <code class="docutils literal"><span class="pre">getxgui</span></code>
 2 Click on the green <code class="docutils literal"><span class="pre">SrXplanar</span></code> icon [Soham or someone, can you put instructions here for using <code class="docutils literal"><span class="pre">SrXplanar</span></code>]</div></blockquote>
 </div></blockquote>
 </div></blockquote>
@@ -205,7 +210,7 @@ for you.  Let&#8217;s check if it is the case.</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><code class="docutils literal"><span class="pre">bt.list()</span></code> to see what objects are available</li>
-<li><code class="docutils literal"><span class="pre">prun(bt.get(&lt;sampleIndex&gt;)bt.get(&lt;scanIndex&gt;))</span></code> to run the scan</li>
+<li><code class="docutils literal"><span class="pre">prun(bt.get(&lt;sampleIndex&gt;)bt.get(&lt;scanplanIndex&gt;))</span></code> to run the scan</li>
 <li><code class="docutils literal"><span class="pre">save_tiff(db[list_of_scans])</span></code> to get the data back as a tiff file</li>
 <li><code class="docutils literal"><span class="pre">xPDFsuite</span></code> to visualize it, integrate it to 1D and process to get a diffraction pattern or PDF.</li>
 </ol>
@@ -222,6 +227,7 @@ for you.  Let&#8217;s check if it is the case.</p>
 <li><code class="docutils literal"><span class="pre">dryrun()</span></code> - does a kind of dummy scan but doesn&#8217;t execute anything</li>
 <li><code class="docutils literal"><span class="pre">dark()</span></code> - collects a dark scan (shutter closed).  The default behavior is that darks are collected automatically and linked to lights so if all is going well you should never have to use this, but in case you do it is there.</li>
 <li><code class="docutils literal"><span class="pre">background()</span></code> - [not implemented yet].  Like <code class="docutils literal"><span class="pre">prun()</span></code> but it tags the dataset as a background scan for that sample and scanplan configuration</li>
+<li><code class="docutils literal"><span class="pre">calibration()</span></code> - Similary to <code class="docutils literal"><span class="pre">prun()</span></code> and above scans, but your data will be labeled with as a calibration scan so that you can easily trace back what calibrants you have used and when were those calibration scans collected.</li>
 </ol>
 </dd>
 <dt>You should try and set up some of your own scanplan objects:</dt>
@@ -236,22 +242,51 @@ for you.  Let&#8217;s check if it is the case.</p>
 </ol>
 </div></blockquote>
 </dd>
-<dt>Types of ScanPlan available:</dt>
+<dt>Types of ScanPlan available in current version:</dt>
 <dd><ol class="first last arabic simple">
 <li><code class="docutils literal"><span class="pre">'ct'</span></code> just exposes the the detector for a number of seconds. e.g.,  <code class="docutils literal"><span class="pre">ScanPlan('ct17.5s','ct',{'exposure':17.5})</span></code></li>
 <li><code class="docutils literal"><span class="pre">'tseries'</span></code> executes a series of <code class="docutils literal"><span class="pre">'num'</span></code> counts of exposure time <code class="docutils literal"><span class="pre">'exposure'</span></code> seconds with  a delay of <code class="docutils literal"><span class="pre">'delay'</span></code> seconds between them.  e.g., <code class="docutils literal"><span class="pre">ScanPlan('t50_e1s_d59s','tseries',{'num':50,'exposure':1,'delay':59})</span></code> will measure 50 scans of 1 second with a delay of 59 seconds in between each of them.</li>
 <li><code class="docutils literal"><span class="pre">'Tramp'</span></code> executes a temperature ramp from <code class="docutils literal"><span class="pre">'startingT'</span></code> to <code class="docutils literal"><span class="pre">'endingT'</span></code> in temperature steps of <code class="docutils literal"><span class="pre">'Tstep'</span></code> with exposure time of <code class="docutils literal"><span class="pre">'exposure'</span></code>.  e.g., <code class="docutils literal"><span class="pre">ScanPlan('T200K_500K_5K_1s','Tramp',{'startingT':200,</span> <span class="pre">'endingT':500,</span> <span class="pre">'Tstep':5,</span> <span class="pre">'exposure':1})</span></code> will automatically change the temperature, starting at 200 K and ending at 500 K, measuring a scan of 1 s at every 5 K step.  The temperature controller will hold at each temperature until the temperature stabilizes before starting the measurement.</li>
 </ol>
 </dd>
+</dl>
+<p>Here is a summary table:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ScanPlan</th>
+<th class="head">Syntax</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ct</span></code></td>
+<td><code class="docutils literal"><span class="pre">ScanPlan('ct17.5s','ct',{'exposure':17.5})</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">tseries</span></code></td>
+<td><code class="docutils literal"><span class="pre">ScanPlan('t50_e1s_d59s','tseries',{'num':50,'exposure':1,'delay':59})</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Tramp</span></code></td>
+<td><code class="docutils literal"><span class="pre">ScanPlan('T200K_500K_5K_1s','Tramp',{'startingT':200,</span> <span class="pre">'endingT':500,</span> <span class="pre">'Tstep':5,</span> <span class="pre">'exposure':1})</span></code></td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
 <dt>Experiment and sample objects:</dt>
 <dd><ol class="first last arabic simple">
-<li>The tiff file will be saved with the name <code class="docutils literal"><span class="pre">&lt;sample-name&gt;_&lt;scan-name&gt;_&lt;time-stamp&gt;_&lt;something-else&gt;.tiff</span></code>, and all the information in the scan and sample objects will be saved to metadata and searchable and usable for processing later.  The &lt;something-else&gt; depends on the scan type, for example, for a <code class="docutils literal"><span class="pre">Tramp</span></code> it is the actual temperature read from the temperature controller when the data-collection was initiated for that point.  It is time well spent to set up all your experimnet and sample objects accurately. [not implemented yet] It is possible to download xpdAcq and run it on your own computer to set up the sample and scan objects you think you will need at the beamtime, so when you are at XPD you can concentrate on collecting data and not typing metadata.  It is strongly recommended.  See the full documentation for more details.</li>
+<li>The tiff file will be saved with the name <code class="docutils literal"><span class="pre">&lt;sample-name&gt;_&lt;scanplan-name&gt;_&lt;time-stamp&gt;_&lt;something-else&gt;.tiff</span></code>, and all the information in the <code class="docutils literal"><span class="pre">scanplan</span></code> and <code class="docutils literal"><span class="pre">sample</span></code> objects will be saved to metadata and searchable and usable for processing later.  The &lt;something-else&gt; depends on the <code class="docutils literal"><span class="pre">scanplan</span></code> type, for example, for a <code class="docutils literal"><span class="pre">Tramp</span></code> it is the actual temperature read from the temperature controller when the data-collection was initiated for that point.  It is time well spent to set up all your experimnet and sample objects accurately. [not implemented yet] It is possible to download xpdAcq and run it on your own computer to set up the <code class="docutils literal"><span class="pre">sample</span></code> and <code class="docutils literal"><span class="pre">scanplan</span></code> objects you think you will need at the beamtime, so when you are at XPD you can concentrate on collecting data and not typing metadata.  It is strongly recommended.  See the full documentation for more details.</li>
 <li>To set up a sample you have to give it an experiment object, so <code class="docutils literal"><span class="pre">Sample('Li</span> <span class="pre">battery</span> <span class="pre">electrode',bt.get(96))</span></code> uses the object in <code class="docutils literal"><span class="pre">bt.list(96)</span></code> which must be an <code class="docutils literal"><span class="pre">ex</span></code> type object, for example I may have made it with <code class="docutils literal"><span class="pre">Experiment('cycled</span> <span class="pre">and</span> <span class="pre">uncycled</span> <span class="pre">batteries',bt)</span></code>.  The <code class="docutils literal"><span class="pre">bt</span></code> is the beamtime object.  For more info on why it is set up this way, see the docs!</li>
 </ol>
 </dd>
 <dt>User scripts:</dt>
-<dd>Your scans can be sequenced into scripts, executing one after the other as you desire.  To set this up, write a sequence of commands into a text file, save it with the extension <code class="docutils literal"><span class="pre">.py</span></code> in the <code class="docutils literal"><span class="pre">userScripts</span></code> directory with a memorable name, like <code class="docutils literal"><span class="pre">myNightShiftScript.py</span></code>. Double and triple check it, then when you are ready to execute it, type <code class="docutils literal"><span class="pre">!run</span> <span class="pre">~/userScripts/myNightShiftScript.py</span></code>, make sure it is running as expected, and go to bed!</dd>
+<dd>Your <code class="docutils literal"><span class="pre">scanplan</span></code> objects can be sequenced into scripts, executing one after the other as you desire.  To set this up, write a sequence of commands into a text file, save it with the extension <code class="docutils literal"><span class="pre">.py</span></code> in the <code class="docutils literal"><span class="pre">userScripts</span></code> directory with a memorable name, like <code class="docutils literal"><span class="pre">myNightShiftScript.py</span></code>.  Double and triple check your script, then when you are ready to execute it, in <code class="docutils literal"><span class="pre">ipython</span></code> session type:</dd>
 </dl>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">run</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/</span><span class="n">xpdUser</span><span class="o">/</span><span class="n">userScripts</span><span class="o">/</span><span class="n">myNightShiftScript</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Stay there for a while to make sure everything is running as expected and go to bed!</p>
 <p>There is much more to the xpdAcq software that will give you superpowers in rapid and flexible data collection, data retrieval and processing.  This was just the quick start, but much more information is in the full documentation.</p>
 <p>Move on <a class="reference internal" href="xpdusers.html#xpdu"><span>XPD Users</span></a></p>
 </div>
@@ -264,10 +299,10 @@ for you.  Let&#8217;s check if it is the case.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="xpdusers.html" class="btn btn-neutral float-right" title="XPD Users" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="beamlinestaff.html" class="btn btn-neutral" title="Beamline Staff Only" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="xpdusers.html" class="btn btn-neutral" title="XPD Users" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

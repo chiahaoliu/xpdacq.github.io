@@ -81,7 +81,14 @@
             
                 <ul>
 <li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 
@@ -160,7 +167,7 @@ and all things it contains (but not their values) will be listed.</p>
 <p>So this is a beamtime (<cite>&#8216;bt&#8217;</cite>) type of object with name <cite>&#8216;bt&#8217;</cite>.  More interesting
 is the metadata it contains:</p>
 <div class="highlight-python"><div class="highlight"><pre> <span class="o">&gt;&gt;&gt;</span> <span class="n">bt</span><span class="o">.</span><span class="n">md</span>
-<span class="p">{</span><span class="s1">&#39;bt_experimenters&#39;</span><span class="p">:</span> <span class="p">{(</span><span class="s1">&#39;Chia-Hao&#39;</span><span class="p">,</span> <span class="s1">&#39;Liu&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Simon&#39;</span><span class="p">,</span> <span class="s1">&#39;Billinge&#39;</span><span class="p">)},</span>
+<span class="p">{</span><span class="s1">&#39;bt_experimenters&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;Chia-Hao&#39;</span><span class="p">,</span> <span class="s1">&#39;Liu&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Simon&#39;</span><span class="p">,</span> <span class="s1">&#39;Billinge&#39;</span><span class="p">)],</span>
 <span class="s1">&#39;bt_piLast&#39;</span><span class="p">:</span> <span class="s1">&#39;Billinge&#39;</span><span class="p">,</span>
 <span class="s1">&#39;bt_safN&#39;</span><span class="p">:</span> <span class="mi">300256</span><span class="p">,</span>
 <span class="s1">&#39;bt_uid&#39;</span><span class="p">:</span> <span class="s1">&#39;9b0c5878-cba4-11e5-8984-28b2bd4521c0&#39;</span><span class="p">,</span>
@@ -204,7 +211,7 @@ and hit return.  So far there is only 1 object, it is the <cite>bt</cite> object
 <p>please go and talk to your instrument responsible as there may be other aspects of the
 environment setup that need to be fixed, but if you ever do have to create
 (we call it <cite>instantiate</cite>) a new <code class="docutils literal"><span class="pre">bt</span></code> object, it is done like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span> <span class="o">=</span> <span class="n">Beamtime</span><span class="p">(</span><span class="s1">&#39;Billinge&#39;</span><span class="p">,</span><span class="mi">300256</span><span class="p">,</span><span class="mf">0.1818</span><span class="p">,{(</span><span class="s1">&#39;Simon&#39;</span><span class="p">,</span><span class="s1">&#39;Billinge&#39;</span><span class="p">),(</span><span class="s1">&#39;Chia-Hao&#39;</span><span class="p">,</span><span class="s1">&#39;Liu&#39;</span><span class="p">)})</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span> <span class="o">=</span> <span class="n">Beamtime</span><span class="p">(</span><span class="s1">&#39;Billinge&#39;</span><span class="p">,</span><span class="mi">300256</span><span class="p">,</span><span class="mf">0.1818</span><span class="p">,[(</span><span class="s1">&#39;Simon&#39;</span><span class="p">,</span><span class="s1">&#39;Billinge&#39;</span><span class="p">),(</span><span class="s1">&#39;Chia-Hao&#39;</span><span class="p">,</span><span class="s1">&#39;Liu&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
 <p>We will assume that <code class="docutils literal"><span class="pre">bt</span></code> exists.  Now we move on to the next step, <a class="reference internal" href="usb_Experiment.html#usb-experiment"><span>Setting up your XPD acuisition objects</span></a> within our beamtime.</p>
