@@ -112,7 +112,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -145,7 +145,7 @@ run engines(functions) that you need.  To run a scan you simply pick the run eng
 and give it a predefined Sample object and
 a predefined ScanPlan object, then hit return and sit back, your scan will be carried out.</p>
 <p>The allowed scan types are:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">prun</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prun</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dark</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">background</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">calibration</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
@@ -166,7 +166,7 @@ also for estimating how long a <code class="docutils literal"><span class="pre">
 and the <code class="docutils literal"><span class="pre">'GaAs'</span></code> Sample object is created as well as all the ScanPlans we need.
 We will start by doing a dry-run on our <code class="docutils literal"><span class="pre">'ct2'</span></code> count ScanPlan.</p>
 <p>Remember, always start with <code class="docutils literal"><span class="pre">bt.list()</span></code></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 <span class="go">bt object bt has list index  0</span>
 <span class="go">ex object InGaAsAlloyPD has list index  1</span>
 <span class="go">ex object ProteinFolding has list index  2</span>
@@ -187,14 +187,20 @@ We will start by doing a dry-run on our <code class="docutils literal"><span cla
 </div>
 <p>The Sample object I want has list index 3 and the ScanPlan has list index 11.
 Let&#8217;s try a dryrun to make sure everything is ok.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">dryrun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>
-<span class="go">[Fixme] output here</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dryrun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>
+<span class="go">INFO: requested exposure time =  2.0  -&gt; computed exposure time: 2.0</span>
+<span class="go">=== dryrun mode ===</span>
+<span class="go">this will execute a single bluesky Count type scan</span>
+<span class="go">Sample metadata: Sample name = GaAs</span>
+<span class="go">using the &quot;pe1c&quot; detector (Perkin-Elmer in continuous acquisition mode)</span>
+<span class="go">in the form of 20 frames of 0.1 s summed into a single event</span>
+<span class="go">(i.e. accessible as a single tiff file)</span>
 </pre></div>
 </div>
 <p>OK, it seems to work, lets do some testing to see how much intensity we need.
 We will do three setup scans with 1.5 second, 2 seconds and 100.5 seconds exposure
 and then compare them.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>   <span class="c1">#1.5 seconds</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>   <span class="c1">#1.5 seconds</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>  <span class="c1">#2 seconds</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1">#100.5 seconds</span>
 <span class="go">[Fixme] output here</span>
@@ -207,12 +213,12 @@ the underlying scans that are carried out are all still there and can be retriev
 be.</p>
 <p>It seems that the 2 second scans are the best, so let&#8217;s do a production run
 to get the first data-set.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>  <span class="c1">#2 seconds</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>  <span class="c1">#2 seconds</span>
 <span class="go">[Fixme] output here</span>
 </pre></div>
 </div>
-<p>Let&#8217;s <a class="reference internal" href="usb_QuickAssess.html#usb-quickassess"><span>take a quick look at our data</span></a></p>
-<p>return to <a class="reference internal" href="xpdusers.html#xpdu"><span>XPD Users</span></a></p>
+<p>Let&#8217;s <a class="reference internal" href="usb_QuickAssess.html#usb-quickassess"><span class="std std-ref">take a quick look at our data</span></a></p>
+<p>return to <a class="reference internal" href="xpdusers.html#xpdu"><span class="std std-ref">XPD Users</span></a></p>
 </div>
 
 

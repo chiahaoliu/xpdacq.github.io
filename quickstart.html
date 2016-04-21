@@ -88,7 +88,7 @@
 <li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Quick Start</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#checklist">Checklist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#collecting-data-quickstart">Collecting Data Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#remember">Remember!</a></li>
@@ -120,7 +120,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -165,7 +165,7 @@ for you.  Let&#8217;s check if it is the case.</p>
 </ol>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Look at the Perkin Elmer screen on the CSS and make sure that it registers <code class="docutils literal"><span class="pre">continuous</span></code> for the acquisition mode.</li>
+<li>Look at the Perkin Elmer screen on the CSS and make sure that it is already in <code class="docutils literal"><span class="pre">Acquire</span></code> mode.</li>
 <li>Type <code class="docutils literal"><span class="pre">glbl.area_det</span></code> and return.  It should return <code class="docutils literal"><span class="pre">'pe1c'</span></code> unless the IS tells you otherwise.</li>
 </ol>
 </div></blockquote>
@@ -194,13 +194,13 @@ for you.  Let&#8217;s check if it is the case.</p>
 </ol>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Type <code class="docutils literal"><span class="pre">save_last_tiff()</span></code> to get the most recent scan you ran.  A dark-subtracted tiff file will appear in the directory <code class="docutils literal"><span class="pre">~/xpdUser/tiff_base</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">save_tiff(db[-2])</span></code> gets you the second to last scan that was collected, <code class="docutils literal"><span class="pre">save_tiff(db[-10:])</span></code> gets you the last 10 scans, (the syntax is Pythonic but it means &#8220;the items in the list from 10 ago up to the end of the list, i.e., now&#8221;.  You can do all kinds of slicing and dicing, for example <code class="docutils literal"><span class="pre">db[-10:-8,-2]</span></code> would return the scans that were tenth, ninth and eigth ago, and also the last but one.) and so on.</li>
-<li>The tiff file appears in the directory <code class="docutils literal"><span class="pre">~/xpdUser/tiff_base</span></code> with a reasonably recognizable automatically generated name and you can do pretty much what you like with it. For example, copy it to an external drive.  However, there are handy tools on the xpd computer for analyzing your data.  As long as you save all your work in the <code class="docutils literal"><span class="pre">xpdUser</span></code> directory tree (make as many directories as you like under there) your work will be archived in a remote location at the end of your beamtime, and then completely deleted from the local XPD computer so that the next user has their own fresh environment to work in but your work is safe.</li>
+<li>Type <code class="docutils literal"><span class="pre">save_last_tiff()</span></code> to get the most recent scan you ran.  A dark-subtracted tiff file will appear in the directory <code class="docutils literal"><span class="pre">~/xpdUser/tiff_base</span></code> with prefix <code class="docutils literal"><span class="pre">sub_</span></code> in file name.</li>
+<li><code class="docutils literal"><span class="pre">save_tiff(db[-2])</span></code> gets you the second to last scan that was collected, <code class="docutils literal"><span class="pre">save_tiff(db[-10:])</span></code> gets you the last 10 scans, (the syntax is Pythonic but it means &#8220;the items in the list from 10 ago up to the end of the list, i.e., now&#8221;.  You can do all kinds of slicing and dicing, for example <code class="docutils literal"><span class="pre">db[-10:-8,-2]</span></code> would return the scans that were tenth, ninth and eighth ago, and also the last but one.) and so on.</li>
+<li>The tiff file appears in the directory <code class="docutils literal"><span class="pre">~/xpdUser/tiff_base</span></code> with a reasonably recognizable automatically generated name and you can do pretty much what you like with it. For example, copy it to an external drive.  However, there are handy tools on the XPD computer for analyzing your data.  As long as you save all your work in the <code class="docutils literal"><span class="pre">xpdUser</span></code> directory tree (make as many directories as you like under there) your work will be archived in a remote location at the end of your beamtime, and then completely deleted from the local XPD computer so that the next user has their own fresh environment to work in but your work is safe.</li>
 <li>To use data analysis tools on the XPD computer, in a new terminal window,</li>
 </ol>
 <blockquote>
-<div>1. type <code class="docutils literal"><span class="pre">getxgui</span></code>
+<div>1.Type <code class="docutils literal"><span class="pre">getxgui</span></code>
 2 Click on the green <code class="docutils literal"><span class="pre">SrXplanar</span></code> icon [Soham or someone, can you put instructions here for using <code class="docutils literal"><span class="pre">SrXplanar</span></code>]</div></blockquote>
 </div></blockquote>
 </div></blockquote>
@@ -224,9 +224,9 @@ for you.  Let&#8217;s check if it is the case.</p>
 <dd><ol class="first last arabic simple">
 <li><code class="docutils literal"><span class="pre">prun()</span></code> - the one you will use the most.  It stands for &#8220;production run&#8221;</li>
 <li><code class="docutils literal"><span class="pre">setupscan()</span></code> - it is just the same as <code class="docutils literal"><span class="pre">prun()</span></code> but the data are tagged as being test/setup data, helping you to keep track of what is what later.</li>
-<li><code class="docutils literal"><span class="pre">dryrun()</span></code> - does a kind of dummy scan but doesn&#8217;t execute anything</li>
+<li><code class="docutils literal"><span class="pre">dryrun()</span></code> - it doesn&#8217;t execute anything, only prints out metadata</li>
 <li><code class="docutils literal"><span class="pre">dark()</span></code> - collects a dark scan (shutter closed).  The default behavior is that darks are collected automatically and linked to lights so if all is going well you should never have to use this, but in case you do it is there.</li>
-<li><code class="docutils literal"><span class="pre">background()</span></code> - [not implemented yet].  Like <code class="docutils literal"><span class="pre">prun()</span></code> but it tags the dataset as a background scan for that sample and scanplan configuration</li>
+<li><code class="docutils literal"><span class="pre">background()</span></code> - Like <code class="docutils literal"><span class="pre">prun()</span></code> but it tags the dataset as a background scan for that sample and scanplan configuration</li>
 <li><code class="docutils literal"><span class="pre">calibration()</span></code> - Similary to <code class="docutils literal"><span class="pre">prun()</span></code> and above scans, but your data will be labeled with as a calibration scan so that you can easily trace back what calibrants you have used and when were those calibration scans collected.</li>
 </ol>
 </dd>
@@ -276,19 +276,19 @@ for you.  Let&#8217;s check if it is the case.</p>
 <dl class="docutils">
 <dt>Experiment and sample objects:</dt>
 <dd><ol class="first last arabic simple">
-<li>The tiff file will be saved with the name <code class="docutils literal"><span class="pre">&lt;sample-name&gt;_&lt;scanplan-name&gt;_&lt;time-stamp&gt;_&lt;something-else&gt;.tiff</span></code>, and all the information in the <code class="docutils literal"><span class="pre">scanplan</span></code> and <code class="docutils literal"><span class="pre">sample</span></code> objects will be saved to metadata and searchable and usable for processing later.  The &lt;something-else&gt; depends on the <code class="docutils literal"><span class="pre">scanplan</span></code> type, for example, for a <code class="docutils literal"><span class="pre">Tramp</span></code> it is the actual temperature read from the temperature controller when the data-collection was initiated for that point.  It is time well spent to set up all your experimnet and sample objects accurately. [not implemented yet] It is possible to download xpdAcq and run it on your own computer to set up the <code class="docutils literal"><span class="pre">sample</span></code> and <code class="docutils literal"><span class="pre">scanplan</span></code> objects you think you will need at the beamtime, so when you are at XPD you can concentrate on collecting data and not typing metadata.  It is strongly recommended.  See the full documentation for more details.</li>
+<li>The tiff file will be saved with the name <code class="docutils literal"><span class="pre">&lt;sample-name&gt;_&lt;scanplan-name&gt;_&lt;time-stamp&gt;_&lt;something-else&gt;.tiff</span></code>, and all the information in the <code class="docutils literal"><span class="pre">scanplan</span></code> and <code class="docutils literal"><span class="pre">sample</span></code> objects will be saved to metadata and searchable and usable for processing later.  The &lt;something-else&gt; depends on the <code class="docutils literal"><span class="pre">scanplan</span></code> type, for example, for a <code class="docutils literal"><span class="pre">Tramp</span></code> it is the actual temperature read from the temperature controller when the data-collection was initiated for that point.  It is time well spent to set up all your experiment and sample objects accurately. It is possible to download xpdAcq and run it on your own computer to set up the <code class="docutils literal"><span class="pre">sample</span></code> and <code class="docutils literal"><span class="pre">scanplan</span></code> objects you think you will need at the beamtime, so when you are at XPD you can concentrate on collecting data and not typing metadata.  It is strongly recommended.  See the full documentation for more details.</li>
 <li>To set up a sample you have to give it an experiment object, so <code class="docutils literal"><span class="pre">Sample('Li</span> <span class="pre">battery</span> <span class="pre">electrode',bt.get(96))</span></code> uses the object in <code class="docutils literal"><span class="pre">bt.list(96)</span></code> which must be an <code class="docutils literal"><span class="pre">ex</span></code> type object, for example I may have made it with <code class="docutils literal"><span class="pre">Experiment('cycled</span> <span class="pre">and</span> <span class="pre">uncycled</span> <span class="pre">batteries',bt)</span></code>.  The <code class="docutils literal"><span class="pre">bt</span></code> is the beamtime object.  For more info on why it is set up this way, see the docs!</li>
 </ol>
 </dd>
 <dt>User scripts:</dt>
 <dd>Your <code class="docutils literal"><span class="pre">scanplan</span></code> objects can be sequenced into scripts, executing one after the other as you desire.  To set this up, write a sequence of commands into a text file, save it with the extension <code class="docutils literal"><span class="pre">.py</span></code> in the <code class="docutils literal"><span class="pre">userScripts</span></code> directory with a memorable name, like <code class="docutils literal"><span class="pre">myNightShiftScript.py</span></code>.  Double and triple check your script, then when you are ready to execute it, in <code class="docutils literal"><span class="pre">ipython</span></code> session type:</dd>
 </dl>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">run</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/</span><span class="n">xpdUser</span><span class="o">/</span><span class="n">userScripts</span><span class="o">/</span><span class="n">myNightShiftScript</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/</span><span class="n">xpdUser</span><span class="o">/</span><span class="n">userScripts</span><span class="o">/</span><span class="n">myNightShiftScript</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>Stay there for a while to make sure everything is running as expected and go to bed!</p>
 <p>There is much more to the xpdAcq software that will give you superpowers in rapid and flexible data collection, data retrieval and processing.  This was just the quick start, but much more information is in the full documentation.</p>
-<p>Move on <a class="reference internal" href="xpdusers.html#xpdu"><span>XPD Users</span></a></p>
+<p>Move on <a class="reference internal" href="xpdusers.html#xpdu"><span class="std std-ref">XPD Users</span></a></p>
 </div>
 </div>
 

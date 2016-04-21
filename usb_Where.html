@@ -81,7 +81,14 @@
             
                 <ul>
 <li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 
@@ -105,7 +112,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -130,7 +137,7 @@
   <div class="section" id="where-did-all-my-sample-and-scan-objects-go">
 <span id="usb-where"></span><h1>Where did all my Sample and Scan objects go?????<a class="headerlink" href="#where-did-all-my-sample-and-scan-objects-go" title="Permalink to this headline">¶</a></h1>
 <p>You just spent hours typing in metadata and creating
-<a class="reference internal" href="usb_Experiment.html#usb-experiment"><span>sample</span></a> and <a class="reference internal" href="usb_Scan.html#usb-scan"><span>scan</span></a>
+<a class="reference internal" href="usb_Experiment.html#usb-experiment"><span class="std std-ref">sample</span></a> and <a class="reference internal" href="usb_Scan.html#usb-scan"><span class="std std-ref">scan</span></a>
 objects, and now they have suddenly disappeared!  This
 is a disaster!</p>
 <p>As Douglas Adams taught us <cite>DON&#8217;T PANIC</cite> .  This is actually
@@ -138,7 +145,7 @@ is a disaster!</p>
 one of the design goals of the software project was to minimize
 users&#8217; typing.  The design had to take into account that the
 collection ipython environment is not so stable
-(e.g., see <a class="reference internal" href="troubleshooting.html#troubleshooting"><span>Troubleshooting</span></a> ) and we should expect periodic
+(e.g., see <a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">Troubleshooting</span></a> ) and we should expect periodic
 restarts of it.  How bad if we had to retype our metadata every
 time?  So every time you create an xpdAcq acquisition object,
 the details are saved to a file on the local hard-drive.  When
@@ -152,7 +159,7 @@ But don&#8217;t worry, they are all safe and sound.</p>
 to you, type <code class="docutils literal"><span class="pre">bt.list()</span></code> .  This lists the name and type of all
 the acquisition objects that are on the hard-drive and available
 to you....your objects: e.g.,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 <span class="go">bt object bt has list index  0</span>
 <span class="go">ex object InGaAsAlloyPD has list index  1</span>
 <span class="go">ex object ProteinFolding has list index  2</span>
@@ -169,7 +176,7 @@ assignment we used when we created them (remember we used <code class="docutils 
 <p>To get them we use <code class="docutils literal"><span class="pre">bt.get()</span></code> .  We can explicitly reload them again
 or usually just use <code class="docutils literal"><span class="pre">bt.get(#)</span></code> where <code class="docutils literal"><span class="pre">#</span></code> is the list index (a number) as a  for example,
 to refer to them directly. For example, consider the following sequence of code blocks:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
 <span class="go">&lt;ipython-input-5-51081833a770&gt; in &lt;module&gt;()</span>
@@ -179,7 +186,7 @@ to refer to them directly. For example, consider the following sequence of code 
 </pre></div>
 </div>
 <p>Oh no, my <code class="docutils literal"><span class="pre">s1</span></code> sample object, which as my sample named <cite>GaAs</cite> , has disappeared!  <code class="docutils literal"><span class="pre">bt.list()</span></code> to the rescue...</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 <span class="go">bt object bt has list index  0</span>
 <span class="go">ex object InGaAsAlloyPD has list index  1</span>
 <span class="go">ex object ProteinFolding has list index  2</span>
@@ -194,7 +201,7 @@ to refer to them directly. For example, consider the following sequence of code 
 <p>That&#8217;s it with a list index of 3, the <code class="docutils literal"><span class="pre">sa</span></code> sample type object called <code class="docutils literal"><span class="pre">GaAs</span></code> .
 Just to be sane, let&#8217;s reload it. We can give it any name, it doesn&#8217;t have to be
 the same name as last time, so let&#8217;s reload it as <code class="docutils literal"><span class="pre">s1_again</span></code> :</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s1_again</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s1_again</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1_again</span><span class="o">.</span><span class="n">name</span>
 <span class="go">&#39;GaAs&#39;</span>
 </pre></div>
@@ -202,7 +209,7 @@ the same name as last time, so let&#8217;s reload it as <code class="docutils li
 <p>As you get used to this, you will realize that you don&#8217;t actually have to reload
 it at all, and can just refer directly to it.  For example, type <code class="docutils literal"><span class="pre">bt.get(3).md</span></code>
 and see what you get</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">md</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">md</span>
 <span class="go">{&#39;bt_experimenters&#39;: {(&#39;Chia-Hao&#39;, &#39;Liu&#39;), (&#39;Simon&#39;, &#39;Billinge&#39;)},</span>
 <span class="go"> &#39;bt_piLast&#39;: &#39;Billinge&#39;,</span>
 <span class="go"> &#39;bt_safN&#39;: 300256,</span>
@@ -224,7 +231,7 @@ may change its position in the list over time.</p>
 <p>A little hint too.  If it is late in your beamtime and you have hundreds of those objects, you can
 select to list them by type, e.g. if you just want the Sample (<code class="docutils literal"><span class="pre">sa</span></code> ) type objects then
 type <code class="docutils literal"><span class="pre">bt.list('sa')</span></code> :</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s1">&#39;sa&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s1">&#39;sa&#39;</span><span class="p">)</span>
 <span class="go">sa object GaAs has list index  3</span>
 <span class="go">sa object IGA75-25 has list index  4</span>
 <span class="go">sa object In0.25Ga0.75As has list index  5</span>
@@ -251,9 +258,9 @@ confusion until you get used to them.</p>
 </li>
 </ol>
 </div></blockquote>
-<p>go to <a class="reference internal" href="usb_Scan.html#usb-scan"><span>Setting up your scan objects</span></a></p>
-<p>go to <a class="reference internal" href="usb_Running.html#usb-running"><span>Running scans</span></a></p>
-<p>return to <a class="reference internal" href="xpdusers.html#xpdu"><span>XPD Users</span></a></p>
+<p>go to <a class="reference internal" href="usb_Scan.html#usb-scan"><span class="std std-ref">Setting up your ScanPlan objects</span></a></p>
+<p>go to <a class="reference internal" href="usb_Running.html#usb-running"><span class="std std-ref">Running scans</span></a></p>
+<p>return to <a class="reference internal" href="xpdusers.html#xpdu"><span class="std std-ref">XPD Users</span></a></p>
 </div>
 
 
