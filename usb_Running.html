@@ -89,7 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Quick quesitons</a></li>
 </ul>
 
             
@@ -153,15 +153,58 @@ a predefined ScanPlan object, then hit return and sit back, your scan will be ca
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dryrun</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">prun</span></code> stands for &#8220;production run&#8221; which is a normal run.  <code class="docutils literal"><span class="pre">dark</span></code> collects dark frames.
-Strictly speaking the sample is irrelevant here because the shutter is closed, but
-it is left in the definition for consistency and in general <code class="docutils literal"><span class="pre">dark</span></code> is not necessary as automated dark subtraction collect dark images for you. <code class="docutils literal"><span class="pre">calibration</span></code> is specifically designed to collect image on your calibrants.
-<code class="docutils literal"><span class="pre">setupscan</span></code> is for testing things
-before you are ready to get production data, such as trying out different exposures
-on a sample to find the best exposure time.  <code class="docutils literal"><span class="pre">dryrun</span></code> does not execute any scan
-but tells you what is going to be run when you give the same Sample and Scan objects
-to any of the other runs.  It may be used for validating your scan objects, and
-also for estimating how long a <code class="docutils literal"><span class="pre">tseries</span></code> or <code class="docutils literal"><span class="pre">Tramp</span></code> might take.</p>
+<dl class="function">
+<dt id="xpdacq.xpdacq.prun">
+<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">prun</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>auto_dark=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.prun" title="Permalink to this definition">¶</a></dt>
+<dd><p>on this sample run this scanplan</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sample</strong> (<em>xpdAcq.beamtime.Sample object</em>) &#8211; object carries metadata of Sample object</li>
+<li><strong>scanplan</strong> (<em>xpdAcq.beamtime.ScanPlan object</em>) &#8211; object carries metadata of ScanPlan object</li>
+<li><strong>auto_dark</strong> (<em>bool</em>) &#8211; option of automated dark collection. Default is True to allow collect dark automatically during scans</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p><code class="docutils literal"><span class="pre">prun</span></code> stands for &#8220;production run&#8221; which is a normal run.</p>
+<dl class="function">
+<dt id="xpdacq.xpdacq.dark">
+<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">dark</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.dark" title="Permalink to this definition">¶</a></dt>
+<dd><p>on this sample, collect dark images</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sample</strong> (<em>xpdAcq.beamtime.Sample object</em>) &#8211; object carries metadata of Sample object</li>
+<li><strong>scanplan</strong> (<em>xpdAcq.beamtime.ScanPlan object</em>) &#8211; object carries metadata of ScanPlan object</li>
+<li><strong>**kwargs</strong> (<em>dict</em>) &#8211; dictionary that will be passed through to the run-engine metadata</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>dark_uid</strong> &#8211; an unique id to label this dark scan</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p><code class="docutils literal"><span class="pre">dark</span></code> collects dark frames.Strictly speaking the sample is irrelevant here because the shutter is closed, but
+it is left in the definition for consistency and in general <code class="docutils literal"><span class="pre">dark</span></code> is not necessary as automated dark subtraction collect dark images for you.</p>
+<p><code class="docutils literal"><span class="pre">calibration</span></code> is specifically designed to collect image on your calibrants.</p>
+<p><code class="docutils literal"><span class="pre">setupscan</span></code> is for testing things before you are ready to get production data, such as trying out different exposures
+on a sample to find the best exposure time.</p>
+<p><code class="docutils literal"><span class="pre">dryrun</span></code> does not execute any scan but tells you what is going to be run when you give the same Sample and Scan objects
+to any of the other runs. It may be used for validating your scan objects, and also for estimating how long a <code class="docutils literal"><span class="pre">tseries</span></code> or <code class="docutils literal"><span class="pre">Tramp</span></code> might take.</p>
 <p>Here are some examples of a workflow.  Assume a GaAs sample is loaded on the diffractometer
 and the <code class="docutils literal"><span class="pre">'GaAs'</span></code> Sample object is created as well as all the ScanPlans we need.
 We will start by doing a dry-run on our <code class="docutils literal"><span class="pre">'ct2'</span></code> count ScanPlan.</p>
@@ -198,12 +241,24 @@ Let&#8217;s try a dryrun to make sure everything is ok.</p>
 </pre></div>
 </div>
 <p>OK, it seems to work, lets do some testing to see how much intensity we need.
-We will do three setup scans with 1.5 second, 2 seconds and 100.5 seconds exposure
+We will do three setup scans with 1.5 seconds and 100.5 seconds exposure
 and then compare them.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>   <span class="c1">#1.5 seconds</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>  <span class="c1">#2 seconds</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1">#100.5 seconds</span>
-<span class="go">[Fixme] output here</span>
+<span class="go">INFO: requested exposure time =  1.5  -&gt; computed exposure time: 1.5</span>
+<span class="go">+-----------+------------+------------------+</span>
+<span class="go">|   seq_num |       time | pe1_stats1_total |</span>
+<span class="go">+-----------+------------+------------------+</span>
+<span class="go">|         1 | 10:49:31.3 |                0 |</span>
+<span class="go">+-----------+------------+------------------+</span>
+<span class="go">Count [&#39;e7adbd&#39;] (scan num: 1)</span>
+<span class="go">INFO: requested exposure time =  100.5  -&gt; computed exposure time: 100.5</span>
+<span class="go">+-----------+------------+------------------+</span>
+<span class="go">|   seq_num |       time | pe1_stats1_total |</span>
+<span class="go">+-----------+------------+------------------+</span>
+<span class="go">|         1 | 10:49:41.3 |                0 |</span>
+<span class="go">+-----------+------------+------------------+</span>
+<span class="go">Count [&#39;e7adbd&#39;] (scan num: 2)</span>
 </pre></div>
 </div>
 <p>what is nice about these is that they are tagged with an <code class="docutils literal"><span class="pre">sc_isprun':False</span></code> metadata field
@@ -214,7 +269,22 @@ be.</p>
 <p>It seems that the 2 second scans are the best, so let&#8217;s do a production run
 to get the first data-set.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>  <span class="c1">#2 seconds</span>
-<span class="go">[Fixme] output here</span>
+<span class="go">INFO: auto_dark didn&#39;t detect a valid dark, so is collecting a new dark frame.</span>
+<span class="go">See documentation at http://xpdacq.github.io for more information about controlling this behavior</span>
+<span class="go">INFO: requested exposure time =  2.0  -&gt; computed exposure time: 2.0</span>
+<span class="go">+-----------+------------+------------------+</span>
+<span class="go">|   seq_num |       time | pe1_stats1_total |</span>
+<span class="go">+-----------+------------+------------------+</span>
+<span class="go">|         1 | 10:51:36.6 |                0 |</span>
+<span class="go">+-----------+------------+------------------+</span>
+<span class="go">Count [&#39;d475dc&#39;] (scan num: 1)</span>
+<span class="go">INFO: requested exposure time =  2.0  -&gt; computed exposure time: 2.0</span>
+<span class="go">+-----------+------------+------------------+</span>
+<span class="go">|   seq_num |       time | pe1_stats1_total |</span>
+<span class="go">+-----------+------------+------------------+</span>
+<span class="go">|         1 | 10:51:42.4 |                0 |</span>
+<span class="go">+-----------+------------+------------------+</span>
+<span class="go">Count [&#39;e7adbd&#39;] (scan num: 2)</span>
 </pre></div>
 </div>
 <p>Let&#8217;s <a class="reference internal" href="usb_QuickAssess.html#usb-quickassess"><span class="std std-ref">take a quick look at our data</span></a></p>

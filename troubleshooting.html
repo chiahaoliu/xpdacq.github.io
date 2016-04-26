@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Troubleshooting &mdash; xpdAcq 1.0 documentation</title>
+  <title>Quick quesitons &mdash; xpdAcq 1.0 documentation</title>
   
 
   
@@ -90,8 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#quick-quesitons">Quick quesitons</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick quesitons</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#more">More</a></li>
 </ul>
 </li>
@@ -125,7 +124,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Troubleshooting</li>
+    <li>Quick quesitons</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -139,18 +138,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="troubleshooting">
-<span id="id1"></span><h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="quick-quesitons">
-<h2>Quick quesitons<a class="headerlink" href="#quick-quesitons" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="quick-quesitons">
+<span id="troubleshooting"></span><h1>Quick quesitons<a class="headerlink" href="#quick-quesitons" title="Permalink to this headline">¶</a></h1>
+<p>Q: <strong>Why does my scan halt for no reason? I followed your guide and no error message popped.</strong></p>
 <blockquote>
-<div><dl class="docutils">
-<dt>Q: <cite>Why does my scan halt for no reason? I followed everything and no error shows up !!!</cite></dt>
-<dd>That is most likely come from confusion at machine level.
-Don&#8217;t worry, just make sure there is only one <code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> running on this computer.[FIXME]</dd>
-</dl>
+<div><p>That is most likely come from confusion at machine level.
+Don&#8217;t worry, just make sure <strong>there is only one XPD control running on this computer.</strong>.
+<code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> can be launched from the shortcut in desktop:</p>
+<a class="reference internal image-reference" href="_images/xpd_control.png"><img alt="_images/xpd_control.png" class="align-center" src="_images/xpd_control.png" style="width: 60px; height: 80px;" /></a>
+<p>After launched it, a window similar to this should pop out:</p>
+<a class="reference internal image-reference" href="_images/pe1c_ioc.png"><img alt="_images/pe1c_ioc.png" class="align-center" src="_images/pe1c_ioc.png" style="width: 400px; height: 300px;" /></a>
+<p>Each <code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> window means a control panel between XPD computer and experiment apparatuses, such as area detector or motor.
+Therefore we should avoid having multiple <code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> running at the same time.
+To make sure there is only one <code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> running, move to top right corner and click <code class="docutils literal"><span class="pre">Activities</span></code>.
+Then you should see all currently active windows. Close duplicated control panels (if any) then it should work.</p>
+<p>If scan still halts, please contact beamline scientist immediately for bug report.</p>
 </div></blockquote>
-</div>
 <div class="section" id="more">
 <h2>More<a class="headerlink" href="#more" title="Permalink to this headline">¶</a></h2>
 <blockquote>
