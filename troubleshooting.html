@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quick quesitons &mdash; xpdAcq 1.0 documentation</title>
+  <title>Troubleshooting &mdash; xpdAcq 0.3 documentation</title>
   
 
   
@@ -30,8 +30,9 @@
   
 
   
-    <link rel="top" title="xpdAcq 1.0 documentation" href="index.html"/>
-        <link rel="prev" title="Quick Start" href="quickstart.html"/> 
+    <link rel="top" title="xpdAcq 0.3 documentation" href="index.html"/>
+        <link rel="next" title="Beamline Staff" href="beamlinestaff.html"/>
+        <link rel="prev" title="Running scans" href="usb_Running.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -59,7 +60,7 @@
             
             
               <div class="version">
-                1.0
+                0.3
               </div>
             
           
@@ -81,19 +82,20 @@
             
             
                 <ul>
-<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
-</ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick quesitons</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#more">More</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-does-my-scan-halt-for-no-reason">Why does my scan halt for no reason?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#where-did-all-my-sample-and-scan-objects-go">Where did all my Sample and Scan objects go?????</a></li>
 </ul>
 </li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff</a></li>
 </ul>
 
             
@@ -124,7 +126,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Quick quesitons</li>
+    <li>Troubleshooting</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -138,30 +140,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="quick-quesitons">
-<span id="troubleshooting"></span><h1>Quick quesitons<a class="headerlink" href="#quick-quesitons" title="Permalink to this headline">¶</a></h1>
-<p>Q: <strong>Why does my scan halt for no reason? I followed your guide and no error message popped.</strong></p>
-<blockquote>
-<div><p>That is most likely come from confusion at machine level.
+  <div class="section" id="troubleshooting">
+<span id="id1"></span><h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="why-does-my-scan-halt-for-no-reason">
+<h2>Why does my scan halt for no reason?<a class="headerlink" href="#why-does-my-scan-halt-for-no-reason" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes you might find your scans halt for no reason, not even an error message.
+That is most likely come from confusion at machine level.
 Don&#8217;t worry, just make sure <strong>there is only one XPD control running on this computer.</strong>.
-<code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> can be launched from the shortcut in desktop:</p>
-<a class="reference internal image-reference" href="_images/xpd_control.png"><img alt="_images/xpd_control.png" class="align-center" src="_images/xpd_control.png" style="width: 60px; height: 80px;" /></a>
+<code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> can be launched by double-click on shortcut in desktop:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/xpd_control.png"><img alt="_images/xpd_control.png" class="align-center" src="_images/xpd_control.png" style="width: 60px; height: 80px;" /></a>
+</div></blockquote>
 <p>After launched it, a window similar to this should pop out:</p>
-<a class="reference internal image-reference" href="_images/pe1c_ioc.png"><img alt="_images/pe1c_ioc.png" class="align-center" src="_images/pe1c_ioc.png" style="width: 400px; height: 300px;" /></a>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/pe1c_ioc.png"><img alt="_images/pe1c_ioc.png" class="align-center" src="_images/pe1c_ioc.png" style="width: 400px; height: 300px;" /></a>
+</div></blockquote>
 <p>Each <code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> window means a control panel between XPD computer and experiment apparatuses, such as area detector or motor.
 Therefore we should avoid having multiple <code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> running at the same time.
 To make sure there is only one <code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> running, move to top right corner and click <code class="docutils literal"><span class="pre">Activities</span></code>.
 Then you should see all currently active windows. Close duplicated control panels (if any) then it should work.</p>
 <p>If scan still halts, please contact beamline scientist immediately for bug report.</p>
-</div></blockquote>
-<div class="section" id="more">
-<h2>More<a class="headerlink" href="#more" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ol class="arabic simple">
-<li><a class="reference internal" href="usb_Where.html#usb-where"><span class="std std-ref">Where did all my Sample and Scan objects go?????</span></a></li>
-<li><a class="reference internal" href="usb_Where.html#usb-gotchas"><span class="std std-ref">bt.list() and bt.get() Gotchas</span></a></li>
-</ol>
-</div></blockquote>
+</div>
+<div class="section" id="where-did-all-my-sample-and-scan-objects-go">
+<h2>Where did all my Sample and Scan objects go?????<a class="headerlink" href="#where-did-all-my-sample-and-scan-objects-go" title="Permalink to this headline">¶</a></h2>
+<p>You just spent hours typing in metadata and creating
+<a class="reference internal" href="usb_Experiment.html#usb-experiment"><span class="std std-ref">sample</span></a> and <a class="reference internal" href="usb_Scan.html#usb-scan"><span class="std std-ref">scan</span></a>
+objects, and now they have suddenly disappeared!  This
+is a disaster!</p>
+<p>As Douglas Adams taught us <cite>DON&#8217;T PANIC</cite> .  This is actually
+<cite>normal</cite> (or at least <cite>expected</cite> ) behavior in xpdAcq.  Remember that
+one of the design goals of the software project was to minimize
+users&#8217; typing.  The design had to take into account that the
+collection ipython environment is not so stable
+(e.g., see <a class="reference internal" href="#troubleshooting"><span class="std std-ref">Troubleshooting</span></a> ) and we should expect periodic
+restarts of it.  How bad if we had to retype our metadata every
+time?  So every time you create an xpdAcq acquisition object,
+the details are saved to a file on the local hard-drive.  When
+<code class="docutils literal"><span class="pre">icollection</span></code> is run, the main <code class="docutils literal"><span class="pre">bt</span></code> object (if it exists) is
+automatically reloaded, but not the other acquisition objects.
+But don&#8217;t worry, they are all safe and sound.</p>
 </div>
 </div>
 
@@ -172,8 +189,10 @@ Then you should see all currently active windows. Close duplicated control panel
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="beamlinestaff.html" class="btn btn-neutral float-right" title="Beamline Staff" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="quickstart.html" class="btn btn-neutral" title="Quick Start" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="usb_Running.html" class="btn btn-neutral" title="Running scans" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -204,7 +223,7 @@ Then you should see all currently active windows. Close duplicated control panel
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.0',
+            VERSION:'0.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

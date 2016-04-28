@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Finalizing and ending a completed beamtime for a user &mdash; xpdAcq 1.0 documentation</title>
+  <title>Finalizing and ending a completed beamtime for a user &mdash; xpdAcq 0.3 documentation</title>
   
 
   
@@ -30,7 +30,9 @@
   
 
   
-    <link rel="top" title="xpdAcq 1.0 documentation" href="index.html"/> 
+    <link rel="top" title="xpdAcq 0.3 documentation" href="index.html"/>
+        <link rel="up" title="Beamline Staff" href="beamlinestaff.html"/>
+        <link rel="prev" title="Initializing a new beamtime for a user" href="sb_newBeamtime.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -58,7 +60,7 @@
             
             
               <div class="version">
-                1.0
+                0.3
               </div>
             
           
@@ -80,16 +82,27 @@
             
             
                 <ul>
-<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Quick quesitons</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="beamlinestaff.html">Beamline Staff</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sb_overview.html">Overview of xpd acquisition environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdacq environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_newBeamtime.html">Initializing a new beamtime for a user</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Finalizing and ending a completed beamtime for a user</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#required-information">Required Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#goals-of-the-process">Goals of the Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process-steps">Process Steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
             
@@ -120,6 +133,8 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
+          <li><a href="beamlinestaff.html">Beamline Staff</a> &raquo;</li>
+      
     <li>Finalizing and ending a completed beamtime for a user</li>
       <li class="wy-breadcrumbs-aside">
         
@@ -139,8 +154,11 @@
 <div class="section" id="required-information">
 <h2>Required Information<a class="headerlink" href="#required-information" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><code class="docutils literal"><span class="pre">PI</span> <span class="pre">last</span> <span class="pre">name</span></code>, <code class="docutils literal"><span class="pre">SAF</span> <span class="pre">number</span></code> and <code class="docutils literal"><span class="pre">bt_uid</span></code>.
-But xpdAcq will load in information automatically unless user delete <code class="docutils literal"><span class="pre">bt</span></code> object in  <code class="docutils literal"><span class="pre">xpdUser/config_base/yml/</span></code>.</div></blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre><span></span>PI last name, SAF number and bt_uid
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">xpdAcq</span></code> will load in information automatically unless user delete <code class="docutils literal"><span class="pre">bt</span></code> object in  <code class="docutils literal"><span class="pre">xpdUser/config_base/yml/</span></code>.</p>
+</div></blockquote>
 </div>
 <div class="section" id="goals-of-the-process">
 <h2>Goals of the Process<a class="headerlink" href="#goals-of-the-process" title="Permalink to this headline">¶</a></h2>
@@ -164,13 +182,18 @@ But xpdAcq will load in information automatically unless user delete <code class
 <li>Now there could be two possibility</li>
 </ol>
 <blockquote>
-<div><ol class="arabic simple">
-<li><strong>File size and contents of remote copy are confirmed</strong>. Enter <code class="docutils literal"><span class="pre">y</span></code> in the inteactive command prompt then program will flush all directories under <code class="docutils literal"><span class="pre">xpdUser</span></code> and successfully end a beamtime.</li>
-<li><strong>File size or contents to remote copy appear to be inconsistent</strong> with local <code class="docutils literal"><span class="pre">xpdUser</span></code> tree, please answer <code class="docutils literal"><span class="pre">n</span></code> in the interactive command prompt and program will stop at this point. No user data will be removed. Please report a bug on github if this happen.</li>
-</ol>
+<div><ul>
+<li><p class="first"><strong>File size and contents of remote copy are confirmed to be consistent wit local tree</strong></p>
+<p>Enter <code class="docutils literal"><span class="pre">y</span></code> in the inteactive command prompt then program will flush all directories under <code class="docutils literal"><span class="pre">xpdUser</span></code>
+and successfully end a beamtime.</p>
+</li>
+<li><p class="first"><strong>File size or contents in remote copy appear to be inconsistent with local tree</strong></p>
+<p>Please answer <code class="docutils literal"><span class="pre">n</span></code> in the interactive command prompt and program will stop at this point.
+No user data will be removed. Please report a bug on <a class="reference external" href="https://github.com/xpdAcq/xpdAcq">github</a></p>
+</li>
+</ul>
 </div></blockquote>
 </div></blockquote>
-<p>return to <a class="reference internal" href="quickstart.html#bls"><span class="std std-ref">Quick Start</span></a></p>
 </div>
 </div>
 
@@ -178,6 +201,13 @@ But xpdAcq will load in information automatically unless user delete <code class
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="sb_newBeamtime.html" class="btn btn-neutral" title="Initializing a new beamtime for a user" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -206,7 +236,7 @@ But xpdAcq will load in information automatically unless user delete <code class
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.0',
+            VERSION:'0.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

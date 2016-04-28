@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Running scans &mdash; xpdAcq 1.0 documentation</title>
+  <title>Running scans &mdash; xpdAcq 0.3 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="xpdAcq 1.0 documentation" href="index.html"/> 
+    <link rel="top" title="xpdAcq 0.3 documentation" href="index.html"/>
+        <link rel="up" title="XPD Users" href="xpdusers.html"/>
+        <link rel="next" title="Troubleshooting" href="troubleshooting.html"/>
+        <link rel="prev" title="ScanPlan objects" href="usb_Scan.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -58,7 +61,7 @@
             
             
               <div class="version">
-                1.0
+                0.3
               </div>
             
           
@@ -80,16 +83,27 @@
             
             
                 <ul>
-<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="xpdusers.html">XPD Users</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sb_overview.html">Overview of xpd acquisition environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdacq environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Beamtime.html">Setting up your Beamtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Experiment.html">Setting up your XPD acuisition objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Where.html">Where did all my Sample and Scan objects go?????</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-are-your-friends">bt.list() and bt.get() are your friends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Running scans</a></li>
+</ul>
+</li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Quick quesitons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff</a></li>
 </ul>
 
             
@@ -119,6 +133,8 @@
 <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="xpdusers.html">XPD Users</a> &raquo;</li>
       
     <li>Running scans</li>
       <li class="wy-breadcrumbs-aside">
@@ -157,6 +173,14 @@ a predefined ScanPlan object, then hit return and sit back, your scan will be ca
 <dt id="xpdacq.xpdacq.prun">
 <code class="descclassname">xpdacq.xpdacq.</code><code class="descname">prun</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>auto_dark=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.prun" title="Permalink to this definition">¶</a></dt>
 <dd><p>on this sample run this scanplan</p>
+<p>Sample, ScanPlan objects inside can be assigned in following way:</p>
+<ol class="arabic simple">
+<li>bt.get(&lt;object_index&gt;), eg. prun(bt.get(2), bt.get(5))</li>
+<li>name of acquire object, eg. prun(&#8216;my_experiment&#8217;, &#8216;ct1s&#8217;)</li>
+<li>index to acquire object, eg. prun(2,5)</li>
+</ol>
+<p>All of above assigning methods can be used in a mix way.</p>
+<p>This scan will be labeled as prun in metadata.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -176,7 +200,15 @@ a predefined ScanPlan object, then hit return and sit back, your scan will be ca
 <dl class="function">
 <dt id="xpdacq.xpdacq.dark">
 <code class="descclassname">xpdacq.xpdacq.</code><code class="descname">dark</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.dark" title="Permalink to this definition">¶</a></dt>
-<dd><p>on this sample, collect dark images</p>
+<dd><p>on this sample, collect dark images.</p>
+<p>Usually user don&#8217;t have to collect if you enable automated dark subtraction. However user can specifically collect it if you wish to.
+Sample, ScanPlan objects inside can be assigned in following way:</p>
+<ol class="arabic simple">
+<li>bt.get(&lt;object_index&gt;), eg. dark(bt.get(2), bt.get(5))</li>
+<li>name of acquire object, eg. dark(&#8216;my_experiment&#8217;, &#8216;ct1s&#8217;)</li>
+<li>index to acquire object, eg. dark(2,5)</li>
+</ol>
+<p>All of above assigning methods can be used in a mix way.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -200,9 +232,89 @@ a predefined ScanPlan object, then hit return and sit back, your scan will be ca
 
 <p><code class="docutils literal"><span class="pre">dark</span></code> collects dark frames.Strictly speaking the sample is irrelevant here because the shutter is closed, but
 it is left in the definition for consistency and in general <code class="docutils literal"><span class="pre">dark</span></code> is not necessary as automated dark subtraction collect dark images for you.</p>
+<dl class="function">
+<dt id="xpdacq.xpdacq.calibration">
+<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">calibration</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>auto_dark=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.calibration" title="Permalink to this definition">¶</a></dt>
+<dd><p>on this calibration sample (calibrant) run this scanplan</p>
+<p>Sample, ScanPlan objects inside can be assigned in following way:</p>
+<ol class="arabic simple">
+<li>bt.get(&lt;object_index&gt;), eg. calibration(bt.get(2), bt.get(5))</li>
+<li>name of acquire object, eg. calibration(&#8216;my_experiment&#8217;, &#8216;ct1s&#8217;)</li>
+<li>index to acquire object, eg. calibration(2,5)</li>
+</ol>
+<p>All of above assigning methods can be used in a mix way.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sample</strong> (<em>xpdAcq.beamtime.Sample object</em>) &#8211; object carries metadata of Sample object</li>
+<li><strong>scanplan</strong> (<em>xpdAcq.beamtime.ScanPlan object</em>) &#8211; object carries metadata of ScanPlan object</li>
+<li><strong>auto_dark</strong> (<em>bool</em>) &#8211; option of automated dark collection. Default is True to allow collect dark automatically during scans</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <p><code class="docutils literal"><span class="pre">calibration</span></code> is specifically designed to collect image on your calibrants.</p>
+<dl class="function">
+<dt id="xpdacq.xpdacq.setupscan">
+<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">setupscan</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>auto_dark=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.setupscan" title="Permalink to this definition">¶</a></dt>
+<dd><p>on this sample run this scanplan as a setupscan</p>
+<p>Sample, ScanPlan objects inside can be assigned in following way:</p>
+<ol class="arabic simple">
+<li>bt.get(&lt;object_index&gt;), eg. setupscan(bt.get(2), bt.get(5))</li>
+<li>name of acquire object, eg. setupscan(&#8216;my_experiment&#8217;, &#8216;ct1s&#8217;)</li>
+<li>index to acquire object, eg. setupscan(2,5)</li>
+</ol>
+<p>All of above assigning methods can be used in a mix way.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sample</strong> (<em>xpdAcq.beamtime.Sample object</em>) &#8211; object carries metadata of Sample object</li>
+<li><strong>scanplan</strong> (<em>xpdAcq.beamtime.ScanPlan object</em>) &#8211; object carries metadata of ScanPlan object</li>
+<li><strong>auto_dark</strong> &#8211; option of automated dark collection. Default is None so that dark frame will be collected automatically during scans</li>
+<li><strong>**kwargs</strong> (<em>dict</em>) &#8211; dictionary that will be passed through to the run-engine metadata</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <p><code class="docutils literal"><span class="pre">setupscan</span></code> is for testing things before you are ready to get production data, such as trying out different exposures
 on a sample to find the best exposure time.</p>
+<dl class="function">
+<dt id="xpdacq.xpdacq.dryrun">
+<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">dryrun</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.dryrun" title="Permalink to this definition">¶</a></dt>
+<dd><p>on this sample run this scanplan in dryrun mode</p>
+<p>with dryrun mode, only metadata will be printed. No real experimental apparatus will be triggered.</p>
+<p>Sample, ScanPlan objects inside can be assigned in following way:</p>
+<ol class="arabic simple">
+<li>bt.get(&lt;object_index&gt;), eg. dryrun(bt.get(2), bt.get(5))</li>
+<li>name of acquire object, eg. dryrun(&#8216;my_experiment&#8217;, &#8216;ct1s&#8217;)</li>
+<li>index to acquire object, eg. dryrun(2,5)</li>
+</ol>
+<p>All of above assigning methods can be used in a mix way.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sample</strong> (<em>xpdAcq.beamtime.Sample object</em>) &#8211; object carries metadata of Sample object</li>
+<li><strong>scanplan</strong> (<em>xpdAcq.beamtime.ScanPlan object</em>) &#8211; object carries metadata of ScanPlan object</li>
+<li><strong>**kwargs</strong> (<em>dict</em>) &#8211; dictionary that will be passed through to the run-engine metadata</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <p><code class="docutils literal"><span class="pre">dryrun</span></code> does not execute any scan but tells you what is going to be run when you give the same Sample and Scan objects
 to any of the other runs. It may be used for validating your scan objects, and also for estimating how long a <code class="docutils literal"><span class="pre">tseries</span></code> or <code class="docutils literal"><span class="pre">Tramp</span></code> might take.</p>
 <p>Here are some examples of a workflow.  Assume a GaAs sample is loaded on the diffractometer
@@ -288,13 +400,21 @@ to get the first data-set.</p>
 </pre></div>
 </div>
 <p>Let&#8217;s <a class="reference internal" href="usb_QuickAssess.html#usb-quickassess"><span class="std std-ref">take a quick look at our data</span></a></p>
-<p>return to <a class="reference internal" href="xpdusers.html#xpdu"><span class="std std-ref">XPD Users</span></a></p>
 </div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="usb_Scan.html" class="btn btn-neutral" title="ScanPlan objects" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -323,7 +443,7 @@ to get the first data-set.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.0',
+            VERSION:'0.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

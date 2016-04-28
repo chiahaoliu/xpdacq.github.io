@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>XPD Users &mdash; xpdAcq 1.0 documentation</title>
+  <title>XPD Users &mdash; xpdAcq 0.3 documentation</title>
   
 
   
@@ -30,9 +30,9 @@
   
 
   
-    <link rel="top" title="xpdAcq 1.0 documentation" href="index.html"/>
-        <link rel="next" title="Quick Start" href="quickstart.html"/>
-        <link rel="prev" title="Beamline Staff Only" href="beamlinestaff.html"/> 
+    <link rel="top" title="xpdAcq 0.3 documentation" href="index.html"/>
+        <link rel="next" title="Overview of xpd acquisition environment" href="sb_overview.html"/>
+        <link rel="prev" title="Quick start" href="quickstart.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                1.0
+                0.3
               </div>
             
           
@@ -82,27 +82,27 @@
             
             
                 <ul>
-<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">XPD Users</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#set-up-beamtime">Set up beamtime</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#set-up-experiment-and-sample-objects">Set up Experiment and Sample objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#where-did-my-sample-and-scan-objects-go">Where did my Sample and Scan Objects go????</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#set-up-scan-objects">Set up Scan objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-scans">Run scans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#view-data">View data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#data-analysis">Data Analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#export-your-data-and-your-work">Export your data and your work</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#calibration-etc">Calibration etc.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_overview.html">Overview of xpd acquisition environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdacq environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Beamtime.html">Setting up your Beamtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Experiment.html">Setting up your XPD acuisition objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Where.html">Where did all my Sample and Scan objects go?????</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-are-your-friends">bt.list() and bt.get() are your friends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Running.html">Running scans</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Quick quesitons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff</a></li>
 </ul>
 
             
@@ -149,68 +149,31 @@
             
   <div class="section" id="xpd-users">
 <span id="xpdu"></span><h1>XPD Users<a class="headerlink" href="#xpd-users" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference internal" href="sb_overview.html#sb-overview"><span class="std std-ref">Overview of xpd acquisition environment</span></a></li>
-<li><a class="reference internal" href="sb_icollection.html#sb-icollection"><span class="std std-ref">Overview of the icollection+xpdacq environment</span></a></li>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sb_overview.html">Overview of xpd acquisition environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdacq environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sb_icollection.html#nsls-ii-data-philosophy">NSLS-II data philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_icollection.html#xpdacq-philosophy">xpdAcq philosophy</a></li>
 </ul>
-</div></blockquote>
-<div class="section" id="set-up-beamtime">
-<h2>Set up beamtime<a class="headerlink" href="#set-up-beamtime" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference internal" href="usb_Beamtime.html#usb-beamtime"><span class="std std-ref">Setting up your Beamtime</span></a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usb_Beamtime.html">Setting up your Beamtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usb_Experiment.html">Setting up your XPD acuisition objects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usb_Experiment.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Experiment.html#hierarchy-of-experiment-sample-objects">Hierarchy of experiment-sample objects</a></li>
 </ul>
-</div></blockquote>
-</div>
-<div class="section" id="set-up-experiment-and-sample-objects">
-<h2>Set up Experiment and Sample objects<a class="headerlink" href="#set-up-experiment-and-sample-objects" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference internal" href="usb_Experiment.html#usb-experiment"><span class="std std-ref">Setting up your XPD acuisition objects</span></a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usb_Where.html">Where did all my Sample and Scan objects go?????</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-are-your-friends">bt.list() and bt.get() are your friends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usb_Scan.html#setting-up-scanplans">Setting up ScanPlans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Scan.html#summary-table-on-scanplan">Summary table on ScanPlan:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Scan.html#auto-naming-scheme">Auto-naming scheme</a></li>
 </ul>
-</div></blockquote>
-</div>
-<div class="section" id="where-did-my-sample-and-scan-objects-go">
-<h2>Where did my Sample and Scan Objects go????<a class="headerlink" href="#where-did-my-sample-and-scan-objects-go" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference internal" href="usb_Where.html#usb-where"><span class="std std-ref">Where did all my Sample and Scan objects go?????</span></a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usb_Running.html">Running scans</a></li>
 </ul>
-</div></blockquote>
-</div>
-<div class="section" id="set-up-scan-objects">
-<h2>Set up Scan objects<a class="headerlink" href="#set-up-scan-objects" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference internal" href="usb_Scan.html#usb-scan"><span class="std std-ref">Setting up your ScanPlan objects</span></a></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="run-scans">
-<h2>Run scans<a class="headerlink" href="#run-scans" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference internal" href="usb_Running.html#usb-running"><span class="std std-ref">Running scans</span></a></li>
-<li><a class="reference internal" href="usb_QuickAssess.html#usb-quickassess"><span class="std std-ref">Doing the initial assessment of your data</span></a></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="view-data">
-<h2>View data<a class="headerlink" href="#view-data" title="Permalink to this headline">¶</a></h2>
-<p><em>Comming soon</em></p>
-</div>
-<div class="section" id="data-analysis">
-<h2>Data Analysis<a class="headerlink" href="#data-analysis" title="Permalink to this headline">¶</a></h2>
-<p><em>Coming soon</em></p>
-</div>
-<div class="section" id="export-your-data-and-your-work">
-<h2>Export your data and your work<a class="headerlink" href="#export-your-data-and-your-work" title="Permalink to this headline">¶</a></h2>
-<p><em>Comming soon</em></p>
-</div>
-<div class="section" id="calibration-etc">
-<h2>Calibration etc.<a class="headerlink" href="#calibration-etc" title="Permalink to this headline">¶</a></h2>
-<p><em>Coming soon</em></p>
 </div>
 </div>
 
@@ -221,10 +184,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sb_overview.html" class="btn btn-neutral float-right" title="Overview of xpd acquisition environment" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="beamlinestaff.html" class="btn btn-neutral" title="Beamline Staff Only" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="quickstart.html" class="btn btn-neutral" title="Quick start" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -255,7 +218,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.0',
+            VERSION:'0.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

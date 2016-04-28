@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Beamline Staff Only &mdash; xpdAcq 1.0 documentation</title>
+  <title>Beamline Staff &mdash; xpdAcq 0.3 documentation</title>
   
 
   
@@ -30,9 +30,9 @@
   
 
   
-    <link rel="top" title="xpdAcq 1.0 documentation" href="index.html"/>
-        <link rel="next" title="XPD Users" href="xpdusers.html"/>
-        <link rel="prev" title="xpdAcq documentation" href="index.html"/> 
+    <link rel="top" title="xpdAcq 0.3 documentation" href="index.html"/>
+        <link rel="next" title="Initializing a new beamtime for a user" href="sb_newBeamtime.html"/>
+        <link rel="prev" title="Troubleshooting" href="troubleshooting.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                1.0
+                0.3
               </div>
             
           
@@ -81,21 +81,23 @@
           
             
             
-                <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Beamline Staff Only</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#start-beamtime">Start Beamtime</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#end-beamtime">End Beamtime</a></li>
-</ul>
-</li>
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Quick quesitons</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Beamline Staff</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sb_overview.html">Overview of xpd acquisition environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdacq environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_newBeamtime.html">Initializing a new beamtime for a user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_endBeamtime.html">Finalizing and ending a completed beamtime for a user</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -126,7 +128,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Beamline Staff Only</li>
+    <li>Beamline Staff</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -140,24 +142,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="beamline-staff-only">
-<span id="bls"></span><h1>Beamline Staff Only<a class="headerlink" href="#beamline-staff-only" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="start-beamtime">
-<h2>Start Beamtime<a class="headerlink" href="#start-beamtime" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference internal" href="sb_overview.html#sb-overview"><span class="std std-ref">Overview of xpd acquisition environment</span></a></li>
-<li><a class="reference internal" href="sb_newBeamtime.html#sb-newbeamtime"><span class="std std-ref">Initializing a new beamtime for a user</span></a></li>
+  <div class="section" id="beamline-staff">
+<span id="bls"></span><h1>Beamline Staff<a class="headerlink" href="#beamline-staff" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sb_overview.html">Overview of xpd acquisition environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdacq environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sb_icollection.html#nsls-ii-data-philosophy">NSLS-II data philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_icollection.html#xpdacq-philosophy">xpdAcq philosophy</a></li>
 </ul>
-</div></blockquote>
-</div>
-<div class="section" id="end-beamtime">
-<h2>End Beamtime<a class="headerlink" href="#end-beamtime" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference internal" href="sb_endBeamtime.html#sb-endbeamtime"><span class="std std-ref">Finalizing and ending a completed beamtime for a user</span></a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sb_newBeamtime.html">Initializing a new beamtime for a user</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sb_newBeamtime.html#goals-of-the-setup">Goals of the Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_newBeamtime.html#setup">Setup</a></li>
 </ul>
-</div></blockquote>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sb_endBeamtime.html">Finalizing and ending a completed beamtime for a user</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sb_endBeamtime.html#required-information">Required Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_endBeamtime.html#goals-of-the-process">Goals of the Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_endBeamtime.html#process-steps">Process Steps</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
@@ -168,10 +174,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="xpdusers.html" class="btn btn-neutral float-right" title="XPD Users" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sb_newBeamtime.html" class="btn btn-neutral float-right" title="Initializing a new beamtime for a user" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="xpdAcq documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="troubleshooting.html" class="btn btn-neutral" title="Troubleshooting" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -202,7 +208,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.0',
+            VERSION:'0.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

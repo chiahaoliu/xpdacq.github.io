@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quick Start &mdash; xpdAcq 1.0 documentation</title>
+  <title>Quick start &mdash; xpdAcq 0.3 documentation</title>
   
 
   
@@ -30,9 +30,9 @@
   
 
   
-    <link rel="top" title="xpdAcq 1.0 documentation" href="index.html"/>
-        <link rel="next" title="Quick quesitons" href="troubleshooting.html"/>
-        <link rel="prev" title="XPD Users" href="xpdusers.html"/> 
+    <link rel="top" title="xpdAcq 0.3 documentation" href="index.html"/>
+        <link rel="next" title="XPD Users" href="xpdusers.html"/>
+        <link rel="prev" title="xpdAcq documentation" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                1.0
+                0.3
               </div>
             
           
@@ -81,23 +81,24 @@
           
             
             
-                <ul>
-<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick start</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#checklist">Checklist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#collecting-data-quickstart">Collecting Data Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#remember">Remember!</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-sample">Code Sample</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Quick quesitons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff</a></li>
 </ul>
 
             
@@ -128,7 +129,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Quick Start</li>
+    <li>Quick start</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -143,23 +144,24 @@
            <div itemprop="articleBody">
             
   <div class="section" id="quick-start">
-<span id="bls"></span><h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
+<span id="qs"></span><h1>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="checklist">
 <h2>Checklist<a class="headerlink" href="#checklist" title="Permalink to this headline">¶</a></h2>
 <p>The instrument scientist (IS) should have set up your beamtime hardware and software
 for you.  Let&#8217;s check if it is the case.</p>
-<blockquote>
-<div><ol class="arabic simple">
+<ol class="arabic simple">
 <li>Activate the xpd data acquisition environment:</li>
 </ol>
 <blockquote>
-<div><ol class="arabic simple">
+<div><ul class="simple">
 <li>In a terminal look to see if it is already activated.  If it is, you should see <code class="docutils literal"><span class="pre">(collection)</span></code> at the beginning of the line.</li>
-</ol>
-<div class="highlight-python"><div class="highlight"><pre><span></span>(collection)xf28id1@xf28id1-ws2:~$
+</ul>
+<div class="highlight-none"><div class="highlight"><pre><span></span>(collection)xf28id1@xf28id1-ws2:~$
 </pre></div>
 </div>
-<p>If you don&#8217;t see it, type <code class="docutils literal"><span class="pre">icollection</span></code> at the command prompt then check again.</p>
+<ul class="simple">
+<li>If you don&#8217;t see it, type <code class="docutils literal"><span class="pre">icollection</span></code> at the command prompt then check again.</li>
+</ul>
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li>OK, you are in.  Make sure that that the instrument scientist has initiated your beamtime. type <code class="docutils literal"><span class="pre">bt.md</span></code> and hit return. You should see the beamtime (<code class="docutils literal"><span class="pre">bt</span></code>) metadata (<code class="docutils literal"><span class="pre">md</span></code>) that has been pre-stored by the IS, and it should contain things like the last name of the PI on the proposal and the SAF number for the beamtime.  If not, please seek out the IS to get your session initialized.</li>
@@ -168,13 +170,15 @@ for you.  Let&#8217;s check if it is the case.</p>
 <li>Check that the Perkin Elmer detector is correctly set up.</li>
 </ol>
 <blockquote>
-<div><p>1. Look at the Perkin Elmer screen on the CSS and make sure that <code class="docutils literal"><span class="pre">Acquire</span></code> mode has been enabled.
-If Acquire mode is enabled, it should show system information <code class="docutils literal"><span class="pre">Collecting</span></code> in yellow color. If it hasn&#8217;t been activated, please click &#8216;start&#8217; button.</p>
+<div><ul class="simple">
+<li>Look at the Perkin Elmer screen on the CSS and make sure that <code class="docutils literal"><span class="pre">Acquire</span></code> mode has been enabled. If Acquire mode is enabled, it should show system information <code class="docutils literal"><span class="pre">Collecting</span></code> in yellow color. If it hasn&#8217;t been activated, please click &#8216;start&#8217; button.</li>
+</ul>
 <a class="reference internal image-reference" href="_images/cropped_pe1c_ioc.png"><img alt="_images/cropped_pe1c_ioc.png" class="align-center" src="_images/cropped_pe1c_ioc.png" style="width: 300px; height: 200px;" /></a>
-<ol class="arabic simple" start="2">
+<ul class="simple">
 <li>Type <code class="docutils literal"><span class="pre">glbl.area_det</span></code> and return.  It should return:</li>
-</ol>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">glbl</span><span class="o">.</span><span class="n">area_det</span>
+</ul>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">glbl</span><span class="o">.</span><span class="n">area_det</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">PerkinElmerContinuous</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;XF:28IDC-ES:1{Det:PE1}&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;pe1&#39;</span><span class="p">,</span> <span class="n">read_attrs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tiff&#39;</span><span class="p">,</span> <span class="s1">&#39;stats1&#39;</span><span class="p">],</span> <span class="n">configuration_attrs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;images_per_set&#39;</span><span class="p">,</span> <span class="s1">&#39;number_of_sets&#39;</span><span class="p">],</span> <span class="n">monitor_attrs</span><span class="o">=</span><span class="p">[])</span>
 </pre></div>
 </div>
@@ -188,10 +192,20 @@ If Acquire mode is enabled, it should show system information <code class="docut
 <blockquote>
 <div><ol class="arabic simple">
 <li>Type <code class="docutils literal"><span class="pre">bt.list()</span></code> and return.  You should see a list of objects and their index, or the number they sit in the list.</li>
-<li>To run a scan you type <code class="docutils literal"><span class="pre">prun(&lt;sample-object&gt;,&lt;scanplan-object&gt;)</span></code>, replacing those words in angle brackets with pointers to real objects. e.g.,</li>
+<li>To run a scan you type <code class="docutils literal"><span class="pre">prun(&lt;sample-object&gt;,&lt;scanplan-object&gt;)</span></code>:</li>
 </ol>
 <blockquote>
-<div><ol class="arabic simple">
+<div><p><code class="docutils literal"><span class="pre">prun</span></code> supports different ways of assigning objects. You can either assign objects with object index, name of acquire object or <code class="docutils literal"><span class="pre">bt.get()</span></code> methods.
+Following expressions are all equivalent.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">prun</span><span class="p">(</span><span class="s1">&#39;l-user&#39;</span><span class="p">,</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;ct1s&#39;</span><span class="p">)</span>
+<span class="n">prun</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">prun</span><span class="p">(</span><span class="s1">&#39;l-user&#39;</span><span class="p">,</span><span class="s1">&#39;ct1s&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Replace those words in angle brackets with pointers to real objects, eg.:</p>
+<ol class="arabic simple">
 <li><code class="docutils literal"><span class="pre">prun(bt.get(2),bt.get(5))</span></code> will do a scan on the dummy sample (<code class="docutils literal"><span class="pre">'sa'</span></code>) called <code class="docutils literal"><span class="pre">'l-user'</span></code>&#8211;(for lazy user!) which is in position (index) <code class="docutils literal"><span class="pre">2</span></code> in the <code class="docutils literal"><span class="pre">bt.list()</span></code> list&#8211;for 1 second (the name of that object in the list at position <code class="docutils literal"><span class="pre">5</span></code> is <code class="docutils literal"><span class="pre">'ct1s'</span></code> which stands for &#8220;count 1 second&#8221;).</li>
 <li><code class="docutils literal"><span class="pre">prun(bt.get(2),bt.get(7))</span></code> will do a scan for 10 s on the same sample.</li>
 <li><code class="docutils literal"><span class="pre">setupscan(bt.get(2),bt.get(7))</span></code> will do a setupscan on that sample for 10 seconds.  A setupscan is like a prun (&#8220;production run&#8221;) except it is tagged in metadata as a setupscan so you can separate later which were production runs and which were setup-scans.</li>
@@ -205,11 +219,14 @@ If Acquire mode is enabled, it should show system information <code class="docut
 <li>Type <code class="docutils literal"><span class="pre">save_last_tiff()</span></code> to get the most recent scan you ran.  A dark-subtracted tiff file will appear in the directory <code class="docutils literal"><span class="pre">~/xpdUser/tiff_base</span></code> with prefix <code class="docutils literal"><span class="pre">sub_</span></code> in file name.</li>
 <li><code class="docutils literal"><span class="pre">save_tiff(db[-2])</span></code> gets you the second to last scan that was collected, <code class="docutils literal"><span class="pre">save_tiff(db[-10:])</span></code> gets you the last 10 scans, (the syntax is Pythonic but it means &#8220;the items in the list from 10 ago up to the end of the list, i.e., now&#8221;.  You can do all kinds of slicing and dicing, for example <code class="docutils literal"><span class="pre">db[-10:-8,-2]</span></code> would return the scans that were tenth, ninth and eighth ago, and also the last but one.) and so on.</li>
 <li>The tiff file appears in the directory <code class="docutils literal"><span class="pre">~/xpdUser/tiff_base</span></code> with a reasonably recognizable automatically generated name and you can do pretty much what you like with it. For example, copy it to an external drive.  However, there are handy tools on the XPD computer for analyzing your data.  As long as you save all your work in the <code class="docutils literal"><span class="pre">xpdUser</span></code> directory tree (make as many directories as you like under there) your work will be archived in a remote location at the end of your beamtime, and then completely deleted from the local XPD computer so that the next user has their own fresh environment to work in but your work is safe.</li>
-<li>To use data analysis tools on the XPD computer, <strong>in a new terminal window</strong>,</li>
+<li>To use data analysis tools on the XPD computer, <strong>in a new terminal window</strong></li>
 </ol>
 <blockquote>
-<div>1.Type <code class="docutils literal"><span class="pre">getxgui</span></code>
-2 Click on the green <code class="docutils literal"><span class="pre">SrXplanar</span></code> icon [FIXME Soham or someone, can you put instructions here for using <code class="docutils literal"><span class="pre">SrXplanar</span></code>]</div></blockquote>
+<div><ul class="simple">
+<li>Type <code class="docutils literal"><span class="pre">getxgui</span></code></li>
+<li>proceed to <a class="reference internal" href="xPDFsuite_manual.html#xpdfsuite-manual"><span class="std std-ref">Manuals</span></a></li>
+</ul>
+</div></blockquote>
 </div></blockquote>
 </div></blockquote>
 </div>
@@ -227,10 +244,11 @@ If Acquire mode is enabled, it should show system information <code class="docut
 <div class="section" id="next-steps">
 <h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
 <p>So you have collected some data, and looked at it.  It is probably time to set up some more extensive data-objects so that you will be able to search easily for your data later and do more sophisticated scans.
-Please take the time to read the full documentation from <a class="reference internal" href="xpdusers.html#xpdu"><span class="std std-ref">XPD Users</span></a> onwards to get the most out of your data.  But for now, here is a quick summary.</p>
+Please take the time to read the full documentation from <strong>XPD user</strong> section to get the most out of your data.  But for now, here is a quick summary.</p>
 <dl class="docutils">
-<dt>Types of scan available.  They all take as arguments <code class="docutils literal"><span class="pre">(&lt;sample-object&gt;,</span> <span class="pre">&lt;scanplan-object&gt;)</span></code> in that order.:</dt>
-<dd><ol class="first last arabic simple">
+<dt>Types of scan available.</dt>
+<dd><p class="first">They all take as arguments <code class="docutils literal"><span class="pre">(&lt;sample-object&gt;,</span> <span class="pre">&lt;scanplan-object&gt;)</span></code> in that order:</p>
+<ol class="last arabic simple">
 <li><code class="docutils literal"><span class="pre">prun()</span></code> - the one you will use the most.  It stands for &#8220;production run&#8221;</li>
 <li><code class="docutils literal"><span class="pre">setupscan()</span></code> - it is just the same as <code class="docutils literal"><span class="pre">prun()</span></code> but the data are tagged as being test/setup data, helping you to keep track of what is what later.</li>
 <li><code class="docutils literal"><span class="pre">dryrun()</span></code> - it doesn&#8217;t execute anything, only prints out metadata</li>
@@ -240,23 +258,34 @@ Please take the time to read the full documentation from <a class="reference int
 </ol>
 </dd>
 <dt>You should try and set up some of your own scanplan objects:</dt>
-<dd><ol class="first arabic simple">
-<li>let&#8217;s say you want to do a count scan for 1.5 minutes.</li>
+<dd><ul class="first last">
+<li><p class="first">let&#8217;s say you want to do a count scan for 1.5 minutes.</p>
+<ol class="arabic simple">
+<li>type <code class="docutils literal"><span class="pre">bt.list('sp')</span></code>  to see the current list of scanplan objects</li>
+<li>scan parameters to <code class="docutils literal"><span class="pre">ScanPlan</span></code> can be assigned explicitly by giving a dictionary</li>
 </ol>
-<blockquote class="last">
-<div><ol class="arabic simple">
-<li>type <code class="docutils literal"><span class="pre">bt.list('sp')</span></code>  to see the current list of scan objects</li>
-<li>type <code class="docutils literal"><span class="pre">ScanPlan('&lt;scanplan</span> <span class="pre">name&gt;','ct',{'exposure':90})</span></code>.  This creates a <code class="docutils literal"><span class="pre">'ct'</span></code> or count-type scan with an exposure of 90 s or 1.5 minutes, calling it whatever you typed for <code class="docutils literal"><span class="pre">&lt;scanplan</span> <span class="pre">name&gt;</span></code>.  Pro tip: use <code class="docutils literal"><span class="pre">'ct90s'</span></code> or <code class="docutils literal"><span class="pre">'ct1.5m'</span></code> for the scanplan name.</li>
-<li>type <code class="docutils literal"><span class="pre">bt.list()</span></code> again.  You should see your new scanplan object at the end of the list.  Run it using <code class="docutils literal"><span class="pre">prun(bt.get(2),bt.get(11))</span></code> or giving a different number to the second <code class="docutils literal"><span class="pre">get</span></code> if it has a different number in the list.</li>
-</ol>
+<blockquote>
+<div><p>or be interpreted by auto-naming scheme. Here is the example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sp1</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct_90&#39;</span><span class="p">,</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mi">90</span><span class="p">})</span>
+<span class="n">sp2</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct_90&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">sp1</span></code> and <code class="docutils literal"><span class="pre">sp2</span></code> are equivalent. They both creates a <code class="docutils literal"><span class="pre">'ct'</span></code> or count-type scan with an exposure of 90 s or 1.5 minutes.
+To find more on auto-naming scheme, please see <a class="reference internal" href="usb_Scan.html#usb-scan"><span class="std std-ref">ScanPlan objects</span></a></p>
 </div></blockquote>
+<ol class="arabic simple" start="3">
+<li>type <code class="docutils literal"><span class="pre">bt.list('sp')</span></code> again.  You should see your new scanplan object at the end of the list.  Run it using <code class="docutils literal"><span class="pre">prun(bt.get(2),bt.get(11))</span></code> or giving a different number to the second <code class="docutils literal"><span class="pre">get</span></code> if it has a different number in the list.</li>
+</ol>
+</li>
+</ul>
 </dd>
 <dt>Types of ScanPlan available in current version:</dt>
-<dd><ol class="first last arabic simple">
+<dd><ul class="first last simple">
 <li><code class="docutils literal"><span class="pre">'ct'</span></code> just exposes the the detector for a number of seconds. e.g.,  <code class="docutils literal"><span class="pre">ScanPlan('ct17.5s','ct',{'exposure':17.5})</span></code></li>
-<li><code class="docutils literal"><span class="pre">'tseries'</span></code> executes a series of <code class="docutils literal"><span class="pre">'num'</span></code> counts of exposure time <code class="docutils literal"><span class="pre">'exposure'</span></code> seconds with  a delay of <code class="docutils literal"><span class="pre">'delay'</span></code> seconds between them.  e.g., <code class="docutils literal"><span class="pre">ScanPlan('t50_e1s_d59s','tseries',{'num':50,'exposure':1,'delay':59})</span></code> will measure 50 scans of 1 second with a delay of 59 seconds in between each of them.</li>
-<li><code class="docutils literal"><span class="pre">'Tramp'</span></code> executes a temperature ramp from <code class="docutils literal"><span class="pre">'startingT'</span></code> to <code class="docutils literal"><span class="pre">'endingT'</span></code> in temperature steps of <code class="docutils literal"><span class="pre">'Tstep'</span></code> with exposure time of <code class="docutils literal"><span class="pre">'exposure'</span></code>.  e.g., <code class="docutils literal"><span class="pre">ScanPlan('T200K_500K_5K_1s','Tramp',{'startingT':200,</span> <span class="pre">'endingT':500,</span> <span class="pre">'Tstep':5,</span> <span class="pre">'exposure':1})</span></code> will automatically change the temperature, starting at 200 K and ending at 500 K, measuring a scan of 1 s at every 5 K step.  The temperature controller will hold at each temperature until the temperature stabilizes before starting the measurement.</li>
-</ol>
+<li><code class="docutils literal"><span class="pre">'tseries'</span></code> executes a series of <code class="docutils literal"><span class="pre">'num'</span></code> counts of exposure time <code class="docutils literal"><span class="pre">'exposure'</span></code> seconds with  a delay of <code class="docutils literal"><span class="pre">'delay'</span></code> seconds between them.  e.g., <code class="docutils literal"><span class="pre">ScanPlan('tseries_1_59_50','tseries',{'num':50,'exposure':1,'delay':59})</span></code> will measure 50 scans of 1 second with a delay of 59 seconds in between each of them.</li>
+<li><code class="docutils literal"><span class="pre">'Tramp'</span></code> executes a temperature ramp from <code class="docutils literal"><span class="pre">'startingT'</span></code> to <code class="docutils literal"><span class="pre">'endingT'</span></code> in temperature steps of <code class="docutils literal"><span class="pre">'Tstep'</span></code> with exposure time of <code class="docutils literal"><span class="pre">'exposure'</span></code>.  e.g., <code class="docutils literal"><span class="pre">ScanPlan('Tramp_1_200_500_5','Tramp',{'startingT':200,</span> <span class="pre">'endingT':500,</span> <span class="pre">'Tstep':5,</span> <span class="pre">'exposure':1})</span></code> will automatically change the temperature,
+starting at 200 K and ending at 500 K, measuring a scan of 1 s at every 5 K step. The temperature controller will hold at each temperature until the temperature stabilizes before starting the measurement.</li>
+</ul>
 </dd>
 </dl>
 <p>Here is a summary table:</p>
@@ -272,13 +301,13 @@ Please take the time to read the full documentation from <a class="reference int
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">ct</span></code></td>
-<td><code class="docutils literal"><span class="pre">ScanPlan('ct17.5s','ct',{'exposure':17.5})</span></code></td>
+<td><code class="docutils literal"><span class="pre">ScanPlan('ct17.5','ct',{'exposure':17.5})</span></code></td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">tseries</span></code></td>
-<td><code class="docutils literal"><span class="pre">ScanPlan('t50_e1s_d59s','tseries',{'num':50,'exposure':1,'delay':59})</span></code></td>
+<td><code class="docutils literal"><span class="pre">ScanPlan('tseries_1_59_50','tseries',{'num':50,'exposure':1,'delay':59})</span></code></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal"><span class="pre">Tramp</span></code></td>
-<td><code class="docutils literal"><span class="pre">ScanPlan('T200K_500K_5K_1s','Tramp',{'startingT':200,</span> <span class="pre">'endingT':500,</span> <span class="pre">'Tstep':5,</span> <span class="pre">'exposure':1})</span></code></td>
+<td><code class="docutils literal"><span class="pre">ScanPlan('Tramp_1_200_500_5','Tramp',{'startingT':200,</span> <span class="pre">'endingT':500,</span> <span class="pre">'Tstep':5,</span> <span class="pre">'exposure':1})</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -303,14 +332,60 @@ Simulation at home is strongly recommended. See the full documentation for more 
 </dd>
 <dt>User scripts:</dt>
 <dd><p class="first">Your <code class="docutils literal"><span class="pre">scanplan</span></code> objects can be sequenced into scripts, executing one after the other as you desire.  To set this up, write a sequence of commands into a text file, save it with the extension <code class="docutils literal"><span class="pre">.py</span></code> in the <code class="docutils literal"><span class="pre">userScripts</span></code> directory with a memorable name, like <code class="docutils literal"><span class="pre">myNightShiftScript.py</span></code>.  Double and triple check your script, then when you are ready to execute it, in <code class="docutils literal"><span class="pre">ipython</span></code> session type:</p>
-<div class="last highlight-python"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/</span><span class="n">xpdUser</span><span class="o">/</span><span class="n">userScripts</span><span class="o">/</span><span class="n">myNightShiftScript</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/</span><span class="n">xpdUser</span><span class="o">/</span><span class="n">userScripts</span><span class="o">/</span><span class="n">myNightShiftScript</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
+<p class="last">Stay there for a while to make sure everything is running as expected and go to bed!</p>
 </dd>
 </dl>
-<p>Stay there for a while to make sure everything is running as expected and go to bed!</p>
 <p>There is much more to the <code class="docutils literal"><span class="pre">xpdAcq</span></code> software that will give you superpowers in rapid and flexible data collection, data retrieval and processing.
-This was just the quick start, but much more information is in the full documentation <a class="reference internal" href="xpdusers.html#xpdu"><span class="std std-ref">XPD Users</span></a>.</p>
+This was just the quick start, but much more information is in the full documentation at <strong>XPD user</strong> section</p>
+</div>
+<div class="section" id="code-sample">
+<h2>Code Sample<a class="headerlink" href="#code-sample" title="Permalink to this headline">¶</a></h2>
+<p>Here is a sample code covering entire process from defining <code class="docutils literal"><span class="pre">Experiment</span></code>,
+<code class="docutils literal"><span class="pre">Sample</span></code> and <code class="docutils literal"><span class="pre">ScanPlan</span></code> objects to running <code class="docutils literal"><span class="pre">ScanPlans</span></code> with different kinds of <code class="docutils literal"><span class="pre">run</span></code>.
+Please replace the name and parameters in each function depending your need.</p>
+<p><strong>Tip</strong>: copy-and-paste is <em>always</em> your good friend</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># bt list method to see objects we have</span>
+<span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+
+<span class="c1"># define acquire objects</span>
+<span class="n">ex</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="s1">&#39;xpdAcq_test&#39;</span><span class="p">,</span> <span class="n">bt</span><span class="p">)</span>
+<span class="n">sa</span> <span class="o">=</span> <span class="n">Sample</span><span class="p">(</span><span class="s1">&#39;xpdAcq_test_Sample&#39;</span><span class="p">,</span> <span class="n">ex</span><span class="p">)</span>
+
+<span class="c1"># define &quot;ct&quot; scanplan with exp = 0.5</span>
+<span class="n">ct</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;xpdAcq_test_ct&#39;</span><span class="p">,</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">})</span>
+
+<span class="c1"># define &quot;TrampUp&quot; scanplan with exp = 0.5, startingT = 300, endingT = 310, Tstep = 2</span>
+<span class="c1"># define &quot;TrampDown&quot; scanplan with exp = 0.5, startingT = 310, endingT = 300, Tstep = 2</span>
+<span class="n">TrampUp</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;xpdAcq_test_Tramp&#39;</span><span class="p">,</span><span class="s1">&#39;Tramp&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;startingT&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s1">&#39;endingT&#39;</span><span class="p">:</span> <span class="mi">310</span><span class="p">,</span> <span class="s1">&#39;Tstep&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
+<span class="n">TrampDown</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;xpdAcq_test_Tramp&#39;</span><span class="p">,</span><span class="s1">&#39;Tramp&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;startingT&#39;</span><span class="p">:</span> <span class="mi">310</span><span class="p">,</span> <span class="s1">&#39;endingT&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s1">&#39;Tstep&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
+
+<span class="c1"># define &quot;time series&quot; scanplan with exp = 0.5, num=10, delay = 2</span>
+<span class="n">tseries</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;xpdAcq_test_tseries&#39;</span><span class="p">,</span> <span class="s1">&#39;tseries&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;num&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;delay&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
+
+
+<span class="c1"># Frist, let use dryrun with different ScanPlans to have a preview on scan metadata</span>
+<span class="n">dryrun</span><span class="p">(</span><span class="n">sa</span><span class="p">,</span> <span class="n">ct</span><span class="p">)</span>
+
+<span class="c1"># Then let&#39;s do calibration run and save the image in order to open it in calibration software</span>
+<span class="n">calibration</span><span class="p">(</span><span class="n">sa</span><span class="p">,</span> <span class="n">ct</span><span class="p">)</span>
+<span class="n">save_last_tiff</span><span class="p">()</span>
+
+<span class="c1"># Use setupscan to check image quality under current scan parameters</span>
+<span class="n">setupscan</span><span class="p">(</span><span class="n">sa</span><span class="p">,</span> <span class="n">ct</span><span class="p">)</span>
+<span class="n">save_last_tiff</span><span class="p">()</span>
+
+<span class="c1"># Everything looks right. Let&#39;s do prun with different ScanPlans and save the tiffs</span>
+<span class="n">prun</span><span class="p">(</span><span class="n">sa</span><span class="p">,</span> <span class="n">ct</span><span class="p">)</span>
+<span class="n">save_last_tiff</span><span class="p">()</span> <span class="c1"># save tiffs from last scan</span>
+<span class="n">prun</span><span class="p">(</span><span class="n">sa</span><span class="p">,</span> <span class="n">TrampUp</span><span class="p">)</span>
+<span class="n">prun</span><span class="p">(</span><span class="n">sa</span><span class="p">,</span> <span class="n">TrampDow</span><span class="p">)</span>
+<span class="n">prun</span><span class="p">(</span><span class="n">sa</span><span class="p">,</span> <span class="n">tseries</span><span class="p">)</span>
+<span class="n">save_tiff</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span> <span class="c1"># save tiffs from last three scans</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -321,10 +396,10 @@ This was just the quick start, but much more information is in the full document
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Quick quesitons" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="xpdusers.html" class="btn btn-neutral float-right" title="XPD Users" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="xpdusers.html" class="btn btn-neutral" title="XPD Users" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="xpdAcq documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -355,7 +430,7 @@ This was just the quick start, but much more information is in the full document
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.0',
+            VERSION:'0.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

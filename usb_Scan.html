@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Setting up your ScanPlan objects &mdash; xpdAcq 1.0 documentation</title>
+  <title>ScanPlan objects &mdash; xpdAcq 0.3 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="xpdAcq 1.0 documentation" href="index.html"/> 
+    <link rel="top" title="xpdAcq 0.3 documentation" href="index.html"/>
+        <link rel="up" title="XPD Users" href="xpdusers.html"/>
+        <link rel="next" title="Running scans" href="usb_Running.html"/>
+        <link rel="prev" title="Where did all my Sample and Scan objects go?????" href="usb_Where.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -58,7 +61,7 @@
             
             
               <div class="version">
-                1.0
+                0.3
               </div>
             
           
@@ -80,16 +83,32 @@
             
             
                 <ul>
-<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff Only</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="xpdusers.html">XPD Users</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sb_overview.html">Overview of xpd acquisition environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdacq environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Beamtime.html">Setting up your Beamtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Experiment.html">Setting up your XPD acuisition objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Where.html">Where did all my Sample and Scan objects go?????</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-are-your-friends">bt.list() and bt.get() are your friends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ScanPlan objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-scanplans">Setting up ScanPlans</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary-table-on-scanplan">Summary table on ScanPlan:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#auto-naming-scheme">Auto-naming scheme</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Running.html">Running scans</a></li>
+</ul>
+</li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Quick quesitons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff</a></li>
 </ul>
 
             
@@ -120,7 +139,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Setting up your ScanPlan objects</li>
+          <li><a href="xpdusers.html">XPD Users</a> &raquo;</li>
+      
+    <li>ScanPlan objects</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -134,8 +155,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="setting-up-your-scanplan-objects">
-<span id="usb-scan"></span><h1>Setting up your ScanPlan objects<a class="headerlink" href="#setting-up-your-scanplan-objects" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="scanplan-objects">
+<span id="usb-scan"></span><h1>ScanPlan objects<a class="headerlink" href="#scanplan-objects" title="Permalink to this headline">¶</a></h1>
 <p>ScanPlan objects (of type <code class="docutils literal"><span class="pre">'sp'</span></code> ) are created just like <a class="reference internal" href="usb_Experiment.html#usb-experiment"><span class="std std-ref">Experiment and Sample</span></a> objects,
 but they serve a slightly different purpose and so we deal with them separately here. To review the syntax
 of creating (<em>instantiating</em> ) and retrieving (<code class="docutils literal"><span class="pre">bt.get()</span></code> ) acquire objects in general, please review
@@ -168,50 +189,45 @@ so a good naming scheme would be <code class="docutils literal"><span class="pre
 <div class="section" id="setting-up-scanplans">
 <h2>Setting up ScanPlans<a class="headerlink" href="#setting-up-scanplans" title="Permalink to this headline">¶</a></h2>
 <p>Typing <code class="docutils literal"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">ScanPlan?</span></code> returns</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&gt;&gt;&gt; s = ScanPlan?
-Init signature: ScanPlan(self, scanname, scan_type, scan_params, shutter=True, livetable=True, verify_write=False)
-Docstring:
+<dl class="function">
+<dt id="xpdacq.beamtime.ScanPlan">
+<code class="descclassname">xpdacq.beamtime.</code><code class="descname">ScanPlan</code><span class="sig-paren">(</span><em>name</em>, <em>scanplan_type</em>, <em>scanplan_params</em>, <em>dk_window=None</em>, <em>shutter=True</em>, <em>livetable=True</em>, <em>verify_write=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.beamtime.ScanPlan" title="Permalink to this definition">¶</a></dt>
+<dd><p>ScanPlan class  that defines scan plan to run.</p>
+<p>To run it <code class="docutils literal"><span class="pre">prun(Sample,ScanPlan)</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>scanoplanname</strong> (<em>str</em>) &#8211; scanplan name.  Important as new scanplans will overwrite older ones with the same name.</li>
+<li><strong>scan_type</strong> (<em>str</em>) &#8211; type of scanplan. Currently allowed values are &#8216;ct&#8217;,&#8217;tseries&#8217;, &#8216;Tramp&#8217;
+where  ct=count, tseries=time series (series of counts), and Tramp=Temperature ramp.</li>
+<li><strong>scan_params</strong> (<em>dict</em>) &#8211; <p>contains all scan parameters that will be passed and used at run-time
+Don&#8217;t make typos in the dictionary keywords or your scans won&#8217;t work.
+Entire list of allowed keywords is in the documentation on <a class="reference external" href="https://xpdacq.github.io/">https://xpdacq.github.io/</a>
+Here is are examples of properly instatiated ScanPlan object:</p>
+<blockquote>
+<div><ul>
+<li>ct_sp = (&#8216;&lt;ct name&gt;&#8217;, &#8216;ct&#8217;,  {&#8216;exposure&#8217;: &lt;exposure time in S&gt;})</li>
+<li>tseries_sp = (&#8216;&lt;tseries name&gt;&#8217;, &#8216;tseries&#8217;, {&#8216;exposure&#8217;:&#8217;&lt;exposure time in S&gt;, &#8216;num&#8217;:&lt;total count&gt;, &#8216;delay&#8217;:&lt;delay between count in S&gt;})</li>
+<li>Tramp_sp = (&#8216;&lt;Tramp name&gt;&#8217;, &#8216;Tramp&#8217;, {&#8216;exposure&#8217;:&#8217;&lt;exposure time in S&gt;, &#8216;sartingT&#8217;:&lt;in K&gt;, &#8216;endinT&#8217;:&lt;in K&gt;, &#8216;Tstep&#8217;:&lt;in K&gt;})</li>
+</ul>
+</div></blockquote>
+</li>
+<li><strong>shutter</strong> (<em>bool</em>) &#8211; default is True. If True, in-hutch fast shutter will be opened before a scan and closed afterwards.
+Otherwise control of the shutter is left external. Set to False if you want to control the shutter by hand.</li>
+<li><strong>livetable</strong> (<em>bool</em>) &#8211; default is True. It gives LiveTable output when True, not otherwise</li>
+<li><strong>verify_write</strong> (<em>bool</em>) &#8211; default is False. This verifies that tiff files have been written for each event.
+It introduces a significant overhead so mostly used for testing.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
-ScanPlan class  that defines scan plan to run.
-
-To run them: prun(Sample,ScanPlan)
-Parameters
-----------
-scanoplanname : string
-    scanplan name.  Important as new scanplans will overwrite older ones with the same name.
-
-scan_type : string
-    type of scanplan. Currently allowed values are &#39;ct&#39;,&#39;tseries&#39;, &#39;Tramp&#39;
-    where  ct=count, tseries=time series (series of counts), and Tramp=Temperature ramp.
-
-scan_params : dict
-    contains all scan parameters that will be passed and used at run-time
-    Don&#39;t make typos in the dictionary keywords or your scans won&#39;t work.
-    Entire list of allowed keywords is in the documentation on https://xpdacq.github.io/
-
-    Here is are examples of properly instatiated ScanPlan object:
-    ct_sp = (&#39;&lt;ct name&gt;&#39;, &#39;ct&#39;,  {&#39;exposure&#39;: &lt;exposure time in S&gt;})
-    tseries_sp = (&#39;&lt;tseries name&gt;&#39;, &#39;tseries&#39;, {&#39;exposure&#39;:&#39;&lt;exposure time in S&gt;, &#39;num&#39;:&lt;total count&gt;, &#39;delay&#39;:&lt;delay between count in S&gt;})
-    Tramp_sp = (&#39;&lt;Tramp name&gt;&#39;, &#39;Tramp&#39;, {&#39;exposure&#39;:&#39;&lt;exposure time in S&gt;, &#39;sartingT&#39;:&lt;in K&gt;, &#39;endinT&#39;:&lt;in K&gt;, &#39;Tstep&#39;:&lt;in K&gt;})
-
-shutter : bool
-    default is True. If True, in-hutch fast shutter will be opened before a scan and closed afterwards.
-    Otherwise control of the shutter is left external. Set to False if you want to control the shutter by hand.
-
-livetable : bool
-    default is True. It gives LiveTable output when True, not otherwise
-
-verify_write : bool
-    default is False. This verifies that tiff files have been written for each event.
-    It introduces a significant overhead so mostly used for testing.
-
-File:           c:\users\billinge\documents\github\xpdacq\xpdacq\beamtime.py
-Type:           type
-</pre></div>
-</div>
-<p>telling what (at the time of writing) the ScanPlan object needs.
-The <code class="docutils literal"><span class="pre">Init</span> <span class="pre">signature</span></code> has exactly the required and optional arguments
-that we have to give <code class="docutils literal"><span class="pre">Scan</span></code> (optional arguments have a default value indicated
+<p>Firstly, we see required and optional arguments
+that we have to give <code class="docutils literal"><span class="pre">ScanPlan</span></code> (optional arguments have a default value indicated
 by the <code class="docutils literal"><span class="pre">=</span></code> sign.  If that argument is not specified it will take the default
 value).  The <code class="docutils literal"><span class="pre">Docstring</span></code> field has some more explanation about what these different
 arguments are.  The docstring is documentation written in the code itself by the
@@ -229,27 +245,95 @@ and is a dictionary that contains one or more key:value pairs.  In this case
 the &#8220;keys&#8221; are fixed quantities, where the required keys depends on the scan-type.  Please see
 the examples below.  The &#8220;values&#8221; are the values of those parameters that you want
 for your particular scan-plan.  Python dictionaries are written in the form <code class="docutils literal"><span class="pre">{key1:value1,key2:value2,....,lastkey:lastvalue}</span></code></p>
-<p><em>Count scan</em></p>
 <p>Here are some examples of valid count-type ScanPlan definitions:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct1.5&#39;</span><span class="p">,</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">1.5</span><span class="p">})</span>                      <span class="c1"># the simplest count scan definition</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct1.5_nosh&#39;</span><span class="p">,</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">1.5</span><span class="p">},</span><span class="n">shutter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>   <span class="c1"># same scan as before but let&#39;s do the shutter by hand (be careful!)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct100.5_nolt&#39;</span><span class="p">,</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">100.5</span><span class="p">},</span><span class="n">livetable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>    <span class="c1"># nice long scan but we don&#39;t want to clutter our terminal with the table showing the counts</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct2_vw&#39;</span><span class="p">,</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span><span class="n">verify_write</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>     <span class="c1"># we want to be sure the tiff was written in pe1_data, but pay a price of a ~ 1 second overhead.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct2_vw_nosh&#39;</span><span class="p">,</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span><span class="n">verify_write</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">shutter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c1"># hopefully you are getting the idea.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct2&#39;</span><span class="p">,</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>                               <span class="c1"># this will also work in xpdAcq because we can reference this object with bt.list() and bt.get()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct_1.5&#39;</span><span class="p">,</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">1.5</span><span class="p">})</span>                      <span class="c1"># the simplest count scan definition</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct_1.5&#39;</span><span class="p">,</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">1.5</span><span class="p">},</span><span class="n">shutter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>   <span class="c1"># same scan as before but let&#39;s do the shutter by hand (be careful!)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct_100.5&#39;</span><span class="p">,</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">100.5</span><span class="p">},</span><span class="n">livetable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>    <span class="c1"># nice long scan but we don&#39;t want to clutter our terminal with the table showing the counts</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct_2&#39;</span><span class="p">,</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span><span class="n">verify_write</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>     <span class="c1"># we want to be sure the tiff was written in pe1_data, but pay a price of a ~ 1 second overhead.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct_2&#39;</span><span class="p">,</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span><span class="n">verify_write</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">shutter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c1"># hopefully you are getting the idea.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct_2&#39;</span><span class="p">,</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>                               <span class="c1"># this will also work in xpdAcq because we can reference this object with bt.list() and bt.get()</span>
 </pre></div>
 </div>
-<p>A few things to note:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Because all these are count ScanPlans, the second argument is <code class="docutils literal"><span class="pre">'ct'</span></code> for all of them.</li>
+<dl class="docutils">
+<dt>A few things to note:</dt>
+<dd><ul class="first last simple">
+<li>Because all count ScanPlans, the second argument is always <code class="docutils literal"><span class="pre">'ct'</span></code>.</li>
 <li><strong>They all have different names</strong> (the first argument!).  This is necessary in xpdAcq!  On a side note, though it is not OK in Python in general, in xpdAcq it <em>is</em> OK for you to make the assignment (i.e., <code class="docutils literal"><span class="pre">sc</span> <span class="pre">=</span> <span class="pre">...</span></code>) the same in each case. This would be bad in regular python programming because you would be repeatedly reassigning the same python object (<code class="docutils literal"><span class="pre">sc</span></code>) with different definitions and they will all be lost except the most recent definition.  However, in xpdAcq we should always reference our objects using <code class="docutils literal"><span class="pre">bt.list()</span></code> then <code class="docutils literal"><span class="pre">bt.get()</span></code> (<a class="reference internal" href="usb_Where.html#usb-where"><span class="std std-ref">remember?</span></a>).  This means that the objects instantiated this way are all saved correctly even with the same assignment, <em>as long as they have different names</em>. We can even do some Python insanity such as the last ScanPlan definition shown in the examples.  This object is created with no assignment so there is no way for Python to reference it, but we can in xpdAcq with <code class="docutils literal"><span class="pre">bt.list()</span></code> and <code class="docutils literal"><span class="pre">bt.get()</span></code>.</li>
 <li>It is quite possible to successfully define an incorrectly composed ScanPlan object but we have tools that can validate your <code class="docutils literal"><span class="pre">ScanPlan</span></code> objects by the time of instantiation. Validator will tell you which filelds are missing through a warning, please follow the instruction from warning message and modify your code. You can run your ScanPlan and Sample object with <code class="docutils literal"><span class="pre">dryrun()</span></code> to have a look on how your metadata will be recorded. See <a class="reference internal" href="usb_Running.html#usb-running"><span class="std std-ref">Running scans</span></a>.</li>
 <li>The scan_params syntax is a bit clunky and delicate.  Please just be careful for now.  Later we will give helper functions and maybe a GUI (if we can get funding for a summer student).  Let&#8217;s all pray to the funding gods!</li>
 </ul>
+</dd>
+<dt>Types of ScanPlan available in current version:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">'ct'</span></code> just exposes the the detector for a number of seconds. e.g.,  <code class="docutils literal"><span class="pre">ScanPlan('ct17.5s','ct',{'exposure':17.5})</span></code></li>
+<li><code class="docutils literal"><span class="pre">'tseries'</span></code> executes a series of <code class="docutils literal"><span class="pre">'num'</span></code> counts of exposure time <code class="docutils literal"><span class="pre">'exposure'</span></code> seconds with  a delay of <code class="docutils literal"><span class="pre">'delay'</span></code> seconds between them.  e.g., <code class="docutils literal"><span class="pre">ScanPlan('tseries_1_59_50','tseries',{'num':50,'exposure':1,'delay':59})</span></code> will measure 50 scans of 1 second with a delay of 59 seconds in between each of them.</li>
+<li><code class="docutils literal"><span class="pre">'Tramp'</span></code> executes a temperature ramp from <code class="docutils literal"><span class="pre">'startingT'</span></code> to <code class="docutils literal"><span class="pre">'endingT'</span></code> in temperature steps of <code class="docutils literal"><span class="pre">'Tstep'</span></code> with exposure time of <code class="docutils literal"><span class="pre">'exposure'</span></code>.  e.g., <code class="docutils literal"><span class="pre">ScanPlan('Tramp_1_200_500_5','Tramp',{'startingT':200,</span> <span class="pre">'endingT':500,</span> <span class="pre">'Tstep':5,</span> <span class="pre">'exposure':1})</span></code> will automatically change the temperature,
+starting at 200 K and ending at 500 K, measuring a scan of 1 s at every 5 K step. The temperature controller will hold at each temperature until the temperature stabilizes before starting the measurement.</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="summary-table-on-scanplan">
+<h2>Summary table on ScanPlan:<a class="headerlink" href="#summary-table-on-scanplan" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ScanPlan</th>
+<th class="head">Syntax</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ct</span></code></td>
+<td><code class="docutils literal"><span class="pre">ScanPlan('ct17.5','ct',{'exposure':17.5})</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">tseries</span></code></td>
+<td><code class="docutils literal"><span class="pre">ScanPlan('tseries_1_59_50','tseries',{'num':50,'exposure':1,'delay':59})</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Tramp</span></code></td>
+<td><code class="docutils literal"><span class="pre">ScanPlan('Tramp_1_200_500_5','Tramp',{'startingT':200,</span> <span class="pre">'endingT':500,</span> <span class="pre">'Tstep':5,</span> <span class="pre">'exposure':1})</span></code></td>
+</tr>
+</tbody>
+</table>
 </div></blockquote>
+</div>
+<div class="section" id="auto-naming-scheme">
+<h2>Auto-naming scheme<a class="headerlink" href="#auto-naming-scheme" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">xpdAcq</span></code> also supports auto-naming on <code class="docutils literal"><span class="pre">ScanPlan</span></code> objects. When you only give ScanPlan name,
+program automatically parses your ScanPlan name. Here is the format xpdAcq takes on ScanPlan name:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>1. &#39;ct_10&#39; means Count scan with 10s exposure time in total
+2. &#39;Tramp_10_300_200_5&#39; means temperature ramp from 300k to 200k
+  with 5k step and 10s exposure time each
+3. &#39;tseries_10_60_5&#39; means time series scan of 10s exposure time each scan
+  and run for 5 scans with 60s delay between them.
+</pre></div>
+</div>
+<p>If your wish to use auto-naming, your ScanPlan name <em>must</em> follow format above.
+Once your ScanPlan name is successfully parsed, you should see a summary output
+on your parameters like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;tseries_5_60_5&#39;</span><span class="p">)</span>
+<span class="n">You</span> <span class="n">have</span> <span class="n">created</span> <span class="n">a</span> <span class="s2">&quot;tseries&quot;</span> <span class="nb">type</span> <span class="n">ScanPlan</span> <span class="k">with</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;tseries_5_60_5&quot;</span>
+<span class="n">Corresponding</span> <span class="n">scan</span> <span class="n">parameters</span> <span class="n">are</span><span class="p">:</span>
+<span class="n">exposure</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">delay</span> <span class="o">=</span> <span class="mf">60.0</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="k">with</span> <span class="n">fast</span><span class="o">-</span><span class="n">shutter</span> <span class="n">control</span> <span class="o">=</span> <span class="bp">True</span> <span class="ow">and</span> <span class="n">subscribing</span> <span class="n">dictionary</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;livetable&#39;</span><span class="p">]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;tseries_5_60_5&#39;</span><span class="p">,</span> <span class="n">livetable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">You</span> <span class="n">have</span> <span class="n">created</span> <span class="n">a</span> <span class="s2">&quot;tseries&quot;</span> <span class="nb">type</span> <span class="n">ScanPlan</span> <span class="k">with</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;tseries_5_60_5_nLT&quot;</span>
+<span class="n">Corresponding</span> <span class="n">scan</span> <span class="n">parameters</span> <span class="n">are</span><span class="p">:</span>
+<span class="n">exposure</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">delay</span> <span class="o">=</span> <span class="mf">60.0</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="k">with</span> <span class="n">fast</span><span class="o">-</span><span class="n">shutter</span> <span class="n">control</span> <span class="o">=</span> <span class="bp">True</span> <span class="ow">and</span> <span class="n">subscribing</span> <span class="n">dictionary</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>You can also find options like <code class="docutils literal"><span class="pre">LiveTable</span></code>, <code class="docutils literal"><span class="pre">shutter</span></code>
+or <code class="docutils literal"><span class="pre">verify_write</span></code> will be added as suffixes to ScanPlan name automatically.</p>
 <p>OK, it is time to <a class="reference internal" href="usb_Running.html#usb-running"><span class="std std-ref">run our scans</span></a></p>
-<p>return to <a class="reference internal" href="xpdusers.html#xpdu"><span class="std std-ref">XPD Users</span></a></p>
 </div>
 </div>
 
@@ -257,6 +341,15 @@ for your particular scan-plan.  Python dictionaries are written in the form <cod
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="usb_Running.html" class="btn btn-neutral float-right" title="Running scans" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="usb_Where.html" class="btn btn-neutral" title="Where did all my Sample and Scan objects go?????" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -285,7 +378,7 @@ for your particular scan-plan.  Python dictionaries are written in the form <cod
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1.0',
+            VERSION:'0.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
