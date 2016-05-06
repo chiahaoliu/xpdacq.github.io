@@ -9,7 +9,7 @@ Checklist
 The instrument scientist (IS) should have set up your beamtime hardware and software
 for you.  Let's check if it is the case.
 
-1. Activate the xpd data acquisition environment:
+1. Activate the XPD data acquisition environment:
 
   * In a terminal look to see if it is already activated.  If it is, you should see ``(collection)`` at the beginning of the line.
 
@@ -104,6 +104,7 @@ You should try and set up some of your own scanplan objects:
     1. type ``bt.list('sp')``  to see the current list of scanplan objects
     2. scan parameters to ``ScanPlan`` can be assigned explicitly by giving a dictionary
       or be interpreted by auto-naming scheme. Here is the example:
+
 
       .. code-block:: python
 

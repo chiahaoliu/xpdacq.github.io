@@ -32,7 +32,7 @@
   
     <link rel="top" title="xpdAcq 0.3 documentation" href="index.html"/>
         <link rel="up" title="XPD Users" href="xpdusers.html"/>
-        <link rel="next" title="Troubleshooting" href="troubleshooting.html"/>
+        <link rel="next" title="Initial assessment of your data" href="usb_QuickAssess.html"/>
         <link rel="prev" title="ScanPlan objects" href="usb_Scan.html"/> 
 
   
@@ -95,7 +95,12 @@
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-are-your-friends">bt.list() and bt.get() are your friends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Running scans</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Running scans</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#automated-dark-frame-collection">Automated dark frame collection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usb_QuickAssess.html">Initial assessment of your data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_functionality.html">Useful Functionalities</a></li>
 </ul>
 </li>
 </ul>
@@ -399,7 +404,33 @@ to get the first data-set.</p>
 <span class="go">Count [&#39;e7adbd&#39;] (scan num: 2)</span>
 </pre></div>
 </div>
+<div class="section" id="automated-dark-frame-collection">
+<span id="auto-dark-collect"></span><h2>Automated dark frame collection<a class="headerlink" href="#automated-dark-frame-collection" title="Permalink to this headline">¶</a></h2>
+<p>So far, you might have found something weird from the output shown above.
+We only requested <em>one</em> <code class="docutils literal"><span class="pre">prun</span></code> but program runs <em>two</em> scans. So what happen?</p>
+<p>That is actually a wonderful feature called auto-dark subtraction of <code class="docutils literal"><span class="pre">xpdAcq</span></code>.
+When you are running your experiment, <code class="docutils literal"><span class="pre">xpdAcq</span></code> actually checks if you have
+collected a <strong>fresh</strong> dark frame every time it collects a scan.
+The definition of <strong>fresh</strong> is:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>Given a certain period T (called dark window), there is a dark frame
+with the same exposure time as the light frame we are about collect.
+</pre></div>
+</div>
+<p>Automated dark collection is enabled by default and it can be turned off
+by either of these ways:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">glbl</span><span class="o">.</span><span class="n">auto_dark</span> <span class="o">=</span> <span class="bp">False</span> <span class="c1"># turn it off for all scans measured afterwards</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span> <span class="n">auto_dark</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span> <span class="c1"># only turn it off for this scan</span>
+</pre></div>
+</div>
+<p>And period of dark window can be modified by:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">glbl</span><span class="o">.</span><span class="n">dk_window</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1"># in minutes. default is 3000 minutes</span>
+</pre></div>
+</div>
+<p>Having <code class="docutils literal"><span class="pre">auto_dark</span></code> set to <code class="docutils literal"><span class="pre">True</span></code> is strongly recommended as this enables
+<code class="docutils literal"><span class="pre">xpdAcq</span></code> to do automated dark frame subtraction when you pull out data from
+centralized <strong>NSLSL-II</strong> server.</p>
 <p>Let&#8217;s <a class="reference internal" href="usb_QuickAssess.html#usb-quickassess"><span class="std std-ref">take a quick look at our data</span></a></p>
+</div>
 </div>
 
 
@@ -409,7 +440,7 @@ to get the first data-set.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="usb_QuickAssess.html" class="btn btn-neutral float-right" title="Initial assessment of your data" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="usb_Scan.html" class="btn btn-neutral" title="ScanPlan objects" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
