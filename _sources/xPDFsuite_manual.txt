@@ -115,4 +115,4 @@ Alright, you are done then! With :ref:`automated calibration capture <auto_calib
 will load calibration parameters from the most recent config file in
 ``/home/xf28id1/xpdUser/config_base``
 
-For more detailed information, please click ``Help`` in ``SrXgui``
+For more detailed information, please click ``Help`` in ``SrXgui`` window.

@@ -279,8 +279,10 @@ Please take the time to read the full documentation from <strong>XPD user</stron
 <span class="n">sp2</span> <span class="o">=</span> <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct_90&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">sp1</span></code> and <code class="docutils literal"><span class="pre">sp2</span></code> are equivalent. They both creates a <code class="docutils literal"><span class="pre">'ct'</span></code> or count-type scan with an exposure of 90 s or 1.5 minutes.
-To find more on auto-naming scheme, please see <a class="reference internal" href="usb_Scan.html#usb-scan"><span class="std std-ref">ScanPlan objects</span></a></p>
+<p><code class="docutils literal"><span class="pre">sp1</span></code> and <code class="docutils literal"><span class="pre">sp2</span></code> are equivalent. They both create a <code class="docutils literal"><span class="pre">'ct'</span></code> or count-type scan with an exposure of 90 s or 1.5 minutes.
+To find more on auto-naming scheme, please see <a class="reference internal" href="usb_Scan.html#usb-scan"><span class="std std-ref">ScanPlan objects</span></a>. Note, if
+two ScanPlans wit the same name, they will be <strong>overwritten!</strong> That also
+makes senses since you basically created the same functionality.</p>
 </div></blockquote>
 <ol class="arabic simple" start="3">
 <li>type <code class="docutils literal"><span class="pre">bt.list('sp')</span></code> again.  You should see your new scanplan object at the end of the list.  Run it using <code class="docutils literal"><span class="pre">prun(bt.get(2),bt.get(11))</span></code> or giving a different number to the second <code class="docutils literal"><span class="pre">get</span></code> if it has a different number in the list.</li>
