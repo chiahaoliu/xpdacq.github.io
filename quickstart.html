@@ -166,7 +166,16 @@ for you.  Let&#8217;s check if it is the case.</p>
 <ol class="arabic simple" start="2">
 <li>OK, you are in.  Make sure that that the instrument scientist has initiated your beamtime. type <code class="docutils literal"><span class="pre">bt.md</span></code> and hit return. You should see the beamtime (<code class="docutils literal"><span class="pre">bt</span></code>) metadata (<code class="docutils literal"><span class="pre">md</span></code>) that has been pre-stored by the IS, and it should contain things like the last name of the PI on the proposal and the SAF number for the beamtime.  If not, please seek out the IS to get your session initialized.</li>
 <li>Check that the wavelength has been set.  Does the correct x-ray wavelength appear in <code class="docutils literal"><span class="pre">bt.md</span></code> <code class="docutils literal"><span class="pre">['bt_wavelength']</span></code> field, or does it say <code class="docutils literal"><span class="pre">None</span></code>.  If the latter, you can still collect scans but automated data reduction may not work, so best to grab the IS again.</li>
-<li>Has a calibration already been carried out?  [FIXME]</li>
+<li>Has a calibration already been carried out?</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>If yes, make sure desired file is properly located in /home/xf28id1/xpdUser/config_base``</li>
+<li>If not, collect an image on calibrant with <code class="docutils literal"><span class="pre">calibration(&lt;Sample&gt;,</span> <span class="pre">&lt;ScanPlan&gt;)</span></code>,
+save image with <code class="docutils literal"><span class="pre">save_last_tiff()</span></code> and go to <a class="reference internal" href="xPDFsuite_manual.html#xpdfsuite-manual"><span class="std std-ref">Quick guide of calibration with xPDFsuite</span></a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="5">
 <li>Check that the Perkin Elmer detector is correctly set up.</li>
 </ol>
 <blockquote>
@@ -223,8 +232,8 @@ Following expressions are all equivalent.</p>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li>Type <code class="docutils literal"><span class="pre">getxgui</span></code></li>
-<li>proceed to <a class="reference internal" href="xPDFsuite_manual.html#xpdfsuite-manual"><span class="std std-ref">Manuals</span></a></li>
+<li>Type <code class="docutils literal"><span class="pre">xPDFsuite</span></code> or <code class="docutils literal"><span class="pre">xpdfsuite</span></code> to open program</li>
+<li>proceed to <a class="reference internal" href="xPDFsuite_manual.html#xpdfsuite-manual"><span class="std std-ref">Quick guide of calibration with xPDFsuite</span></a></li>
 </ul>
 </div></blockquote>
 </div></blockquote>

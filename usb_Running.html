@@ -97,10 +97,12 @@
 <li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Running scans</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#automated-dark-frame-collection">Automated dark frame collection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automated-calibration-loading">Automated calibration loading</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="usb_QuickAssess.html">Initial assessment of your data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_functionality.html">Useful Functionalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xPDFsuite_manual.html">Quick guide of calibration with xPDFsuite</a></li>
 </ul>
 </li>
 </ul>
@@ -429,6 +431,15 @@ by either of these ways:</p>
 <p>Having <code class="docutils literal"><span class="pre">auto_dark</span></code> set to <code class="docutils literal"><span class="pre">True</span></code> is strongly recommended as this enables
 <code class="docutils literal"><span class="pre">xpdAcq</span></code> to do automated dark frame subtraction when you pull out data from
 centralized <strong>NSLSL-II</strong> server.</p>
+</div>
+<div class="section" id="automated-calibration-loading">
+<span id="auto-calib"></span><h2>Automated calibration loading<a class="headerlink" href="#automated-calibration-loading" title="Permalink to this headline">¶</a></h2>
+<p>Often times, keeping track with which calibration file is associated with
+certain scan is very tiring. <code class="docutils literal"><span class="pre">xpdAcq</span></code> makes this easier for you. Before every
+scan is being collected, program goes to grab the most recent calibration
+parameters in <code class="docutils literal"><span class="pre">/home/xf28id1/xpdUser/config_base</span></code> and load them as part of
+metadata so that you can reference them whenever you want and make in-situ data
+reduction possible!</p>
 <p>Let&#8217;s <a class="reference internal" href="usb_QuickAssess.html#usb-quickassess"><span class="std std-ref">take a quick look at our data</span></a></p>
 </div>
 </div>
