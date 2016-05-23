@@ -139,12 +139,14 @@
 <h1>xpdAcq documentation<a class="headerlink" href="#xpdacq-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">xpdAcq</span></code> is a Python package that helps data collection behavior at XPD beamlime.
-It is built on an <em>awesome</em> NSLS-II Python package <a class="reference external" href="http://nsls-ii.github.io/bluesky/">bluesky</a></p>
-<p>The goal of <code class="docutils literal"><span class="pre">xpdAcq</span></code> package is to simplify your collection and analysis workflow during beamtime,
-so that you can focus more on science aspects. <code class="docutils literal"><span class="pre">xpdAcq</span></code> provides an interface for user who doesn&#8217;t
+<p><code class="docutils literal"><span class="pre">xpdAcq</span></code> is a Python package that helps data collection at XPD beamlime.
+It is built on top of and augments the NSLS-II data acquisition Python
+package <a class="reference external" href="http://nsls-ii.github.io/bluesky/">bluesky</a> .  XPD may be operated
+directly by bluesky, or using xpdAcq.</p>
+<p>The goal of the <code class="docutils literal"><span class="pre">xpdAcq</span></code> package is to simplify your collection and analysis workflow during beamtime,
+so that you can focus more on science aspects. <code class="docutils literal"><span class="pre">xpdAcq</span></code> provides an interface for user who don&#8217;t
 have extensive Python coding background. Every syntax started from psychological motivation,
-like the most important behind <code class="docutils literal"><span class="pre">prun</span></code>:</p>
+like the most important one behind running a &#8220;production&#8221; scan, <code class="docutils literal"><span class="pre">prun</span></code>:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>run this Sample with this ScanPlan
 </pre></div>
 </div>
@@ -155,7 +157,8 @@ like the most important behind <code class="docutils literal"><span class="pre">
 <div class="section" id="current-version-v0-3">
 <h3>current version : <code class="docutils literal"><span class="pre">v0.3</span></code><a class="headerlink" href="#current-version-v0-3" title="Permalink to this headline">¶</a></h3>
 <p>This is the first full, stable, release, of xpdAcq software.
-It offers functionality to acquire data at XPD but not to analyze it.
+It offers functionality to acquire data at XPD but with very limited
+tools yet to analyze it.
 Future releases will focus more on analysis functionalities.
 <code class="docutils literal"><span class="pre">v0.3</span></code> is still a limited functionality release in that it only supports three kinds of scans:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>single-frame (ct)
@@ -165,14 +168,14 @@ temperature-series scans (Tramp)
 </div>
 <p>Additional scan types will be added in future releases.</p>
 <dl class="docutils">
-<dt>However, it does support :</dt>
+<dt>However, it does support:</dt>
 <dd><ul class="first last simple">
-<li><a class="reference internal" href="usb_Running.html#auto-dark-collect"><span class="std std-ref">automated dark frame collection</span></a></li>
-<li><a class="reference internal" href="usb_Running.html#auto-calib"><span class="std std-ref">automated calibration capture</span></a></li>
+<li>automated dark subtraction</li>
+<li>automated calibration capture.</li>
 </ul>
 </dd>
 </dl>
-<p>This version is fully documented and extensively tested</p>
+<p>This version is fully documented and extensively tested.</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">

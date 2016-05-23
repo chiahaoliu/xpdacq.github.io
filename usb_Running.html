@@ -97,12 +97,10 @@
 <li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Running scans</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#automated-dark-frame-collection">Automated dark frame collection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#automated-calibration-loading">Automated calibration loading</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="usb_QuickAssess.html">Initial assessment of your data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_functionality.html">Useful Functionalities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="xPDFsuite_manual.html">Quick guide of calibration with xPDFsuite</a></li>
 </ul>
 </li>
 </ul>
@@ -178,7 +176,7 @@ a predefined ScanPlan object, then hit return and sit back, your scan will be ca
 </div>
 <dl class="function">
 <dt id="xpdacq.xpdacq.prun">
-<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">prun</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>auto_dark=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.prun" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">prun</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>auto_dark=None</em>, <em>livetable=True</em>, <em>verify_write=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.prun" title="Permalink to this definition">¶</a></dt>
 <dd><p>on this sample run this scanplan</p>
 <p>Sample, ScanPlan objects inside can be assigned in following way:</p>
 <ol class="arabic simple">
@@ -195,7 +193,13 @@ a predefined ScanPlan object, then hit return and sit back, your scan will be ca
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>sample</strong> (<em>xpdAcq.beamtime.Sample object</em>) &#8211; object carries metadata of Sample object</li>
 <li><strong>scanplan</strong> (<em>xpdAcq.beamtime.ScanPlan object</em>) &#8211; object carries metadata of ScanPlan object</li>
-<li><strong>auto_dark</strong> (<em>bool</em>) &#8211; option of automated dark collection. Default is True to allow collect dark automatically during scans</li>
+<li><strong>auto_dark</strong> (<em>bool</em>) &#8211; option of automated dark collection. Default is True to allow collect
+dark automatically during scans</li>
+<li><strong>livetable</strong> (<em>bool</em>) &#8211; optional. option to turn on/off LiveTable subscribes on this scan.
+default is True</li>
+<li><strong>verify_write</strong> (<em>bool</em>) &#8211; optional. option to turn on/off verify_files_saved subscribe on this
+scan. This functionality will introduce ~2s delay each scan. default
+is False</li>
 </ul>
 </td>
 </tr>
@@ -206,8 +210,8 @@ a predefined ScanPlan object, then hit return and sit back, your scan will be ca
 <p><code class="docutils literal"><span class="pre">prun</span></code> stands for &#8220;production run&#8221; which is a normal run.</p>
 <dl class="function">
 <dt id="xpdacq.xpdacq.dark">
-<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">dark</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.dark" title="Permalink to this definition">¶</a></dt>
-<dd><p>on this sample, collect dark images.</p>
+<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">dark</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>subs={}</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.dark" title="Permalink to this definition">¶</a></dt>
+<dd><p>on this sample, collect dark images</p>
 <p>Usually user don&#8217;t have to collect if you enable automated dark subtraction. However user can specifically collect it if you wish to.
 Sample, ScanPlan objects inside can be assigned in following way:</p>
 <ol class="arabic simple">
@@ -223,6 +227,7 @@ Sample, ScanPlan objects inside can be assigned in following way:</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>sample</strong> (<em>xpdAcq.beamtime.Sample object</em>) &#8211; object carries metadata of Sample object</li>
 <li><strong>scanplan</strong> (<em>xpdAcq.beamtime.ScanPlan object</em>) &#8211; object carries metadata of ScanPlan object</li>
+<li><strong>subs</strong> (<em>dict</em>) &#8211; a dictionary that specifies subscribes to RunEngine</li>
 <li><strong>**kwargs</strong> (<em>dict</em>) &#8211; dictionary that will be passed through to the run-engine metadata</li>
 </ul>
 </td>
@@ -241,7 +246,7 @@ Sample, ScanPlan objects inside can be assigned in following way:</p>
 it is left in the definition for consistency and in general <code class="docutils literal"><span class="pre">dark</span></code> is not necessary as automated dark subtraction collect dark images for you.</p>
 <dl class="function">
 <dt id="xpdacq.xpdacq.calibration">
-<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">calibration</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>auto_dark=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.calibration" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">calibration</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>auto_dark=None</em>, <em>livetable=True</em>, <em>verify_write=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.calibration" title="Permalink to this definition">¶</a></dt>
 <dd><p>on this calibration sample (calibrant) run this scanplan</p>
 <p>Sample, ScanPlan objects inside can be assigned in following way:</p>
 <ol class="arabic simple">
@@ -258,6 +263,11 @@ it is left in the definition for consistency and in general <code class="docutil
 <li><strong>sample</strong> (<em>xpdAcq.beamtime.Sample object</em>) &#8211; object carries metadata of Sample object</li>
 <li><strong>scanplan</strong> (<em>xpdAcq.beamtime.ScanPlan object</em>) &#8211; object carries metadata of ScanPlan object</li>
 <li><strong>auto_dark</strong> (<em>bool</em>) &#8211; option of automated dark collection. Default is True to allow collect dark automatically during scans</li>
+<li><strong>livetable</strong> (<em>bool</em>) &#8211; optional. option to turn on/off LiveTable subscribes on this scan.
+default is True</li>
+<li><strong>verify_write</strong> (<em>bool</em>) &#8211; optional. option to turn on/off verify_files_saved subscribe on this
+scan. This functionality will introduce ~2s delay each scan. default
+is False</li>
 </ul>
 </td>
 </tr>
@@ -268,7 +278,7 @@ it is left in the definition for consistency and in general <code class="docutil
 <p><code class="docutils literal"><span class="pre">calibration</span></code> is specifically designed to collect image on your calibrants.</p>
 <dl class="function">
 <dt id="xpdacq.xpdacq.setupscan">
-<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">setupscan</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>auto_dark=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.setupscan" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">setupscan</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>auto_dark=None</em>, <em>livetable=True</em>, <em>verify_write=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.setupscan" title="Permalink to this definition">¶</a></dt>
 <dd><p>on this sample run this scanplan as a setupscan</p>
 <p>Sample, ScanPlan objects inside can be assigned in following way:</p>
 <ol class="arabic simple">
@@ -284,7 +294,12 @@ it is left in the definition for consistency and in general <code class="docutil
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>sample</strong> (<em>xpdAcq.beamtime.Sample object</em>) &#8211; object carries metadata of Sample object</li>
 <li><strong>scanplan</strong> (<em>xpdAcq.beamtime.ScanPlan object</em>) &#8211; object carries metadata of ScanPlan object</li>
-<li><strong>auto_dark</strong> &#8211; option of automated dark collection. Default is None so that dark frame will be collected automatically during scans</li>
+<li><strong>auto_dark</strong> (<em>bool</em>) &#8211; option of automated dark collection. Default is True to allow collect dark automatically during scans</li>
+<li><strong>livetable</strong> (<em>bool</em>) &#8211; optional. option to turn on/off LiveTable subscribes on this scan.
+default is True</li>
+<li><strong>verify_write</strong> (<em>bool</em>) &#8211; optional. option to turn on/off verify_files_saved subscribe on this
+scan. This functionality will introduce ~2s delay each scan. default
+is False</li>
 <li><strong>**kwargs</strong> (<em>dict</em>) &#8211; dictionary that will be passed through to the run-engine metadata</li>
 </ul>
 </td>
@@ -431,15 +446,6 @@ by either of these ways:</p>
 <p>Having <code class="docutils literal"><span class="pre">auto_dark</span></code> set to <code class="docutils literal"><span class="pre">True</span></code> is strongly recommended as this enables
 <code class="docutils literal"><span class="pre">xpdAcq</span></code> to do automated dark frame subtraction when you pull out data from
 centralized <strong>NSLSL-II</strong> server.</p>
-</div>
-<div class="section" id="automated-calibration-loading">
-<span id="auto-calib"></span><h2>Automated calibration loading<a class="headerlink" href="#automated-calibration-loading" title="Permalink to this headline">¶</a></h2>
-<p>Often times, keeping track with which calibration file is associated with
-certain scan is very tiring. <code class="docutils literal"><span class="pre">xpdAcq</span></code> makes this easier for you. Before every
-scan is being collected, program goes to grab the most recent calibration
-parameters in <code class="docutils literal"><span class="pre">/home/xf28id1/xpdUser/config_base</span></code> and load them as part of
-metadata so that you can reference them whenever you want and make in-situ data
-reduction possible!</p>
 <p>Let&#8217;s <a class="reference internal" href="usb_QuickAssess.html#usb-quickassess"><span class="std std-ref">take a quick look at our data</span></a></p>
 </div>
 </div>
