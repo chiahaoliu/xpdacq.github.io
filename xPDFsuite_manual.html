@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quick guide of calibration with xPDFsuite &mdash; xpdAcq 0.3 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="xpdAcq 0.3 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> xpdAcq
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">xpdAcq</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Quick guide of calibration with xPDFsuite</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/xPDFsuite_manual.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quick-guide-of-calibration-with-xpdfsuite">
+<span id="xpdfsuite-manual"></span><h1>Quick guide of calibration with xPDFsuite<a class="headerlink" href="#quick-guide-of-calibration-with-xpdfsuite" title="Permalink to this headline">¶</a></h1>
+<p>After collecting calibration images, we can perform calibration and make program
+to calculate geometry parameters to current experiment.
+Here is a quick guide for how to do it with <code class="docutils literal"><span class="pre">xPDFsuite</span></code></p>
+<p>1. Type <code class="docutils literal"><span class="pre">xPDFsuite</span></code> or <code class="docutils literal"><span class="pre">xpdfsuite</span></code> <strong>in a new terminal window</strong>, to open our
+data analysis tool kit <strong>xPDFsuite</strong>.</p>
+<ol class="arabic simple" start="2">
+<li>After open it, you should see main <code class="docutils literal"><span class="pre">xPDFsuite</span></code> window pops out:</li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/calib_01.png"><img alt="_images/calib_01.png" class="align-center" src="_images/calib_01.png" style="width: 400px; height: 300px;" /></a>
+</div></blockquote>
+<p>3. Click on the green button at the top from main <code class="docutils literal"><span class="pre">xPDFsuite</span></code> window to open
+<code class="docutils literal"><span class="pre">SrXgui</span></code>. Then you should have another window:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/calib_02.png"><img alt="_images/calib_02.png" class="align-center" src="_images/calib_02.png" style="width: 400px; height: 300px;" /></a>
+<p><strong>Note:</strong> This screenshot is a demonstration at local computer so <code class="docutils literal"><span class="pre">input</span> <span class="pre">dir</span></code>
+and <code class="docutils literal"><span class="pre">output</span> <span class="pre">dir</span></code> both point to local directory.
+However, at beamline, we need to properly choose <code class="docutils literal"><span class="pre">input</span> <span class="pre">dir</span></code> to be
+<code class="docutils literal"><span class="pre">/home/xf28id1/xpdUser/tiff_base``and</span> <span class="pre">``output</span> <span class="pre">dir</span></code> to be
+<code class="docutils literal"><span class="pre">/home/xf28id1/xpdUser/config_base</span></code> so that entire pipeline is completed.</p>
+</div></blockquote>
+<p>4. Then clcik <code class="docutils literal"><span class="pre">Calibrate</span></code> button at the bottom and another window will pop out.
+Choose <code class="docutils literal"><span class="pre">Calibrantion</span> <span class="pre">mode</span></code> to be <code class="docutils literal"><span class="pre">Calibrant</span></code> instead of <code class="docutils literal"><span class="pre">self</span></code> as we want
+a precise calibration result.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/calib_04.png"><img alt="_images/calib_04.png" class="align-center" src="_images/calib_04.png" style="width: 400px; height: 300px;" /></a>
+<p>At this window, we need to specify <strong>three</strong> fields:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">image</span> <span class="pre">file</span></code>: Calibration image you wish to perform calibration on</li>
+<li><code class="docutils literal"><span class="pre">D-spacing</span> <span class="pre">file</span></code>: A required file for known calibrants with <code class="docutils literal"><span class="pre">.D</span></code> extension.
+Supply it <strong>based on your calibrant</strong>. For major D-space files, you can find
+them at <a class="reference external" href="https://github.com/pyFAI/pyFAI/tree/master/calibration">here</a></li>
+<li><code class="docutils literal"><span class="pre">Wavelength</span></code> : Wavelength for your current experiment. Please obtain from
+beamline scientist.</li>
+</ul>
+</div></blockquote>
+<p>When all three fields are correctly assigned, click <code class="docutils literal"><span class="pre">OK</span></code> for next step.</p>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>First you will see an image window like this:</li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/calib_05.png"><img alt="_images/calib_05.png" class="align-center" src="_images/calib_05.png" style="width: 400px; height: 300px;" /></a>
+<p>That is the image we want to perform azimuthal calibration with. Use magnify
+tool at the tool bar to zoom in and <strong>right click</strong> rings. Starting from
+the first, inner ring and to outer rings. Usually a few rings (~5) should be
+enough.</p>
+<a class="reference internal image-reference" href="_images/calib_07.png"><img alt="_images/calib_07.png" class="align-center" src="_images/calib_07.png" style="width: 400px; height: 300px;" /></a>
+<p>Remember to check information pop out in <em>the</em> terminal you used to
+open <code class="docutils literal"><span class="pre">xPDFsuite</span></code>. It will provide you useful information.</p>
+</div></blockquote>
+<p>6. After selecting rings, click on <em>the</em> terminal you used to
+open <code class="docutils literal"><span class="pre">xPDFsuite</span></code> and hit <code class="docutils literal"><span class="pre">&lt;enter&gt;</span></code>. Then you will be requested to supply
+indices of rings you just selected. Remember we are using <code class="docutils literal"><span class="pre">python</span></code>,
+index <strong>starts from 0</strong>. After supplying all indices, you should have a window
+like this to show your calibration:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/calib_08.png"><img alt="_images/calib_08.png" class="align-center" src="_images/calib_08.png" style="width: 400px; height: 300px;" /></a>
+<p>Program will ask you if you want to modify parameters, in most of case, you
+don&#8217;t have to. So just hit <code class="docutils literal"><span class="pre">&lt;enter&gt;</span></code> in the terminal and integration will be
+done.</p>
+</div></blockquote>
+<ol class="arabic simple" start="7">
+<li>Finally 1D integration and 2D regrouping results will pop out:</li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/calib_09.png"><img alt="_images/calib_09.png" class="align-center" src="_images/calib_09.png" style="width: 400px; height: 300px;" /></a>
+<p>You can qualitatively interrogate your calibration by looking if lines in
+2D regrouping are straight or not.</p>
+</div></blockquote>
+<p>8. Given all these hard works, let&#8217;s go back to <code class="docutils literal"><span class="pre">SrXgui</span></code> window and select the
+<code class="docutils literal"><span class="pre">Geometry</span> <span class="pre">parameters</span></code> to see calibrated geometry parameters:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/calib_11.png"><img alt="_images/calib_11.png" class="align-center" src="_images/calib_11.png" style="width: 400px; height: 300px;" /></a>
+<p><strong>Don&#8217;t forget</strong> to save your calibration parameters! Click <code class="docutils literal"><span class="pre">Save</span> <span class="pre">Config</span></code>
+at the bottom and choose directory to place this file. It should be
+<code class="docutils literal"><span class="pre">/home/xf28id1/xpdUser/config_base</span></code> at XPD beamline.</p>
+</div></blockquote>
+<p>Alright, you are done then! With <span class="xref std std-ref">automated calibration capture</span> feature, <code class="docutils literal"><span class="pre">xpdAcq</span></code>
+will load calibration parameters from the most recent config file in
+<code class="docutils literal"><span class="pre">/home/xf28id1/xpdUser/config_base</span></code></p>
+<p>For more detailed information, please click <code class="docutils literal"><span class="pre">Help</span></code> in <code class="docutils literal"><span class="pre">SrXgui</span></code> window.</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright (c) 2016 trustees of Columbia University in the City of New York.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
