@@ -193,39 +193,85 @@ so a good naming scheme would be <code class="docutils literal"><span class="pre
 <p>Typing <code class="docutils literal"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">ScanPlan?</span></code> returns</p>
 <dl class="function">
 <dt id="xpdacq.beamtime.ScanPlan">
-<code class="descclassname">xpdacq.beamtime.</code><code class="descname">ScanPlan</code><span class="sig-paren">(</span><em>name</em>, <em>scanplan_type</em>, <em>scanplan_params</em>, <em>dk_window=None</em>, <em>shutter=True</em>, <em>livetable=True</em>, <em>verify_write=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.beamtime.ScanPlan" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">xpdacq.beamtime.</code><code class="descname">ScanPlan</code><span class="sig-paren">(</span><em>scanplan_meta</em>, <em>scanplan_params={}</em>, <em>dk_window=None</em>, <em>shutter=True</em>, <em>*</em>, <em>auto_dark_plan=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.beamtime.ScanPlan" title="Permalink to this definition">¶</a></dt>
 <dd><p>ScanPlan class  that defines scan plan to run.</p>
-<p>To run it <code class="docutils literal"><span class="pre">prun(Sample,ScanPlan)</span></code></p>
+<p>To run it <code class="docutils literal"><span class="pre">prun(Sample,</span> <span class="pre">ScanPlan)</span></code></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>scanoplanname</strong> (<em>str</em>) &#8211; scanplan name.  Important as new scanplans will overwrite older ones with the same name.</li>
-<li><strong>scan_type</strong> (<em>str</em>) &#8211; type of scanplan. Currently allowed values are &#8216;ct&#8217;,&#8217;tseries&#8217;, &#8216;Tramp&#8217;
-where  ct=count, tseries=time series (series of counts), and Tramp=Temperature ramp.</li>
-<li><strong>scan_params</strong> (<em>dict</em>) &#8211; <p>contains all scan parameters that will be passed and used at run-time
-Don&#8217;t make typos in the dictionary keywords or your scans won&#8217;t work.
-Entire list of allowed keywords is in the documentation on <a class="reference external" href="https://xpdacq.github.io/">https://xpdacq.github.io/</a>
-Here is are examples of properly instatiated ScanPlan object:</p>
+<li><strong>scanplan_meta</strong> (<em>str</em>) &#8211; <p>An important postional argument that serves two purpose:</p>
+<dl class="docutils">
+<dt><a href="#id1"><span class="problematic" id="id2">*</span></a>. If you wish to use auto-naming functionality.</dt>
+<dd>Please supply this field with a string following allowed scheme, xpdAcq will parse your arguments.
+Currently allowed scheme is like following:<ol class="arabic">
+<li>&#8216;ct_10&#8217; means Count scan with 10s exposure time in total</li>
+<li>&#8216;Tramp_10_300_200_5&#8217; means temperature ramp from 300k to 200k</li>
+</ol>
 <blockquote>
-<div><ul>
-<li>ct_sp = (&#8216;&lt;ct name&gt;&#8217;, &#8216;ct&#8217;,  {&#8216;exposure&#8217;: &lt;exposure time in S&gt;})</li>
-<li>tseries_sp = (&#8216;&lt;tseries name&gt;&#8217;, &#8216;tseries&#8217;, {&#8216;exposure&#8217;:&#8217;&lt;exposure time in S&gt;, &#8216;num&#8217;:&lt;total count&gt;, &#8216;delay&#8217;:&lt;delay between count in S&gt;})</li>
-<li>Tramp_sp = (&#8216;&lt;Tramp name&gt;&#8217;, &#8216;Tramp&#8217;, {&#8216;exposure&#8217;:&#8217;&lt;exposure time in S&gt;, &#8216;sartingT&#8217;:&lt;in K&gt;, &#8216;endinT&#8217;:&lt;in K&gt;, &#8216;Tstep&#8217;:&lt;in K&gt;})</li>
-</ul>
-</div></blockquote>
+<div>with 5k step and 10s exposure time each</div></blockquote>
+<ol class="arabic" start="3">
+<li>&#8216;tseries_10_60_5&#8217; means time series scan of 10s exposure time each scan</li>
+</ol>
+<blockquote class="last">
+<div>and run for 5 scans with 60s delay between them.
+If you don&#8217;t want any delay, give it an 0.</div></blockquote>
+</dd>
+<dt><a href="#id3"><span class="problematic" id="id4">*</span></a>. If you wish to specify parameters explicitly.</dt>
+<dd>This field will be &#8220;ScanPlan type&#8221;. Currently allowed types are:<ol class="arabic">
+<li>&#8216;ct&#8217;: which means a count scanplan with exposure time given</li>
+</ol>
+<p>2. &#8216;tseries&#8217; : which means a time series scanplan with
+exposure time, dely between scans and number of scans specified.</p>
+<p>3. &#8216;Tramp&#8217; : which means a temperature ramp scanplan with
+exposure time, starting temperature, ending temperature and
+temperature step specified.</p>
+<p>4. &#8216;bluesky&#8217; : which means an arbitrary bluesky plan defined by user
+For more information please go to : <a class="reference external" href="https://nsls-ii.github.io/bluesky/plans.html">https://nsls-ii.github.io/bluesky/plans.html</a>
+for complete guide on how to define a plan. Note: bluesky type
+of plan doesn&#8217;t work with auto-naming, you must specify
+explicitly.</p>
+<p class="last">Note:
+&#8216;bluesky&#8217; plan won&#8217;t be saved as reusalbe form. Everytime you define a bluesky plan,
+we <strong>SUGGEST</strong> you to save code that defines your plan in a separate place (for example, a text file)</p>
+</dd>
+</dl>
 </li>
+<li><strong>scan_params</strong> (<em>dict</em>) &#8211; Optional. Needed if you wish to set up ScanPlan explicitly.
+It contains all scan parameters that will be passed and used at run-time
+Don&#8217;t make typos in the dictionary keywords or your scans won&#8217;t work.
+Entire list of allowed keywords is in the documentation on <a class="reference external" href="https://xpdacq.github.io/">https://xpdacq.github.io/</a></li>
 <li><strong>shutter</strong> (<em>bool</em>) &#8211; default is True. If True, in-hutch fast shutter will be opened before a scan and closed afterwards.
 Otherwise control of the shutter is left external. Set to False if you want to control the shutter by hand.</li>
-<li><strong>livetable</strong> (<em>bool</em>) &#8211; default is True. It gives LiveTable output when True, not otherwise</li>
-<li><strong>verify_write</strong> (<em>bool</em>) &#8211; default is False. This verifies that tiff files have been written for each event.
-It introduces a significant overhead so mostly used for testing.</li>
+<li><strong>auto_dark_plan</strong> (<em>bool</em>) &#8211; argument reserved for auto_dark collection functionality.
+Ususally user doesn&#8217;t have to specify</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<p>Here are examples of instantiating ScanPlan objects with explicit form.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;tseries&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;delay&#39;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span><span class="s1">&#39;num&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;Tramp&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;sartingT&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s1">&#39;endinT&#39;</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;Tstep&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Here are examples of instantiating ScanPlan objects with auto naming scheme.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct_2.5&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;tseries_2.5_60_5&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;Tramp_2.5_300_200_5&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>ScanPlan objects from two sets of examples are equivalent.</p>
+<p>Here is an example on how to instantiate ScanPlan carrying a bluesky plan
+that reads area detector and em channel while moving two-theta motor from -1 to 1 in 20 steps.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluesky.plans</span> <span class="k">import</span> <span class="n">AbsScanPlan</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myscan</span> <span class="o">=</span> <span class="n">AbsScanPlan</span><span class="p">([</span><span class="n">pe1c</span><span class="p">,</span> <span class="n">em</span><span class="p">],</span> <span class="n">tth_cal</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;bluesky&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;bluesky_plan&#39;</span><span class="p">:</span> <span class="n">myscan</span><span class="p">})</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <p>Firstly, we see required and optional arguments
