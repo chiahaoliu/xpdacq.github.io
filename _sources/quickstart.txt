@@ -241,7 +241,7 @@ understand the logic in greater detail see the full user documentation.
   sample_phase = [{'composition':'NaCl',
               'mass_fraction':0.1,
               'cif':'NACL.cif',
-              'ICSD-ID':'2439d-13'
+              'ICSD-ID':'2439d-13',
               'form':'powder'
              },
              {'composition':'CaCO4.H2O',
