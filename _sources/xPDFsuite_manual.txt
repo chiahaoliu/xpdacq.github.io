@@ -1,5 +1,6 @@
 .. _xPDFsuite_manual:
 
+<<<<<<< HEAD
 Quick guide of calibration with xPDFsuite
 +++++++++++++++++++++++++++++++++++++++++
 
@@ -116,3 +117,7 @@ will load calibration parameters from the most recent config file in
 ``/home/xf28id1/xpdUser/config_base``
 
 For more detailed information, please click ``Help`` in ``SrXgui`` window.
+=======
+Manuals
+========
+>>>>>>> a4fadb6ab1bc422801a17637d501f6782efeb7fd

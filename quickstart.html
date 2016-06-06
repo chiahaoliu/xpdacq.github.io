@@ -231,7 +231,11 @@ for you.  Let&#8217;s check if it is the case.</p>
 <blockquote>
 <div><ul class="simple">
 <li>Type <code class="docutils literal"><span class="pre">getxgui</span></code></li>
+<<<<<<< HEAD
 <li>proceed to <a class="reference internal" href="xPDFsuite_manual.html#xpdfsuite-manual"><span class="std std-ref">Quick guide of calibration with xPDFsuite</span></a></li>
+=======
+<li>proceed to <a class="reference internal" href="xPDFsuite_manual.html#xpdfsuite-manual"><span class="std std-ref">Manuals</span></a></li>
+>>>>>>> a4fadb6ab1bc422801a17637d501f6782efeb7fd
 </ul>
 </div></blockquote>
 </div></blockquote>
@@ -342,6 +346,7 @@ To find more details on creating new <code class="docutils literal"><span class=
 <div><p>Oops, you requested a scan with the wrong <code class="docutils literal"><span class="pre">Sample</span></code>, or <code class="docutils literal"><span class="pre">ScanPlan</span></code> object, or your <code class="docutils literal"><span class="pre">ScanPlan</span></code> object is not doing what you expected!!!!!</p>
 <blockquote>
 <div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CTL</span><span class="o">-</span><span class="n">C</span>
+<<<<<<< HEAD
 <span class="gp">&gt;&gt;&gt; </span><span class="n">CTL</span><span class="o">-</span><span class="n">C</span>
 </pre></div>
 </div>
@@ -360,6 +365,12 @@ To find more details on creating new <code class="docutils literal"><span class=
 </pre></div>
 </div>
 </div></blockquote>
+=======
+</pre></div>
+</div>
+</div></blockquote>
+<p>will interrupt your scan and allow you to choose whether to abort it, or restart it.</p>
+>>>>>>> a4fadb6ab1bc422801a17637d501f6782efeb7fd
 <p>If you abort it the system is reset to where it was before the scan started.</p>
 </div></blockquote>
 <dl class="docutils">
@@ -402,6 +413,7 @@ understand the logic in greater detail see the full user documentation.</p>
 <span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s1">&#39;sp&#39;</span><span class="p">)</span>
 
 <span class="c1"># define addtional acquire objects</span>
+<<<<<<< HEAD
 <span class="n">ex_additonal_info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;&lt;mynewkeys&gt;&#39;</span><span class="p">:</span><span class="s1">&#39;&lt;mynewvalues&gt;&#39;</span><span class="p">,</span>
  <span class="s1">&#39;examples&#39;</span><span class="p">:</span><span class="s1">&#39;follow&#39;</span><span class="p">,</span>
  <span class="s1">&#39;students&#39;</span><span class="p">:[</span><span class="s1">&#39;sbanerjee&#39;</span><span class="p">,</span><span class="s1">&#39;mterban&#39;</span><span class="p">],</span>
@@ -410,11 +422,21 @@ understand the logic in greater detail see the full user documentation.</p>
 <span class="n">Experiment</span><span class="p">(</span><span class="s1">&#39;myExperiment&#39;</span><span class="p">,</span>
            <span class="n">bt</span><span class="p">,</span>
            <span class="n">experiment_info</span> <span class="o">=</span> <span class="n">ex_addtional_info</span>
+=======
+<span class="n">Experiment</span><span class="p">(</span><span class="s1">&#39;myExperiment&#39;</span><span class="p">,</span>
+           <span class="n">bt</span><span class="p">,</span>
+           <span class="p">{</span><span class="s1">&#39;&lt;mynewkeys&gt;&#39;</span><span class="p">:</span><span class="s1">&#39;&lt;mynewvalues&gt;&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;examples&#39;</span><span class="p">:</span><span class="s1">&#39;follow&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;students&#39;</span><span class="p">:[</span><span class="s1">&#39;sbanerjee&#39;</span><span class="p">,</span><span class="s1">&#39;mterban&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;collaborators&#39;</span><span class="p">:[</span><span class="s1">&#39;Sample Maker&#39;</span><span class="p">,</span><span class="s1">&#39;Sam Student&#39;</span><span class="p">]</span>
+           <span class="p">}</span>
+>>>>>>> a4fadb6ab1bc422801a17637d501f6782efeb7fd
           <span class="p">)</span>
 <span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>    <span class="c1"># returns &#39;myExperiment&#39; object at position (index) 11 in the list</span>
 <span class="n">Sample</span><span class="p">(</span><span class="s1">&#39;myLazySample&#39;</span><span class="p">,</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>    <span class="c1"># it will inherit all metadata in the bt and &#39;myExperiment&#39; objects but we were lazy, we didn&#39;t save any sample info!</span>
 
 <span class="c1"># here is a more useful sample description.  Ideally, make these at home before you come,</span>
+<<<<<<< HEAD
 <span class="c1"># If you are running xpdAcq on your local device (simulation mode),</span>
 <span class="c1"># you can then export acquire objects you have created as a tar file by:</span>
 <span class="c1"># &quot;export_userScriptsEtc()&quot;</span>
@@ -452,12 +474,48 @@ understand the logic in greater detail see the full user documentation.</p>
 <span class="c1"># define &quot;Tramp&quot; scanplan with exp = 0.5, startingT = 310, endingT = 300, Tstep = 2</span>
 <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;Tramp&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;startingT&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s1">&#39;endingT&#39;</span><span class="p">:</span> <span class="mi">310</span><span class="p">,</span> <span class="s1">&#39;Tstep&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
 <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;Tramp&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;startingT&#39;</span><span class="p">:</span> <span class="mi">310</span><span class="p">,</span> <span class="s1">&#39;endingT&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s1">&#39;Tstep&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
+=======
+<span class="c1"># then export them as yaml files (&#39;export_user_metadata&#39; [FIXME]), bring them to the beamtime on a flash drive</span>
+<span class="c1"># then import them when your experiment is set up (&#39;import&#39;)</span>
+<span class="n">Sample</span><span class="p">(</span><span class="s1">&#39;NaCl_0.1&#39;</span><span class="p">,</span>
+       <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span>
+       <span class="p">{</span><span class="s1">&#39;phases&#39;</span><span class="p">:[{</span><span class="s1">&#39;composition&#39;</span><span class="p">:</span><span class="s1">&#39;NaCl&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;mass_fraction&#39;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span>
+                   <span class="s1">&#39;cif&#39;</span><span class="p">:</span><span class="s1">&#39;NACL.cif&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ICSD-ID&#39;</span><span class="p">:</span><span class="s1">&#39;2439d-13&#39;</span>
+                   <span class="s1">&#39;form&#39;</span><span class="p">:</span><span class="s1">&#39;powder&#39;</span>
+                  <span class="p">},</span>
+                  <span class="p">{</span><span class="s1">&#39;composition&#39;</span><span class="p">:</span><span class="s1">&#39;CaCO4.H2O&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;mass_fraction&#39;</span><span class="p">:</span><span class="mf">0.9</span><span class="p">,</span>
+                   <span class="s1">&#39;cif&#39;</span><span class="p">:</span><span class="s1">&#39;hydratedCalciumCarbonate.cif&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;form&#39;</span><span class="p">:</span><span class="s1">&#39;nanopowder&#39;</span>
+                  <span class="p">}</span>
+                 <span class="p">],</span>
+        <span class="s1">&#39;holder&#39;</span><span class="p">:{</span><span class="s1">&#39;shape&#39;</span><span class="p">:</span><span class="s1">&#39;capillary&#39;</span><span class="p">,</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span><span class="s1">&#39;1 mm&#39;</span><span class="p">,</span><span class="s1">&#39;madeOf&#39;</span><span class="p">:</span><span class="s1">&#39;kapton&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;notes&#39;</span><span class="p">:[</span><span class="s1">&#39;looked kinda green&#39;</span><span class="p">,</span><span class="s1">&#39;dropped on the floor during loading&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;&lt;anythingElseIwant&gt;&#39;</span><span class="p">:</span><span class="s1">&#39;&lt;description&gt;&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;&lt;andSoOn&gt;&#39;</span><span class="p">:</span><span class="s1">&#39;&lt;etc&gt;&#39;</span>
+       <span class="p">}</span>  <span class="c1"># this one will be much more useful later!</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># define &quot;ct&quot; scanplan with exp = 0.5</span>
+<span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct_0.5&#39;</span><span class="p">,</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">})</span>
+
+<span class="c1"># define &quot;Tramp&quot; scanplan with exp = 0.5, startingT = 300, endingT = 310, Tstep = 2</span>
+<span class="c1"># define &quot;Tramp&quot; scanplan with exp = 0.5, startingT = 310, endingT = 300, Tstep = 2</span>
+<span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;Tramp_0.5_300_310_2&#39;</span><span class="p">,</span><span class="s1">&#39;Tramp&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;startingT&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s1">&#39;endingT&#39;</span><span class="p">:</span> <span class="mi">310</span><span class="p">,</span> <span class="s1">&#39;Tstep&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
+<span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;Tramp_0.5_310_300_2&#39;</span><span class="p">,</span><span class="s1">&#39;Tramp&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;startingT&#39;</span><span class="p">:</span> <span class="mi">310</span><span class="p">,</span> <span class="s1">&#39;endingT&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s1">&#39;Tstep&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
+>>>>>>> a4fadb6ab1bc422801a17637d501f6782efeb7fd
 
 <span class="c1"># or use the short-form</span>
 <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;Tramp_0.5_300_310_2&#39;</span><span class="p">)</span> <span class="c1"># which builds the scan parameters from the name itself (but don&#39;t get them in the wrong order!)</span>
 
 <span class="c1"># define a &quot;time series&quot; scanplan with exp = 0.5, num=10, delay = 2</span>
+<<<<<<< HEAD
 <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;tseries&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;num&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;delay&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
+=======
+<span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;tseries_0.5_2_5&#39;</span><span class="p">,</span> <span class="s1">&#39;tseries&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;num&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;delay&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
+>>>>>>> a4fadb6ab1bc422801a17637d501f6782efeb7fd
 <span class="c1"># or</span>
 <span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;tseries_0.5_2_5&#39;</span><span class="p">)</span>
 
@@ -465,11 +523,19 @@ understand the logic in greater detail see the full user documentation.</p>
 <span class="n">dryrun</span><span class="p">(</span><span class="s1">&#39;NaCl_0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;ct_0.5&#39;</span><span class="p">)</span>
 
 <span class="c1"># Then let&#39;s do a calibration run and save the image in order to open it in calibration software</span>
+<<<<<<< HEAD
 <span class="n">calibration</span><span class="p">(</span><span class="s1">&#39;Nacl_0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;ct_0.5&#39;</span><span class="p">)</span>
 <span class="n">save_last_tiff</span><span class="p">()</span>
 
 <span class="c1"># Use setupscan to check image quality under current scan parameters</span>
 <span class="n">setupscan</span><span class="p">(</span><span class="s1">&#39;Nacl_0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;ct_0.5&#39;</span><span class="p">)</span>
+=======
+<span class="n">calibration</span><span class="p">([</span><span class="n">FIXME</span><span class="p">])</span>
+<span class="n">save_last_tiff</span><span class="p">()</span>
+
+<span class="c1"># Use setupscan to check image quality under current scan parameters</span>
+<span class="n">setupscan</span><span class="p">([</span><span class="n">FIXME</span><span class="p">])</span>
+>>>>>>> a4fadb6ab1bc422801a17637d501f6782efeb7fd
 <span class="n">save_last_tiff</span><span class="p">()</span>
 
 <span class="c1"># Everything looks right. Let&#39;s do prun with different ScanPlans and save the tiffs</span>
