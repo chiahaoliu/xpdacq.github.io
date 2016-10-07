@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Running scans &mdash; xpdAcq 0.3 documentation</title>
+  <title>Running scans &mdash; xpdAcq 0.5 documentation</title>
   
 
   
@@ -30,8 +30,8 @@
   
 
   
-    <link rel="top" title="xpdAcq 0.3 documentation" href="index.html"/>
-        <link rel="up" title="XPD Users" href="xpdusers.html"/>
+    <link rel="top" title="xpdAcq 0.5 documentation" href="index.html"/>
+        <link rel="up" title="For XPD Users" href="xpdusers.html"/>
         <link rel="next" title="Initial assessment of your data" href="usb_QuickAssess.html"/>
         <link rel="prev" title="ScanPlan objects" href="usb_Scan.html"/> 
 
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.3
+                0.5
               </div>
             
           
@@ -83,32 +83,56 @@
             
             
                 <ul>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="xpdusers.html">XPD Users</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="xpdusers.html">For XPD Users</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sb_overview.html">Overview of xpd acquisition environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdacq environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Beamtime.html">Setting up your Beamtime</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_Experiment.html">Setting up your XPD acuisition objects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html">Where did all my Sample and Scan objects go?????</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-are-your-friends">bt.list() and bt.get() are your friends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Running scans</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#automated-dark-frame-collection">Automated dark frame collection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automated-dark-collection">Automated dark collection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nice-and-fresh"><strong>Nice and fresh</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#automated-calibration-capture">Automated calibration capture</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quick-guide-of-calibration-steps-with-pyfai">Quick guide of calibration steps with pyFAI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-metadata-imported-from-spreadsheet">Sample metadata imported from spreadsheet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#comma-separated-fields">comma separated fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#name-fields">name fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#phase-string">phase string</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sample-objects-going-to-be-generated">Sample objects going to be generated</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#auto-masking">Auto-masking</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#applied-masks">Applied masks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-the-auto-masker">Using the auto-masker</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="usb_QuickAssess.html">Initial assessment of your data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_functionality.html">Useful Functionalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html">Global options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html#where-did-all-my-sample-and-scan-objects-go">Where did all my Sample and Scan objects go?????</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html#bt-list-and-bt-get-are-your-friends">bt.list() and bt.get() are your friends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
 </ul>
 </li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">For Beamline Staff</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_note.html">Release Notes</a></li>
 </ul>
 
             
@@ -139,7 +163,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-          <li><a href="xpdusers.html">XPD Users</a> &raquo;</li>
+          <li><a href="xpdusers.html">For XPD Users</a> &raquo;</li>
       
     <li>Running scans</li>
       <li class="wy-breadcrumbs-aside">
@@ -174,169 +198,12 @@ a predefined ScanPlan object, then hit return and sit back, your scan will be ca
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dryrun</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="function">
-<dt id="xpdacq.xpdacq.prun">
-<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">prun</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>auto_dark=None</em>, <em>livetable=True</em>, <em>verify_write=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.prun" title="Permalink to this definition">¶</a></dt>
-<dd><p>on this sample run this scanplan</p>
-<p>Sample, ScanPlan objects inside can be assigned in following way:</p>
-<ol class="arabic simple">
-<li>bt.get(&lt;object_index&gt;), eg. prun(bt.get(2), bt.get(5))</li>
-<li>name of acquire object, eg. prun(&#8216;my_experiment&#8217;, &#8216;ct1s&#8217;)</li>
-<li>index to acquire object, eg. prun(2,5)</li>
-</ol>
-<p>All of above assigning methods can be used in a mix way.</p>
-<p>This scan will be labeled as prun in metadata.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>sample</strong> (<em>xpdAcq.beamtime.Sample object</em>) &#8211; object carries metadata of Sample object</li>
-<li><strong>scanplan</strong> (<em>xpdAcq.beamtime.ScanPlan object</em>) &#8211; object carries metadata of ScanPlan object</li>
-<li><strong>auto_dark</strong> (<em>bool</em>) &#8211; option of automated dark collection. Default is True to allow collect
-dark automatically during scans</li>
-<li><strong>livetable</strong> (<em>bool</em>) &#8211; optional. option to turn on/off LiveTable subscribes on this scan.
-default is True</li>
-<li><strong>verify_write</strong> (<em>bool</em>) &#8211; optional. option to turn on/off verify_files_saved subscribe on this
-scan. This functionality will introduce ~2s delay each scan. default
-is False</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <p><code class="docutils literal"><span class="pre">prun</span></code> stands for &#8220;production run&#8221; which is a normal run.</p>
-<dl class="function">
-<dt id="xpdacq.xpdacq.dark">
-<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">dark</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>subs={}</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.dark" title="Permalink to this definition">¶</a></dt>
-<dd><p>on this sample, collect dark images</p>
-<p>Usually user don&#8217;t have to collect if you enable automated dark subtraction. However user can specifically collect it if you wish to.
-Sample, ScanPlan objects inside can be assigned in following way:</p>
-<ol class="arabic simple">
-<li>bt.get(&lt;object_index&gt;), eg. dark(bt.get(2), bt.get(5))</li>
-<li>name of acquire object, eg. dark(&#8216;my_experiment&#8217;, &#8216;ct1s&#8217;)</li>
-<li>index to acquire object, eg. dark(2,5)</li>
-</ol>
-<p>All of above assigning methods can be used in a mix way.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>sample</strong> (<em>xpdAcq.beamtime.Sample object</em>) &#8211; object carries metadata of Sample object</li>
-<li><strong>scanplan</strong> (<em>xpdAcq.beamtime.ScanPlan object</em>) &#8211; object carries metadata of ScanPlan object</li>
-<li><strong>subs</strong> (<em>dict</em>) &#8211; a dictionary that specifies subscribes to RunEngine</li>
-<li><strong>**kwargs</strong> (<em>dict</em>) &#8211; dictionary that will be passed through to the run-engine metadata</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>dark_uid</strong> &#8211; an unique id to label this dark scan</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <p><code class="docutils literal"><span class="pre">dark</span></code> collects dark frames.Strictly speaking the sample is irrelevant here because the shutter is closed, but
 it is left in the definition for consistency and in general <code class="docutils literal"><span class="pre">dark</span></code> is not necessary as automated dark subtraction collect dark images for you.</p>
-<dl class="function">
-<dt id="xpdacq.xpdacq.calibration">
-<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">calibration</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>auto_dark=None</em>, <em>livetable=True</em>, <em>verify_write=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.calibration" title="Permalink to this definition">¶</a></dt>
-<dd><p>on this calibration sample (calibrant) run this scanplan</p>
-<p>Sample, ScanPlan objects inside can be assigned in following way:</p>
-<ol class="arabic simple">
-<li>bt.get(&lt;object_index&gt;), eg. calibration(bt.get(2), bt.get(5))</li>
-<li>name of acquire object, eg. calibration(&#8216;my_experiment&#8217;, &#8216;ct1s&#8217;)</li>
-<li>index to acquire object, eg. calibration(2,5)</li>
-</ol>
-<p>All of above assigning methods can be used in a mix way.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>sample</strong> (<em>xpdAcq.beamtime.Sample object</em>) &#8211; object carries metadata of Sample object</li>
-<li><strong>scanplan</strong> (<em>xpdAcq.beamtime.ScanPlan object</em>) &#8211; object carries metadata of ScanPlan object</li>
-<li><strong>auto_dark</strong> (<em>bool</em>) &#8211; option of automated dark collection. Default is True to allow collect dark automatically during scans</li>
-<li><strong>livetable</strong> (<em>bool</em>) &#8211; optional. option to turn on/off LiveTable subscribes on this scan.
-default is True</li>
-<li><strong>verify_write</strong> (<em>bool</em>) &#8211; optional. option to turn on/off verify_files_saved subscribe on this
-scan. This functionality will introduce ~2s delay each scan. default
-is False</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <p><code class="docutils literal"><span class="pre">calibration</span></code> is specifically designed to collect image on your calibrants.</p>
-<dl class="function">
-<dt id="xpdacq.xpdacq.setupscan">
-<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">setupscan</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>auto_dark=None</em>, <em>livetable=True</em>, <em>verify_write=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.setupscan" title="Permalink to this definition">¶</a></dt>
-<dd><p>on this sample run this scanplan as a setupscan</p>
-<p>Sample, ScanPlan objects inside can be assigned in following way:</p>
-<ol class="arabic simple">
-<li>bt.get(&lt;object_index&gt;), eg. setupscan(bt.get(2), bt.get(5))</li>
-<li>name of acquire object, eg. setupscan(&#8216;my_experiment&#8217;, &#8216;ct1s&#8217;)</li>
-<li>index to acquire object, eg. setupscan(2,5)</li>
-</ol>
-<p>All of above assigning methods can be used in a mix way.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>sample</strong> (<em>xpdAcq.beamtime.Sample object</em>) &#8211; object carries metadata of Sample object</li>
-<li><strong>scanplan</strong> (<em>xpdAcq.beamtime.ScanPlan object</em>) &#8211; object carries metadata of ScanPlan object</li>
-<li><strong>auto_dark</strong> (<em>bool</em>) &#8211; option of automated dark collection. Default is True to allow collect dark automatically during scans</li>
-<li><strong>livetable</strong> (<em>bool</em>) &#8211; optional. option to turn on/off LiveTable subscribes on this scan.
-default is True</li>
-<li><strong>verify_write</strong> (<em>bool</em>) &#8211; optional. option to turn on/off verify_files_saved subscribe on this
-scan. This functionality will introduce ~2s delay each scan. default
-is False</li>
-<li><strong>**kwargs</strong> (<em>dict</em>) &#8211; dictionary that will be passed through to the run-engine metadata</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <p><code class="docutils literal"><span class="pre">setupscan</span></code> is for testing things before you are ready to get production data, such as trying out different exposures
 on a sample to find the best exposure time.</p>
-<dl class="function">
-<dt id="xpdacq.xpdacq.dryrun">
-<code class="descclassname">xpdacq.xpdacq.</code><code class="descname">dryrun</code><span class="sig-paren">(</span><em>sample</em>, <em>scanplan</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#xpdacq.xpdacq.dryrun" title="Permalink to this definition">¶</a></dt>
-<dd><p>on this sample run this scanplan in dryrun mode</p>
-<p>with dryrun mode, only metadata will be printed. No real experimental apparatus will be triggered.</p>
-<p>Sample, ScanPlan objects inside can be assigned in following way:</p>
-<ol class="arabic simple">
-<li>bt.get(&lt;object_index&gt;), eg. dryrun(bt.get(2), bt.get(5))</li>
-<li>name of acquire object, eg. dryrun(&#8216;my_experiment&#8217;, &#8216;ct1s&#8217;)</li>
-<li>index to acquire object, eg. dryrun(2,5)</li>
-</ol>
-<p>All of above assigning methods can be used in a mix way.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>sample</strong> (<em>xpdAcq.beamtime.Sample object</em>) &#8211; object carries metadata of Sample object</li>
-<li><strong>scanplan</strong> (<em>xpdAcq.beamtime.ScanPlan object</em>) &#8211; object carries metadata of ScanPlan object</li>
-<li><strong>**kwargs</strong> (<em>dict</em>) &#8211; dictionary that will be passed through to the run-engine metadata</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <p><code class="docutils literal"><span class="pre">dryrun</span></code> does not execute any scan but tells you what is going to be run when you give the same Sample and Scan objects
 to any of the other runs. It may be used for validating your scan objects, and also for estimating how long a <code class="docutils literal"><span class="pre">tseries</span></code> or <code class="docutils literal"><span class="pre">Tramp</span></code> might take.</p>
 <p>Here are some examples of a workflow.  Assume a GaAs sample is loaded on the diffractometer
@@ -419,34 +286,358 @@ to get the first data-set.</p>
 <span class="go">|         1 | 10:51:42.4 |                0 |</span>
 <span class="go">+-----------+------------+------------------+</span>
 <span class="go">Count [&#39;e7adbd&#39;] (scan num: 2)</span>
+
+
+<span class="go">.. _auto_dark:</span>
 </pre></div>
 </div>
-<div class="section" id="automated-dark-frame-collection">
-<span id="auto-dark-collect"></span><h2>Automated dark frame collection<a class="headerlink" href="#automated-dark-frame-collection" title="Permalink to this headline">¶</a></h2>
-<p>So far, you might have found something weird from the output shown above.
-We only requested <em>one</em> <code class="docutils literal"><span class="pre">prun</span></code> but program runs <em>two</em> scans. So what happen?</p>
-<p>That is actually a wonderful feature called auto-dark subtraction of <code class="docutils literal"><span class="pre">xpdAcq</span></code>.
+<div class="section" id="automated-dark-collection">
+<h2>Automated dark collection<a class="headerlink" href="#automated-dark-collection" title="Permalink to this headline">¶</a></h2>
+<p>you might have found something weird when you running a <code class="docutils literal"><span class="pre">prun</span></code> command:</p>
+<p><em>I only requested one ``prun`` but program runs two scans</em></p>
+<p>So what happen?</p>
+<p>That is actually a feature called auto-dark subtraction of <code class="docutils literal"><span class="pre">xpdAcq</span></code>.
 When you are running your experiment, <code class="docutils literal"><span class="pre">xpdAcq</span></code> actually checks if you have
-collected a <strong>fresh</strong> dark frame every time it collects a scan.
-The definition of <strong>fresh</strong> is:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>Given a certain period T (called dark window), there is a dark frame
-with the same exposure time as the light frame we are about collect.
+collected a <strong>fresh and appropriate</strong> dark frame every time it collects a scan.
+The definition of <strong>fresh and appropriate</strong> is:</p>
+<div class="section" id="nice-and-fresh">
+<h3><strong>Nice and fresh</strong><a class="headerlink" href="#nice-and-fresh" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre><span></span>Given a certain period T (``dark window``), there exists a dark frame
+with the same **total exposure time** and exactly the same **acquisition time**
+as the light frame we are about collect.
 </pre></div>
 </div>
-<p>Automated dark collection is enabled by default and it can be turned off
-by either of these ways:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">glbl</span><span class="o">.</span><span class="n">auto_dark</span> <span class="o">=</span> <span class="bp">False</span> <span class="c1"># turn it off for all scans measured afterwards</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span> <span class="n">auto_dark</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span> <span class="c1"># only turn it off for this scan</span>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>At <strong>XPD</strong>, area detector is running in the <code class="docutils literal"><span class="pre">continuous</span> <span class="pre">acquisition</span></code> mode,
+which means detector keeps <strong>reading</strong> but only <strong>saves</strong> image when <code class="docutils literal"><span class="pre">xpdAcq</span></code>
+tells it to save, with desired exposure time.</p>
+<p>In short,</p>
+<ul class="last simple">
+<li>acquisition time defines how fast is the detector reading time,
+ranged from 0.1s to 5s.</li>
+<li>exposure time means total exposure time, which is user defined.</li>
+</ul>
+</div>
+<p>Automated dark collection is enabled by default and it can be turned off by:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="o">.</span><span class="n">auto_dark</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">glbl</span><span class="o">.</span><span class="n">shutter_control</span> <span class="o">=</span> <span class="bp">False</span>
 </pre></div>
 </div>
 <p>And period of dark window can be modified by:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">glbl</span><span class="o">.</span><span class="n">dk_window</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1"># in minutes. default is 3000 minutes</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="o">.</span><span class="n">dk_window</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1"># in minutes. default is 3000 minutes</span>
 </pre></div>
 </div>
 <p>Having <code class="docutils literal"><span class="pre">auto_dark</span></code> set to <code class="docutils literal"><span class="pre">True</span></code> is strongly recommended as this enables
 <code class="docutils literal"><span class="pre">xpdAcq</span></code> to do automated dark frame subtraction when you pull out data from
 centralized <strong>NSLSL-II</strong> server.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="automated-calibration-capture">
+<span id="auto-calib"></span><h2>Automated calibration capture<a class="headerlink" href="#automated-calibration-capture" title="Permalink to this headline">¶</a></h2>
+<p>Often times, keeping track with which calibration file is associated with
+certain scan is very tiring. <code class="docutils literal"><span class="pre">xpdAcq</span></code> makes this easier for you. Before every
+scan is being collected, program goes to grab the most recent calibration
+parameters in <code class="docutils literal"><span class="pre">/home/xf28id1/xpdUser/config_base</span></code> and load them as part of
+metadata so that you can reference them whenever you want and make in-situ data
+reduction possible!</p>
+<div class="section" id="quick-guide-of-calibration-steps-with-pyfai">
+<span id="calib-manual"></span><h3>Quick guide of calibration steps with pyFAI<a class="headerlink" href="#quick-guide-of-calibration-steps-with-pyfai" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>First you will see an image window like this:</li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/calib_05.png"><img alt="_images/calib_05.png" class="align-center" src="_images/calib_05.png" style="width: 400px; height: 300px;" /></a>
+<p>That is the image we want to perform azimuthal calibration with. Use <strong>magnify
+tool</strong> at the tool bar to zoom in and <strong>right click</strong> on rings. Starting from
+the inner ring and to the outer rings. Usually a few rings (~5) should be
+enough.</p>
+<a class="reference internal image-reference" href="_images/calib_07.png"><img alt="_images/calib_07.png" class="align-center" src="_images/calib_07.png" style="width: 400px; height: 300px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>For a better calibration, we suggest you to select rings that are
+<strong>well separated</strong> from its neighbors.</li>
+<li>Also, we suggest you to zoom in more for better accuracy when selecting rings.</li>
+</ul>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>After selecting rings, click on the <em>original</em> terminal and hit <code class="docutils literal"><span class="pre">&lt;enter&gt;</span></code>.</li>
+</ol>
+<blockquote>
+<div><p>Then you will be requested to supply indices of rings you just selected.
+Remember index <strong>starts from 0</strong> as we are using <code class="docutils literal"><span class="pre">python</span></code>.
+After supplying all indices, you should have a window to show your calibration:</p>
+<a class="reference internal image-reference" href="_images/calib_08.png"><img alt="_images/calib_08.png" class="align-center" src="_images/calib_08.png" style="width: 400px; height: 300px;" /></a>
+<p>Program will ask you if you want to modify parameters. In most of cases, you
+don&#8217;t have to change the parameters, so just type <code class="docutils literal"><span class="pre">done</span></code> in the terminal and
+calibration process will be done.</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Finally 1D integration and 2D regrouping results will pop out:</li>
+</ol>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/calib_09.png"><img alt="_images/calib_09.png" class="align-center" src="_images/calib_09.png" style="width: 400px; height: 300px;" /></a>
+<p>You can qualitatively interrogate your calibration by looking if lines in
+2D regrouping are straight or not.</p>
+<p>After this step, a calibration file with name <code class="docutils literal"><span class="pre">pyFAI_calib.yml</span></code> will be
+saved under <code class="docutils literal"><span class="pre">/home/xf28id1/xpdUser/config_base</span></code></p>
+</div></blockquote>
+<p>Alright, you are done then! With <code class="docutils literal"><span class="pre">`automated</span> <span class="pre">calibration</span> <span class="pre">capture</span></code> feature, <code class="docutils literal"><span class="pre">xpdAcq</span></code>
+will load calibration parameters from the most recent config file.</p>
+</div>
+</div>
+<div class="section" id="sample-metadata-imported-from-spreadsheet">
+<span id="import-sample"></span><h2>Sample metadata imported from spreadsheet<a class="headerlink" href="#sample-metadata-imported-from-spreadsheet" title="Permalink to this headline">¶</a></h2>
+<p>In order to facilitate retrospective operation on data, we suggest you to enter
+as much information as you can and that is the main philosophy behind <code class="docutils literal"><span class="pre">xpdAcq</span></code>.</p>
+<p>Typing in sample metadata during beamtime is always less efficient and it wastes
+your time so a pre-populated excel sheet with all metadata entered beforehand
+turns out to be the solution.</p>
+<p>In order import sample metadata from spreadsheet, we would need you to have a
+pre-filled spreadsheet with name <code class="docutils literal"><span class="pre">&lt;saf_number&gt;_sample.xls</span></code> sit in <code class="docutils literal"><span class="pre">xpdConfig</span></code>
+directory. Then the import process is simply:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">import_sample</span><span class="p">(</span><span class="mi">300564</span><span class="p">,</span> <span class="n">bt</span><span class="p">)</span> <span class="c1"># SAF number is 300564 to current beamtime</span>
+                          <span class="c1"># beamtime object , bt, with SAF number 300564 has created</span>
+                          <span class="c1"># file with 300564_sample.xls exists in ``xpdConfig`` directory</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Usually <code class="docutils literal"><span class="pre">xpdAcq</span></code> will grab the <code class="docutils literal"><span class="pre">saf_number</span></code> and <code class="docutils literal"><span class="pre">bt</span></code> to current beamtime for you,
+so you can simply run <code class="docutils literal"><span class="pre">import_sample()</span></code>. However, if you want to load in different
+spreadsheets, you can also import it by explicitly typing in <code class="docutils literal"><span class="pre">saf_number</span></code>.</p>
+</div>
+<div class="section" id="comma-separated-fields">
+<h3>comma separated fields<a class="headerlink" href="#comma-separated-fields" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Files with information entities are separated by a comma <code class="docutils literal"><span class="pre">,</span></code>.</p>
+<p>Each separated by <code class="docutils literal"><span class="pre">,</span></code> will be individually searchable later.</p>
+<p>Fields following this parsing rule are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">cif</span> <span class="pre">name</span></code></td>
+<td>pointer of potential structures for your sample, if any.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Tags</span></code></td>
+<td>any comment you want to put on for this measurement.</td>
+</tr>
+</tbody>
+</table>
+<p>Example on <code class="docutils literal"><span class="pre">Tags</span></code>:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>background, standard --&gt; background, standard
+</pre></div>
+</div>
+<p>And a search on either <code class="docutils literal"><span class="pre">background</span></code> or``standard`` later on will include
+this header.</p>
+</div></blockquote>
+</div>
+<div class="section" id="name-fields">
+<h3>name fields<a class="headerlink" href="#name-fields" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Fields used to store a person&#8217;s name in <code class="docutils literal"><span class="pre">first</span> <span class="pre">name</span> <span class="pre">last</span> <span class="pre">name</span></code> format.</p>
+<p>Each person&#8217;s first and last name will be searchable later on.</p>
+<p>Fields following this parsing rule are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Collaborators</span></code></td>
+<td>name of your collaborators</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Sample</span> <span class="pre">Maker</span></code></td>
+<td>name of your sample maker</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Lead</span> <span class="pre">Experimenters</span></code></td>
+<td>a person who is going to lead this experiment at beamline</td>
+</tr>
+</tbody>
+</table>
+<p>Example on name fields:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>Maxwell Terban, Benjamin Frandsen ----&gt; Maxwell, Terban, Benjamin, Frandsen
+</pre></div>
+</div>
+<p>A search on either <code class="docutils literal"><span class="pre">Maxwell</span></code> or <code class="docutils literal"><span class="pre">Terban</span></code> or <code class="docutils literal"><span class="pre">Benjamin</span></code> or <code class="docutils literal"><span class="pre">Frandsen</span></code>
+later will include this header.</p>
+</div></blockquote>
+</div>
+<div class="section" id="phase-string">
+<h3>phase string<a class="headerlink" href="#phase-string" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Field used to specify the phase information and chemical composition of your
+sample. It&#8217;s important to enter this field correctly so that we can have
+accelerated data reduction workflow.</p>
+<p>Fields follows this parsing rule are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Phase</span> <span class="pre">Info</span></code></td>
+<td>field to specify phase information and chemical composition of
+your sample</td>
+</tr>
+</tbody>
+</table>
+<p>phase string will be expect to be enter in a form as
+<code class="docutils literal"><span class="pre">phase_1:</span> <span class="pre">amount,</span> <span class="pre">phase_2:</span> <span class="pre">amount</span></code>.</p>
+<p>An example of 0.9% sodium chloride water will be:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>Nacl: 0.09, H20: 0.91
+</pre></div>
+</div>
+<p>This <code class="docutils literal"><span class="pre">Phase</span> <span class="pre">Info</span></code> will be parsed as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;sample_composition&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mf">0.09</span><span class="p">,</span> <span class="s1">&#39;Cl&#39;</span><span class="p">:</span><span class="mf">0.09</span><span class="p">,</span> <span class="sb">`H`</span><span class="p">:</span><span class="mf">1.82</span><span class="p">,</span> <span class="sb">`O`</span><span class="p">:</span><span class="mf">0.91</span><span class="p">},</span>
+ <span class="s1">&#39;sample_phase&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;NaCl&#39;</span><span class="p">:</span><span class="mf">0.09</span><span class="p">,</span> <span class="s1">&#39;H20&#39;</span><span class="p">:</span><span class="mf">0.91</span><span class="p">},</span>
+ <span class="s1">&#39;composition_string&#39;</span><span class="p">:</span> <span class="s1">&#39;Na0.09Cl0.09H1.82O0.91&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">composition_string</span></code> is designed for data reduction software going to be
+used. Under <code class="docutils literal"><span class="pre">xpdAcq</span></code> framework, we will assume
+<a class="reference external" href="http://www.diffpy.org/products/pdfgetx3.html">pdfgetx3</a></p>
+<p>As before, a search on <code class="docutils literal"><span class="pre">Na</span></code> or <code class="docutils literal"><span class="pre">Cl</span></code> or <code class="docutils literal"><span class="pre">H</span></code> or <code class="docutils literal"><span class="pre">O</span></code> will include this
+header. Also a search on <code class="docutils literal"><span class="pre">Nacl=0.09</span></code> will include this header as well.</p>
+</div></blockquote>
+</div>
+<div class="section" id="sample-objects-going-to-be-generated">
+<span id="background-obj"></span><h3>Sample objects going to be generated<a class="headerlink" href="#sample-objects-going-to-be-generated" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first"><strong>Sample</strong>:</p>
+<p>Each row in your spreadsheet will be taken as one valid Sample and metadata
+will be parsed based on the contents you type in with above parsing rule.</p>
+</li>
+<li><p class="first"><strong>background</strong>:</p>
+<p>In additional to <code class="docutils literal"><span class="pre">Sample</span></code> objects parsed from rows, <code class="docutils literal"><span class="pre">xpdAcq</span></code> also create
+background objects with information you type in at <code class="docutils literal"><span class="pre">Geometry</span></code> field.</p>
+<p>background objects will automatically tagged as <code class="docutils literal"><span class="pre">is_background</span></code> in metadata.</p>
+</li>
+</ul>
+<p>Generally, after successfully importing sample from spreadsheet, that is what
+you would see:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">import_sample</span><span class="p">(</span><span class="mi">300564</span><span class="p">,</span> <span class="n">bt</span><span class="p">)</span>
+<span class="o">***</span> <span class="n">End</span> <span class="n">of</span> <span class="kn">import</span> <span class="nn">Sample</span> <span class="nn">object</span> <span class="o">***</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">xpdacq</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">ExceltoYaml</span> <span class="n">at</span> <span class="mh">0x7fae8ab659b0</span><span class="o">&gt;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+
+<span class="n">ScanPlans</span><span class="p">:</span>
+
+
+<span class="n">Samples</span><span class="p">:</span>
+<span class="mi">0</span><span class="p">:</span> <span class="n">P2S</span>
+<span class="mi">1</span><span class="p">:</span> <span class="n">Ni_calibrant</span>
+<span class="mi">2</span><span class="p">:</span> <span class="n">activated_carbon_1</span>
+<span class="mi">3</span><span class="p">:</span> <span class="n">activated_carbon_2</span>
+<span class="mi">4</span><span class="p">:</span> <span class="n">activated_carbon_3</span>
+<span class="mi">5</span><span class="p">:</span> <span class="n">activated_carbon_4</span>
+<span class="mi">6</span><span class="p">:</span> <span class="n">activated_carbon_5</span>
+<span class="mi">7</span><span class="p">:</span> <span class="n">activated_carbon_6</span>
+<span class="mi">8</span><span class="p">:</span> <span class="n">FeF3</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="o">-</span><span class="n">bipyridyl</span><span class="p">)</span>
+<span class="mi">9</span><span class="p">:</span> <span class="n">Zn_MOF</span>
+<span class="o">...</span>
+
+<span class="mi">41</span><span class="p">:</span> <span class="n">ITO_glass_noFilm</span>
+<span class="mi">42</span><span class="p">:</span> <span class="n">ITO_glass_1hrHeatUpTo250C_1hrhold250C_airdry</span>
+<span class="mi">43</span><span class="p">:</span> <span class="n">ITO_glass_1hrHeatUpTo450C_1hrhold450C_airdry</span>
+<span class="mi">44</span><span class="p">:</span> <span class="n">ITO_glass_30minHeatUpTo150C_1</span><span class="o">.</span><span class="mi">5</span><span class="n">hrhold150C_airdry</span>
+<span class="mi">45</span><span class="p">:</span> <span class="n">CeO2_film_calibrant</span>
+<span class="mi">46</span><span class="p">:</span> <span class="n">bkg_1mm_OD_capillary</span>
+<span class="mi">47</span><span class="p">:</span> <span class="n">bkg_0</span><span class="o">.</span><span class="mi">9</span><span class="n">mm_OD_capillary</span>
+<span class="mi">48</span><span class="p">:</span> <span class="n">bkg_0</span><span class="o">.</span><span class="mi">5</span><span class="n">mm_OD_capillary</span>
+<span class="mi">49</span><span class="p">:</span> <span class="n">bkg_film_on_substrate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="auto-masking">
+<span id="auto-mask"></span><h2>Auto-masking<a class="headerlink" href="#auto-masking" title="Permalink to this headline">¶</a></h2>
+<p>Masking can be a tedious process, requireing long hours judging which pixels
+are good and which need to be removed. The our automated masking software aims
+to alleviate this by applying a set of masks in sequence to return better
+quality data.</p>
+<p>Masks can be created/used in two ways. The default procedure is a mask is
+created for a low scattering sample (usually kapton). Then this mask is reused
+for each subsequent image taken with the same detector position. The second
+modality is that each image gets is own bespoke mask, potentially derived from
+the low scattering mask.</p>
+<div class="section" id="applied-masks">
+<h3>Applied masks<a class="headerlink" href="#applied-masks" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic" start="0">
+<li><dl class="first docutils">
+<dt>Any mask passed in to the software:</dt>
+<dd><p class="first last">If you have any preexisting masks, we will use those as a starting position
+to add upon.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Edge mask:</dt>
+<dd><p class="first last">A default of 30 pixels from the edge of the detector are masked out.
+These pixels are usually faulty as the detector edge has lower than
+expected intensity.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Lower threshold mask:</dt>
+<dd><p class="first last">A lower threshold mask, which removes all pixels who&#8217;s intensities are
+lower than a certain value is applied. The default theshold is 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Upper threshold mask:</dt>
+<dd><p class="first last">An upper threshold mask, which removes all pixels who&#8217;s intensities are
+higher than a certain value is applied. This mask is not applied in the
+default settings.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Beamstop holder mask:</dt>
+<dd><p class="first last">A beamstop holder mask, which removes pixels underneath a straight
+beamstop holder is applied. The beamstop holder is masked by finding the
+beamcenter and drawing a pencil like shape from the beamcenter to the edge
+of the detector. All the pixels within this polygon are masked. The default
+settings are to mask out 30 pixels on either side of the line connecting
+the beamcenter and the detector edge</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Binned outlier mask:</dt>
+<dd><p class="first last">Lastly a binned outlier mask is applied, removing pixels which are alpha
+standard deviations away from the mean intensity as a function of Q. This
+mask aims to remove many of the dead/hot pixels and streaks. The default
+alpha is 3 standard deviations.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="using-the-auto-masker">
+<h3>Using the auto-masker<a class="headerlink" href="#using-the-auto-masker" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>To use the auto-masker once, creating masks used for subsequent images,</dt>
+<dd>just run the command:</dd>
+</dl>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">run_mask_builder</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will take a shot and mask it. This mask will then be saved and loaded
+into subsequent experiment <cite>run_headers</cite> allowing them to be used for the next
+images.</p>
 <p>Let&#8217;s <a class="reference internal" href="usb_QuickAssess.html#usb-quickassess"><span class="std std-ref">take a quick look at our data</span></a></p>
+</div>
 </div>
 </div>
 
@@ -491,7 +682,7 @@ centralized <strong>NSLSL-II</strong> server.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.3',
+            VERSION:'0.5',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

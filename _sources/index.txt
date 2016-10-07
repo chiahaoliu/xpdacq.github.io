@@ -9,33 +9,51 @@ xpdAcq documentation
 Introduction
 ++++++++++++
 
-``xpdAcq`` is a Python package that helps data collection at XPD beamlime.
-It is built on top of and augments the NSLS-II data acquisition Python 
-package `bluesky <http://nsls-ii.github.io/bluesky/>`_ .  XPD may be operated
-directly by bluesky, or using xpdAcq.
+To post questions about anything XPD, including software, and to see archived answers, please join the `XPD-Users Google group 
+<https://groups.google.com/forum/#!forum/xpd-users;context-place=overview>`_
+
+``xpdAcq`` is a Python package that aids data collection at the XPD beamlime. It is built on top of and augments the NSLS-II data acquisition Python
+package `bluesky <http://nsls-ii.github.io/bluesky/>`_ .
+
+XPD may be operated directly by bluesky, or using xpdAcq.
 
 The goal of the ``xpdAcq`` package is to simplify your collection and analysis workflow during beamtime,
-so that you can focus more on science aspects. ``xpdAcq`` provides an interface for user who don't
-have extensive Python coding background. Every syntax started from psychological motivation,
-like the most important one behind running a "production" scan, ``prun``:
+so that you can focus more on scientific aspects of your experiment. Additionally, ``xpdAcq`` provides an interface 
+that needs less Python experience than the current native bluesky interface.
 
-.. code-block:: none
+We hope that you find it intuitive, like the most important function to run a
+"production" scan, ``prun``:
 
-  run this Sample with this ScanPlan
+.. code-block:: python
 
-To find more, please go to :ref:`xpdu`
+  prun(sample-info, scan-info) #run this Sample with this Scan-Plan
+
+To get started, please go to :ref:`quick_start`
+
+If you have suggestions for new features in xpdAcq, or want to report a bug or simply ask a question about
+the software, please post it as a new thread at `XPD-Users
+<https://groups.google.com/forum/#!forum/xpd-users;context-place=overview>`_
 
 What's new?
 +++++++++++
 
-current version : ``v0.3``
+current version : ``v0.5``
 """""""""""""""""""""""""""
 
-This is the first full, stable, release, of xpdAcq software.
-It offers functionality to acquire data at XPD but with very limited
-tools yet to analyze it.
-Future releases will focus more on analysis functionalities.
-``v0.3`` is still a limited functionality release in that it only supports three kinds of scans:
+This is a stable release of ``xpdAcq`` software.
+
+New features introduced to this version:
+
+  * flexibility of running customized ``bluesky`` plans while keeping ``xpdAcq`` dark collection logic.
+
+  * ability of importing metadata from a spreadsheet, open the door for data driven studies.
+
+  * data reduction tools:
+
+    * azimuthal integration using ``pyFAI`` as the back-end
+    * auto-masking based on statistics on pixel counts
+
+``v0.5`` supports three kinds of built-in scans:
 
 .. code-block:: none
 
@@ -43,11 +61,15 @@ Future releases will focus more on analysis functionalities.
   time-series (tseries)
   temperature-series scans (Tramp)
 
-Additional scan types will be added in future releases.
+Additional built-in scan types will be added in future releases.
 
-However, it does support:
- * automated dark subtraction
- * automated calibration capture.
+``v0.5`` supports following automated logics :
+
+  * :ref:`automated dark subtraction <auto_dark>`
+
+  * :ref:`automated calibration capture <auto_calib>`
+
+  * :ref:`automated mask per image <auto_mask>`
 
 This version is fully documented and extensively tested.
 
@@ -59,8 +81,8 @@ This version is fully documented and extensively tested.
    quickstart
 
 .. toctree::
-   :hidden:
    :maxdepth: 3
+   :hidden:
 
    xpdusers
 
@@ -68,10 +90,16 @@ This version is fully documented and extensively tested.
    :maxdepth: 3
    :hidden:
 
+   beamlinestaff
+
+.. toctree::
+   :hidden:
+   :maxdepth: 3
+
    troubleshooting
 
 .. toctree::
    :maxdepth: 3
    :hidden:
 
-   beamlinestaff
+   release_note

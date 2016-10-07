@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quick start &mdash; xpdAcq 0.3 documentation</title>
+  <title>Quick Start &mdash; xpdAcq 0.5 documentation</title>
   
 
   
@@ -30,8 +30,8 @@
   
 
   
-    <link rel="top" title="xpdAcq 0.3 documentation" href="index.html"/>
-        <link rel="next" title="XPD Users" href="xpdusers.html"/>
+    <link rel="top" title="xpdAcq 0.5 documentation" href="index.html"/>
+        <link rel="next" title="For XPD Users" href="xpdusers.html"/>
         <link rel="prev" title="xpdAcq documentation" href="index.html"/> 
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.3
+                0.5
               </div>
             
           
@@ -82,25 +82,53 @@
             
             
                 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick start</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#checklist">Checklist</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#collecting-data-quickstart">Collecting Data Quickstart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#remember">Remember!</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#abort">Abort!</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#check-your-data-collection-environment-is-correctly-set-up">Check your data collection environment is correctly set up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-that-your-data-analysis-environment-is-correctly-set-up">Check that your data analysis environment is correctly set up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-up-your-experiment">Set up your experiment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general">0. general</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quick-look">0.5 quick look</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calibration">1. calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-a-mask">2. set up a mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-sample-objects-to-use-later">3. set up <code class="docutils literal"><span class="pre">Sample</span></code> objects to use later</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-scanplan-objects-to-use-later">4. set up <code class="docutils literal"><span class="pre">ScanPlan</span></code> objects to use later</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#use-an-xpdacq-template">use an xpdAcq template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#write-your-own-scan-plan">write your own scan plan</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#list-objects-by-categories">5. list objects by categories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interrogate-metadata-in-objects">6. interrogate metadata in objects</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#run-your-experiment">Run your experiment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-scan-is-a-scanplan-executed-on-a-sample">1. A scan is a scanplan executed on a sample</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#background-scan">background scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#production-run">production run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#get-your-data">Get your data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#save-images-and-metadata-from-scans">1. Save images and metadata from scans</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#save-images-and-also-integrate-images-to-a-1d-patterns">2. Save images and also integrate images to a 1D patterns</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#user-scripts">User scripts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#code-samples">Code Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interrupt-your-scan">Interrupt your scan</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">For XPD Users</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">For Beamline Staff</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_note.html">Release Notes</a></li>
 </ul>
 
             
@@ -131,7 +159,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Quick start</li>
+    <li>Quick Start</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -146,232 +174,349 @@
            <div itemprop="articleBody">
             
   <div class="section" id="quick-start">
-<span id="qs"></span><h1>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="checklist">
-<h2>Checklist<a class="headerlink" href="#checklist" title="Permalink to this headline">¶</a></h2>
-<p>The instrument scientist (IS) should have set up your beamtime hardware and software
-for you.  Let&#8217;s check if it is the case.</p>
-<ol class="arabic simple">
-<li>Activate the XPD data acquisition environment:</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>In a terminal look to see if it is already activated.  If it is, you should see <code class="docutils literal"><span class="pre">(collection)</span></code> at the beginning of the line.</li>
-</ul>
-<div class="highlight-none"><div class="highlight"><pre><span></span>(collection)xf28id1@xf28id1-ws2:~$
+<span id="id1"></span><h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
+<p>This quick-start contains little explanation of how the <code class="docutils literal"><span class="pre">xpdAcq</span></code> software works.
+To understand this, please refer to the detailed documentation in <a class="reference internal" href="xpdusers.html#xpdu"><span class="std std-ref">For XPD Users</span></a></p>
+<p>Please use this page as a reminder of the workflow and to copy &amp; paste code snippets into your
+active <code class="docutils literal"><span class="pre">collection</span></code> and <code class="docutils literal"><span class="pre">analysis-dev</span></code> ipython environments (then hit return).</p>
+<p>Remember, to post questions about anything XPD, including software, and to see archived answers, at the <a class="reference external" href="https://groups.google.com/forum/#!forum/xpd-users;context-place=overview">XPD-Users Google group</a> .  If you are not already a member please request to join
+the community</p>
+<p>OK, let&#8217;s get started.</p>
+<div class="section" id="check-your-data-collection-environment-is-correctly-set-up">
+<h2>Check your data collection environment is correctly set up<a class="headerlink" href="#check-your-data-collection-environment-is-correctly-set-up" title="Permalink to this headline">¶</a></h2>
+<p>1. Make sure you are working in the correct environment. For data acquisition you should be
+in the <code class="docutils literal"><span class="pre">collection</span></code> ipython environment (look for <code class="docutils literal"><span class="pre">(collection)</span></code> at the beginning
+of the command prompt).  If you can&#8217;t find a terminal with <code class="docutils literal"><span class="pre">collection</span></code> running, then
+start it by opening a new terminal and typing</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">icollection</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li>If you don&#8217;t see it, type <code class="docutils literal"><span class="pre">icollection</span></code> at the command prompt then check again.</li>
-</ul>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>OK, you are in.  Make sure that that the instrument scientist has initiated your beamtime. type <code class="docutils literal"><span class="pre">bt.md</span></code> and hit return. You should see the beamtime (<code class="docutils literal"><span class="pre">bt</span></code>) metadata (<code class="docutils literal"><span class="pre">md</span></code>) that has been pre-stored by the IS, and it should contain things like the last name of the PI on the proposal and the SAF number for the beamtime.  If not, please seek out the IS to get your session initialized.</li>
-<li>Check that the wavelength has been set.  Does the correct x-ray wavelength appear in <code class="docutils literal"><span class="pre">bt.md</span></code> <code class="docutils literal"><span class="pre">['bt_wavelength']</span></code> field, or does it say <code class="docutils literal"><span class="pre">None</span></code>.  If the latter, you can still collect scans but automated data reduction may not work, so best to grab the IS again.</li>
-<li>Check that the Perkin Elmer detector is correctly set up.</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>Look at the Perkin Elmer screen on the CSS and make sure that <code class="docutils literal"><span class="pre">Acquire</span></code> mode has been enabled. If Acquire mode is enabled, it should show system information <code class="docutils literal"><span class="pre">Collecting</span></code> in yellow color. If it hasn&#8217;t been activated, please click &#8216;start&#8217; button.</li>
-</ul>
-<a class="reference internal image-reference" href="_images/cropped_pe1c_ioc.png"><img alt="_images/cropped_pe1c_ioc.png" class="align-center" src="_images/cropped_pe1c_ioc.png" style="width: 300px; height: 200px;" /></a>
-<ul class="simple">
-<li>Type <code class="docutils literal"><span class="pre">glbl.area_det</span></code> and return.  It should return:</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">glbl</span><span class="o">.</span><span class="n">area_det</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">PerkinElmerContinuous</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;XF:28IDC-ES:1{Det:PE1}&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;pe1&#39;</span><span class="p">,</span> <span class="n">read_attrs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tiff&#39;</span><span class="p">,</span> <span class="s1">&#39;stats1&#39;</span><span class="p">],</span> <span class="n">configuration_attrs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;images_per_set&#39;</span><span class="p">,</span> <span class="s1">&#39;number_of_sets&#39;</span><span class="p">],</span> <span class="n">monitor_attrs</span><span class="o">=</span><span class="p">[])</span>
+<p>2. Make sure that the software has been properly configured for your beamtime. In
+your <code class="docutils literal"><span class="pre">collection</span></code> environment, type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bt</span><span class="o">.</span><span class="n">md</span>
 </pre></div>
 </div>
-</div></blockquote>
-</div></blockquote>
-<p>There are other setups that you can do to make your experiment run smoothly.  For example, by carrying out a calibration before you start collecting it greatly facilitate data reduction later.  Please talk to the IS if you don&#8217;t know how to do this.</p>
-<p>But you seem to be set up ok, so let&#8217;s go and collect some data.</p>
+<p>This should return a list of metadata about your experiment, such as PI last name.  If not,
+or if the metadata is wrong, please get your beamtime environment properly
+set up by the instrument scientist (IS) before proceeding.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Only create and work on files within the <code class="docutils literal"><span class="pre">xpdUser</span></code> directory tree.  At the end of your
+experiment, everything written in there will be permanently archived in a remote store
+and then deleted from the xpd computer leaving
+a clean environment for the next user.  You can, of course, take anything home from within <code class="docutils literal"><span class="pre">xpdUser</span></code>,
+or if you forgot something have the IS fetch it for you from the archive later.</p>
 </div>
-<div class="section" id="collecting-data-quickstart">
-<h2>Collecting Data Quickstart<a class="headerlink" href="#collecting-data-quickstart" title="Permalink to this headline">¶</a></h2>
-<p>The basic way to collect data is to carry out a &#8220;scan&#8221;, by typing the kind of scan and giving it as arguments a <code class="docutils literal"><span class="pre">sample-object</span></code> and a <code class="docutils literal"><span class="pre">scanplan-object</span></code>.  These objects just contain information that will either be used to run the scan, and/or just saved as metadata with the data, allowing you to find the data later and process it. You will make your own objects later, but for now you can do a quick scan just to collect some data with some predefined objects.</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>Type <code class="docutils literal"><span class="pre">bt.list()</span></code> and return.  You should see a list of already defined objects and their index, or the number they sit in the list.</li>
-<li>To run a scan you type <code class="docutils literal"><span class="pre">&lt;scan-name&gt;(&lt;sample-object&gt;,&lt;scanplan-object&gt;)</span></code>:</li>
-</ol>
-<blockquote>
-<div><p>Replace those words in angle brackets with pointers to real objects, eg.:</p>
-<ol class="arabic simple">
-<li><code class="docutils literal"><span class="pre">prun(bt.get(2),bt.get(5))</span></code> will do a scan on the dummy sample (<code class="docutils literal"><span class="pre">'sa'</span></code>) called <code class="docutils literal"><span class="pre">'l-user'</span></code>&#8211;(for lazy user!) which is in position (index) <code class="docutils literal"><span class="pre">2</span></code> in the <code class="docutils literal"><span class="pre">bt.list()</span></code> list&#8211;for 1 second (the name of that object in the list at position <code class="docutils literal"><span class="pre">5</span></code> is <code class="docutils literal"><span class="pre">'ct1s'</span></code> which stands for &#8220;count 1 second&#8221;).</li>
-<li><code class="docutils literal"><span class="pre">prun(bt.get(2),bt.get(7))</span></code> will do a scan for 10 s on the same sample (to see that, look at the list produced by typing <code class="docutils literal"><span class="pre">bt.list()</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">setupscan(bt.get(2),bt.get(7))</span></code> will do a setupscan on that sample for 10 seconds.  A setupscan is like a prun (&#8220;production run&#8221;) except it is tagged in metadata as a setupscan so you can separate later which were production runs and which were setup-scans.</li>
-</ol>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Pro</span><span class="o">-</span><span class="n">Tip</span><span class="p">:</span>
-<span class="sd">&#39;&#39;&#39;``prun`` and all the scans support different ways of assigning acquire objects.</span>
-<span class="sd">You can either get the objects with the ``bt.get()`` methods as above, or</span>
-<span class="sd">to save typing, the scan functions allow you to specify just the object index,</span>
-<span class="sd">or (unique) name of the acquire object. The following expressions are all</span>
-<span class="sd">equivalent:&#39;&#39;&#39;</span>
-
-<span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">prun</span><span class="p">(</span><span class="s1">&#39;l-user&#39;</span><span class="p">,</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># where &#39;l-user&#39; is the name of bt Sample object at index 2</span>
-<span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;ct_1&#39;</span><span class="p">)</span>    <span class="c1"># where &#39;ct_1&#39; is the name of bt ScanPlan object at index 5</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">prun</span><span class="p">(</span><span class="s1">&#39;l-user&#39;</span><span class="p">,</span><span class="s1">&#39;ct_1&#39;</span><span class="p">)</span>
+</div>
+<div class="section" id="check-that-your-data-analysis-environment-is-correctly-set-up">
+<h2>Check that your data analysis environment is correctly set up<a class="headerlink" href="#check-that-your-data-analysis-environment-is-correctly-set-up" title="Permalink to this headline">¶</a></h2>
+<p>1. Analysis is done in a separate (but very similar) environment to acquisition.
+For data analysis you should be
+in the <code class="docutils literal"><span class="pre">analysis-dev</span></code> ipython environment (look for <code class="docutils literal"><span class="pre">(analysis-dev)</span></code> at the beginning
+of the command prompt).  Ideally, this should be running on a different computer than the
+acquisition, but looking at a shared hard-drive so that it can find files.</p>
+<p>If you can&#8217;t find a terminal with <code class="docutils literal"><span class="pre">(analysis-dev)</span></code> running, then
+start it by opening a new terminal and typing</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ianalysis</span>
 </pre></div>
 </div>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li>to see the data you have to extract it from the NSLS-ii database.</li>
-</ol>
-<blockquote>
-<div><ol class="arabic simple">
-<li>Type <code class="docutils literal"><span class="pre">save_last_tiff()</span></code> to get the most recent scan you ran.  A dark-subtracted tiff file will appear in the directory <code class="docutils literal"><span class="pre">~/xpdUser/tiff_base</span></code> with prefix <code class="docutils literal"><span class="pre">sub_</span></code> in file name.</li>
-<li><code class="docutils literal"><span class="pre">save_tiff(db[-2])</span></code> gets you the second to last scan that was collected, <code class="docutils literal"><span class="pre">save_tiff(db[-10:])</span></code> gets you the last 10 scans, (the syntax is Pythonic but it means &#8220;the items in the list from 10 ago up to the end of the list, i.e., now&#8221;.  You can do all kinds of slicing and dicing, for example <code class="docutils literal"><span class="pre">db[-10:-8,-2]</span></code> would return the scans that were tenth, ninth and eighth ago, and also the last but one.) and so on.</li>
-<li>The tiff file appears in the directory <code class="docutils literal"><span class="pre">~/xpdUser/tiff_base</span></code> with a reasonably recognizable automatically generated name and you can do pretty much what you like with it. For example, copy it to an external drive.  However, there are handy tools on the XPD computer for analyzing your data.  As long as you save all your work in the <code class="docutils literal"><span class="pre">xpdUser</span></code> directory tree (make as many directories as you like under there) your work will be archived in a remote location at the end of your beamtime, and then completely deleted from the local XPD computer so that the next user has their own fresh environment to work in, but your work is safe.</li>
-<li>To use data analysis tools on the XPD computer, <strong>in a new terminal window</strong></li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>Type <code class="docutils literal"><span class="pre">getxgui</span></code></li>
-<li>proceed to <a class="reference internal" href="xPDFsuite_manual.html#xpdfsuite-manual"><span class="std std-ref">Quick guide of calibration with xPDFsuite</span></a></li>
-</ul>
-</div></blockquote>
-</div></blockquote>
-</div></blockquote>
-</div>
-<div class="section" id="remember">
-<h2>Remember!<a class="headerlink" href="#remember" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ol class="arabic simple">
-<li><code class="docutils literal"><span class="pre">bt.list()</span></code> to see what objects are available</li>
-<li><code class="docutils literal"><span class="pre">setupscan(&lt;index-of-Sample-object&gt;,&lt;index-of-ScanPlan-object&gt;)</span></code>  to run setup scans until you are ready for production runs, then</li>
-<li><code class="docutils literal"><span class="pre">prun(&lt;index-of-Sample-object&gt;),&lt;index-of-ScanPlan-object&gt;)</span></code></li>
-<li><code class="docutils literal"><span class="pre">save_tiff(db[list_of_scans])</span></code> to get the data back as a tiff file</li>
-<li><code class="docutils literal"><span class="pre">xpdfsuite</span></code> (xPDFsuite) to visualize it, integrate it to 1D and process to get a diffraction pattern or PDF.</li>
-</ol>
-</div></blockquote>
-</div>
-<div class="section" id="next-steps">
-<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
-<p>So you have collected some data, and looked at it.  It is probably time to set up some more extensive data-objects so that you will be able to search easily for your data later and do more sophisticated scans.
-Please take the time to read the full documentation from <strong>XPD user</strong> section to get the most out of your data.  But for now, here is a quick summary.</p>
-<dl class="docutils">
-<dt>You should try and set up some of your own scanplan objects:</dt>
-<dd><ul class="first last">
-<li><p class="first">let&#8217;s say you want to do a count scan for 1.5 minutes.</p>
-<ol class="arabic simple">
-<li>type <code class="docutils literal"><span class="pre">bt.list('sp')</span></code>  to see the current list of scanplan objects</li>
-<li>make a new <code class="docutils literal"><span class="pre">scanPlan</span></code> object by typing</li>
-</ol>
-<blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct_90&#39;</span><span class="p">)</span>
+<p>2. Make sure that the software has been properly configured for your beamtime. In
+your <code class="docutils literal"><span class="pre">analysis</span></code> environment, type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">an</span><span class="o">.</span><span class="n">md</span>
 </pre></div>
 </div>
-<p>This will create a <code class="docutils literal"><span class="pre">'ct'</span></code>, or count-type, scan with an exposure of 90 s or 1.5 minutes.
-To find more details on creating new <code class="docutils literal"><span class="pre">ScanPlan</span></code> objects, please see <a class="reference internal" href="usb_Scan.html#usb-scan"><span class="std std-ref">ScanPlan objects</span></a></p>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li>type <code class="docutils literal"><span class="pre">bt.list('sp')</span></code> again.  You should see your new <code class="docutils literal"><span class="pre">ScanPlan</span></code> object at the end of the list. You can now use your object to collect data by passing it to a <code class="docutils literal"><span class="pre">scan</span></code> function.</li>
-<li>You can run it using <code class="docutils literal"><span class="pre">prun(&lt;sample-object&gt;,&lt;index-of-your-new-ScanPlan-Object&gt;)</span></code>  If your new object is at position 11 in the list, and position 2 holds a <code class="docutils literal"><span class="pre">Sample</span></code> object (it does by default) then <code class="docutils literal"><span class="pre">prun(2,11)</span></code>, or probably better, <code class="docutils literal"><span class="pre">setupscan(2,11)</span></code> since we are still messing around here.</li>
-</ol>
-</li>
-</ul>
-</dd>
-<dt>Types of scan available.</dt>
-<dd><p class="first">They all take as arguments <code class="docutils literal"><span class="pre">(&lt;sample-object&gt;,</span> <span class="pre">&lt;scanplan-object&gt;)</span></code> in that order:</p>
-<ol class="arabic simple">
-<li><code class="docutils literal"><span class="pre">prun()</span></code> - the one you will use the most.  It stands for &#8220;production run&#8221;</li>
-<li><code class="docutils literal"><span class="pre">setupscan()</span></code> - it is just the same as <code class="docutils literal"><span class="pre">prun()</span></code> but the data are tagged as being test/setup data, helping you to keep track of what is what later.</li>
-<li><code class="docutils literal"><span class="pre">dryrun()</span></code> - it doesn&#8217;t execute anything, only prints out metadata, so you can test out your scan to see what it will do.</li>
-<li><code class="docutils literal"><span class="pre">background()</span></code> - Like <code class="docutils literal"><span class="pre">prun()</span></code> but it tags the dataset as a background scan, so later you can search for all your background scans!</li>
-</ol>
-<p>these ones you will use less often, if at all</p>
-<ol class="last arabic simple" start="5">
-<li><code class="docutils literal"><span class="pre">calibration()</span></code> - the same as <code class="docutils literal"><span class="pre">prun()</span></code> , but the data are tagged as calibration data.</li>
-<li><code class="docutils literal"><span class="pre">dark()</span></code> - you shouldn&#8217;t have to use this as dark scans (shutter closed) and dark subtractions of your data are done automatically, but it is here in case you do it is there.  It ensure the shutter is closed and tags the scan as being a dark.</li>
-</ol>
-</dd>
-<dt>Types of ScanPlan objects available:</dt>
-<dd><ul class="first simple">
-<li><code class="docutils literal"><span class="pre">'ct'</span></code> just exposes the the detector for a number of seconds. e.g.,  <code class="docutils literal"><span class="pre">ScanPlan('ct17.5s','ct',{'exposure':17.5})</span></code>, or <code class="docutils literal"><span class="pre">ScanPlan('ct_17.5')</span></code> for short, is a scan plan that just exposes the detector for 17.5 seconds.</li>
-<li><code class="docutils literal"><span class="pre">'tseries'</span></code> executes a series of <code class="docutils literal"><span class="pre">'num'</span></code> exposures, each of exposure time <code class="docutils literal"><span class="pre">'exposure'</span></code> seconds with  a delay of <code class="docutils literal"><span class="pre">'delay'</span></code> seconds between them.  e.g., <code class="docutils literal"><span class="pre">ScanPlan('tseries_1_59_50','tseries',{'num':50,'exposure':1,'delay':59})</span></code>, or <code class="docutils literal"><span class="pre">ScanPlan('tseries_1_59_50')</span></code> for short, will measure 50 scans of 1 second with a delay of 59 seconds in between each of them.</li>
-<li><code class="docutils literal"><span class="pre">'Tramp'</span></code> executes a temperature ramp from <code class="docutils literal"><span class="pre">'startingT'</span></code> to <code class="docutils literal"><span class="pre">'endingT'</span></code> in temperature steps of <code class="docutils literal"><span class="pre">'Tstep'</span></code> with exposure time of <code class="docutils literal"><span class="pre">'exposure'</span></code>.  e.g., <code class="docutils literal"><span class="pre">ScanPlan('Tramp_1_200_500_5','Tramp',{'startingT':200,</span> <span class="pre">'endingT':500,</span> <span class="pre">'Tstep':5,</span> <span class="pre">'exposure':1})</span></code>, or <code class="docutils literal"><span class="pre">ScanPlan('Tramp_1_200_500_5')</span></code> for short, will automatically change the temperature, starting at 200 K and ending at 500 K, measuring a scan of 1 s at every 5 K step. The temperature controller will hold at each temperature until the temperature stabilizes before starting the measurement.</li>
-</ul>
-<p class="last">in the shortened &#8220;auto-naming&#8221; syntax, the logic is that the first number is always the exposure time.  Later numbers depend on the type of the <code class="docutils literal"><span class="pre">ScanPlan</span></code> type.  Remember, you can always give your object to <code class="docutils literal"><span class="pre">dryrun()</span></code> and it will tell you what Frankenstein you created without executing anything.</p>
-</dd>
-<dt>Types of Sample objects available:</dt>
-<dd><ul class="first last simple">
-<li><code class="docutils literal"><span class="pre">Sample</span></code> - there is only one type of Sample &#8220;object&#8221;, but you will create as many copies of it as you have samples, each with a unique sample name that helps you remember what the sample is.  It is a container for all the metadata about your sample, and moving forward, the metadata may be used for automated data reduction and modeling.</li>
-</ul>
-</dd>
-</dl>
-<p>Here is a summary table:</p>
+<p>This should return a list of metadata about your experiment, such as PI last name.  If not
+please get your analysis environment set up by the instrument scientist before proceeding.</p>
+<p>3. Make sure the visualization software is running. We will use <code class="docutils literal"><span class="pre">SrXgui</span></code> and <code class="docutils literal"><span class="pre">XPDsuite</span></code> for visualizing data.
+Check that they are running by finding windows that looks like:</p>
+<p><strong>XPDsuite</strong></p>
+<a class="reference internal image-reference" href="_images/XPDsuite.png"><img alt="_images/XPDsuite.png" class="align-center" src="_images/XPDsuite.png" style="width: 400px; height: 300px;" /></a>
+<p><strong>SrXgui</strong></p>
+<a class="reference internal image-reference" href="_images/srxgui.png"><img alt="_images/srxgui.png" class="align-center" src="_images/srxgui.png" style="width: 400px; height: 300px;" /></a>
+<p>If you can&#8217;t find them, contact your IS to get them running correctly.</p>
+</div>
+<div class="section" id="set-up-your-experiment">
+<h2>Set up your experiment<a class="headerlink" href="#set-up-your-experiment" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="general">
+<h3>0. general<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
+<p>If you want to query any <code class="docutils literal"><span class="pre">xpdAcq</span></code> function, type the function name with a <code class="docutils literal"><span class="pre">?</span></code> at the end and hit
+return.  Documentation for what paramters the function takes, and any default values, and what
+the function returns will be printed.  For example, in your <code class="docutils literal"><span class="pre">collection</span></code> terminal type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>run_calibration?
+</pre></div>
+</div>
+<p>If you can&#8217;t remember what functions are available, but can remember the first letter or first few
+letters, type those letters and hit <code class="docutils literal"><span class="pre">tab</span></code> to see a list of all available functions that begin with
+those letters. This will include Python imported and built-in functions as well as xpdAcq ones.</p>
+</div>
+<div class="section" id="quick-look">
+<h3>0.5 quick look<a class="headerlink" href="#quick-look" title="Permalink to this headline">¶</a></h3>
+<p>Place any sample, but maybe the Ni calibrant, at the sample position.  Let&#8217;s make sure we are getting a nice
+Ni diffraction pattern. In your <code class="docutils literal"><span class="pre">collection</span></code> terminal type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">prun</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># will run an exposure of 60 seconds on your setup sample</span>
+<span class="n">save_last_tiff</span><span class="p">()</span> <span class="c1"># will save the image in the tiff_base/Setup directory</span>
+</pre></div>
+</div>
+<p>Navigate to the <code class="docutils literal"><span class="pre">SrXgui</span></code> image viewer. Click on the folder icon and navigate to
+the <code class="docutils literal"><span class="pre">tiff_base/Setup</span></code> folder and look for a list of one or more tiff files.
+Double-click on the most recent one to view the one you just collected.</p>
+</div>
+<div class="section" id="calibration">
+<h3>1. calibration<a class="headerlink" href="#calibration" title="Permalink to this headline">¶</a></h3>
+<p>run this first, then run it again each time the geometry of your measurement changes.</p>
+<p>Place the Ni calibrant at the sample position, close the hutch and open the shutter then type in your <code class="docutils literal"><span class="pre">collection</span></code> terminal:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">run_calibration</span><span class="p">()</span> <span class="c1"># default values (calibrant_file=&#39;Ni.D&#39; and exposure=60) don&#39;t need to be typed</span>
+</pre></div>
+</div>
+<p>and follow the instructions in <a class="reference internal" href="usb_Running.html#calib-manual"><span class="std std-ref">Quick guide of calibration steps with pyFAI</span></a>.</p>
+<p>The resulting calibration parameters will be saved in the header of every scan you run until you
+run <code class="docutils literal"><span class="pre">run_calibration()</span></code> again.</p>
+</div>
+<div class="section" id="set-up-a-mask">
+<h3>2. set up a mask<a class="headerlink" href="#set-up-a-mask" title="Permalink to this headline">¶</a></h3>
+<p>The standard mask removes problematic pixels at the edge of the detector, shadows
+the beamstop, and uses an auto-masking scheme to get rid of outlier pixels.
+The automasking has been extensively tested on a low-scattering sample so our mask
+building function has been designed to run on data from an empty kapton tube.
+Load an empty kapton tube on the diffractometer, then in your <code class="docutils literal"><span class="pre">collection</span></code> terminal type</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">run_mask_builder</span><span class="p">()</span> <span class="c1"># be patient, the process takes 10 minutes!</span>
+</pre></div>
+</div>
+<p>A mask will be generated based on the image collected from this sample. This mask
+will be saved in the header of all future scans until you run <code class="docutils literal"><span class="pre">run_mask_builder()</span></code>
+again.  You will always be able to extract your data unmasked, or apply a different mask,
+at analysis time, but if this mask works well, it will save you a lot of time later if
+you do this step now.</p>
+<p>You can look at the 2D image with and without the mask in SrXgui.
+The most recent mask file will be placed in <code class="docutils literal"><span class="pre">config_base</span></code> directory with file
+name as <code class="docutils literal"><span class="pre">xpdacq_mask.py</span></code>. You can load in with by clicking the &#8216;folder&#8217; icon in SrXgui.</p>
+<a class="reference internal image-reference" href="_images/select_mask_00.png"><img alt="_images/select_mask_00.png" class="align-center" src="_images/select_mask_00.png" style="width: 400px; height: 200px;" /></a>
+<a class="reference internal image-reference" href="_images/select_mask_01.png"><img alt="_images/select_mask_01.png" class="align-center" src="_images/select_mask_01.png" style="width: 400px; height: 300px;" /></a>
+<p>For more info: <a class="reference internal" href="usb_Running.html#auto-mask"><span class="std std-ref">Auto-masking</span></a>.</p>
+</div>
+<div class="section" id="set-up-sample-objects-to-use-later">
+<h3>3. set up <code class="docutils literal"><span class="pre">Sample</span></code> objects to use later<a class="headerlink" href="#set-up-sample-objects-to-use-later" title="Permalink to this headline">¶</a></h3>
+<p>Your sample information should be loaded in an excel spreadsheet, with a well
+defined format (a template file may be found <a class="reference external" href="https://groups.google.com/forum/?utm_medium=email&amp;utm_source=footer#!topic/xpd-users/_6NSRWg_-l0">here</a>
+). If the IS didn&#8217;t already
+do it, save your sample xls file to the <code class="docutils literal"><span class="pre">xpdUser/import</span></code> directory using the name
+<code class="docutils literal"><span class="pre">&lt;saf_number&gt;_sample.xlsx</span></code>, where you replace <code class="docutils literal"><span class="pre">&lt;saf_number&gt;</span></code> with the number
+of the safety approval form associated with your experiment.  If you are not sure
+what your <code class="docutils literal"><span class="pre">saf_number</span></code> is you can get it by typing following command in your <code class="docutils literal"><span class="pre">collection</span></code> terminal:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">bt</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+<span class="p">{</span><span class="s1">&#39;bt_experimenters&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tim&#39;</span><span class="p">,</span> <span class="s1">&#39;Liu&#39;</span><span class="p">],</span>
+ <span class="s1">&#39;bt_piLast&#39;</span><span class="p">:</span> <span class="s1">&#39;Billinge&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;bt_safN&#39;</span><span class="p">:</span> <span class="s1">&#39;300336&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;bt_uid&#39;</span><span class="p">:</span> <span class="s1">&#39;f4ewjf9c&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;bt_wavelength&#39;</span><span class="p">:</span> <span class="mf">0.1832</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>where the <code class="docutils literal"><span class="pre">saf_number</span></code> in this case is <code class="docutils literal"><span class="pre">300336</span></code>.</p>
+<p>Next type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">import_sample_info</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which loads the sample information and makes all the sample objects available in the current beamtime.</p>
+<p>Updates and additions may be made by editing existing sample information, and by adding more samples, in the excel file and rerunning <code class="docutils literal"><span class="pre">import_sample_info()</span></code>
+at any time during the experiment.  The <code class="docutils literal"><span class="pre">Sample</span></code> object list will be updated based on contents of this new sheet so
+we recommend to just edit existing or add new samples to the sheet but not to delete any.</p>
+<p>For more info <a class="reference internal" href="usb_Running.html#import-sample"><span class="std std-ref">Sample metadata imported from spreadsheet</span></a>.</p>
+</div>
+<div class="section" id="set-up-scanplan-objects-to-use-later">
+<h3>4. set up <code class="docutils literal"><span class="pre">ScanPlan</span></code> objects to use later<a class="headerlink" href="#set-up-scanplan-objects-to-use-later" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="use-an-xpdacq-template">
+<h4>use an xpdAcq template<a class="headerlink" href="#use-an-xpdacq-template" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">xpdAcq</span></code> has templates for three common scans (more will follow, please request yours at <a class="reference external" href="https://groups.google.com/forum/#!forum/xpd-users;context-place=overview">xpd-users Google group!</a> ): a
+simple count, a series of counts, and a temperature scan.  You can create <code class="docutils literal"><span class="pre">ScanPlans</span></code> now to use later, or you can create
+them when you need them (and reuse them after that).  Examples of what to type to create different example <code class="docutils literal"><span class="pre">ScanPlans</span></code> are shown
+in the table below.  Adapt these as you need to by changing the numbers in the arguments.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="8%" />
-<col width="69%" />
-<col width="24%" />
+<col width="32%" />
+<col width="68%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Scan Type</th>
-<th class="head">Syntax</th>
-<th class="head">Short Form</th>
+<tr class="row-odd"><th class="head">command</th>
+<th class="head">&nbsp;</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>overview</td>
-<td><code class="docutils literal"><span class="pre">ScanPlan('&lt;name&gt;','&lt;scan-type&gt;',{&lt;dictionary-of-scan-attributes&gt;})</span></code></td>
-<td><code class="docutils literal"><span class="pre">ScanPlan('&lt;name-in-std-form&gt;')</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ScanPlan(bt,</span> <span class="pre">ct,</span> <span class="pre">5)</span></code></td>
+<td>a count scan for 5s</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ct</span></code></td>
-<td><code class="docutils literal"><span class="pre">ScanPlan('ct_17.5','ct',{'exposure':17.5})</span></code></td>
-<td><code class="docutils literal"><span class="pre">ScanPlan('ct_17.5')</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ScanPlan(bt,</span> <span class="pre">tseries,</span> <span class="pre">5,</span> <span class="pre">50,</span> <span class="pre">15)</span></code></td>
+<td>time series with 5s count time, 50s delay and 15 repeats</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">tseries</span></code></td>
-<td><code class="docutils literal"><span class="pre">ScanPlan('tseries_1_59_50','tseries',{'num':50,'exposure':1,'delay':59})</span></code></td>
-<td><code class="docutils literal"><span class="pre">ScanPlan('tseries_1_59_50')</span></code></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Tramp</span></code></td>
-<td><code class="docutils literal"><span class="pre">ScanPlan('Tramp_1_200_500_5','Tramp',{'startingT':200,</span> <span class="pre">'endingT':500,</span> <span class="pre">'Tstep':5,</span> <span class="pre">'exposure':1})</span></code></td>
-<td><code class="docutils literal"><span class="pre">ScanPlan('Tramp_1_200_500_5')</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ScanPlan(bt,</span> <span class="pre">Tramp,</span> <span class="pre">5,</span> <span class="pre">300,</span> <span class="pre">200,</span> <span class="pre">5)</span></code></td>
+<td>temperature series with 5s count time, starting from 300k to 200k with 5k per step</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="abort">
-<h2>Abort!<a class="headerlink" href="#abort" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="write-your-own-scan-plan">
+<h4>write your own scan plan<a class="headerlink" href="#write-your-own-scan-plan" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">xpdAcq</span></code> also consumes any scan plan from <code class="docutils literal"><span class="pre">bluesky</span></code>. We will show a brief example in next paragraph
+but it is for illustration. you <em>do not</em> have to follow.</p>
+<p>A scan that drives a <code class="docutils literal"><span class="pre">motor</span></code> through a specific list of points while collecting
+an image at each point from the detector <code class="docutils literal"><span class="pre">area_detector</span></code>, which uses a bluesky
+predefined plan, <code class="docutils literal"><span class="pre">list_scan</span></code>, can be set up as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bluesky.plans</span> <span class="kn">import</span> <span class="n">list_scan</span>
+
+<span class="n">glbl</span><span class="o">.</span><span class="n">area_det</span><span class="o">.</span><span class="n">images_per_set</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="mi">600</span><span class="p">)</span>  <span class="c1"># set detector to collect 600 frames, so 60s exposure if continuous acquisition with 0.1s framerate</span>
+<span class="n">myplan</span> <span class="o">=</span> <span class="n">list_scan</span><span class="p">([</span><span class="n">glbl</span><span class="o">.</span><span class="n">area_det</span><span class="p">],</span> <span class="n">motor</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span> <span class="c1"># drives motor to postions 1,3,5,7,9 and fires area_detector at each position</span>
+<span class="n">myplan</span> <span class="o">=</span> <span class="n">subs_wrapper</span><span class="p">(</span><span class="n">myplan</span><span class="p">,</span> <span class="n">LiveTable</span><span class="p">([</span><span class="n">glbl</span><span class="o">.</span><span class="n">area_det</span><span class="p">]))</span> <span class="c1"># set up the scan so LiveTable will give updates on how the scan is progressing</span>
+</pre></div>
+</div>
+<p>run as below:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">prun</span><span class="p">(</span><span class="mi">56</span><span class="p">,</span> <span class="n">myplan</span><span class="p">)</span> <span class="c1"># run the myplan ScanPlan on sample-object at position 56 in the sample-object list.</span>
+</pre></div>
+</div>
+<p>You may also write your own bluesky plans and run them similar to the above.
+There is a somewhat steep learning curve, but you should be able to get help
+setting these up from your local contact.
+For more details about how to write a <code class="docutils literal"><span class="pre">bluesky</span></code> scan plan,
+please see <a class="reference external" href="http://nsls-ii.github.io/bluesky/plans.html">here</a>.</p>
+</div>
+</div>
+<div class="section" id="list-objects-by-categories">
+<h3>5. list objects by categories<a class="headerlink" href="#list-objects-by-categories" title="Permalink to this headline">¶</a></h3>
+<p>To list out currently available <code class="docutils literal"><span class="pre">Sample</span></code> and <code class="docutils literal"><span class="pre">ScanPlan</span></code> objects you can do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ow">in</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+</pre></div>
+</div>
+<p>and you should similar output as following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ScanPlans</span><span class="p">:</span>
+<span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;ct_5&#39;</span>
+<span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Tramp_5_300_200_5&#39;</span>
+<span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;tseries_5_50_15&#39;</span>
+
+<span class="n">Samples</span><span class="p">:</span>
+<span class="mi">0</span><span class="p">:</span> <span class="n">Ni</span>
+<span class="mi">1</span><span class="p">:</span> <span class="n">TiO2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="interrogate-metadata-in-objects">
+<h3>6. interrogate metadata in objects<a class="headerlink" href="#interrogate-metadata-in-objects" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bt</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">md</span>        <span class="c1"># returns metadata for item 0 in the sample list, i.e., the dummy ``setup`` sample</span>
+<span class="n">bt</span><span class="o">.</span><span class="n">scanplans</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">md</span>      <span class="c1"># returns metadata for item 5 in the scanplans list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="run-your-experiment">
+<h2>Run your experiment<a class="headerlink" href="#run-your-experiment" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-scan-is-a-scanplan-executed-on-a-sample">
+<h3>1. A scan is a scanplan executed on a sample<a class="headerlink" href="#a-scan-is-a-scanplan-executed-on-a-sample" title="Permalink to this headline">¶</a></h3>
+<p>The main philosophy of <code class="docutils literal"><span class="pre">xpdAcq</span></code> is : <strong>on this sample run this scanplan</strong> which
+is typed as <code class="docutils literal"><span class="pre">prun(&lt;Sample.object&gt;,&lt;ScanPlan-object&gt;)</span></code></p>
+<div class="section" id="background-scan">
+<h4>background scan<a class="headerlink" href="#background-scan" title="Permalink to this headline">¶</a></h4>
+<p>It is recommended to run a background scan before your sample so it is available for
+the automated data reduction steps.  It also allows you to see problems with the experimental
+setup, for example, crystalline peaks due to the beam hitting a shutter.</p>
 <blockquote>
-<div><p>Oops, you requested a scan with the wrong <code class="docutils literal"><span class="pre">Sample</span></code>, or <code class="docutils literal"><span class="pre">ScanPlan</span></code> object, or your <code class="docutils literal"><span class="pre">ScanPlan</span></code> object is not doing what you expected!!!!!</p>
-<blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CTL</span><span class="o">-</span><span class="n">C</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">CTL</span><span class="o">-</span><span class="n">C</span>
+<div><ol class="arabic simple">
+<li>Load the background sample (e.g., empty kapton tube) on the instrument</li>
+<li>In your <code class="docutils literal"><span class="pre">collection</span></code> terminal type</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bt</span><span class="o">.</span><span class="n">list_bkg</span><span class="p">()</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p>will interrupt your scan and allow you to choose whether to abort it, or resume it. Please follow the instruction on the screen.</p>
-<p>If command prompt is handed back, you can control your run engine by following ways:</p>
-<p>To resume,</p>
+<p>to list your sample objects tagged as backgrounds (that was done originally in your excel spreadsheet).</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">xpdRE</span><span class="o">.</span><span class="n">resume</span><span class="p">()</span>
+<div><ol class="arabic simple" start="3">
+<li>run prun (see below) on the background sample with a <code class="docutils literal"><span class="pre">ct</span></code> ScanPlan object of the desired exposure</li>
+</ol>
+</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># IN ``collection`` terminal</span>
+<span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">bt</span><span class="o">.</span><span class="n">scanplan</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="c1"># referencing objects explicitly...or...</span>
+<span class="n">prun</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>                          <span class="c1"># inexplicit: give reference to ``Sample`` and ``ScanPlan``</span>
+                                   <span class="c1"># index from the ``bt`` list</span>
 </pre></div>
 </div>
-</div></blockquote>
-<p>To abort:</p>
+<p>Please see <a class="reference internal" href="usb_Running.html#background-obj"><span class="std std-ref">Sample objects going to be generated</span></a> for more information.</p>
+<p>How long should you run your background scan for? See discussion
+<a class="reference external" href="https://groups.google.com/forum/#!topic/xpd-users/RvGa4pmDbqY">here</a>
+but for kapton we often do it for 15-30 minutes. Also note that the collecting
+time highly depends on your sample.</p>
+</div>
+<div class="section" id="production-run">
+<h4>production run<a class="headerlink" href="#production-run" title="Permalink to this headline">¶</a></h4>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">xpdRE</span><span class="o">.</span><span class="n">abort</span><span class="p">()</span>
+<div><ol class="arabic simple">
+<li>Load your sample</li>
+<li>List your sample objects to find the right one</li>
+<li>type prun with the desired sample object and ScanPlan (see below)</li>
+</ol>
+</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># In ``collection`` terminal</span>
+<span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="n">bt</span><span class="o">.</span><span class="n">scanplan</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># referencing objects explicitly</span>
+<span class="n">prun</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>                          <span class="c1"># inexplicit: give reference to ``Sample`` and ``ScanPlan``</span>
+                                   <span class="c1"># index from the ``bt`` list</span>
 </pre></div>
 </div>
-</div></blockquote>
-<p>If you abort it the system is reset to where it was before the scan started.</p>
-</div></blockquote>
-<dl class="docutils">
-<dt>Experiment and sample objects:</dt>
-<dd><p class="first">1. It is time well spent to set up all your experiment and sample objects accurately.
-To set up a sample you have to give it an experiment object, so <code class="docutils literal"><span class="pre">Sample('Li</span> <span class="pre">battery</span> <span class="pre">electrode',bt.get(96))</span></code> uses the object in <code class="docutils literal"><span class="pre">bt.list(96)</span></code> which must be an <code class="docutils literal"><span class="pre">ex</span></code> type object, for example I #may have made# it with <code class="docutils literal"><span class="pre">Experiment('cycled</span> <span class="pre">and</span> <span class="pre">uncycled</span> <span class="pre">batteries',bt)</span></code>.
-The <code class="docutils literal"><span class="pre">bt</span></code> is the beamtime object. For complete documentation, please see <a class="reference internal" href="usb_Experiment.html#usb-experiment"><span class="std std-ref">Setting up your XPD acuisition objects</span></a></p>
-<p class="last">2. It is also possible to download xpdAcq <a class="reference external" href="https://github.com/xpdAcq/xpdAcq">from here</a> and run it on your own computer to set up the <code class="docutils literal"><span class="pre">sample</span></code> and <code class="docutils literal"><span class="pre">scanplan</span></code> objects you think you will need at the beamtime.
-So when you are at XPD you can concentrate on collecting data and not typing metadata.
-Simulation at home is strongly recommended. See the full documentation for more details here [FIXME doc needed]</p>
-</dd>
-</dl>
+<p>For more info: FIXME</p>
+</div>
+</div>
+</div>
+<div class="section" id="get-your-data">
+<h2>Get your data<a class="headerlink" href="#get-your-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="save-images-and-metadata-from-scans">
+<h3>1. Save images and metadata from scans<a class="headerlink" href="#save-images-and-metadata-from-scans" title="Permalink to this headline">¶</a></h3>
+<p>These commands can be run in the <code class="docutils literal"><span class="pre">collection</span></code> or the <code class="docutils literal"><span class="pre">analysis</span></code> ipython environments.</p>
+<p>Data are saved in the directory <code class="docutils literal"><span class="pre">xpdUser/tiff_base/&lt;sample_name&gt;</span></code> where <code class="docutils literal"><span class="pre">&lt;sample_name&gt;</span></code> is the name of the
+sample that you used in the sample spreadsheet, and is the name of the <code class="docutils literal"><span class="pre">Sample</span></code> object.</p>
+<p><strong>save images from last scan:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">save_last_tiff</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>With this function, the image will be saved to a <code class="docutils literal"><span class="pre">.tiff</span></code> file.
+The metadata associated with the image will be saved to a <code class="docutils literal"><span class="pre">.yml</span></code> file which is a
+text file and can be opened with a text editor.  Saving behavior
+can be modified by changing the default function arguments.  Type <code class="docutils literal"><span class="pre">save_last_tiff?</span></code>
+to see the allowed values.</p>
+<p><strong>Pro Tip</strong>: this function is often typed just after <code class="docutils literal"><span class="pre">prun()</span></code> in the collection environment,
+so that the data are extracted out of the NSLS-II database and delivered to you automatically when
+the scan finishes.  You can then play around with them and take them home as you like.</p>
+<p>The following
+functions are more useful for running in the <code class="docutils literal"><span class="pre">analysis</span></code> environment to fetch scans from the database
+selectively if you don&#8217;t want a dump of every scan.</p>
+<p><strong>save images from last 2 scans:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
+<span class="n">save_tiff</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>save images from scan 2 scans ago:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">save_tiff</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We use &#8220;h&#8221;, short for &#8220;header&#8221;, for the object given back by the NSLS-II databroker (<code class="docutils literal"><span class="pre">db</span></code>) data-fetching software.
+This is a software object that contains all the information about your scan and can
+be passed to different functions to do analysis.
+more information on headers is <a class="reference external" href="http://nsls-ii.github.io/databroker/headers.html">here</a></p>
+</div>
+<div class="section" id="save-images-and-also-integrate-images-to-a-1d-patterns">
+<h3>2. Save images and also integrate images to a 1D patterns<a class="headerlink" href="#save-images-and-also-integrate-images-to-a-1d-patterns" title="Permalink to this headline">¶</a></h3>
+<p><strong>save your images and also integrate to a 1D pattern:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">integrate_and_save_last</span><span class="p">()</span>   <span class="c1"># the most recent scan</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>                 <span class="c1"># the last 2 scans</span>
+<span class="n">integrate_and_save</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>                  <span class="c1"># 2 scan ago</span>
+<span class="n">integrate_and_save</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With this function, the image will be saved to a <code class="docutils literal"><span class="pre">.tiff</span></code> file, the mask will be saved
+to a <code class="docutils literal"><span class="pre">.npy</span></code> file, and the masked-image will be integrated and saved to a <code class="docutils literal"><span class="pre">.chi</span></code> file.
+The metadata associated with the image will be saved to a <code class="docutils literal"><span class="pre">.yml</span></code> file which is a
+text file and can be opened with a text editor.  Masking and calibration behavior
+can be modified by changing the default function arguments.  Type <code class="docutils literal"><span class="pre">integrate_and_save_last?</span></code>
+to see the allowed values.</p>
+</div>
 </div>
 <div class="section" id="user-scripts">
 <h2>User scripts<a class="headerlink" href="#user-scripts" title="Permalink to this headline">¶</a></h2>
@@ -382,120 +527,60 @@ Simulation at home is strongly recommended. See the full documentation for more 
 </div>
 <p>Stay there for a while to make sure everything is running as expected and then go to bed!</p>
 </div></blockquote>
-<p>There is much more to the <code class="docutils literal"><span class="pre">xpdAcq</span></code> software that will give you superpowers in rapid and flexible data collection, data retrieval and processing.
-This was just the quick start, but much more information is in the full documentation in the <strong>XPD user</strong> section of the documentation</p>
 </div>
-<div class="section" id="code-samples">
-<h2>Code Samples<a class="headerlink" href="#code-samples" title="Permalink to this headline">¶</a></h2>
-<p>Here is a sample code covering the entire process from defining <code class="docutils literal"><span class="pre">Experiment</span></code>,
-<code class="docutils literal"><span class="pre">Sample</span></code> and <code class="docutils literal"><span class="pre">ScanPlan</span></code> objects to running <code class="docutils literal"><span class="pre">ScanPlans</span></code> with different kinds of run.
-Please replace the name and parameters in each function depending your needs.  To
-understand the logic in greater detail see the full user documentation.</p>
-<p><strong>Pro Tip</strong>: copy-and-paste is your good friend</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># bt list method to see all objects we have available for data collection</span>
-<span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
-
-<span class="c1"># bt list of all the Sample objects but no other object types</span>
-<span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s1">&#39;sa&#39;</span><span class="p">)</span>
-
-<span class="c1"># bt list of all the ScanPlan objects but no other object types</span>
-<span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s1">&#39;sp&#39;</span><span class="p">)</span>
-
-<span class="c1"># define addtional acquire objects</span>
-<span class="n">ex_additonal_info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;&lt;mynewkeys&gt;&#39;</span><span class="p">:</span><span class="s1">&#39;&lt;mynewvalues&gt;&#39;</span><span class="p">,</span>
- <span class="s1">&#39;examples&#39;</span><span class="p">:</span><span class="s1">&#39;follow&#39;</span><span class="p">,</span>
- <span class="s1">&#39;students&#39;</span><span class="p">:[</span><span class="s1">&#39;sbanerjee&#39;</span><span class="p">,</span><span class="s1">&#39;mterban&#39;</span><span class="p">],</span>
- <span class="s1">&#39;collaborators&#39;</span><span class="p">:[</span><span class="s1">&#39;Sample Maker&#39;</span><span class="p">,</span><span class="s1">&#39;Sam Student&#39;</span><span class="p">]</span>
-<span class="p">}</span>
-<span class="n">Experiment</span><span class="p">(</span><span class="s1">&#39;myExperiment&#39;</span><span class="p">,</span>
-           <span class="n">bt</span><span class="p">,</span>
-           <span class="n">experiment_info</span> <span class="o">=</span> <span class="n">ex_addtional_info</span>
-          <span class="p">)</span>
-<span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>    <span class="c1"># returns &#39;myExperiment&#39; object at position (index) 11 in the list</span>
-<span class="n">Sample</span><span class="p">(</span><span class="s1">&#39;myLazySample&#39;</span><span class="p">,</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>    <span class="c1"># it will inherit all metadata in the bt and &#39;myExperiment&#39; objects but we were lazy, we didn&#39;t save any sample info!</span>
-
-<span class="c1"># here is a more useful sample description.  Ideally, make these at home before you come,</span>
-<span class="c1"># If you are running xpdAcq on your local device (simulation mode),</span>
-<span class="c1"># you can then export acquire objects you have created as a tar file by:</span>
-<span class="c1"># &quot;export_userScriptsEtc()&quot;</span>
-<span class="c1"># then bring this tar file to the beamtime on a flash drive</span>
-<span class="c1"># Put it in to xpdUser/Import directory and import this tar file when your experiment is set up:</span>
-<span class="c1"># &quot;import_userScriptsEtc()&quot;</span>
-
-<span class="n">sample_phase</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;composition&#39;</span><span class="p">:</span><span class="s1">&#39;NaCl&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;mass_fraction&#39;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span>
-            <span class="s1">&#39;cif&#39;</span><span class="p">:</span><span class="s1">&#39;NACL.cif&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;ICSD-ID&#39;</span><span class="p">:</span><span class="s1">&#39;2439d-13&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;form&#39;</span><span class="p">:</span><span class="s1">&#39;powder&#39;</span>
-           <span class="p">},</span>
-           <span class="p">{</span><span class="s1">&#39;composition&#39;</span><span class="p">:</span><span class="s1">&#39;CaCO4.H2O&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;mass_fraction&#39;</span><span class="p">:</span><span class="mf">0.9</span><span class="p">,</span>
-            <span class="s1">&#39;cif&#39;</span><span class="p">:</span><span class="s1">&#39;hydratedCalciumCarbonate.cif&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;form&#39;</span><span class="p">:</span><span class="s1">&#39;nanopowder&#39;</span>
-           <span class="p">}</span>
-          <span class="p">]</span>
- <span class="n">holder_info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;shape&#39;</span><span class="p">:</span><span class="s1">&#39;capillary&#39;</span><span class="p">,</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span><span class="s1">&#39;1 mm&#39;</span><span class="p">,</span><span class="s1">&#39;madeOf&#39;</span><span class="p">:</span><span class="s1">&#39;kapton&#39;</span><span class="p">}</span>
- <span class="n">my_notes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;looked kinda green&#39;</span><span class="p">,</span><span class="s1">&#39;dropped on the floor during loading&#39;</span><span class="p">]</span>
- <span class="n">extra_info</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&lt;description&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;andSoOn&gt;&#39;</span><span class="p">]</span>
-<span class="n">Sample</span><span class="p">(</span><span class="s1">&#39;NaCl_0.1&#39;</span><span class="p">,</span>
-       <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span>
-       <span class="n">phases</span> <span class="o">=</span> <span class="n">sample_phase</span><span class="p">,</span>
-       <span class="n">holder</span> <span class="o">=</span> <span class="n">holder_info</span><span class="p">,</span>
-       <span class="n">notes</span> <span class="o">=</span> <span class="n">my_notes</span><span class="p">,</span>
-       <span class="n">extra</span> <span class="o">=</span> <span class="n">extra_info</span><span class="p">)</span> <span class="c1"># this one will be much more useful later!</span>
-</pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># define &quot;ct&quot; scanplan with exp = 0.5</span>
-<span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">})</span>
-
-<span class="c1"># define &quot;Tramp&quot; scanplan with exp = 0.5, startingT = 300, endingT = 310, Tstep = 2</span>
-<span class="c1"># define &quot;Tramp&quot; scanplan with exp = 0.5, startingT = 310, endingT = 300, Tstep = 2</span>
-<span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;Tramp&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;startingT&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s1">&#39;endingT&#39;</span><span class="p">:</span> <span class="mi">310</span><span class="p">,</span> <span class="s1">&#39;Tstep&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
-<span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;Tramp&#39;</span><span class="p">,{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;startingT&#39;</span><span class="p">:</span> <span class="mi">310</span><span class="p">,</span> <span class="s1">&#39;endingT&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s1">&#39;Tstep&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
-
-<span class="c1"># or use the short-form</span>
-<span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;Tramp_0.5_300_310_2&#39;</span><span class="p">)</span> <span class="c1"># which builds the scan parameters from the name itself (but don&#39;t get them in the wrong order!)</span>
-
-<span class="c1"># define a &quot;time series&quot; scanplan with exp = 0.5, num=10, delay = 2</span>
-<span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;tseries&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;exposure&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;num&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;delay&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
-<span class="c1"># or</span>
-<span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;tseries_0.5_2_5&#39;</span><span class="p">)</span>
-
-<span class="c1"># do a dry-run to see what the program will do, and what metadata it will save</span>
-<span class="n">dryrun</span><span class="p">(</span><span class="s1">&#39;NaCl_0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;ct_0.5&#39;</span><span class="p">)</span>
-
-<span class="c1"># Then let&#39;s do a calibration run and save the image in order to open it in calibration software</span>
-<span class="n">calibration</span><span class="p">(</span><span class="s1">&#39;Nacl_0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;ct_0.5&#39;</span><span class="p">)</span>
-<span class="n">save_last_tiff</span><span class="p">()</span>
-
-<span class="c1"># Use setupscan to check image quality under current scan parameters</span>
-<span class="n">setupscan</span><span class="p">(</span><span class="s1">&#39;Nacl_0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;ct_0.5&#39;</span><span class="p">)</span>
-<span class="n">save_last_tiff</span><span class="p">()</span>
-
-<span class="c1"># Everything looks right. Let&#39;s do prun with different ScanPlans and save the tiffs</span>
-<span class="n">prun</span><span class="p">(</span><span class="s1">&#39;NaCl_0.1&#39;</span><span class="p">,</span><span class="s1">&#39;ct_0.5&#39;</span><span class="p">)</span>
-<span class="c1"># or</span>
-<span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span> <span class="c1"># returns the &#39;NaCl_0.1&#39; sample object at position 17 and the &#39;ct_0.5&#39; ScanPlan object at position 20</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
-
-<span class="c1"># the data are saved into the NSLS-II database (don&#39;t worry) but we want to get the image so</span>
-<span class="c1"># type:</span>
-<span class="n">save_last_tiff</span><span class="p">()</span> <span class="c1"># save tiffs from last scan</span>
-
-<span class="c1"># now we have everything set up, it is super-easy to sequence lots of interesting scans</span>
-<span class="c1"># this does a series of different scans on the same sample</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>   <span class="c1"># or prun(17,&#39;Tramp_0.5_300_310_5&#39;), whichever you are more comfortable with.</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">22</span><span class="p">)</span>   <span class="c1"># or prun(&#39;NaCl_0.1&#39;,&#39;Tramp_0.5_310_300_5&#39;), or whatever</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">23</span><span class="p">)</span>
-<span class="n">save_tiff</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span> <span class="c1"># save tiffs from last three scans</span>
-
-<span class="c1"># this does the same scan on a series of samples</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>   <span class="c1"># or prun(&#39;NaCl_0.1,&#39;Tramp_0.5_300_310_5&#39;), whichever you are more comfortable with.</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>   <span class="c1"># or prun(&#39;NaCl_0.2&#39;,&#39;Tramp_0.5_300_310_5&#39;), or whatever,</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>   <span class="c1"># or prun(&#39;NaCl_0.3&#39;,21),</span>
-<span class="n">save_tiff</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span> <span class="c1"># save tiffs from last three scans</span>
-</pre></div>
-</div>
+<div class="section" id="interrupt-your-scan">
+<h2>Interrupt your scan<a class="headerlink" href="#interrupt-your-scan" title="Permalink to this headline">¶</a></h2>
+<p>table from <a class="reference external" href="http://nsls-ii.github.io/bluesky/state-machine.html#interactive-pause-summary">original package</a></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Outcome</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Ctrl+C</td>
+<td>Pause soon</td>
+</tr>
+<tr class="row-odd"><td>Ctrl+C twice</td>
+<td>Pause now</td>
+</tr>
+<tr class="row-even"><td>Ctrl+C three times fast</td>
+<td>(Shortcut) Pause now and abort</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Outcome</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>prun.resume()</td>
+<td>Safely resume plan.</td>
+</tr>
+<tr class="row-odd"><td>prun.abort()</td>
+<td>Perform cleanup. Mark as aborted.</td>
+</tr>
+<tr class="row-even"><td>prun.stop()</td>
+<td>Perform cleanup. Mark as success.</td>
+</tr>
+<tr class="row-odd"><td>prun.halt()</td>
+<td>Do not perform cleanup &#8212; just stop.</td>
+</tr>
+<tr class="row-even"><td>prun.state</td>
+<td>Check if &#8216;paused&#8217; or &#8216;idle&#8217;.</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
@@ -506,7 +591,7 @@ understand the logic in greater detail see the full user documentation.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="xpdusers.html" class="btn btn-neutral float-right" title="XPD Users" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="xpdusers.html" class="btn btn-neutral float-right" title="For XPD Users" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="xpdAcq documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -540,7 +625,7 @@ understand the logic in greater detail see the full user documentation.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.3',
+            VERSION:'0.5',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

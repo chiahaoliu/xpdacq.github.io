@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>xpdAcq documentation &mdash; xpdAcq 0.3 documentation</title>
+  <title>xpdAcq documentation &mdash; xpdAcq 0.5 documentation</title>
   
 
   
@@ -30,8 +30,8 @@
   
 
   
-    <link rel="top" title="xpdAcq 0.3 documentation" href="#"/>
-        <link rel="next" title="Quick start" href="quickstart.html"/> 
+    <link rel="top" title="xpdAcq 0.5 documentation" href="#"/>
+        <link rel="next" title="Quick Start" href="quickstart.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.3
+                0.5
               </div>
             
           
@@ -81,16 +81,19 @@
             
             
                 <ul>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">XPD Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xpdusers.html">For XPD Users</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">For Beamline Staff</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">Beamline Staff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_note.html">Release Notes</a></li>
 </ul>
 
             
@@ -139,43 +142,57 @@
 <h1>xpdAcq documentation<a class="headerlink" href="#xpdacq-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">xpdAcq</span></code> is a Python package that helps data collection at XPD beamlime.
-It is built on top of and augments the NSLS-II data acquisition Python
-package <a class="reference external" href="http://nsls-ii.github.io/bluesky/">bluesky</a> .  XPD may be operated
-directly by bluesky, or using xpdAcq.</p>
+<p>To post questions about anything XPD, including software, and to see archived answers, please join the <a class="reference external" href="https://groups.google.com/forum/#!forum/xpd-users;context-place=overview">XPD-Users Google group</a></p>
+<p><code class="docutils literal"><span class="pre">xpdAcq</span></code> is a Python package that aids data collection at the XPD beamlime. It is built on top of and augments the NSLS-II data acquisition Python
+package <a class="reference external" href="http://nsls-ii.github.io/bluesky/">bluesky</a> .</p>
+<p>XPD may be operated directly by bluesky, or using xpdAcq.</p>
 <p>The goal of the <code class="docutils literal"><span class="pre">xpdAcq</span></code> package is to simplify your collection and analysis workflow during beamtime,
-so that you can focus more on science aspects. <code class="docutils literal"><span class="pre">xpdAcq</span></code> provides an interface for user who don&#8217;t
-have extensive Python coding background. Every syntax started from psychological motivation,
-like the most important one behind running a &#8220;production&#8221; scan, <code class="docutils literal"><span class="pre">prun</span></code>:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>run this Sample with this ScanPlan
+so that you can focus more on scientific aspects of your experiment. Additionally, <code class="docutils literal"><span class="pre">xpdAcq</span></code> provides an interface
+that needs less Python experience than the current native bluesky interface.</p>
+<p>We hope that you find it intuitive, like the most important function to run a
+&#8220;production&#8221; scan, <code class="docutils literal"><span class="pre">prun</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">prun</span><span class="p">(</span><span class="n">sample</span><span class="o">-</span><span class="n">info</span><span class="p">,</span> <span class="n">scan</span><span class="o">-</span><span class="n">info</span><span class="p">)</span> <span class="c1">#run this Sample with this Scan-Plan</span>
 </pre></div>
 </div>
-<p>To find more, please go to <a class="reference internal" href="xpdusers.html#xpdu"><span class="std std-ref">XPD Users</span></a></p>
+<p>To get started, please go to <a class="reference internal" href="quickstart.html#quick-start"><span class="std std-ref">Quick Start</span></a></p>
+<p>If you have suggestions for new features in xpdAcq, or want to report a bug or simply ask a question about
+the software, please post it as a new thread at <a class="reference external" href="https://groups.google.com/forum/#!forum/xpd-users;context-place=overview">XPD-Users</a></p>
 </div>
 <div class="section" id="what-s-new">
 <h2>What&#8217;s new?<a class="headerlink" href="#what-s-new" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="current-version-v0-3">
-<h3>current version : <code class="docutils literal"><span class="pre">v0.3</span></code><a class="headerlink" href="#current-version-v0-3" title="Permalink to this headline">¶</a></h3>
-<p>This is the first full, stable, release, of xpdAcq software.
-It offers functionality to acquire data at XPD but with very limited
-tools yet to analyze it.
-Future releases will focus more on analysis functionalities.
-<code class="docutils literal"><span class="pre">v0.3</span></code> is still a limited functionality release in that it only supports three kinds of scans:</p>
+<div class="section" id="current-version-v0-5">
+<h3>current version : <code class="docutils literal"><span class="pre">v0.5</span></code><a class="headerlink" href="#current-version-v0-5" title="Permalink to this headline">¶</a></h3>
+<p>This is a stable release of <code class="docutils literal"><span class="pre">xpdAcq</span></code> software.</p>
+<p>New features introduced to this version:</p>
+<blockquote>
+<div><ul class="simple">
+<li>flexibility of running customized <code class="docutils literal"><span class="pre">bluesky</span></code> plans while keeping <code class="docutils literal"><span class="pre">xpdAcq</span></code> dark collection logic.</li>
+<li>ability of importing metadata from a spreadsheet, open the door for data driven studies.</li>
+<li>data reduction tools:<ul>
+<li>azimuthal integration using <code class="docutils literal"><span class="pre">pyFAI</span></code> as the back-end</li>
+<li>auto-masking based on statistics on pixel counts</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">v0.5</span></code> supports three kinds of built-in scans:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>single-frame (ct)
 time-series (tseries)
 temperature-series scans (Tramp)
 </pre></div>
 </div>
-<p>Additional scan types will be added in future releases.</p>
-<dl class="docutils">
-<dt>However, it does support:</dt>
-<dd><ul class="first last simple">
-<li>automated dark subtraction</li>
-<li>automated calibration capture.</li>
+<p>Additional built-in scan types will be added in future releases.</p>
+<p><code class="docutils literal"><span class="pre">v0.5</span></code> supports following automated logics :</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="features.html#auto-dark"><span class="std std-ref">automated dark subtraction</span></a></li>
+<li><a class="reference internal" href="usb_Running.html#auto-calib"><span class="std std-ref">automated calibration capture</span></a></li>
+<li><a class="reference internal" href="usb_Running.html#auto-mask"><span class="std std-ref">automated mask per image</span></a></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p>This version is fully documented and extensively tested.</p>
+<div class="toctree-wrapper compound">
+</div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -195,7 +212,7 @@ temperature-series scans (Tramp)
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quick start" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -227,7 +244,7 @@ temperature-series scans (Tramp)
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.3',
+            VERSION:'0.5',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
