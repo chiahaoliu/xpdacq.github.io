@@ -16,7 +16,7 @@ Start a beamtime
 
 .. code-block:: python
 
-  bt = _end_beamtime()
+   _end_beamtime()
 
 3. run the start-beamtime sequence
 
