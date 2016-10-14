@@ -257,7 +257,7 @@ Check that they are running by finding windows that looks like:</p>
 <h3>0. general<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
 <p>If you want to query any <code class="docutils literal"><span class="pre">xpdAcq</span></code> or <code class="docutils literal"><span class="pre">xpdAn</span></code> function, type the function name with a <code class="docutils literal"><span class="pre">?</span></code> at the end and hit
 return.  Documentation for what paramters the function takes, and any default values, and what
-the function returns will be printed.  For example, type:</p>
+the function returns will be printed.  For example, in your <code class="docutils literal"><span class="pre">collection</span></code> terminal type:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>run_calibration?
 </pre></div>
 </div>
@@ -268,21 +268,21 @@ those letters. This will include Python imported and built-in functions as well 
 <div class="section" id="quick-look">
 <h3>0.5 quick look<a class="headerlink" href="#quick-look" title="Permalink to this headline">¶</a></h3>
 <p>Place any sample, but maybe the Ni calibrant, at the sample position.  Let&#8217;s make sure we are getting a nice
-Ni diffraction pattern. Type:</p>
+Ni diffraction pattern. In your <code class="docutils literal"><span class="pre">collection</span></code> terminal type:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">prun</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># will run an exposure of 60 seconds on your setup sample</span>
-<span class="n">save_last_tiff</span><span class="p">()</span> <span class="c1"># will save the image in the tiff_base/setup directory</span>
+<span class="n">save_last_tiff</span><span class="p">()</span> <span class="c1"># will save the image in the tiff_base/Setup directory</span>
 </pre></div>
 </div>
-<p>Navigate to the SrXgui image viewer. Click on the folder icon and navigate to
-the <code class="docutils literal"><span class="pre">tiff_base/setup</span></code> folder and look for a list of one or more tiff files.
-Note, if the software gives an error that it cannot find the sample object, then you will need
+<p>Note, if the software gives an error that it cannot find the sample object, then you will need
 to load a sample spreadsheet.  See section 3 below: <cite>set up Sample objects to use later</cite></p>
-<p>Double-click on the most recent one to view the one you just collected.</p>
+<p>Navigate to the <code class="docutils literal"><span class="pre">SrXgui</span></code> image viewer. Click on the folder icon and navigate to
+the <code class="docutils literal"><span class="pre">tiff_base/Setup</span></code> folder and look for a list of one or more tiff files.
+Double-click on the most recent one to view the one you just collected.</p>
 </div>
 <div class="section" id="calibration">
 <h3>1. calibration<a class="headerlink" href="#calibration" title="Permalink to this headline">¶</a></h3>
 <p>run this first, then run it again each time the geometry of your measurement changes.</p>
-<p>Place the Ni calibrant at the sample position, close the hutch and open the shutter then type:</p>
+<p>Place the Ni calibrant at the sample position, close the hutch and open the shutter then type in your <code class="docutils literal"><span class="pre">collection</span></code> terminal:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">run_calibration</span><span class="p">()</span> <span class="c1"># default values (calibrant_file=&#39;Ni.D&#39; and exposure=60) don&#39;t need to be typed</span>
 </pre></div>
 </div>
@@ -296,7 +296,7 @@ run <code class="docutils literal"><span class="pre">run_calibration()</span></c
 the beamstop, and uses an auto-masking scheme to get rid of outlier pixels.
 The automasking has been extensively tested on a low-scattering sample so our mask
 building function has been designed to run on data from an empty kapton tube.
-Load an empty kapton tube on the diffractometer, then type</p>
+Load an empty kapton tube on the diffractometer, then in your <code class="docutils literal"><span class="pre">collection</span></code> terminal type</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">run_mask_builder</span><span class="p">()</span> <span class="c1"># be patient, the process takes 10 minutes!</span>
 </pre></div>
 </div>
@@ -319,9 +319,9 @@ and the extension <code class="docutils literal"><span class="pre">.npy</span></
 defined format (a template file may be found <a class="reference external" href="https://groups.google.com/forum/?utm_medium=email&amp;utm_source=footer#!topic/xpd-users/_6NSRWg_-l0">here</a>
 ). If the IS didn&#8217;t already
 do it, save your sample xls file to the <code class="docutils literal"><span class="pre">xpdUser/import</span></code> directory using the name
-<code class="docutils literal"><span class="pre">&lt;saf_number&gt;_sample.xls</span></code>, where you replace <code class="docutils literal"><span class="pre">&lt;saf_number&gt;</span></code> with the number
+<code class="docutils literal"><span class="pre">&lt;saf_number&gt;_sample.xlsx</span></code>, where you replace <code class="docutils literal"><span class="pre">&lt;saf_number&gt;</span></code> with the number
 of the safety approval form associated with your experiment.  If you are not sure
-what your <code class="docutils literal"><span class="pre">saf_number</span></code> is you can get it by typing:</p>
+what your <code class="docutils literal"><span class="pre">saf_number</span></code> is you can get it by typing following command in your <code class="docutils literal"><span class="pre">collection</span></code> terminal:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">bt</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
 <span class="p">{</span><span class="s1">&#39;bt_experimenters&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tim&#39;</span><span class="p">,</span> <span class="s1">&#39;Liu&#39;</span><span class="p">],</span>
@@ -333,12 +333,12 @@ what your <code class="docutils literal"><span class="pre">saf_number</span></co
 </div>
 <p>where the <code class="docutils literal"><span class="pre">saf_number</span></code> in this case is <code class="docutils literal"><span class="pre">300336</span></code>.</p>
 <p>Next type:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">import_sample</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">import_sample_info</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>which loads the sample information and makes all the sample objects available in the current beamtime.</p>
-<p>Updates and additions may be made by editing existing sample information, and by adding more samples, in the excel file and rerunning <code class="docutils literal"><span class="pre">import_sample()</span></code>
-at any time during the experiment.  The existing sample objects will be overwritten by this new sheet so
+<p>Updates and additions may be made by editing existing sample information, and by adding more samples, in the excel file and rerunning <code class="docutils literal"><span class="pre">import_sample_info()</span></code>
+at any time during the experiment.  The <code class="docutils literal"><span class="pre">Sample</span></code> object list will be updated based on contents of this new sheet so
 we recommend to just edit existing or add new samples to the sheet but not to delete any.</p>
 <p>For more info <a class="reference internal" href="usb_Running.html#import-sample"><span class="std std-ref">Sample metadata imported from spreadsheet</span></a>.</p>
 </div>
@@ -419,10 +419,13 @@ as an <code class="docutils literal"><span class="pre">xpdAcq</span></code> buil
 </div>
 <div class="section" id="list-objects-by-categories">
 <h3>5. list objects by categories<a class="headerlink" href="#list-objects-by-categories" title="Permalink to this headline">¶</a></h3>
+<p>To list out currently available <code class="docutils literal"><span class="pre">Sample</span></code> and <code class="docutils literal"><span class="pre">ScanPlan</span></code> objects you can do:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="ow">in</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-
-<span class="n">ScanPlans</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>and you should similar output as following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ScanPlans</span><span class="p">:</span>
 <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;ct_5&#39;</span>
 <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Tramp_5_300_200_5&#39;</span>
 <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;tseries_5_50_15&#39;</span>
@@ -455,11 +458,11 @@ is typed as <code class="docutils literal"><span class="pre">prun(&lt;Sample.obj
 <h4>background scan<a class="headerlink" href="#background-scan" title="Permalink to this headline">¶</a></h4>
 <p>It is recommended to run a background scan before your sample so it is available for
 the automated data reduction steps.  It also allows you to see problems with the experimental
-setup, for example, crystalline peaks due to the beam hitting a shutter, for example.</p>
+setup, for example, crystalline peaks due to the beam hitting a shutter.</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li>Load the background sample (e.g., empty kapton tube) on the instrument</li>
-<li>type <code class="docutils literal"><span class="pre">bt.list_bkg()</span></code> to list your sample objects tagged as backgrounds (that was done originally in your excel spreadsheet).</li>
+<li>In your <code class="docutils literal"><span class="pre">collection</span></code> terminal type</li>
 </ol>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bt</span><span class="o">.</span><span class="n">list_bkg</span><span class="p">()</span>
 </pre></div>
@@ -554,13 +557,13 @@ the scan finishes.  You can then play around with them and take them home as you
 <p>The following
 functions are more useful for running in the <code class="docutils literal"><span class="pre">analysis</span></code> environment to fetch scans from the database
 selectively if you don&#8217;t want a dump of every scan.</p>
-<p><strong>save images from last 5 scans:</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span>
+<p><strong>save images from last 2 scans:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
 <span class="n">save_tiff</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>save images from scan 5 scans ago:</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+<p><strong>save images from scan 2 scans ago:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">save_tiff</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -572,6 +575,13 @@ more information on headers is <a class="reference external" href="http://nsls-i
 <div class="section" id="save-images-and-also-integrate-images-to-a-1d-patterns">
 <h3>2. Save images and also integrate images to a 1D patterns<a class="headerlink" href="#save-images-and-also-integrate-images-to-a-1d-patterns" title="Permalink to this headline">¶</a></h3>
 <p><strong>save your images and also integrate to a 1D pattern:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">integrate_and_save_last</span><span class="p">()</span>   <span class="c1"># the most recent scan</span>
+</pre></div>
+</div>
+<p>You could use this instead of <code class="docutils literal"><span class="pre">save_last_tiff()</span></code> as part of your acquisition
+sequence by typing it in the <code class="docutils literal"><span class="pre">collection</span></code> environment.</p>
+<p>Or use these in the <code class="docutils literal"><span class="pre">analysis</span></code> environment to be analyzing data over here as
+the data are being collected over there...</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>                 <span class="c1"># the last 2 scans</span>
 <span class="n">integrate</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>                <span class="c1"># saves a copy of the 1D diffraction pattern</span>
 <span class="n">h</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>                  <span class="c1"># 2 scan ago</span>
