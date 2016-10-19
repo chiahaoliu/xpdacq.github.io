@@ -76,26 +76,26 @@ and hit return.  So far there is only 1 object, it is the `bt` object with name 
 
 .. code-block:: python
 
-In [4]: bt.list()
+  In [4]: bt.list()
 
-ScanPlans:
-0: 'ct_5'
-1: 'ct_0.1'
-2: 'ct_1'
-3: 'ct_10'
-4: 'ct_30'
-5: 'ct_60'
+  ScanPlans:
+  0: 'ct_5'
+  1: 'ct_0.1'
+  2: 'ct_1'
+  3: 'ct_10'
+  4: 'ct_30'
+  5: 'ct_60'
 
-Samples:
-0: Setup
-1: Ni_calibrant
-2: bkgd_kapton_0.9mmOD
-3: bkgd_kapton_1mmOD
-4: bkgd_kapton_0.5mmOD
-5: activated_carbon_1
-6: activated_carbon_2
-7: activated_carbon_3
-...
+  Samples:
+  0: Setup
+  1: Ni_calibrant
+  2: bkgd_kapton_0.9mmOD
+  3: bkgd_kapton_1mmOD
+  4: bkgd_kapton_0.5mmOD
+  5: activated_carbon_1
+  6: activated_carbon_2
+  7: activated_carbon_3
+  ...
 
 Before we move on, one more thing.  As we mentioned before, if ``bt`` doesn't exist,
 

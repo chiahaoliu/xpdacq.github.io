@@ -212,27 +212,28 @@ are functions, or <cite>methods</cite>.</p>
 case <code class="docutils literal"><span class="pre">bt.list</span></code> will list all the xpd-acquire-objects that have been created at
 the time.  To execute a method you have to add parentheses at the end of <code class="docutils literal"><span class="pre">bt.list()</span></code>
 and hit return.  So far there is only 1 object, it is the <cite>bt</cite> object with name <cite>bt</cite>!</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+
+<span class="n">ScanPlans</span><span class="p">:</span>
+<span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;ct_5&#39;</span>
+<span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;ct_0.1&#39;</span>
+<span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;ct_1&#39;</span>
+<span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;ct_10&#39;</span>
+<span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;ct_30&#39;</span>
+<span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;ct_60&#39;</span>
+
+<span class="n">Samples</span><span class="p">:</span>
+<span class="mi">0</span><span class="p">:</span> <span class="n">Setup</span>
+<span class="mi">1</span><span class="p">:</span> <span class="n">Ni_calibrant</span>
+<span class="mi">2</span><span class="p">:</span> <span class="n">bkgd_kapton_0</span><span class="o">.</span><span class="mi">9</span><span class="n">mmOD</span>
+<span class="mi">3</span><span class="p">:</span> <span class="n">bkgd_kapton_1mmOD</span>
+<span class="mi">4</span><span class="p">:</span> <span class="n">bkgd_kapton_0</span><span class="o">.</span><span class="mi">5</span><span class="n">mmOD</span>
+<span class="mi">5</span><span class="p">:</span> <span class="n">activated_carbon_1</span>
+<span class="mi">6</span><span class="p">:</span> <span class="n">activated_carbon_2</span>
+<span class="mi">7</span><span class="p">:</span> <span class="n">activated_carbon_3</span>
+<span class="o">...</span>
 </pre></div>
 </div>
-<p>In [4]: bt.list()</p>
-<p>ScanPlans:
-0: &#8216;ct_5&#8217;
-1: &#8216;ct_0.1&#8217;
-2: &#8216;ct_1&#8217;
-3: &#8216;ct_10&#8217;
-4: &#8216;ct_30&#8217;
-5: &#8216;ct_60&#8217;</p>
-<p>Samples:
-0: Setup
-1: Ni_calibrant
-2: bkgd_kapton_0.9mmOD
-3: bkgd_kapton_1mmOD
-4: bkgd_kapton_0.5mmOD
-5: activated_carbon_1
-6: activated_carbon_2
-7: activated_carbon_3
-...</p>
 <p>Before we move on, one more thing.  As we mentioned before, if <code class="docutils literal"><span class="pre">bt</span></code> doesn&#8217;t exist,</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span>
 <span class="go">---------------------------------------------------------------------------</span>
