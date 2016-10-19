@@ -191,22 +191,22 @@ for you.  Let&#8217;s check if it is the case.</p>
 <blockquote>
 <div><p>Replace those words in angle brackets with pointers to real objects, eg.:</p>
 <ol class="arabic simple">
-<li><code class="docutils literal"><span class="pre">prun(bt.get(2),bt.get(5))</span></code> will do a scan on the dummy sample (<code class="docutils literal"><span class="pre">'sa'</span></code>) called <code class="docutils literal"><span class="pre">'l-user'</span></code>&#8211;(for lazy user!) which is in position (index) <code class="docutils literal"><span class="pre">2</span></code> in the <code class="docutils literal"><span class="pre">bt.list()</span></code> list&#8211;for 1 second (the name of that object in the list at position <code class="docutils literal"><span class="pre">5</span></code> is <code class="docutils literal"><span class="pre">'ct1s'</span></code> which stands for &#8220;count 1 second&#8221;).</li>
-<li><code class="docutils literal"><span class="pre">prun(bt.get(2),bt.get(7))</span></code> will do a scan for 10 s on the same sample (to see that, look at the list produced by typing <code class="docutils literal"><span class="pre">bt.list()</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">setupscan(bt.get(2),bt.get(7))</span></code> will do a setupscan on that sample for 10 seconds.  A setupscan is like a prun (&#8220;production run&#8221;) except it is tagged in metadata as a setupscan so you can separate later which were production runs and which were setup-scans.</li>
+<li><code class="docutils literal"><span class="pre">xrun(bt.get(2),bt.get(5))</span></code> will do a scan on the dummy sample (<code class="docutils literal"><span class="pre">'sa'</span></code>) called <code class="docutils literal"><span class="pre">'l-user'</span></code>&#8211;(for lazy user!) which is in position (index) <code class="docutils literal"><span class="pre">2</span></code> in the <code class="docutils literal"><span class="pre">bt.list()</span></code> list&#8211;for 1 second (the name of that object in the list at position <code class="docutils literal"><span class="pre">5</span></code> is <code class="docutils literal"><span class="pre">'ct1s'</span></code> which stands for &#8220;count 1 second&#8221;).</li>
+<li><code class="docutils literal"><span class="pre">xrun(bt.get(2),bt.get(7))</span></code> will do a scan for 10 s on the same sample (to see that, look at the list produced by typing <code class="docutils literal"><span class="pre">bt.list()</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">setupscan(bt.get(2),bt.get(7))</span></code> will do a setupscan on that sample for 10 seconds.  A setupscan is like a xrun (&#8220;production run&#8221;) except it is tagged in metadata as a setupscan so you can separate later which were production runs and which were setup-scans.</li>
 </ol>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Pro</span><span class="o">-</span><span class="n">Tip</span><span class="p">:</span>
-<span class="sd">&#39;&#39;&#39;``prun`` and all the scans support different ways of assigning acquire objects.</span>
+<span class="sd">&#39;&#39;&#39;``xrun`` and all the scans support different ways of assigning acquire objects.</span>
 <span class="sd">You can either get the objects with the ``bt.get()`` methods as above, or</span>
 <span class="sd">to save typing, the scan functions allow you to specify just the object index,</span>
 <span class="sd">or (unique) name of the acquire object. The following expressions are all</span>
 <span class="sd">equivalent:&#39;&#39;&#39;</span>
 
-<span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">prun</span><span class="p">(</span><span class="s1">&#39;l-user&#39;</span><span class="p">,</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># where &#39;l-user&#39; is the name of bt Sample object at index 2</span>
-<span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;ct_1&#39;</span><span class="p">)</span>    <span class="c1"># where &#39;ct_1&#39; is the name of bt ScanPlan object at index 5</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">prun</span><span class="p">(</span><span class="s1">&#39;l-user&#39;</span><span class="p">,</span><span class="s1">&#39;ct_1&#39;</span><span class="p">)</span>
+<span class="n">xrun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">xrun</span><span class="p">(</span><span class="s1">&#39;l-user&#39;</span><span class="p">,</span> <span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># where &#39;l-user&#39; is the name of bt Sample object at index 2</span>
+<span class="n">xrun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;ct_1&#39;</span><span class="p">)</span>    <span class="c1"># where &#39;ct_1&#39; is the name of bt ScanPlan object at index 5</span>
+<span class="n">xrun</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">xrun</span><span class="p">(</span><span class="s1">&#39;l-user&#39;</span><span class="p">,</span><span class="s1">&#39;ct_1&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -235,7 +235,7 @@ for you.  Let&#8217;s check if it is the case.</p>
 <div><ol class="arabic simple">
 <li><code class="docutils literal"><span class="pre">bt.list()</span></code> to see what objects are available</li>
 <li><code class="docutils literal"><span class="pre">setupscan(&lt;index-of-Sample-object&gt;,&lt;index-of-ScanPlan-object&gt;)</span></code>  to run setup scans until you are ready for production runs, then</li>
-<li><code class="docutils literal"><span class="pre">prun(&lt;index-of-Sample-object&gt;),&lt;index-of-ScanPlan-object&gt;)</span></code></li>
+<li><code class="docutils literal"><span class="pre">xrun(&lt;index-of-Sample-object&gt;),&lt;index-of-ScanPlan-object&gt;)</span></code></li>
 <li><code class="docutils literal"><span class="pre">save_tiff(db[list_of_scans])</span></code> to get the data back as a tiff file</li>
 <li><code class="docutils literal"><span class="pre">xpdfsuite</span></code> (xPDFsuite) to visualize it, integrate it to 1D and process to get a diffraction pattern or PDF.</li>
 </ol>
@@ -262,7 +262,7 @@ To find more details on creating new <code class="docutils literal"><span class=
 </div></blockquote>
 <ol class="arabic simple" start="3">
 <li>type <code class="docutils literal"><span class="pre">bt.list('sp')</span></code> again.  You should see your new <code class="docutils literal"><span class="pre">ScanPlan</span></code> object at the end of the list.  You can now use your object to collect data by passing it to a &#8220;scan&#8221; function:</li>
-<li>You can run it using <code class="docutils literal"><span class="pre">prun(&lt;sample-object&gt;,&lt;index-of-your-new-ScanPlan-Object&gt;)</span></code>  If your new object is at position 11 in the list, and position 2 holds a <code class="docutils literal"><span class="pre">Sample</span></code> object (it does by default) then <code class="docutils literal"><span class="pre">prun(2,11)</span></code>, or probably better, <code class="docutils literal"><span class="pre">setupscan(2,11)</span></code> since we are still messing around here.</li>
+<li>You can run it using <code class="docutils literal"><span class="pre">xrun(&lt;sample-object&gt;,&lt;index-of-your-new-ScanPlan-Object&gt;)</span></code>  If your new object is at position 11 in the list, and position 2 holds a <code class="docutils literal"><span class="pre">Sample</span></code> object (it does by default) then <code class="docutils literal"><span class="pre">xrun(2,11)</span></code>, or probably better, <code class="docutils literal"><span class="pre">setupscan(2,11)</span></code> since we are still messing around here.</li>
 </ol>
 </li>
 </ul>
@@ -270,14 +270,14 @@ To find more details on creating new <code class="docutils literal"><span class=
 <dt>Types of scan available.</dt>
 <dd><p class="first">They all take as arguments <code class="docutils literal"><span class="pre">(&lt;sample-object&gt;,</span> <span class="pre">&lt;scanplan-object&gt;)</span></code> in that order:</p>
 <ol class="arabic simple">
-<li><code class="docutils literal"><span class="pre">prun()</span></code> - the one you will use the most.  It stands for &#8220;production run&#8221;</li>
-<li><code class="docutils literal"><span class="pre">setupscan()</span></code> - it is just the same as <code class="docutils literal"><span class="pre">prun()</span></code> but the data are tagged as being test/setup data, helping you to keep track of what is what later.</li>
+<li><code class="docutils literal"><span class="pre">xrun()</span></code> - the one you will use the most.  It stands for &#8220;production run&#8221;</li>
+<li><code class="docutils literal"><span class="pre">setupscan()</span></code> - it is just the same as <code class="docutils literal"><span class="pre">xrun()</span></code> but the data are tagged as being test/setup data, helping you to keep track of what is what later.</li>
 <li><code class="docutils literal"><span class="pre">dryrun()</span></code> - it doesn&#8217;t execute anything, only prints out metadata, so you can test out your scan to see what it will do.</li>
-<li><code class="docutils literal"><span class="pre">background()</span></code> - Like <code class="docutils literal"><span class="pre">prun()</span></code> but it tags the dataset as a background scan, so later you can search for all your background scans!</li>
+<li><code class="docutils literal"><span class="pre">background()</span></code> - Like <code class="docutils literal"><span class="pre">xrun()</span></code> but it tags the dataset as a background scan, so later you can search for all your background scans!</li>
 </ol>
 <p>these ones you will use less often, if at all</p>
 <ol class="last arabic simple" start="5">
-<li><code class="docutils literal"><span class="pre">calibration()</span></code> - the same as <code class="docutils literal"><span class="pre">prun()</span></code> , but the data are tagged as calibration data.</li>
+<li><code class="docutils literal"><span class="pre">calibration()</span></code> - the same as <code class="docutils literal"><span class="pre">xrun()</span></code> , but the data are tagged as calibration data.</li>
 <li><code class="docutils literal"><span class="pre">dark()</span></code> - you shouldn&#8217;t have to use this as dark scans (shutter closed) and dark subtractions of your data are done automatically, but it is here in case you do it is there.  It ensure the shutter is closed and tags the scan as being a dark.</li>
 <li><code class="docutils literal"><span class="pre">run_mask_builder()</span></code> - take data and produce a mask for the image, the mask is then inserted into the metadata</li>
 </ol>
@@ -375,7 +375,7 @@ This was just the quick start, but much more information is in the full document
 <span class="n">glbl</span><span class="o">.</span><span class="n">shutter_control</span> <span class="o">=</span> <span class="bp">False</span>
 </pre></div>
 </div>
-<p><strong>Want a fresh dark frame every time ``prun`` is triggered:</strong></p>
+<p><strong>Want a fresh dark frame every time ``xrun`` is triggered:</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="o">.</span><span class="n">dk_window</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># dark window is 0.001 min = 0.06 secs</span>
 </pre></div>
 </div>

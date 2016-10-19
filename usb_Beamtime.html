@@ -91,15 +91,12 @@
 <li class="toctree-l2"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdacq environment</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Setting up your Beamtime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html">Where did all my Sample and Scan objects go?????</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-are-your-friends">bt.list() and bt.get() are your friends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-is-your-friends">bt.list() is your friends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Running.html">Running scans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_QuickAssess.html">Initial assessment of your data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html">Global options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html#where-did-all-my-sample-and-scan-objects-go">Where did all my Sample and Scan objects go?????</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html#bt-list-and-bt-get-are-your-friends">bt.list() and bt.get() are your friends</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
 </ul>
 </li>
 </ul>
@@ -164,37 +161,36 @@ carry out the following steps:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li>Check you are in the collection environment</li>
-<li>Type <code class="docutils literal"><span class="pre">bt</span></code>.  It should return an <code class="docutils literal"><span class="pre">Beamtime</span></code> object.  If not, please contact your beamline responsible.</li>
+<li>Type <code class="docutils literal"><span class="pre">bt</span></code>.  It should return similar output as following:</li>
 </ol>
-</div></blockquote>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span>
-<span class="go">&lt;xpdacq.beamtime.Beamtime at 0x4b112b0&gt;</span>
+<span class="go">{&#39;bt_experimenters&#39;: [&#39;Tim&#39;, &#39;Liu&#39;],</span>
+<span class="go"> &#39;bt_piLast&#39;: &#39;Billinge&#39;,</span>
+<span class="go"> &#39;bt_safN&#39;: &#39;300564&#39;,</span>
+<span class="go"> &#39;bt_uid&#39;: &#39;c76a6fe1&#39;,</span>
+<span class="go"> &#39;bt_wavelength&#39;: 0.1832}</span>
 </pre></div>
 </div>
+<p>If not, please contact your beamline responsible.</p>
+</div></blockquote>
 <p>This object is like a container that contains some critical information about
 your beamtime.  You can investigate what is inside.</p>
 <p>To see the kinds of things that container contains, place a dot after bt and hit <cite>tab</cite>,
 and all things it contains (but not their values) will be listed.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span>
-<span class="go">bt.export    bt.list        bt.md     bt.type</span>
-<span class="go">bt.get       bt.loadyamls   bt.name</span>
-</pre></div>
-</div>
+<a class="reference internal image-reference" href="_images/usb_beamtime_bt_0.png"><img alt="_images/usb_beamtime_bt_0.png" class="align-center" src="_images/usb_beamtime_bt_0.png" style="width: 400px; height: 200px;" /></a>
 <p>To see what those things contain, type <code class="docutils literal"><span class="pre">bt.&lt;thing&gt;</span></code> and hit return. For example, in our case:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">name</span>
-<span class="go">&#39;bt&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">type</span>
-<span class="go">&#39;bt&#39;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">bt</span><span class="o">.</span><span class="n">wavelength</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="mf">0.1832</span>
 </pre></div>
 </div>
 <p>So this is a beamtime (<cite>&#8216;bt&#8217;</cite>) type of object with name <cite>&#8216;bt&#8217;</cite>.  More interesting
 is the metadata it contains:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span> <span class="o">&gt;&gt;&gt;</span> <span class="n">bt</span><span class="o">.</span><span class="n">md</span>
-<span class="p">{</span><span class="s1">&#39;bt_experimenters&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;Chia-Hao&#39;</span><span class="p">,</span> <span class="s1">&#39;Liu&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Simon&#39;</span><span class="p">,</span> <span class="s1">&#39;Billinge&#39;</span><span class="p">)],</span>
-<span class="s1">&#39;bt_piLast&#39;</span><span class="p">:</span> <span class="s1">&#39;Billinge&#39;</span><span class="p">,</span>
-<span class="s1">&#39;bt_safN&#39;</span><span class="p">:</span> <span class="mi">300256</span><span class="p">,</span>
-<span class="s1">&#39;bt_uid&#39;</span><span class="p">:</span> <span class="s1">&#39;9b0c5878-cba4-11e5-8984-28b2bd4521c0&#39;</span><span class="p">,</span>
-<span class="s1">&#39;bt_wavelength&#39;</span><span class="p">:</span> <span class="mf">0.1818</span><span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">md</span>
+<span class="go">{&#39;bt_experimenters&#39;: [&#39;Tim&#39;, &#39;Liu&#39;],</span>
+<span class="go"> &#39;bt_piLast&#39;: &#39;Billinge&#39;,</span>
+<span class="go"> &#39;bt_safN&#39;: &#39;300564&#39;,</span>
+<span class="go"> &#39;bt_uid&#39;: &#39;c76a6fe1&#39;,</span>
+<span class="go"> &#39;bt_wavelength&#39;: 0.1832}</span>
 </pre></div>
 </div>
 <p>The instrument responsible created an initial version of <code class="docutils literal"><span class="pre">bt</span></code> with information
@@ -216,11 +212,27 @@ are functions, or <cite>methods</cite>.</p>
 case <code class="docutils literal"><span class="pre">bt.list</span></code> will list all the xpd-acquire-objects that have been created at
 the time.  To execute a method you have to add parentheses at the end of <code class="docutils literal"><span class="pre">bt.list()</span></code>
 and hit return.  So far there is only 1 object, it is the <cite>bt</cite> object with name <cite>bt</cite>!</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
-<span class="go">bt object bt has list index  0</span>
-<span class="go">Use bt.get(index) to get the one you want</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
+<p>In [4]: bt.list()</p>
+<p>ScanPlans:
+0: &#8216;ct_5&#8217;
+1: &#8216;ct_0.1&#8217;
+2: &#8216;ct_1&#8217;
+3: &#8216;ct_10&#8217;
+4: &#8216;ct_30&#8217;
+5: &#8216;ct_60&#8217;</p>
+<p>Samples:
+0: Setup
+1: Ni_calibrant
+2: bkgd_kapton_0.9mmOD
+3: bkgd_kapton_1mmOD
+4: bkgd_kapton_0.5mmOD
+5: activated_carbon_1
+6: activated_carbon_2
+7: activated_carbon_3
+...</p>
 <p>Before we move on, one more thing.  As we mentioned before, if <code class="docutils literal"><span class="pre">bt</span></code> doesn&#8217;t exist,</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span>
 <span class="go">---------------------------------------------------------------------------</span>
@@ -234,7 +246,7 @@ and hit return.  So far there is only 1 object, it is the <cite>bt</cite> object
 <p>please go and talk to your instrument responsible as there may be other aspects of the
 environment setup that need to be fixed, but if you ever do have to create
 (we call it <cite>instantiate</cite>) a new <code class="docutils literal"><span class="pre">bt</span></code> object, it is done like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span> <span class="o">=</span> <span class="n">Beamtime</span><span class="p">(</span><span class="s1">&#39;Billinge&#39;</span><span class="p">,</span><span class="mi">300256</span><span class="p">,</span><span class="mf">0.1818</span><span class="p">,[(</span><span class="s1">&#39;Simon&#39;</span><span class="p">,</span><span class="s1">&#39;Billinge&#39;</span><span class="p">),(</span><span class="s1">&#39;Chia-Hao&#39;</span><span class="p">,</span><span class="s1">&#39;Liu&#39;</span><span class="p">)])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span> <span class="o">=</span> <span class="n">Beamtime</span><span class="p">(</span><span class="s1">&#39;Billinge&#39;</span><span class="p">,</span><span class="mi">300256</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Simon&#39;</span><span class="p">,</span><span class="s1">&#39;Billinge&#39;</span><span class="p">,</span> <span class="s1">&#39;Chia-Hao&#39;</span><span class="p">,</span><span class="s1">&#39;Liu&#39;</span><span class="p">],</span> <span class="mf">0.18326</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We will assume that <code class="docutils literal"><span class="pre">bt</span></code> exists.  Now we move on to the next step, <a class="reference internal" href="usb_Experiment.html#usb-experiment"><span class="std std-ref">Setting up your XPD acuisition objects</span></a> within our beamtime.</p>

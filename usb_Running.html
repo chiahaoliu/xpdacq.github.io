@@ -91,7 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdacq environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Beamtime.html">Setting up your Beamtime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html">Where did all my Sample and Scan objects go?????</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-are-your-friends">bt.list() and bt.get() are your friends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-is-your-friends">bt.list() is your friends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Running scans</a><ul>
@@ -119,9 +119,6 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="usb_QuickAssess.html">Initial assessment of your data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html">Global options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html#where-did-all-my-sample-and-scan-objects-go">Where did all my Sample and Scan objects go?????</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html#bt-list-and-bt-get-are-your-friends">bt.list() and bt.get() are your friends</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
 </ul>
 </li>
 </ul>
@@ -190,102 +187,101 @@ run engines(functions) that you need.  To run a scan you simply pick the run eng
 and give it a predefined Sample object and
 a predefined ScanPlan object, then hit return and sit back, your scan will be carried out.</p>
 <p>The allowed scan types are:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prun</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dark</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">background</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">calibration</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dryrun</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">xrun</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">prun</span></code> stands for &#8220;production run&#8221; which is a normal run.</p>
-<p><code class="docutils literal"><span class="pre">dark</span></code> collects dark frames.Strictly speaking the sample is irrelevant here because the shutter is closed, but
-it is left in the definition for consistency and in general <code class="docutils literal"><span class="pre">dark</span></code> is not necessary as automated dark subtraction collect dark images for you.</p>
-<p><code class="docutils literal"><span class="pre">calibration</span></code> is specifically designed to collect image on your calibrants.</p>
-<p><code class="docutils literal"><span class="pre">setupscan</span></code> is for testing things before you are ready to get production data, such as trying out different exposures
-on a sample to find the best exposure time.</p>
-<p><code class="docutils literal"><span class="pre">dryrun</span></code> does not execute any scan but tells you what is going to be run when you give the same Sample and Scan objects
-to any of the other runs. It may be used for validating your scan objects, and also for estimating how long a <code class="docutils literal"><span class="pre">tseries</span></code> or <code class="docutils literal"><span class="pre">Tramp</span></code> might take.</p>
-<p>Here are some examples of a workflow.  Assume a GaAs sample is loaded on the diffractometer
-and the <code class="docutils literal"><span class="pre">'GaAs'</span></code> Sample object is created as well as all the ScanPlans we need.
-We will start by doing a dry-run on our <code class="docutils literal"><span class="pre">'ct2'</span></code> count ScanPlan.</p>
+<p><code class="docutils literal"><span class="pre">xrun</span></code> stands for &#8220;XPD run&#8221; which is a our main run engine.</p>
+<p>Here are some examples of a workflow.  Assume a Ni_calibrant sample is loaded on the diffractometer
+and the <code class="docutils literal"><span class="pre">Ni_calibrant</span></code> Sample object is created as well as all the <code class="docutils literal"><span class="pre">ScanPlan</span></code> we need.
+We will start by doing a scan with <code class="docutils literal"><span class="pre">Sample</span></code> object <code class="docutils literal"><span class="pre">Setup</span></code> on our <code class="docutils literal"><span class="pre">ct_1</span></code> ScanPlan.</p>
 <p>Remember, always start with <code class="docutils literal"><span class="pre">bt.list()</span></code></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
-<span class="go">bt object bt has list index  0</span>
-<span class="go">ex object InGaAsAlloyPD has list index  1</span>
-<span class="go">ex object ProteinFolding has list index  2</span>
-<span class="go">sa object GaAs has list index  3</span>
-<span class="go">sa object IGA75-25 has list index  4</span>
-<span class="go">sa object In0.25Ga0.75As has list index  5</span>
-<span class="go">sa object InAs has list index  6</span>
-<span class="go">sa object InGaAs-5050 has list index  7</span>
-<span class="go">sc object ct1.5 has list index  8</span>
-<span class="go">sc object ct1.5_nosh has list index  9</span>
-<span class="go">sc object ct100.5_nolt has list index  10</span>
-<span class="go">sc object ct2 has list index  11</span>
-<span class="go">sc object ct2_vw has list index  12</span>
-<span class="go">sc object ct2_vw_nos has list index  13</span>
-<span class="go">sc object ct2_vw_nosh has list index  14</span>
-<span class="go">Use bt.get(index) to get the one you want</span>
+
+<span class="go">ScanPlans:</span>
+<span class="go">0: &#39;ct_5&#39;</span>
+<span class="go">1: &#39;ct_0.1&#39;</span>
+<span class="go">2: &#39;ct_1&#39;</span>
+<span class="go">3: &#39;ct_10&#39;</span>
+<span class="go">4: &#39;ct_30&#39;</span>
+<span class="go">5: &#39;ct_60&#39;</span>
+<span class="go">7: &#39;ct_1.5&#39;</span>
+<span class="go">8: &#39;ct_100.5&#39;</span>
+
+<span class="go">Samples:</span>
+<span class="go">0: Setup</span>
+<span class="go">1: Ni_calibrant</span>
+<span class="go">2: bkgd_kapton_0.9mmOD</span>
+<span class="go">3: bkgd_kapton_1mmOD</span>
+<span class="go">4: bkgd_kapton_0.5mmOD</span>
+<span class="go">5: activated_carbon_1</span>
+<span class="go">6: activated_carbon_2</span>
+<span class="go">7: activated_carbon_3</span>
 </pre></div>
 </div>
-<p>The Sample object I want has list index 3 and the ScanPlan has list index 11.
-Let&#8217;s try a dryrun to make sure everything is ok.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dryrun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>
-<span class="go">INFO: requested exposure time =  2.0  -&gt; computed exposure time: 2.0</span>
-<span class="go">=== dryrun mode ===</span>
-<span class="go">this will execute a single bluesky Count type scan</span>
-<span class="go">Sample metadata: Sample name = GaAs</span>
-<span class="go">using the &quot;pe1c&quot; detector (Perkin-Elmer in continuous acquisition mode)</span>
-<span class="go">in the form of 20 frames of 0.1 s summed into a single event</span>
-<span class="go">(i.e. accessible as a single tiff file)</span>
+<p>...</p>
+<p>The Sample object I want has list index 0 and the ScanPlan has list index 2.
+Let&#8217;s try to make sure everything is ok.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">xrun</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">INFO: requested exposure time = 1 - &gt; computed exposure time= 1.0</span>
+<span class="go">INFO: No calibration file found in config_base. Scan will still keep going on</span>
+<span class="go">INFO: no mask has been associated with current glbl</span>
+<span class="go">+-----------+------------+------------+</span>
+<span class="go">|   seq_num |       time |  pe1_image |</span>
+<span class="go">+-----------+------------+------------+</span>
+<span class="go">|         1 | 15:58:47.4 |       5.00 |</span>
+<span class="go">+-----------+------------+------------+</span>
+<span class="go">generator count [&#39;73dc71&#39;] (scan num: 3)</span>
 </pre></div>
 </div>
 <p>OK, it seems to work, lets do some testing to see how much intensity we need.
 We will do three setup scans with 1.5 seconds and 100.5 seconds exposure
 and then compare them.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>   <span class="c1">#1.5 seconds</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1">#100.5 seconds</span>
-<span class="go">INFO: requested exposure time =  1.5  -&gt; computed exposure time: 1.5</span>
-<span class="go">+-----------+------------+------------------+</span>
-<span class="go">|   seq_num |       time | pe1_stats1_total |</span>
-<span class="go">+-----------+------------+------------------+</span>
-<span class="go">|         1 | 10:49:31.3 |                0 |</span>
-<span class="go">+-----------+------------+------------------+</span>
-<span class="go">Count [&#39;e7adbd&#39;] (scan num: 1)</span>
-<span class="go">INFO: requested exposure time =  100.5  -&gt; computed exposure time: 100.5</span>
-<span class="go">+-----------+------------+------------------+</span>
-<span class="go">|   seq_num |       time | pe1_stats1_total |</span>
-<span class="go">+-----------+------------+------------------+</span>
-<span class="go">|         1 | 10:49:41.3 |                0 |</span>
-<span class="go">+-----------+------------+------------------+</span>
-<span class="go">Count [&#39;e7adbd&#39;] (scan num: 2)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">xrun</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1">#1.5 seconds</span>
+<span class="go">INFO: requested exposure time = 1.5 - &gt; computed exposure time= 1.5</span>
+<span class="go">INFO: No calibration file found in config_base. Scan will still keep going on</span>
+<span class="go">INFO: no mask has been associated with current glbl</span>
+<span class="go">+-----------+------------+------------+</span>
+<span class="go">|   seq_num |       time |  pe1_image |</span>
+<span class="go">+-----------+------------+------------+</span>
+<span class="go">|         1 | 16:01:37.3 |       5.00 |</span>
+<span class="go">+-----------+------------+------------+</span>
+<span class="go">generator count [&#39;728f2f&#39;] (scan num: 5)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>  <span class="c1">#100.5 seconds</span>
+<span class="go">INFO: requested exposure time = 100.5 - &gt; computed exposure time= 100.5</span>
+<span class="go">INFO: No calibration file found in config_base. Scan will still keep going on</span>
+<span class="go">INFO: no mask has been associated with current glbl</span>
+<span class="go">+-----------+------------+------------+</span>
+<span class="go">|   seq_num |       time |  pe1_image |</span>
+<span class="go">+-----------+------------+------------+</span>
+<span class="go">|         1 | 16:02:57.0 |       5.00 |</span>
+<span class="go">+-----------+------------+------------+</span>
+<span class="go">generator count [&#39;981e70&#39;] (scan num: 6)</span>
 </pre></div>
 </div>
-<p>what is nice about these is that they are tagged with an <code class="docutils literal"><span class="pre">sc_isprun':False</span></code> metadata field
-which means that, by default, they will not be retrieved when searching for production data.  It
-keeps our setup scans and production scans nicely separated in the database, though
-the underlying scans that are carried out are all still there and can be retrieved if need
-be.</p>
-<p>It seems that the 2 second scans are the best, so let&#8217;s do a production run
+<p>It seems that the 2 second scans are the best, so let&#8217;s do with desired <code class="docutils literal"><span class="pre">Sample</span></code>
 to get the first data-set.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">bt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>  <span class="c1">#2 seconds</span>
-<span class="go">INFO: auto_dark didn&#39;t detect a valid dark, so is collecting a new dark frame.</span>
-<span class="go">See documentation at http://xpdacq.github.io for more information about controlling this behavior</span>
-<span class="go">INFO: requested exposure time =  2.0  -&gt; computed exposure time: 2.0</span>
-<span class="go">+-----------+------------+------------------+</span>
-<span class="go">|   seq_num |       time | pe1_stats1_total |</span>
-<span class="go">+-----------+------------+------------------+</span>
-<span class="go">|         1 | 10:51:36.6 |                0 |</span>
-<span class="go">+-----------+------------+------------------+</span>
-<span class="go">Count [&#39;d475dc&#39;] (scan num: 1)</span>
-<span class="go">INFO: requested exposure time =  2.0  -&gt; computed exposure time: 2.0</span>
-<span class="go">+-----------+------------+------------------+</span>
-<span class="go">|   seq_num |       time | pe1_stats1_total |</span>
-<span class="go">+-----------+------------+------------------+</span>
-<span class="go">|         1 | 10:51:42.4 |                0 |</span>
-<span class="go">+-----------+------------+------------------+</span>
-<span class="go">Count [&#39;e7adbd&#39;] (scan num: 2)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;In [13]: xrun(0, 8)</span>
+<span class="go">INFO: requested exposure time = 100.5 - &gt; computed exposure time= 100.5</span>
+<span class="go">INFO: closing shutter...</span>
+<span class="go">INFO: taking dark frame....</span>
+<span class="go">INFO: No calibration file found in config_base. Scan will still keep going on</span>
+<span class="go">INFO: no mask has been associated with current glbl</span>
+<span class="go">+-----------+------------+------------+</span>
+<span class="go">|   seq_num |       time |  pe1_image |</span>
+<span class="go">+-----------+------------+------------+</span>
+<span class="go">|         1 | 16:04:31.4 |       5.00 |</span>
+<span class="go">+-----------+------------+------------+</span>
+<span class="go">generator count [&#39;d770c7&#39;] (scan num: 7)</span>
+<span class="go">opening shutter...</span>
+<span class="go">INFO: No calibration file found in config_base. Scan will still keep going on</span>
+<span class="go">INFO: no mask has been associated with current glbl</span>
+<span class="go">+-----------+------------+------------+</span>
+<span class="go">|   seq_num |       time |  pe1_image |</span>
+<span class="go">+-----------+------------+------------+</span>
+<span class="go">|         1 | 16:04:31.5 |       5.00 |</span>
+<span class="go">+-----------+------------+------------+</span>
+<span class="go">generator count [&#39;0beaaf&#39;] (scan num: 8)</span>
 
 
 <span class="go">.. _auto_dark:</span>
@@ -293,8 +289,8 @@ to get the first data-set.</p>
 </div>
 <div class="section" id="automated-dark-collection">
 <h2>Automated dark collection<a class="headerlink" href="#automated-dark-collection" title="Permalink to this headline">¶</a></h2>
-<p>you might have found something weird when you running a <code class="docutils literal"><span class="pre">prun</span></code> command:</p>
-<p><em>I only requested one ``prun`` but program runs two scans</em></p>
+<p>you might have found something weird when you running a <code class="docutils literal"><span class="pre">xrun</span></code> command:</p>
+<p><em>I only requested one ``xrun`` but program runs two scans</em></p>
 <p>So what happen?</p>
 <p>That is actually a feature called auto-dark subtraction of <code class="docutils literal"><span class="pre">xpdAcq</span></code>.
 When you are running your experiment, <code class="docutils literal"><span class="pre">xpdAcq</span></code> actually checks if you have
@@ -514,11 +510,6 @@ header. Also a search on <code class="docutils literal"><span class="pre">Nacl=0
 <li><p class="first"><strong>Sample</strong>:</p>
 <p>Each row in your spreadsheet will be taken as one valid Sample and metadata
 will be parsed based on the contents you type in with above parsing rule.</p>
-</li>
-<li><p class="first"><strong>background</strong>:</p>
-<p>In additional to <code class="docutils literal"><span class="pre">Sample</span></code> objects parsed from rows, <code class="docutils literal"><span class="pre">xpdAcq</span></code> also create
-background objects with information you type in at <code class="docutils literal"><span class="pre">Geometry</span></code> field.</p>
-<p>background objects will automatically tagged as <code class="docutils literal"><span class="pre">is_background</span></code> in metadata.</p>
 </li>
 </ul>
 <p>Generally, after successfully importing sample from spreadsheet, that is what

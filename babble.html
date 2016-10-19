@@ -156,14 +156,14 @@ and <code class="docutils literal"><span class="pre">analysis</span></code> <cod
 <li><code class="docutils literal"><span class="pre">experimenters</span></code> field is expected to be [‘first_name’, ‘last_name’, ‘fist_name’, ‘last_name’, ….]</li>
 </ul>
 </div>
-<div class="section" id="link-bt-to-prun">
-<h3>link bt to prun<a class="headerlink" href="#link-bt-to-prun" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">prun</span><span class="o">.</span><span class="n">beamtime</span> <span class="o">=</span> <span class="n">bt</span>
+<div class="section" id="link-bt-to-xrun">
+<h3>link bt to xrun<a class="headerlink" href="#link-bt-to-xrun" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">xrun</span><span class="o">.</span><span class="n">beamtime</span> <span class="o">=</span> <span class="n">bt</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">this is to notice <code class="docutils literal"><span class="pre">prun</span></code> for current beamtime. concept of <code class="docutils literal"><span class="pre">prun</span></code> will be introduced later</p>
+<p class="last">this is to notice <code class="docutils literal"><span class="pre">xrun</span></code> for current beamtime. concept of <code class="docutils literal"><span class="pre">xrun</span></code> will be introduced later</p>
 </div>
 </div>
 <div class="section" id="open-a-collection">
@@ -266,9 +266,9 @@ Please see instruction <a class="reference internal" href="usb_Running.html#impo
 <h3>running scan with acquire objects<a class="headerlink" href="#running-scan-with-acquire-objects" title="Permalink to this headline">¶</a></h3>
 <p><em>on this sample, run this scan plan</em></p>
 <p><strong>production run engine</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>  <span class="n">bt</span><span class="o">.</span><span class="n">scanplan</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="c1"># indexing object explicitly</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">xrun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>  <span class="n">bt</span><span class="o">.</span><span class="n">scanplan</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="c1"># indexing object explicitly</span>
 
-<span class="n">prun</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># inexplicit give ``Sample`` and ``ScanPlan`` index</span>
+<span class="n">xrun</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># inexplicit give ``Sample`` and ``ScanPlan`` index</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -319,19 +319,19 @@ is you want to abort your current scan. Here is a useful table from
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>prun.resume()</td>
+<tr class="row-even"><td>xrun.resume()</td>
 <td>Safely resume plan.</td>
 </tr>
-<tr class="row-odd"><td>prun.abort()</td>
+<tr class="row-odd"><td>xrun.abort()</td>
 <td>Perform cleanup. Mark as aborted.</td>
 </tr>
-<tr class="row-even"><td>prun.stop()</td>
+<tr class="row-even"><td>xrun.stop()</td>
 <td>Perform cleanup. Mark as success.</td>
 </tr>
-<tr class="row-odd"><td>prun.halt()</td>
+<tr class="row-odd"><td>xrun.halt()</td>
 <td>Do not perform cleanup &#8212; just stop.</td>
 </tr>
-<tr class="row-even"><td>prun.state</td>
+<tr class="row-even"><td>xrun.state</td>
 <td>Check if &#8216;paused&#8217; or &#8216;idle&#8217;.</td>
 </tr>
 </tbody>
@@ -351,7 +351,7 @@ please refer to <a class="reference external" href="http://nsls-ii.github.io/dat
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
 <li>dark subtracted images from last <code class="docutils literal"><span class="pre">header</span></code> will be saved under directory with <code class="docutils literal"><span class="pre">sample_name</span></code>
-defined in <code class="docutils literal"><span class="pre">Sample</span></code> object you feed to <code class="docutils literal"><span class="pre">prun</span></code>.</li>
+defined in <code class="docutils literal"><span class="pre">Sample</span></code> object you feed to <code class="docutils literal"><span class="pre">xrun</span></code>.</li>
 </ul>
 </div>
 <p>You can also issue a commend to save all images from desired <code class="docutils literal"><span class="pre">header</span></code> or a bunch of <code class="docutils literal"><span class="pre">headers</span></code></p>
@@ -464,7 +464,7 @@ It gives you <strong>single</strong> object. You can always do <code class="docu
 <span class="n">glbl</span><span class="o">.</span><span class="n">shutter_control</span> <span class="o">=</span> <span class="bp">False</span>
 </pre></div>
 </div>
-<p><strong>Want a fresh dark frame every time ``prun`` is triggered:</strong></p>
+<p><strong>Want a fresh dark frame every time ``xrun`` is triggered:</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="o">.</span><span class="n">dk_window</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># dark window is 0.001 min = 0.06 secs</span>
 </pre></div>
 </div>

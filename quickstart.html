@@ -269,7 +269,7 @@ those letters. This will include Python imported and built-in functions as well 
 <h3>0.5 quick look<a class="headerlink" href="#quick-look" title="Permalink to this headline">¶</a></h3>
 <p>Place any sample, but maybe the Ni calibrant, at the sample position.  Let&#8217;s make sure we are getting a nice
 Ni diffraction pattern. In your <code class="docutils literal"><span class="pre">collection</span></code> terminal type:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">prun</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># will run an exposure of 60 seconds on your setup sample</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">xrun</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># will run an exposure of 60 seconds on your setup sample</span>
 <span class="n">save_last_tiff</span><span class="p">()</span> <span class="c1"># will save the image in the tiff_base/Setup directory</span>
 </pre></div>
 </div>
@@ -401,8 +401,8 @@ is another glbl option that you could reset).</p>
 </pre></div>
 </div>
 <p>Finally, later on in the experiment when you are ready to run it, you would run this plan just the same as a regular <code class="docutils literal"><span class="pre">xpdAcq</span></code> scanPlan object:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">prun</span><span class="p">(</span><span class="mi">56</span><span class="p">,</span> <span class="n">myplan</span><span class="p">)</span> <span class="c1"># on sample 56 in the sample list, run the myplan scan plan.</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">57</span><span class="p">,</span> <span class="n">myplan</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">xrun</span><span class="p">(</span><span class="mi">56</span><span class="p">,</span> <span class="n">myplan</span><span class="p">)</span> <span class="c1"># on sample 56 in the sample list, run the myplan scan plan.</span>
+<span class="n">xrun</span><span class="p">(</span><span class="mi">57</span><span class="p">,</span> <span class="n">myplan</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The ability to write your own bluesky plans gives enormous flexibility
@@ -453,7 +453,7 @@ as an <code class="docutils literal"><span class="pre">xpdAcq</span></code> buil
 <div class="section" id="a-scan-is-a-scanplan-executed-on-a-sample">
 <h3>1. A scan is a scanplan executed on a sample<a class="headerlink" href="#a-scan-is-a-scanplan-executed-on-a-sample" title="Permalink to this headline">¶</a></h3>
 <p>The main philosophy of <code class="docutils literal"><span class="pre">xpdAcq</span></code> is : <strong>on this sample run this scanplan</strong> which
-is typed as <code class="docutils literal"><span class="pre">prun(&lt;Sample.object&gt;,&lt;ScanPlan-object&gt;)</span></code></p>
+is typed as <code class="docutils literal"><span class="pre">xrun(&lt;Sample.object&gt;,&lt;ScanPlan-object&gt;)</span></code></p>
 <div class="section" id="background-scan">
 <h4>background scan<a class="headerlink" href="#background-scan" title="Permalink to this headline">¶</a></h4>
 <p>It is recommended to run a background scan before your sample so it is available for
@@ -471,15 +471,15 @@ setup, for example, crystalline peaks due to the beam hitting a shutter.</p>
 <p>to list your sample objects tagged as backgrounds (that was done originally in your excel spreadsheet).</p>
 <blockquote>
 <div><ol class="arabic simple" start="3">
-<li>In the <code class="docutils literal"><span class="pre">collection</span></code> terminal, run <code class="docutils literal"><span class="pre">prun</span></code> (see below) on the background sample with a <code class="docutils literal"><span class="pre">ct</span></code> ScanPlan object of the desired exposure</li>
+<li>In the <code class="docutils literal"><span class="pre">collection</span></code> terminal, run <code class="docutils literal"><span class="pre">xrun</span></code> (see below) on the background sample with a <code class="docutils literal"><span class="pre">ct</span></code> ScanPlan object of the desired exposure</li>
 </ol>
 </div></blockquote>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># if you are running this as a tutorial don&#39;t type this.  It will take &gt;30 mins to complete because</span>
 <span class="c1"># scanplan[3] is a 15 minute exposure and there is no stored 15 minute dark exposure for subtraction</span>
 <span class="c1"># so the code will automatically collect that too!</span>
 <span class="c1"># but to test it you could replace bt.scanplan[3] with bt.scanplan[0]....</span>
-<span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">bt</span><span class="o">.</span><span class="n">scanplan</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># referencing objects explicitly...or...</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>                          <span class="c1"># inexplicit: give reference to ``Sample`` and ``ScanPlan``</span>
+<span class="n">xrun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">bt</span><span class="o">.</span><span class="n">scanplan</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># referencing objects explicitly...or...</span>
+<span class="n">xrun</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>                          <span class="c1"># inexplicit: give reference to ``Sample`` and ``ScanPlan``</span>
                                    <span class="c1"># index from the ``bt`` list</span>
 </pre></div>
 </div>
@@ -508,12 +508,12 @@ output files it is also a good idea to give your setup sample a name like <code 
 <div><ol class="arabic simple">
 <li>Load your sample</li>
 <li>If you are not using the built-in setup sample, list your sample objects to find your setup sample object</li>
-<li>type prun with the desired sample object and ScanPlan (see below)</li>
+<li>type xrun with the desired sample object and ScanPlan (see below)</li>
 </ol>
 </div></blockquote>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># In ``collection`` terminal</span>
-<span class="n">prun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">bt</span><span class="o">.</span><span class="n">scanplan</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span> <span class="c1"># referencing objects explicitly. If you are doing this as a tutorial, bt.scanplan[6] may not exist yet</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>                          <span class="c1"># inexplicit: give reference to ``Sample`` and ``ScanPlan``</span>
+<span class="n">xrun</span><span class="p">(</span><span class="n">bt</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">bt</span><span class="o">.</span><span class="n">scanplan</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span> <span class="c1"># referencing objects explicitly. If you are doing this as a tutorial, bt.scanplan[6] may not exist yet</span>
+<span class="n">xrun</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>                          <span class="c1"># inexplicit: give reference to ``Sample`` and ``ScanPlan``</span>
                                    <span class="c1"># index from the ``bt`` list</span>
 </pre></div>
 </div>
@@ -525,10 +525,10 @@ output files it is also a good idea to give your setup sample a name like <code 
 <div><ol class="arabic simple">
 <li>Load your sample (if it is not already loaded)</li>
 <li>List your sample objects to find the right one for this sample</li>
-<li>type prun with the desired sample object and ScanPlan (see below)</li>
+<li>type xrun with the desired sample object and ScanPlan (see below)</li>
 </ol>
 </div></blockquote>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">prun</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">xrun</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>For more info: FIXME</p>
@@ -551,7 +551,7 @@ The metadata associated with the image will be saved to a <code class="docutils 
 text file and can be opened with a text editor.  Saving behavior
 can be modified by changing the default function arguments.  Type <code class="docutils literal"><span class="pre">save_last_tiff?</span></code>
 to see the allowed values.</p>
-<p><strong>Pro Tip</strong>: this function is often typed just after <code class="docutils literal"><span class="pre">prun()</span></code> in the collection environment,
+<p><strong>Pro Tip</strong>: this function is often typed just after <code class="docutils literal"><span class="pre">xrun()</span></code> in the collection environment,
 so that the data are extracted out of the NSLS-II database and delivered to you automatically when
 the scan finishes.  You can then play around with them and take them home as you like.</p>
 <p>The following
@@ -661,19 +661,19 @@ into the <code class="docutils literal"><span class="pre">collection</span></cod
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>prun.resume()</td>
+<tr class="row-even"><td>xrun.resume()</td>
 <td>Safely resume plan.</td>
 </tr>
-<tr class="row-odd"><td>prun.abort()</td>
+<tr class="row-odd"><td>xrun.abort()</td>
 <td>Perform cleanup. Mark as aborted.</td>
 </tr>
-<tr class="row-even"><td>prun.stop()</td>
+<tr class="row-even"><td>xrun.stop()</td>
 <td>Perform cleanup. Mark as success.</td>
 </tr>
-<tr class="row-odd"><td>prun.halt()</td>
+<tr class="row-odd"><td>xrun.halt()</td>
 <td>Do not perform cleanup &#8212; just stop.</td>
 </tr>
-<tr class="row-even"><td>prun.state</td>
+<tr class="row-even"><td>xrun.state</td>
 <td>Check if &#8216;paused&#8217; or &#8216;idle&#8217;.</td>
 </tr>
 </tbody>

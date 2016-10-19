@@ -174,7 +174,7 @@
 <span class="n">run_calibration</span><span class="p">()</span>
 
 <span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span> <span class="c1"># returns the &#39;NaCl&#39; sample object at position 17 and the &#39;ct_0.5&#39; ScanPlan object at position 20</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">xrun</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="c1"># the data are saved into the NSLS-II database (don&#39;t worry) but we want to get the image so</span>
 <span class="c1"># type:</span>
@@ -182,14 +182,14 @@
 
 <span class="c1"># now we have everything set up, it is super-easy to sequence lots of interesting scans</span>
 <span class="c1"># this does a series of different scans on the same sample</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>   <span class="c1"># assume &#39;Tramp_0.5_300_310_2&#39; ScanPlan object at position 21</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">22</span><span class="p">)</span>   <span class="c1"># assume &#39;Tramp_0.5_310_250_5&#39; ScanPlan object at position 23</span>
+<span class="n">xrun</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>   <span class="c1"># assume &#39;Tramp_0.5_300_310_2&#39; ScanPlan object at position 21</span>
+<span class="n">xrun</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">22</span><span class="p">)</span>   <span class="c1"># assume &#39;Tramp_0.5_310_250_5&#39; ScanPlan object at position 23</span>
 <span class="n">save_tiff</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span> <span class="c1"># save tiffs from last three scans</span>
 
 <span class="c1"># this does the same scan on a series of samples</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>   <span class="c1"># running sample at index 17 with &#39;Tramp_0.5_300_310_2&#39; ScanPlan</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>   <span class="c1"># running sample at index 18 with &#39;Tramp_0.5_300_310_2&#39; ScanPlan</span>
-<span class="n">prun</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>   <span class="c1"># running sample at index 19 with &#39;Tramp_0.5_300_310_2&#39; ScanPlan</span>
+<span class="n">xrun</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>   <span class="c1"># running sample at index 17 with &#39;Tramp_0.5_300_310_2&#39; ScanPlan</span>
+<span class="n">xrun</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>   <span class="c1"># running sample at index 18 with &#39;Tramp_0.5_300_310_2&#39; ScanPlan</span>
+<span class="n">xrun</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>   <span class="c1"># running sample at index 19 with &#39;Tramp_0.5_300_310_2&#39; ScanPlan</span>
 <span class="n">save_tiff</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span> <span class="c1"># save tiffs from last three scans</span>
 </pre></div>
 </div>

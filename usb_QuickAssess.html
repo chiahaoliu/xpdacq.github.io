@@ -91,7 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdacq environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Beamtime.html">Setting up your Beamtime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html">Where did all my Sample and Scan objects go?????</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-are-your-friends">bt.list() and bt.get() are your friends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-is-your-friends">bt.list() is your friends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Running.html">Running scans</a></li>
@@ -101,9 +101,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html">Global options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html#where-did-all-my-sample-and-scan-objects-go">Where did all my Sample and Scan objects go?????</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html#bt-list-and-bt-get-are-your-friends">bt.list() and bt.get() are your friends</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
 </ul>
 </li>
 </ul>
@@ -188,8 +185,8 @@ helps you keep track if appropriate dark frames have been collected, if you
 allow it. With <code class="docutils literal"><span class="pre">auto_dark</span></code> set to True, <code class="docutils literal"><span class="pre">xpdAcq</span></code> can automatically subtract
 your light frames from corresponding dark frames when you save your tiffs.</p>
 <p>This behavior can be turned off by giving additional argument:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">save_last_tiff</span><span class="p">(</span><span class="n">dark_subtraction</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
-<span class="n">save_tiff</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dark_subtraction</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">save_last_tiff</span><span class="p">(</span><span class="n">dark_sub_bool</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">save_tiff</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dark_sub_bool</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
