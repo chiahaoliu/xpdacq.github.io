@@ -186,8 +186,23 @@ will be run on the central computer at XPD, and <code class="docutils literal"><
 <p>The instrument scientist (IS) should have set up your beamtime hardware and software
 for you.  Let&#8217;s check if it is the case.</p>
 <ol class="arabic simple">
-<li>Type <code class="docutils literal"><span class="pre">bt.md</span></code> and hit return. You should see the beamtime (<code class="docutils literal"><span class="pre">bt</span></code>) metadata (<code class="docutils literal"><span class="pre">md</span></code>) that has been pre-stored by the IS, and it should contain things like the last name of the PI on the proposal and the SAF number for the beamtime.  If not, please seek out the IS to get your session initialized.</li>
-<li>Check that the wavelength has been set.  Does the correct x-ray wavelength appear in <code class="docutils literal"><span class="pre">bt.md</span></code> <code class="docutils literal"><span class="pre">['bt_wavelength']</span></code> field, or does it say <code class="docutils literal"><span class="pre">None</span></code>.  If the latter, you can still collect scans but automated data reduction may not work, so best to grab the IS again.</li>
+<li>Type <code class="docutils literal"><span class="pre">bt.md</span></code> and hit return, you should see similar output as following:</li>
+</ol>
+<blockquote>
+<div><blockquote>
+<div><div class="highlight-python:"><div class="highlight"><pre><span></span>&gt;&gt;&gt; bt.md
+{&#39;bt_experimenters&#39;: [&#39;Tim&#39;, &#39;Liu&#39;],
+&#39;bt_piLast&#39;: &#39;Billinge&#39;,
+&#39;bt_safN&#39;: &#39;300564&#39;,
+&#39;bt_uid&#39;: &#39;fbb381c3&#39;,
+&#39;bt_wavelength&#39;: 0.1832}
+</pre></div>
+</div>
+</div></blockquote>
+<p>You should see the beamtime (<code class="docutils literal"><span class="pre">bt</span></code>) metadata (<code class="docutils literal"><span class="pre">md</span></code>) that has been pre-stored by the IS, and it should contain things like the last name of the PI on the proposal and the SAF number for the beamtime.  If not, please seek out the IS to get your session initialized.</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Check that the wavelength has been set.  Does the correct x-ray wavelength appear inside <code class="docutils literal"><span class="pre">bt_wavelength</span></code> field, or does it say <code class="docutils literal"><span class="pre">None</span></code>.  If the latter, you can still collect scans but automated data reduction may not work, so best to grab the IS again.</li>
 <li>Check that the Perkin Elmer detector is correctly set up.</li>
 </ol>
 <blockquote>
@@ -205,24 +220,26 @@ for you.  Let&#8217;s check if it is the case.</p>
 </div>
 </div></blockquote>
 </div></blockquote>
-<p>There are other setups that you can do to make your experiment run smoothly.  For example, by carrying out a calibration before you start collecting it greatly facilitate data reduction later.  Please follow the workflow in the <a class="reference internal" href="cheat_sheet.html#cheat-sheet"><span class="std std-ref">Code for Example Experiment</span></a> or talk to the IS if you don&#8217;t know how to do this.</p>
+<p>There are other setups that you can do to make your experiment run smoothly.
+For example, by carrying out a calibration before you start collecting it greatly facilitates data reduction later.
+Please follow the workflow in the <a class="reference internal" href="cheat_sheet.html#cheat-sheet"><span class="std std-ref">Code for Example Experiment</span></a> or talk to the IS if you don&#8217;t know how to do this.</p>
 </div>
 <div class="section" id="why-does-my-scan-halt-for-no-reason">
 <h2>Why does my scan halt for no reason?<a class="headerlink" href="#why-does-my-scan-halt-for-no-reason" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes you might find your scans halt for no reason, not even an error message.
-That is most likely come from confusion at machine level.
+That most likely come from confusion at machine level.
 Don&#8217;t worry, just make sure <strong>there is only one XPD control running on this computer.</strong>.
-<code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> can be launched by double-click on shortcut in desktop:</p>
+<code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> can be launched by double-clicking on shortcut in desktop:</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/xpd_control.png"><img alt="_images/xpd_control.png" class="align-center" src="_images/xpd_control.png" style="width: 60px; height: 80px;" /></a>
 </div></blockquote>
-<p>After launched it, a window similar to this should pop out:</p>
+<p>After launched, a window similar to this should pop out:</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/pe1c_ioc.png"><img alt="_images/pe1c_ioc.png" class="align-center" src="_images/pe1c_ioc.png" style="width: 400px; height: 300px;" /></a>
 </div></blockquote>
-<p>Each <code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> window means a control panel between XPD computer and experiment apparatuses, such as area detector or motor.
+<p>Each <code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> means a control panel between XPD computer and experiment apparatuses, such as area detector or motor.
 Therefore we should avoid having multiple <code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> running at the same time.
-To make sure there is only one <code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> running, move to top right corner and click <code class="docutils literal"><span class="pre">Activities</span></code>.
+To make sure there is only one <code class="docutils literal"><span class="pre">XPD</span> <span class="pre">control</span></code> running, move to top left corner and click <code class="docutils literal"><span class="pre">Activities</span></code>.
 Then you should see all currently active windows. Close duplicated control panels (if any) then it should work.</p>
 <p>If scan still halts, please contact beamline scientist immediately for bug report.</p>
 </div>

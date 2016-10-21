@@ -33,7 +33,7 @@
     <link rel="top" title="xpdAcq 0.5 documentation" href="index.html"/>
         <link rel="up" title="For XPD Users" href="xpdusers.html"/>
         <link rel="next" title="Initial assessment of your data" href="usb_QuickAssess.html"/>
-        <link rel="prev" title="ScanPlan objects" href="usb_Scan.html"/> 
+        <link rel="prev" title="Where did all my Sample and Scan objects go?????" href="usb_Where.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -88,12 +88,13 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="xpdusers.html">For XPD Users</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sb_overview.html">Overview of xpd acquisition environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdacq environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdAcq environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Beamtime.html">Setting up your Beamtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Experiment.html">Setting up your XPD acuisition objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html">Where did all my Sample and Scan objects go?????</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-is-your-friends">bt.list() is your friends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Running scans</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#automated-dark-collection">Automated dark collection</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#nice-and-fresh"><strong>Nice and fresh</strong></a></li>
@@ -197,6 +198,7 @@ We will start by doing a scan with <code class="docutils literal"><span class="p
 <p>Remember, always start with <code class="docutils literal"><span class="pre">bt.list()</span></code></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 
+
 <span class="go">ScanPlans:</span>
 <span class="go">0: &#39;ct_5&#39;</span>
 <span class="go">1: &#39;ct_0.1&#39;</span>
@@ -206,6 +208,7 @@ We will start by doing a scan with <code class="docutils literal"><span class="p
 <span class="go">5: &#39;ct_60&#39;</span>
 <span class="go">7: &#39;ct_1.5&#39;</span>
 <span class="go">8: &#39;ct_100.5&#39;</span>
+
 
 <span class="go">Samples:</span>
 <span class="go">0: Setup</span>
@@ -233,7 +236,7 @@ Let&#8217;s try to make sure everything is ok.</p>
 <span class="go">generator count [&#39;73dc71&#39;] (scan num: 3)</span>
 </pre></div>
 </div>
-<p>OK, it seems to work, lets do some testing to see how much intensity we need.
+<p>OK, it seems to work, let&#8217;s do some testing to see how much intensity we need.
 We will do three setup scans with 1.5 seconds and 100.5 seconds exposure
 and then compare them.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">xrun</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1">#1.5 seconds</span>
@@ -247,6 +250,7 @@ and then compare them.</p>
 <span class="go">+-----------+------------+------------+</span>
 <span class="go">generator count [&#39;728f2f&#39;] (scan num: 5)</span>
 
+
 <span class="gp">&gt;&gt;&gt; </span><span class="n">setupscan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>  <span class="c1">#100.5 seconds</span>
 <span class="go">INFO: requested exposure time = 100.5 - &gt; computed exposure time= 100.5</span>
 <span class="go">INFO: No calibration file found in config_base. Scan will still keep going on</span>
@@ -259,7 +263,7 @@ and then compare them.</p>
 <span class="go">generator count [&#39;981e70&#39;] (scan num: 6)</span>
 </pre></div>
 </div>
-<p>It seems that the 2 second scans are the best, so let&#8217;s do with desired <code class="docutils literal"><span class="pre">Sample</span></code>
+<p>It seems that the 2 second scans are the best, so let&#8217;s do[b] with desired <code class="docutils literal"><span class="pre">Sample</span></code>
 to get the first data-set.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;In [13]: xrun(0, 8)</span>
 <span class="go">INFO: requested exposure time = 100.5 - &gt; computed exposure time= 100.5</span>
@@ -284,16 +288,19 @@ to get the first data-set.</p>
 <span class="go">generator count [&#39;0beaaf&#39;] (scan num: 8)</span>
 
 
+
+
 <span class="go">.. _auto_dark:</span>
 </pre></div>
 </div>
 <div class="section" id="automated-dark-collection">
 <h2>Automated dark collection<a class="headerlink" href="#automated-dark-collection" title="Permalink to this headline">¶</a></h2>
-<p>you might have found something weird when you running a <code class="docutils literal"><span class="pre">xrun</span></code> command:</p>
-<p><em>I only requested one ``xrun`` but program runs two scans</em></p>
-<p>So what happen?</p>
-<p>That is actually a feature called auto-dark subtraction of <code class="docutils literal"><span class="pre">xpdAcq</span></code>.
-When you are running your experiment, <code class="docutils literal"><span class="pre">xpdAcq</span></code> actually checks if you have
+<p>Tim, I&#8217;m just gonna make the grammar changes in text, not in red from now on, it&#8217;s a pain to switch on my phone. Realized that you could easily just diff the two...</p>
+<p>You might have found something weird when you ran the <code class="docutils literal"><span class="pre">xrun</span></code> command:</p>
+<p><em>I only requested one ``xrun`` but the program runs two scans</em></p>
+<p>So what happened?</p>
+<p>That is a feature called auto-dark subtraction in <code class="docutils literal"><span class="pre">xpdAcq</span></code>.
+When you are running your experiment, <code class="docutils literal"><span class="pre">xpdAcq</span></code> checks if you have
 collected a <strong>fresh and appropriate</strong> dark frame every time it collects a scan.
 The definition of <strong>fresh and appropriate</strong> is:</p>
 <div class="section" id="nice-and-fresh">
@@ -306,14 +313,16 @@ as the light frame we are about collect.
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>At <strong>XPD</strong>, area detector is running in the <code class="docutils literal"><span class="pre">continuous</span> <span class="pre">acquisition</span></code> mode,
-which means detector keeps <strong>reading</strong> but only <strong>saves</strong> image when <code class="docutils literal"><span class="pre">xpdAcq</span></code>
-tells it to save, with desired exposure time.</p>
+<p>At <strong>XPD</strong>, the area detector is running in <code class="docutils literal"><span class="pre">continuous</span> <span class="pre">acquisition</span></code> mode,
+which means detector keeps <strong>reading</strong> but only <strong>saves</strong> images when <code class="docutils literal"><span class="pre">xpdAcq</span></code>
+tells it to save, with the desired exposure time.</p>
 <p>In short,</p>
+<ul class="simple">
+<li>acquisition time is the collection time for a single frame from area detector.</li>
+</ul>
+<p>This can take values between 0.1s to 5s.</p>
 <ul class="last simple">
-<li>acquisition time defines how fast is the detector reading time,
-ranged from 0.1s to 5s.</li>
-<li>exposure time means total exposure time, which is user defined.</li>
+<li>exposure time is the user-defined total acquisition time</li>
 </ul>
 </div>
 <p>Automated dark collection is enabled by default and it can be turned off by:</p>
@@ -321,23 +330,22 @@ ranged from 0.1s to 5s.</li>
 <span class="n">glbl</span><span class="o">.</span><span class="n">shutter_control</span> <span class="o">=</span> <span class="bp">False</span>
 </pre></div>
 </div>
-<p>And period of dark window can be modified by:</p>
+<p>And the duration of your dark window can be modified by:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="o">.</span><span class="n">dk_window</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1"># in minutes. default is 3000 minutes</span>
 </pre></div>
 </div>
 <p>Having <code class="docutils literal"><span class="pre">auto_dark</span></code> set to <code class="docutils literal"><span class="pre">True</span></code> is strongly recommended as this enables
-<code class="docutils literal"><span class="pre">xpdAcq</span></code> to do automated dark frame subtraction when you pull out data from
+<code class="docutils literal"><span class="pre">xpdAcq</span></code> to do automated dark frame subtraction when you pull out data from the
 centralized <strong>NSLSL-II</strong> server.</p>
 </div></blockquote>
 </div>
 </div>
 <div class="section" id="automated-calibration-capture">
 <span id="auto-calib"></span><h2>Automated calibration capture<a class="headerlink" href="#automated-calibration-capture" title="Permalink to this headline">¶</a></h2>
-<p>Often times, keeping track with which calibration file is associated with
-certain scan is very tiring. <code class="docutils literal"><span class="pre">xpdAcq</span></code> makes this easier for you. Before every
-scan is being collected, program goes to grab the most recent calibration
-parameters in <code class="docutils literal"><span class="pre">/home/xf28id1/xpdUser/config_base</span></code> and load them as part of
-metadata so that you can reference them whenever you want and make in-situ data
+<p>Often times, keeping track of which calibration file is associated with a specific scan is very tiring. <code class="docutils literal"><span class="pre">xpdAcq</span></code> makes this easier or you. Before every
+scan is being collected, the program goes to grab the most recent calibration
+parameters in <code class="docutils literal"><span class="pre">/home/xf28id1/xpdUser/config_base</span></code> and load them as part of the
+metadata so that you can reference them whenever you want, and make in-situ data
 reduction possible!</p>
 <div class="section" id="quick-guide-of-calibration-steps-with-pyfai">
 <span id="calib-manual"></span><h3>Quick guide of calibration steps with pyFAI<a class="headerlink" href="#quick-guide-of-calibration-steps-with-pyfai" title="Permalink to this headline">¶</a></h3>
@@ -346,43 +354,38 @@ reduction possible!</p>
 </ol>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/calib_05.png"><img alt="_images/calib_05.png" class="align-center" src="_images/calib_05.png" style="width: 400px; height: 300px;" /></a>
-<p>That is the image we want to perform azimuthal calibration with. Use <strong>magnify
-tool</strong> at the tool bar to zoom in and <strong>right click</strong> on rings. Starting from
-the inner ring and to the outer rings. Usually a few rings (~5) should be
-enough.</p>
+<p>That is the image we want to perform our  calibration with. Use <strong>magnify
+tool</strong> at the tool bar to zoom in and <strong>right click</strong> on rings (tip: deselect the zoom toggle before ring selection). Typically a few rings (~5) should be enough.</p>
 <a class="reference internal image-reference" href="_images/calib_07.png"><img alt="_images/calib_07.png" class="align-center" src="_images/calib_07.png" style="width: 400px; height: 300px;" /></a>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
 <li>For a better calibration, we suggest you to select rings that are
-<strong>well separated</strong> from its neighbors.</li>
-<li>Also, we suggest you to zoom in more for better accuracy when selecting rings.</li>
+<strong>well separated/resolved</strong> from their neighbors, and make sure that points are assigned to the correct ring.</li>
 </ul>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>After selecting rings, click on the <em>original</em> terminal and hit <code class="docutils literal"><span class="pre">&lt;enter&gt;</span></code>.</li>
+<li>After ring selection, click on the <em>original</em> terminal and hit <code class="docutils literal"><span class="pre">&lt;enter&gt;</span></code>.</li>
 </ol>
 <blockquote>
 <div><p>Then you will be requested to supply indices of rings you just selected.
 Remember index <strong>starts from 0</strong> as we are using <code class="docutils literal"><span class="pre">python</span></code>.
 After supplying all indices, you should have a window to show your calibration:</p>
 <a class="reference internal image-reference" href="_images/calib_08.png"><img alt="_images/calib_08.png" class="align-center" src="_images/calib_08.png" style="width: 400px; height: 300px;" /></a>
-<p>Program will ask you if you want to modify parameters. In most of cases, you
-don&#8217;t have to change the parameters, so just type <code class="docutils literal"><span class="pre">done</span></code> in the terminal and
-calibration process will be done.</p>
+<p>The program will ask you if you want to modify parameters.
+To finish entire calibration process, please type <code class="docutils literal"><span class="pre">done</span></code> in the terminal.</p>
+<p>You may find more information about calibration process from <a class="reference external" href="http://pyfai.readthedocs.io/en/latest/calibration.html">pyFAI documentation</a></p>
 </div></blockquote>
 <ol class="arabic simple" start="3">
 <li>Finally 1D integration and 2D regrouping results will pop out:</li>
 </ol>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/calib_09.png"><img alt="_images/calib_09.png" class="align-center" src="_images/calib_09.png" style="width: 400px; height: 300px;" /></a>
-<p>You can qualitatively interrogate your calibration by looking if lines in
-2D regrouping are straight or not.</p>
 <p>After this step, a calibration file with name <code class="docutils literal"><span class="pre">pyFAI_calib.yml</span></code> will be
 saved under <code class="docutils literal"><span class="pre">/home/xf28id1/xpdUser/config_base</span></code></p>
 </div></blockquote>
-<p>Alright, you are done then! With <code class="docutils literal"><span class="pre">`automated</span> <span class="pre">calibration</span> <span class="pre">capture</span></code> feature, <code class="docutils literal"><span class="pre">xpdAcq</span></code>
+<p>Alright, you are done then! With <code class="docutils literal"><span class="pre">automated</span> <span class="pre">calibration</span> <span class="pre">capture</span></code> feature, <code class="docutils literal"><span class="pre">xpdAcq</span></code>
 will load calibration parameters from the most recent config file.</p>
 </div>
 </div>
@@ -518,9 +521,13 @@ you would see:</p>
 <span class="o">***</span> <span class="n">End</span> <span class="n">of</span> <span class="kn">import</span> <span class="nn">Sample</span> <span class="nn">object</span> <span class="o">***</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">xpdacq</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">ExceltoYaml</span> <span class="n">at</span> <span class="mh">0x7fae8ab659b0</span><span class="o">&gt;</span>
 
+
 <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 
+
 <span class="n">ScanPlans</span><span class="p">:</span>
+
+
 
 
 <span class="n">Samples</span><span class="p">:</span>
@@ -535,6 +542,7 @@ you would see:</p>
 <span class="mi">8</span><span class="p">:</span> <span class="n">FeF3</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="o">-</span><span class="n">bipyridyl</span><span class="p">)</span>
 <span class="mi">9</span><span class="p">:</span> <span class="n">Zn_MOF</span>
 <span class="o">...</span>
+
 
 <span class="mi">41</span><span class="p">:</span> <span class="n">ITO_glass_noFilm</span>
 <span class="mi">42</span><span class="p">:</span> <span class="n">ITO_glass_1hrHeatUpTo250C_1hrhold250C_airdry</span>
@@ -551,7 +559,7 @@ you would see:</p>
 </div>
 <div class="section" id="auto-masking">
 <span id="auto-mask"></span><h2>Auto-masking<a class="headerlink" href="#auto-masking" title="Permalink to this headline">¶</a></h2>
-<p>Masking can be a tedious process, requireing long hours judging which pixels
+<p>Masking can be a tedious process, requiring long hours judging which pixels
 are good and which need to be removed. The our automated masking software aims
 to alleviate this by applying a set of masks in sequence to return better
 quality data.</p>
@@ -581,7 +589,7 @@ expected intensity.</p>
 <li><dl class="first docutils">
 <dt>Lower threshold mask:</dt>
 <dd><p class="first last">A lower threshold mask, which removes all pixels who&#8217;s intensities are
-lower than a certain value is applied. The default theshold is 0.0</p>
+lower than a certain value is applied. The default threshold is 0.0</p>
 </dd>
 </dl>
 </li>
@@ -642,7 +650,7 @@ images.</p>
         <a href="usb_QuickAssess.html" class="btn btn-neutral float-right" title="Initial assessment of your data" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="usb_Scan.html" class="btn btn-neutral" title="ScanPlan objects" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="usb_Where.html" class="btn btn-neutral" title="Where did all my Sample and Scan objects go?????" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

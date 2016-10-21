@@ -88,12 +88,13 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="xpdusers.html">For XPD Users</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sb_overview.html">Overview of xpd acquisition environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdacq environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdAcq environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Beamtime.html">Setting up your Beamtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Experiment.html">Setting up your XPD acuisition objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html">Where did all my Sample and Scan objects go?????</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-is-your-friends">bt.list() is your friends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Running.html">Running scans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_QuickAssess.html">Initial assessment of your data</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Global options</a><ul>
@@ -174,7 +175,7 @@ these can be interrogated and overwritten.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="o">.</span><span class="n">dk_window</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># dark window is 0.001 min = 0.06 secs</span>
 </pre></div>
 </div>
-<p><strong>Want a 0.2 exposure time per frame instead of 0.1s:</strong></p>
+<p><strong>Want a 0.2s exposure time per frame instead of 0.1s:</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="o">.</span><span class="n">frame_acq_time</span> <span class="o">=</span> <span class="mf">0.2</span>
 </pre></div>
 </div>
