@@ -159,29 +159,28 @@ the software, please post it as a new thread at <a class="reference external" hr
 </div>
 <div class="section" id="what-s-new">
 <h2>What&#8217;s new?<a class="headerlink" href="#what-s-new" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="current-version-v0-5">
-<h3>current version : <code class="docutils literal"><span class="pre">v0.5</span></code><a class="headerlink" href="#current-version-v0-5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="current-version-v0-5-2">
+<h3>current version : <code class="docutils literal"><span class="pre">v0.5.2</span></code><a class="headerlink" href="#current-version-v0-5-2" title="Permalink to this headline">¶</a></h3>
 <p>This is a stable release of <code class="docutils literal"><span class="pre">xpdAcq</span></code> software.</p>
-<p>New features introduced to this version:</p>
+<p>Addition to all the features of <code class="docutils literal"><span class="pre">v0.5.0</span></code>, new features introduced to this version are:</p>
 <blockquote>
 <div><ul class="simple">
-<li>flexibility of running customized <code class="docutils literal"><span class="pre">bluesky</span></code> plans while keeping <code class="docutils literal"><span class="pre">xpdAcq</span></code> dark collection logic.</li>
-<li>ability of importing metadata from a spreadsheet, open the door for data driven studies.</li>
-<li>data reduction tools:<ul>
-<li>azimuthal integration using <code class="docutils literal"><span class="pre">pyFAI</span></code> as the back-end</li>
-<li>auto-masking based on statistics on pixel counts</li>
-</ul>
-</li>
+<li>functionality to reload beamtime configuration when reenter into <code class="docutils literal"><span class="pre">ipython</span></code> session</li>
+<li>improved logic of importing metadata from a spreadsheet, information is parsed in a
+way that facilitates data driven studies.</li>
+<li>new ScanPlan: temperature list scan <code class="docutils literal"><span class="pre">Tlist</span></code>. User can collect data at desired
+temperature points.</li>
 </ul>
 </div></blockquote>
-<p><code class="docutils literal"><span class="pre">v0.5</span></code> supports three kinds of built-in scans:</p>
+<p><code class="docutils literal"><span class="pre">v0.5.2</span></code> supports following built-in scans:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>single-frame (ct)
 time-series (tseries)
 temperature-series scans (Tramp)
+temperature-list scans (Tlist)
 </pre></div>
 </div>
 <p>Additional built-in scan types will be added in future releases.</p>
-<p><code class="docutils literal"><span class="pre">v0.5</span></code> supports following automated logics :</p>
+<p><code class="docutils literal"><span class="pre">v0.5.2</span></code> also supports following automated logics :</p>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="usb_Running.html#auto-dark"><span class="std std-ref">automated dark subtraction</span></a></li>

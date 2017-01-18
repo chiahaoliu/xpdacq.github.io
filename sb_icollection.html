@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview of the icollection+xpdAcq environment &mdash; xpdAcq 0.5 documentation</title>
+  <title>Overview of the bsui+xpdAcq environment &mdash; xpdAcq 0.5 documentation</title>
   
 
   
@@ -88,7 +88,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="xpdusers.html">For XPD Users</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sb_overview.html">Overview of xpd acquisition environment</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview of the icollection+xpdAcq environment</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview of the bsui+xpdAcq environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nsls-ii-data-philosophy">NSLS-II data philosophy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#xpdacq-philosophy">xpdAcq philosophy</a></li>
 </ul>
@@ -98,10 +98,10 @@
 <li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html">Where did all my Sample and Scan objects go?????</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-is-your-friends">bt.list() is your friends</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-gotchas">bt.list() Gotchas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Running.html">Running scans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_QuickAssess.html">Initial assessment of your data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html">Global options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html">xpdAcq Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -145,7 +145,7 @@
       
           <li><a href="xpdusers.html">For XPD Users</a> &raquo;</li>
       
-    <li>Overview of the icollection+xpdAcq environment</li>
+    <li>Overview of the bsui+xpdAcq environment</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -159,23 +159,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="overview-of-the-icollection-xpdacq-environment">
-<span id="sb-icollection"></span><h1>Overview of the icollection+xpdAcq environment<a class="headerlink" href="#overview-of-the-icollection-xpdacq-environment" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="overview-of-the-bsui-xpdacq-environment">
+<span id="sb-icollection"></span><h1>Overview of the bsui+xpdAcq environment<a class="headerlink" href="#overview-of-the-bsui-xpdacq-environment" title="Permalink to this headline">¶</a></h1>
 <p>All data collection at NSLS-II is carried out through a powerful
 Python-software-language based interface which runs in an ipython interactive
-session. By typing <code class="docutils literal"><span class="pre">icollection</span></code> at the unix prompt (command line) in a terminal
+session. By typing <code class="docutils literal"><span class="pre">bsui</span></code> at the unix prompt (command line) in a terminal
 window at the XPD computer you begin an ipython session and preload an ipython
 profile (called <code class="docutils literal"><span class="pre">collection</span></code>) that contains all the software to run the NSLS-II
-data collection software.  You can tell when you are in the <code class="docutils literal"><span class="pre">collection</span></code> environment
-because you will see <code class="docutils literal"><span class="pre">(collection)</span></code> at the beginning of the command-line.  When
-you are not in the environment you won&#8217;t see that. There is also an analysis
-environment, which is currently called <code class="docutils literal"><span class="pre">analysis-dev</span></code>,
+data collection software.</p>
+<p>You can tell when you are in the <code class="docutils literal"><span class="pre">collection</span></code> environment
+because you will see <code class="docutils literal"><span class="pre">(collection-yyQn.x)</span></code> at the beginning of the command-line.
+<code class="docutils literal"><span class="pre">yy</span></code> stands for year and <code class="docutils literal"><span class="pre">Qn.x</span></code> tells detailed information about the
+version. For example, <code class="docutils literal"><span class="pre">collection-17Q1.0</span></code> would mean the fist version of
+quarter 1, in 2017.When you are not in the environment you won&#8217;t see that. There is also an analysis environment, which is currently called <code class="docutils literal"><span class="pre">analysis</span></code>,
 that is very similar to the <code class="docutils literal"><span class="pre">collection</span></code> environment but it is for data
 analysis functions and you cannot control any XPD hardware from it.  This may
 be run on a different computer than the control software, as long as it can see
 the NSLS-II data database.   This environment is activated by typing <code class="docutils literal"><span class="pre">ianalysis</span></code>
 in a fresh terminal on one of the XPD linux computers.</p>
-<p>Inside the <code class="docutils literal"><span class="pre">collection</span></code> environment you can type commands that will control the
+<p>Inside the <code class="docutils literal"><span class="pre">collection-yyQn.x</span></code> environment you can type commands that will control the
 diffractometer, collect data, and also extract data from the NSLS-II database.
 The NSLS-II data acquisition environment is powerful and flexible, but there is a
 stiff learning curve to using it.  We have therefore added a layer on top that
