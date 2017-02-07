@@ -115,7 +115,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -150,7 +150,7 @@ for you.  Let&#8217;s check if it is the case.</p>
 <div><ul class="simple">
 <li>In a terminal look to see if it is already activated.  If it is, you should see <code class="docutils literal"><span class="pre">(collection)</span></code> at the beginning of the line.</li>
 </ul>
-<div class="highlight-none"><div class="highlight"><pre><span></span>(collection)xf28id1@xf28id1-ws2:~$
+<div class="highlight-none"><div class="highlight"><pre>(collection)xf28id1@xf28id1-ws2:~$
 </pre></div>
 </div>
 <ul class="simple">
@@ -171,7 +171,7 @@ for you.  Let&#8217;s check if it is the case.</p>
 <li>Type <code class="docutils literal"><span class="pre">glbl.area_det</span></code> and return.  It should return:</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">glbl</span><span class="o">.</span><span class="n">area_det</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">glbl</span><span class="o">.</span><span class="n">area_det</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">PerkinElmerContinuous</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;XF:28IDC-ES:1{Det:PE1}&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;pe1&#39;</span><span class="p">,</span> <span class="n">read_attrs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tiff&#39;</span><span class="p">,</span> <span class="s1">&#39;stats1&#39;</span><span class="p">],</span> <span class="n">configuration_attrs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;images_per_set&#39;</span><span class="p">,</span> <span class="s1">&#39;number_of_sets&#39;</span><span class="p">],</span> <span class="n">monitor_attrs</span><span class="o">=</span><span class="p">[])</span>
 </pre></div>
 </div>
@@ -195,7 +195,7 @@ for you.  Let&#8217;s check if it is the case.</p>
 <li><code class="docutils literal"><span class="pre">xrun(bt.get(2),bt.get(7))</span></code> will do a scan for 10 s on the same sample (to see that, look at the list produced by typing <code class="docutils literal"><span class="pre">bt.list()</span></code>.</li>
 <li><code class="docutils literal"><span class="pre">setupscan(bt.get(2),bt.get(7))</span></code> will do a setupscan on that sample for 10 seconds.  A setupscan is like a xrun (&#8220;production run&#8221;) except it is tagged in metadata as a setupscan so you can separate later which were production runs and which were setup-scans.</li>
 </ol>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Pro</span><span class="o">-</span><span class="n">Tip</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Pro</span><span class="o">-</span><span class="n">Tip</span><span class="p">:</span>
 <span class="sd">&#39;&#39;&#39;``xrun`` and all the scans support different ways of assigning acquire objects.</span>
 <span class="sd">You can either get the objects with the ``bt.get()`` methods as above, or</span>
 <span class="sd">to save typing, the scan functions allow you to specify just the object index,</span>
@@ -254,11 +254,11 @@ Please take the time to read the full documentation from <strong>XPD user</stron
 <li>make a new <code class="docutils literal"><span class="pre">scanPlan</span></code> object by typing</li>
 </ol>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct_90&#39;</span><span class="p">)</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ScanPlan</span><span class="p">(</span><span class="s1">&#39;ct_90&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This will create a <code class="docutils literal"><span class="pre">'ct'</span></code>, or count-type, scan with an exposure of 90 s or 1.5 minutes.
-To find more details on creating new <code class="docutils literal"><span class="pre">ScanPlan</span></code> objects, please see <a class="reference internal" href="usb_Scan.html#usb-scan"><span class="std std-ref">ScanPlan objects</span></a></p>
+To find more details on creating new <code class="docutils literal"><span class="pre">ScanPlan</span></code> objects, please see <a class="reference internal" href="usb_Scan.html#usb-scan"><span>ScanPlan objects</span></a></p>
 </div></blockquote>
 <ol class="arabic simple" start="3">
 <li>type <code class="docutils literal"><span class="pre">bt.list('sp')</span></code> again.  You should see your new <code class="docutils literal"><span class="pre">ScanPlan</span></code> object at the end of the list.  You can now use your object to collect data by passing it to a &#8220;scan&#8221; function:</li>
@@ -334,7 +334,7 @@ To find more details on creating new <code class="docutils literal"><span class=
 <blockquote>
 <div><p>Oops, you requested a scan with the wrong <code class="docutils literal"><span class="pre">Sample</span></code>, or <code class="docutils literal"><span class="pre">ScanPlan</span></code> object, or your <code class="docutils literal"><span class="pre">ScanPlan</span></code> object is not doing what you expected!!!!!</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CTL</span><span class="o">-</span><span class="n">C</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">CTL</span><span class="o">-</span><span class="n">C</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -345,7 +345,7 @@ To find more details on creating new <code class="docutils literal"><span class=
 <dt>Experiment and sample objects:</dt>
 <dd><p class="first">1. It is time well spent to set up all your experiment and sample objects accurately.
 To set up a sample you have to give it an experiment object, so <code class="docutils literal"><span class="pre">Sample('Li</span> <span class="pre">battery</span> <span class="pre">electrode',bt.get(96))</span></code> uses the object in <code class="docutils literal"><span class="pre">bt.list(96)</span></code> which must be an <code class="docutils literal"><span class="pre">ex</span></code> type object, for example I #may have made# it with <code class="docutils literal"><span class="pre">Experiment('cycled</span> <span class="pre">and</span> <span class="pre">uncycled</span> <span class="pre">batteries',bt)</span></code>.
-The <code class="docutils literal"><span class="pre">bt</span></code> is the beamtime object. For complete documentation, please see <a class="reference internal" href="usb_Experiment.html#usb-experiment"><span class="std std-ref">Setting up your XPD acuisition objects</span></a></p>
+The <code class="docutils literal"><span class="pre">bt</span></code> is the beamtime object. For complete documentation, please see <a class="reference internal" href="usb_Experiment.html#usb-experiment"><span>Setting up your XPD acuisition objects</span></a></p>
 <p class="last">2. It is also possible to download xpdAcq <a class="reference external" href="https://github.com/xpdAcq/xpdAcq">from here</a> and run it on your own computer to set up the <code class="docutils literal"><span class="pre">sample</span></code> and <code class="docutils literal"><span class="pre">scanplan</span></code> objects you think you will need at the beamtime.
 So when you are at XPD you can concentrate on collecting data and not typing metadata.
 Simulation at home is strongly recommended. See the full documentation for more details here [FIXME doc needed]</p>
@@ -356,7 +356,7 @@ Simulation at home is strongly recommended. See the full documentation for more 
 <h2>User scripts<a class="headerlink" href="#user-scripts" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Your <code class="docutils literal"><span class="pre">scanplan</span></code> objects can be sequenced into scripts, executing one after the other as you desire.  To set this up, write a sequence of commands into a text file, save it with the extension <code class="docutils literal"><span class="pre">.py</span></code> in the <code class="docutils literal"><span class="pre">userScripts</span></code> directory with a memorable name, like <code class="docutils literal"><span class="pre">myNightShiftScript.py</span></code>.  Double and triple check your script, then when you are ready to execute it, in <code class="docutils literal"><span class="pre">ipython</span></code> session type:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/</span><span class="n">xpdUser</span><span class="o">/</span><span class="n">userScripts</span><span class="o">/</span><span class="n">myNightShiftScript</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">%</span><span class="n">run</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/</span><span class="n">xpdUser</span><span class="o">/</span><span class="n">userScripts</span><span class="o">/</span><span class="n">myNightShiftScript</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>Stay there for a while to make sure everything is running as expected and then go to bed!</p>
@@ -371,20 +371,20 @@ This was just the quick start, but much more information is in the full document
 <h3>Possible scenarios<a class="headerlink" href="#possible-scenarios" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p><strong>No automated dark collection logic at all:</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="o">.</span><span class="n">auto_dark</span> <span class="o">=</span> <span class="bp">False</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">glbl</span><span class="o">.</span><span class="n">auto_dark</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="n">glbl</span><span class="o">.</span><span class="n">shutter_control</span> <span class="o">=</span> <span class="bp">False</span>
 </pre></div>
 </div>
 <p><strong>Want a fresh dark frame every time ``xrun`` is triggered:</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="o">.</span><span class="n">dk_window</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># dark window is 0.001 min = 0.06 secs</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">glbl</span><span class="o">.</span><span class="n">dk_window</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># dark window is 0.001 min = 0.06 secs</span>
 </pre></div>
 </div>
 <p><strong>Want a 0.2 exposure time per frame instead of 0.1s:</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="o">.</span><span class="n">frame_acq_time</span> <span class="o">=</span> <span class="mf">0.2</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">glbl</span><span class="o">.</span><span class="n">frame_acq_time</span> <span class="o">=</span> <span class="mf">0.2</span>
 </pre></div>
 </div>
 <p><strong>Want to run temperature ramp with different device and use alternative shutter:</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="o">.</span><span class="n">temp_controller</span> <span class="o">=</span> <span class="n">eurotherm</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">glbl</span><span class="o">.</span><span class="n">temp_controller</span> <span class="o">=</span> <span class="n">eurotherm</span>
 <span class="n">glbl</span><span class="o">.</span><span class="n">shutter</span> <span class="o">=</span> <span class="n">shctl2</span>
 </pre></div>
 </div>

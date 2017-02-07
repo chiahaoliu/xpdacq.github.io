@@ -32,7 +32,7 @@
   
     <link rel="top" title="xpdAcq 0.5 documentation" href="index.html"/>
         <link rel="up" title="For XPD Users" href="xpdusers.html"/>
-        <link rel="next" title="Global options" href="usb_GlobalOptions.html"/>
+        <link rel="next" title="xpdAcq Configuration" href="usb_GlobalOptions.html"/>
         <link rel="prev" title="Running scans" href="usb_Running.html"/> 
 
   
@@ -88,21 +88,21 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="xpdusers.html">For XPD Users</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sb_overview.html">Overview of xpd acquisition environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sb_icollection.html">Overview of the icollection+xpdAcq environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sb_icollection.html">Overview of the bsui+xpdAcq environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Beamtime.html">Setting up your Beamtime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Experiment.html">Setting up your XPD acuisition objects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html">Where did all my Sample and Scan objects go?????</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-is-your-friends">bt.list() is your friends</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-and-bt-get-gotchas">bt.list() and bt.get() Gotchas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-gotchas">bt.list() Gotchas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Running.html">Running scans</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Initial assessment of your data</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Initial assessment of your data</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#saving-tiff-files">Saving tiff files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#automated-dark-subtraction">Automated dark subtraction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#save-images-and-also-integrate-images-to-a-1d-patterns">Save images and also integrate images to a 1D patterns</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html">Global options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb_GlobalOptions.html">xpdAcq Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -136,7 +136,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -166,15 +166,15 @@
 <h2>Saving tiff files<a class="headerlink" href="#saving-tiff-files" title="Permalink to this headline">¶</a></h2>
 <p>The most obvious way of accessing your data is to pull them from centralized
 server and save them into your working directory. As we have mentioned in
-<a class="reference internal" href="quickstart_old.html#qs"><span class="std std-ref">Quick start</span></a>, saving tiff can be done in following ways:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">save_last_tiff</span><span class="p">()</span> <span class="c1"># save tiffs from last scan</span>
+<a class="reference internal" href="quickstart_old.html#qs"><span>Quick start</span></a>, saving tiff can be done in following ways:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">save_last_tiff</span><span class="p">()</span> <span class="c1"># save tiffs from last scan</span>
 <span class="n">save_tiff</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># save tiffs from last scan, same as save_last_tiff()</span>
 <span class="n">save_tiff</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span> <span class="c1"># save tiffs from the most recent 3 scans</span>
 <span class="n">save_tiff</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">7</span><span class="p">])</span> <span class="c1"># save tiffs from the most recent 1, 5, 7 scans</span>
 </pre></div>
 </div>
 <p>With this function, the image will be saved to a <code class="docutils literal"><span class="pre">.tiff</span></code> file under <code class="docutils literal"><span class="pre">xpdUser/tiff_base/&lt;sample_name&gt;</span></code>
-where <code class="docutils literal"><span class="pre">&lt;sample_name&gt;</span></code> is the metadata you entered during <a class="reference internal" href="usb_Experiment.html#usb-experiment"><span class="std std-ref">setting up your Sample object</span></a>.</p>
+where <code class="docutils literal"><span class="pre">&lt;sample_name&gt;</span></code> is the metadata you entered during <a class="reference internal" href="usb_Experiment.html#usb-experiment"><span>setting up your Sample object</span></a>.</p>
 <p>The metadata associated with the image will be saved to a <code class="docutils literal"><span class="pre">.yml</span></code> file which is a
 text file which can be opened with a text editor.  Saving behavior can be modified
 by changing the default function arguments.  Type <code class="docutils literal"><span class="pre">save_last_tiff?</span></code>
@@ -192,12 +192,12 @@ for basic information.</p>
 </div>
 <div class="section" id="automated-dark-subtraction">
 <h2>Automated dark subtraction<a class="headerlink" href="#automated-dark-subtraction" title="Permalink to this headline">¶</a></h2>
-<p>Like we have mentioned at <a class="reference internal" href="usb_Running.html#auto-dark"><span class="std std-ref">Automated dark collection</span></a>, <code class="docutils literal"><span class="pre">xpdAcq</span></code>
+<p>Like we have mentioned at <a class="reference internal" href="usb_Running.html#auto-dark"><span>Automated dark collection</span></a>, <code class="docutils literal"><span class="pre">xpdAcq</span></code>
 helps you keep track of appropriate dark frames. With <code class="docutils literal"><span class="pre">auto_dark</span></code> set to True,
 <code class="docutils literal"><span class="pre">xpdAcq</span></code> can automatically subtract your light frames from corresponding dark
 frames when you save your tiffs.</p>
 <p>This behavior can be turned off by giving additional argument:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">save_last_tiff</span><span class="p">(</span><span class="n">dark_sub_bool</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">save_last_tiff</span><span class="p">(</span><span class="n">dark_sub_bool</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
 <span class="n">save_tiff</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dark_sub_bool</span> <span class="o">=</span> <span class="bp">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -205,14 +205,14 @@ frames when you save your tiffs.</p>
 <div class="section" id="save-images-and-also-integrate-images-to-a-1d-patterns">
 <h2>Save images and also integrate images to a 1D patterns<a class="headerlink" href="#save-images-and-also-integrate-images-to-a-1d-patterns" title="Permalink to this headline">¶</a></h2>
 <p><strong>save your images and also integrate to a 1D pattern:</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">integrate_and_save_last</span><span class="p">()</span>   <span class="c1"># the most recent scan</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">integrate_and_save_last</span><span class="p">()</span>   <span class="c1"># the most recent scan</span>
 </pre></div>
 </div>
 <p>You could use this instead of <code class="docutils literal"><span class="pre">save_last_tiff()</span></code> as part of your acquisition
 sequence by typing it in the <code class="docutils literal"><span class="pre">collection</span></code> environment.</p>
 <p>Or use these in the <code class="docutils literal"><span class="pre">analysis</span></code> environment to be analyzing data over here as
 the data are being collected over there...</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>                               <span class="c1"># the last 2 scans</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">h</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>                               <span class="c1"># the last 2 scans</span>
 <span class="n">integrate_and_save</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">save_image</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>   <span class="c1"># saves a copy of the 1D diffraction pattern</span>
 <span class="n">h</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>                                <span class="c1"># 2 scan ago</span>
 <span class="n">integrate_and_save</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>                     <span class="c1"># saves a copy of the image AND a copy of the 1D diffraction pattern</span>
@@ -235,7 +235,7 @@ to see the allowed values.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="usb_GlobalOptions.html" class="btn btn-neutral float-right" title="Global options" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="usb_GlobalOptions.html" class="btn btn-neutral float-right" title="xpdAcq Configuration" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="usb_Running.html" class="btn btn-neutral" title="Running scans" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

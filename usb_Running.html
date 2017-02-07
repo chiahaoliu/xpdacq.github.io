@@ -95,7 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html">Where did all my Sample and Scan objects go?????</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-is-your-friends">bt.list() is your friends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Where.html#bt-list-gotchas">bt.list() Gotchas</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Running scans</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Running scans</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#automated-dark-collection">Automated dark collection</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#nice-and-fresh"><strong>Nice and fresh</strong></a></li>
 </ul>
@@ -154,7 +154,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -189,7 +189,7 @@ run engines(functions) that you need.  To run a scan you simply pick the run eng
 and give it a predefined Sample object and
 a predefined ScanPlan object, then hit return and sit back, your scan will be carried out.</p>
 <p>The allowed scan types are:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">xrun</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">xrun</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">scanplan</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">xrun</span></code> stands for &#8220;XPD run&#8221; which is a our main run engine.</p>
@@ -197,7 +197,7 @@ a predefined ScanPlan object, then hit return and sit back, your scan will be ca
 and the <code class="docutils literal"><span class="pre">Ni</span></code> Sample object is created as well as all the <code class="docutils literal"><span class="pre">ScanPlan</span></code> we need.
 We will start by doing a scan with <code class="docutils literal"><span class="pre">Sample</span></code> object <code class="docutils literal"><span class="pre">Setup</span></code> on our <code class="docutils literal"><span class="pre">ct_1</span></code> ScanPlan.</p>
 <p>Remember, always start with <code class="docutils literal"><span class="pre">bt.list()</span></code></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 
 
 <span class="go">ScanPlans:</span>
@@ -225,7 +225,7 @@ We will start by doing a scan with <code class="docutils literal"><span class="p
 </div>
 <p>The Sample object I want has list index 0 and the ScanPlan has list index 2.
 Let&#8217;s try to make sure everything is ok.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">xrun</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">xrun</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="go">INFO: requested exposure time = 1 - &gt; computed exposure time= 1.0</span>
 <span class="go">INFO: No calibration file found in config_base. Scan will still keep going on</span>
 <span class="go">INFO: no mask has been associated with current glbl</span>
@@ -240,7 +240,7 @@ Let&#8217;s try to make sure everything is ok.</p>
 <p>OK, it seems to work, let&#8217;s do some testing to see how much intensity we need.
 We will do three setup scans with 1.5 seconds and 100.5 seconds exposure
 and then compare them.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">xrun</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1">#1.5 seconds</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">xrun</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1">#1.5 seconds</span>
 <span class="go">INFO: requested exposure time = 1.5 - &gt; computed exposure time= 1.5</span>
 <span class="go">INFO: No calibration file found in config_base. Scan will still keep going on</span>
 <span class="go">INFO: no mask has been associated with current glbl</span>
@@ -266,7 +266,7 @@ and then compare them.</p>
 </div>
 <p>It seems that the 2 second scans are the best, so let&#8217;s do[b] with desired <code class="docutils literal"><span class="pre">Sample</span></code>
 to get the first data-set.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;In [13]: xrun(0, 8)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;In [13]: xrun(0, 8)</span>
 <span class="go">INFO: requested exposure time = 100.5 - &gt; computed exposure time= 100.5</span>
 <span class="go">INFO: closing shutter...</span>
 <span class="go">INFO: taking dark frame....</span>
@@ -301,7 +301,7 @@ The definition of <strong>fresh and appropriate</strong> is:</p>
 <div class="section" id="nice-and-fresh">
 <h3><strong>Nice and fresh</strong><a class="headerlink" href="#nice-and-fresh" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-none"><div class="highlight"><pre><span></span>Given a certain period T (``dark window``), there exists a dark frame
+<div><div class="highlight-none"><div class="highlight"><pre>Given a certain period T (``dark window``), there exists a dark frame
 with the same **total exposure time** and exactly the same **acquisition time**
 as the light frame we are about collect.
 </pre></div>
@@ -319,12 +319,12 @@ This can take values between 0.1s to 5s.</li>
 </ul>
 </div>
 <p>Automated dark collection is enabled by default and it can be turned off by:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="p">[</span><span class="s1">&#39;auto_dark&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">glbl</span><span class="p">[</span><span class="s1">&#39;auto_dark&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="n">glbl</span><span class="p">[</span><span class="s1">&#39;shutter_control&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
 </pre></div>
 </div>
 <p>And the duration of your dark window can be modified by:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="p">[</span><span class="s1">&#39;dk_window&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1"># in minutes. default is 3000 minutes</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">glbl</span><span class="p">[</span><span class="s1">&#39;dk_window&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1"># in minutes. default is 3000 minutes</span>
 </pre></div>
 </div>
 <p>Having <code class="docutils literal"><span class="pre">auto_dark</span></code> set to <code class="docutils literal"><span class="pre">True</span></code> is strongly recommended as this enables
@@ -342,44 +342,63 @@ metadata so that you can reference them whenever you want, and make in-situ data
 reduction possible!</p>
 <div class="section" id="quick-guide-of-calibration-steps-with-pyfai">
 <span id="calib-manual"></span><h3>Quick guide of calibration steps with pyFAI<a class="headerlink" href="#quick-guide-of-calibration-steps-with-pyfai" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>First you will see an image window like this:</li>
-</ol>
+<p>1. We assume that you have run <code class="docutils literal"><span class="pre">run_calibration()</span></code> in the <code class="docutils literal"><span class="pre">collection</span></code> window
+with Ni as your calibrant.  This will automatically expose the Ni, and after a
+pause a 2D plot window should pop up on the acquisition computer, looking
+something like this:</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/calib_05.png"><img alt="_images/calib_05.png" class="align-center" src="_images/calib_05.png" style="width: 400px; height: 300px;" /></a>
 <p>That is the image we want to perform our  calibration with. Use <strong>magnify
-tool</strong> at the tool bar to zoom in and <strong>right click</strong> on rings (tip: deselect the zoom toggle before ring selection). Typically a few rings (~5) should be enough.</p>
+tool</strong> at the tool bar to zoom in to something that looks like the figure below.
+The magnifying tool is enabled by clicking on the button on the toolbar that
+looks like a magnifying glass.</p>
+<p>Now we will select five rings that PyFai will use to do the calibration.  To do this
+click on the magnifying glass button again to deselect the magnifying tool so the cursor
+looks like an arrow.  You will place the tip
+of the arrow on the first ring and then <strong>RIGHT click</strong>.  you will see dots going around the
+ring you have selected.  Then repeat this for the other four rings you will select.
+<cite>For the highest accuracy, We recommend that you select the first, second, third and
+6th ring, as shown in the figure.</cite>  The 6th ring is weaker but well separated from its neighbor.</p>
 <a class="reference internal image-reference" href="_images/calib_07.png"><img alt="_images/calib_07.png" class="align-center" src="_images/calib_07.png" style="width: 400px; height: 300px;" /></a>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>For a better calibration, we suggest you to select rings that are
-<strong>well separated/resolved</strong> from their neighbors, and make sure that points are assigned to the correct ring.</li>
-</ul>
-</div>
 </div></blockquote>
-<ol class="arabic simple" start="2">
-<li>After ring selection, click on the <em>original</em> terminal and hit <code class="docutils literal"><span class="pre">&lt;enter&gt;</span></code>.
-Then you will be requested to supply indices of rings you just selected.
-Remember index <strong>starts from 0</strong> as we are using <code class="docutils literal"><span class="pre">python</span></code>.
-After supplying all indices, you should have a window to show your calibration:</li>
+<ol class="arabic" start="2">
+<li><p class="first">If you don&#8217;t like what you have selected, you can exit out using <code class="docutils literal"><span class="pre">CTL-C</span></code> and start again
+by running <cite>run_calibration()</cite>.  However, if you are happy with your selections accept them by first
+making the collection terminal window active by clicking on it, then hitting <code class="docutils literal"><span class="pre">&lt;enter&gt;</span></code>.</p>
+<p>You will now follow the instructions coming from PyFai.  It asks you to supply the
+indices of the rings you have selected.  Because PyFai was written by a computer
+scientist and not a scientist, <strong>the first ring has index 0</strong>, the second has
+index 1, the third has index 2 and the fifth has index 5.</p>
+<p>If everything has gone well, after supplying all the indices, PyFai will pop
+up a number of plots that can give an expert eye some indication of the quality
+of the calibration.  If the dashed lines look as if they are lining up well with
+the peaks you have a good calibration.  If not, <cite>CTL-C</cite> and start again.  If yes,
+activate the terminal window by clicking on it, hit <code class="docutils literal"><span class="pre">&lt;enter&gt;</span></code> at the command prompt
+then type <code class="docutils literal"><span class="pre">done</span></code>.</p>
+</li>
 </ol>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/calib_08.png"><img alt="_images/calib_08.png" class="align-center" src="_images/calib_08.png" style="width: 400px; height: 300px;" /></a>
-<p>The program will ask you if you want to modify parameters.
-To finish entire calibration process, please type <code class="docutils literal"><span class="pre">done</span></code> in the terminal.</p>
+<p>PyFai can be a bit finicky.  If it hangs, type CTL-C and start over and make
+sure the follow the instruction exactly.</p>
 <p>You may find more information about calibration process from <a class="reference external" href="http://pyfai.readthedocs.io/en/latest/calibration.html">pyFAI documentation</a></p>
 </div></blockquote>
+<ol class="arabic" start="3">
+<li><p class="first">You are done! <code class="docutils literal"><span class="pre">xpdAcq</span></code> has saved the calibration parameters and will store them will all subsequent scans until you
+run another calibration.</p>
+<p>To see the current calibration parameters, type <code class="docutils literal"><span class="pre">show_calib()</span></code>.</p>
+<p>You can also find the calibration parameters in a file called
+<code class="docutils literal"><span class="pre">pyFAI_calib.yml</span></code> in <code class="docutils literal"><span class="pre">/home/xf28id1/xpdUser/config_base</span></code></p>
+</li>
+</ol>
 <ol class="arabic simple" start="3">
-<li>Finally 1D integration and 2D regrouping results will pop out:</li>
+<li>To clean up you can close all the PyFai windows, including
+the 1D integration and 2D regrouping results that pop out (see below).
+Return to the <code class="docutils literal"><span class="pre">Quick</span> <span class="pre">start</span> <span class="pre">tutorial</span></code> by hitting the browser back-arrow.</li>
 </ol>
 <blockquote>
 <div><a class="reference internal image-reference" href="_images/calib_09.png"><img alt="_images/calib_09.png" class="align-center" src="_images/calib_09.png" style="width: 400px; height: 300px;" /></a>
-<p>After this step, a calibration file with name <code class="docutils literal"><span class="pre">pyFAI_calib.yml</span></code> will be
-saved under <code class="docutils literal"><span class="pre">/home/xf28id1/xpdUser/config_base</span></code></p>
 </div></blockquote>
-<p>Alright, you are done then! With <strong>automated calibration capture</strong> feature, <code class="docutils literal"><span class="pre">xpdAcq</span></code>
-will load calibration parameters from the most recent config file.</p>
 </div>
 </div>
 <div class="section" id="sample-metadata-imported-from-spreadsheet">
@@ -392,7 +411,7 @@ turns out to be the solution.</p>
 <p>In order import sample metadata from spreadsheet, we would need you to have a
 pre-filled spreadsheet with name <code class="docutils literal"><span class="pre">&lt;saf_number&gt;_sample.xls</span></code> sit in <code class="docutils literal"><span class="pre">xpduser/import</span></code>
 directory. Then the import process is simply:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">import_sample_info</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">import_sample_info</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">xpdAcq</span></code> will grab the <code class="docutils literal"><span class="pre">saf_number</span></code> and <code class="docutils literal"><span class="pre">bt</span></code> for current beamtime, so make sure you have your spreadsheet named with proper format. For example, if your SAF number is <code class="docutils literal"><span class="pre">300179</span></code>, then you should have your pre-populated spreadsheet with the name as <code class="docutils literal"><span class="pre">300179_sample.xls</span></code>, sit inside <code class="docutils literal"><span class="pre">xpdUser/import</span></code> directory.</p>
@@ -419,7 +438,7 @@ several rules and here are the explantion to each of the rules.</p>
 </tbody>
 </table>
 <p>Example on <code class="docutils literal"><span class="pre">User</span> <span class="pre">supplied</span> <span class="pre">tags</span></code>:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>background, standard --&gt; background, standard
+<div class="highlight-none"><div class="highlight"><pre>background, standard --&gt; background, standard
 </pre></div>
 </div>
 <p>And a search on either <code class="docutils literal"><span class="pre">background</span></code> or``standard`` later on will include
@@ -450,7 +469,7 @@ this header.</p>
 </tbody>
 </table>
 <p>Example on name fields:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>Maxwell Terban, Benjamin Frandsen ----&gt; Maxwell, Terban, Benjamin, Frandsen
+<div class="highlight-none"><div class="highlight"><pre>Maxwell Terban, Benjamin Frandsen ----&gt; Maxwell, Terban, Benjamin, Frandsen
 </pre></div>
 </div>
 <p>A search on either <code class="docutils literal"><span class="pre">Maxwell</span></code> or <code class="docutils literal"><span class="pre">Terban</span></code> or <code class="docutils literal"><span class="pre">Benjamin</span></code> or <code class="docutils literal"><span class="pre">Frandsen</span></code>
@@ -479,11 +498,11 @@ your sample</td>
 <p>phase string will be expect to be enter in a form as
 <code class="docutils literal"><span class="pre">phase_1:</span> <span class="pre">amount,</span> <span class="pre">phase_2:</span> <span class="pre">amount</span></code>.</p>
 <p>An example of 0.9% sodium chloride solution will be:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>Nacl: 0.09, H20: 0.91
+<div class="highlight-none"><div class="highlight"><pre>Nacl: 0.09, H20: 0.91
 </pre></div>
 </div>
 <p>This <code class="docutils literal"><span class="pre">Phase</span> <span class="pre">Info</span></code> will be parsed as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;sample_composition&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mf">0.09</span><span class="p">,</span> <span class="s1">&#39;Cl&#39;</span><span class="p">:</span><span class="mf">0.09</span><span class="p">,</span> <span class="sb">`H`</span><span class="p">:</span><span class="mf">1.82</span><span class="p">,</span> <span class="sb">`O`</span><span class="p">:</span><span class="mf">0.91</span><span class="p">},</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s1">&#39;sample_composition&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Na&#39;</span><span class="p">:</span><span class="mf">0.09</span><span class="p">,</span> <span class="s1">&#39;Cl&#39;</span><span class="p">:</span><span class="mf">0.09</span><span class="p">,</span> <span class="sb">`H`</span><span class="p">:</span><span class="mf">1.82</span><span class="p">,</span> <span class="sb">`O`</span><span class="p">:</span><span class="mf">0.91</span><span class="p">},</span>
  <span class="s1">&#39;sample_phase&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;NaCl&#39;</span><span class="p">:</span><span class="mf">0.09</span><span class="p">,</span> <span class="s1">&#39;H20&#39;</span><span class="p">:</span><span class="mf">0.91</span><span class="p">},</span>
  <span class="s1">&#39;composition_string&#39;</span><span class="p">:</span> <span class="s1">&#39;Na0.09Cl0.09H1.82O0.91&#39;</span><span class="p">}</span>
 </pre></div>
@@ -514,7 +533,7 @@ sample phases</td>
 </tbody>
 </table>
 <p>Example on dictionary-like fields:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>ICSD:41120, CCDC:850926 ----&gt; {&#39;ICSD&#39;: &#39;41120&#39;, &#39;CCDC&#39;: &#39;850926&#39;}
+<div class="highlight-none"><div class="highlight"><pre>ICSD:41120, CCDC:850926 ----&gt; {&#39;ICSD&#39;: &#39;41120&#39;, &#39;CCDC&#39;: &#39;850926&#39;}
 </pre></div>
 </div>
 </div></blockquote>
@@ -529,7 +548,7 @@ will be parsed based on the contents you type in with above parsing rule.</p>
 you would see:</p>
 </li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">import_sample_info</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">import_sample_info</span><span class="p">()</span>
 <span class="o">***</span> <span class="n">End</span> <span class="n">of</span> <span class="kn">import</span> <span class="nn">Sample</span> <span class="nn">object</span> <span class="o">***</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
@@ -583,7 +602,7 @@ at <code class="docutils literal"><span class="pre">Sample-name</span> <span cla
 <p>A proper linking between <strong>Sample</strong> and <strong>Background</strong> can be seen
 from metadata stored inside the <code class="docutils literal"><span class="pre">Sample</span></code> object. As usual, let&#8217;s
 interrogate the metadata:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span><span class="p">[]:</span> <span class="n">bt</span><span class="o">.</span><span class="n">samples</span><span class="o">.</span><span class="n">get_md</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>  <span class="c1"># that&#39;s for example, index depends on</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span><span class="p">[]:</span> <span class="n">bt</span><span class="o">.</span><span class="n">samples</span><span class="o">.</span><span class="n">get_md</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>  <span class="c1"># that&#39;s for example, index depends on</span>
                              <span class="c1"># your spreadsheet</span>
 <span class="n">out</span><span class="p">[]:</span>
 <span class="p">{</span><span class="s1">&#39;bkgd_sample_name&#39;</span><span class="p">:</span> <span class="s1">&#39;kapton_0.9mmOD&#39;</span><span class="p">,</span>
@@ -670,14 +689,14 @@ alpha is 3 standard deviations.</p>
 <p>To use the auto-masker once, creating masks used for subsequent images,
 just run the command:</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">run_mask_builder</span><span class="p">()</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="n">run_mask_builder</span><span class="p">()</span>
 </pre></div>
 </div>
 </div></blockquote>
 <p>This will take a shot and mask it. This mask will then be saved and loaded
 into subsequent experiment <cite>run_headers</cite> allowing them to be used for the next
 images.</p>
-<p>Let&#8217;s <a class="reference internal" href="usb_QuickAssess.html#usb-quickassess"><span class="std std-ref">take a quick look at our data</span></a></p>
+<p>Let&#8217;s <a class="reference internal" href="usb_QuickAssess.html#usb-quickassess"><span>take a quick look at our data</span></a></p>
 </div>
 </div>
 </div>

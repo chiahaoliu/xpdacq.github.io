@@ -92,7 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="usb_Beamtime.html">Setting up your Beamtime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Experiment.html">Setting up your XPD acuisition objects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Scan.html">ScanPlan objects</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Where did all my Sample and Scan objects go?????</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Where did all my Sample and Scan objects go?????</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#bt-list-is-your-friends">bt.list() is your friends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#bt-list-gotchas">bt.list() Gotchas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usb_Running.html">Running scans</a></li>
@@ -131,7 +131,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -158,7 +158,7 @@
   <div class="section" id="where-did-all-my-sample-and-scan-objects-go">
 <span id="usb-where"></span><h1>Where did all my Sample and Scan objects go?????<a class="headerlink" href="#where-did-all-my-sample-and-scan-objects-go" title="Permalink to this headline">¶</a></h1>
 <p>You just spent hours typing in metadata and creating
-<a class="reference internal" href="usb_Experiment.html#usb-experiment"><span class="std std-ref">sample</span></a> and <a class="reference internal" href="usb_Scan.html#usb-scan"><span class="std std-ref">scan</span></a>
+<a class="reference internal" href="usb_Experiment.html#usb-experiment"><span>sample</span></a> and <a class="reference internal" href="usb_Scan.html#usb-scan"><span>scan</span></a>
 objects, and now they have suddenly disappeared!  This
 is a disaster!</p>
 <p>As Douglas Adams taught us <cite>DON&#8217;T PANIC</cite> .  This is actually
@@ -166,7 +166,7 @@ is a disaster!</p>
 one of the design goals of the software project was to minimize
 users&#8217; typing.  The design had to take into account that the
 collection <code class="docutils literal"><span class="pre">ipython</span></code> environment is not so stable
-(e.g., see <a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">Troubleshooting</span></a> ) and we should expect periodic
+(e.g., see <a class="reference internal" href="troubleshooting.html#troubleshooting"><span>Troubleshooting</span></a> ) and we should expect periodic
 restarts of it.  How bad if we had to retype our metadata every
 time?  So every time you create an xpdAcq acquisition object,
 the details are saved to a file on the local hard-drive.  When
@@ -180,7 +180,7 @@ But don&#8217;t worry, they are all safe and sound.</p>
 to you, type <code class="docutils literal"><span class="pre">bt.list()</span></code> .  This lists the name and type of all
 the acquisition objects that are on the hard-drive and available
 to you....your objects: e.g.,</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 
 <span class="go">ScanPlans:</span>
 <span class="go">0: &#39;ct_5&#39;</span>
@@ -204,7 +204,7 @@ to you....your objects: e.g.,</p>
 assignment we used when we created them</p>
 <p>To get them, we can explicitly reload them again or just use <strong>index</strong> of this object.
 For example, consider the following sequence of code blocks:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span>
 <span class="go">---------------------------------------------------------------------------</span>
 <span class="go">NameError                                 Traceback (most recent call last)</span>
 <span class="go">&lt;ipython-input-5-51081833a770&gt; in &lt;module&gt;()</span>
@@ -214,7 +214,7 @@ For example, consider the following sequence of code blocks:</p>
 </pre></div>
 </div>
 <p>Oh no, my <code class="docutils literal"><span class="pre">s1</span></code> sample object, which as my sample named <cite>GaAs</cite> , has disappeared!  <code class="docutils literal"><span class="pre">bt.list()</span></code> to the rescue...</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 
 <span class="go">ScanPlans:</span>
 <span class="go">0: &#39;ct_5&#39;</span>
@@ -237,7 +237,7 @@ For example, consider the following sequence of code blocks:</p>
 <p>That&#8217;s it with a list index of 2, inside the Samples category. type object called.
 Just to be sane, let&#8217;s reload it. We can give it any name, it doesn&#8217;t have to be
 the same name as last time, so let&#8217;s reload it as <code class="docutils literal"><span class="pre">s1_again</span></code> :</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s1_again</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="s1">&#39;GaAs&#39;</span><span class="p">]</span> <span class="c1"># e.g., the sample name is GaAs</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s1_again</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="s1">&#39;GaAs&#39;</span><span class="p">]</span> <span class="c1"># e.g., the sample name is GaAs</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1_again</span>
 <span class="go">{&#39;bt_experimenters&#39;: [&#39;Tim&#39;, &#39;Liu&#39;],</span>
 <span class="go"> &#39;bt_piLast&#39;: &#39;Billinge&#39;,</span>
@@ -258,7 +258,7 @@ IT guys.</p>
 <p>Just remember.  First type <code class="docutils literal"><span class="pre">bt.list()</span></code> to locate the object you want, then use
 object index to reference it based on categories. For example if I want to interrogate metadata
 from <code class="docutils literal"><span class="pre">ScanPlan</span></code> object <code class="docutils literal"><span class="pre">ct_5</span></code>, you can do:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">scanplans</span><span class="o">.</span><span class="n">get_md</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bt</span><span class="o">.</span><span class="n">scanplans</span><span class="o">.</span><span class="n">get_md</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">INFO: requested exposure time = 5 - &gt; computed exposure time= 5.0</span>
 <span class="go">{&#39;detectors&#39;: [&#39;pe1c&#39;],</span>
 <span class="go"> &#39;num_steps&#39;: 1,</span>
@@ -297,9 +297,9 @@ to all <code class="docutils literal"><span class="pre">Sample</span></code> and
 </li>
 </ol>
 </div></blockquote>
-<p>go to <a class="reference internal" href="usb_Scan.html#usb-scan"><span class="std std-ref">ScanPlan objects</span></a></p>
-<p>go to <a class="reference internal" href="usb_Running.html#usb-running"><span class="std std-ref">Running scans</span></a></p>
-<p>return to <a class="reference internal" href="xpdusers.html#xpdu"><span class="std std-ref">For XPD Users</span></a></p>
+<p>go to <a class="reference internal" href="usb_Scan.html#usb-scan"><span>ScanPlan objects</span></a></p>
+<p>go to <a class="reference internal" href="usb_Running.html#usb-running"><span>Running scans</span></a></p>
+<p>return to <a class="reference internal" href="xpdusers.html#xpdu"><span>For XPD Users</span></a></p>
 </div>
 
 
