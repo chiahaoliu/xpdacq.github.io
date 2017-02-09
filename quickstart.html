@@ -194,7 +194,8 @@ help you to do analysis.  As time goes on, there will be more analysis functiona
 <p>You will use the <code class="docutils literal"><span class="pre">xpdAcq</span></code> software library to &#8220;acquire&#8221; data and you will use <code class="docutils literal"><span class="pre">xpdAn</span></code> to &#8220;analyze&#8221; the data.  The software
 is evolving rapidly and will become more powerful with time.  Please check back to the documentation each time you come.
 We hope you like it.  All the software is built using the Python language and runs in an interactive <code class="docutils literal"><span class="pre">IPython</span></code> session.
-You don&#8217;t need to know too much about this, but the more familiar you are with Python, the more empowered you will be.</p>
+You don&#8217;t need to know too much about this, but the more familiar you are with Python and IPython, the more empowered you will be.
+There are many books and websites on these topics, and we gives some usage tips below too.</p>
 <p>The heart of <code class="docutils literal"><span class="pre">xpdAcq</span></code> is the <code class="docutils literal"><span class="pre">xrun()</span></code> function which  you will type to collect data, giving it as &#8220;arguments&#8221; (i.e., within the
 parentheses) information
 about the sample being run and the scan parameters, so it knows what to do.  This will execute the scan and save the results
@@ -218,13 +219,12 @@ more importantly, to do things in the right order set up your experiment for suc
 to find them.  IPython environments start the line with something like <code class="docutils literal"><span class="pre">In[49]:</span></code> and <code class="docutils literal"><span class="pre">Out[50]</span></code>, so you should
 see that in a terminal.  Try typing <code class="docutils literal"><span class="pre">show_env()</span></code>.  If you see something like <code class="docutils literal"><span class="pre">collection-17Q1.0</span></code> or <code class="docutils literal"><span class="pre">analysis-17Q1.1</span></code>
 (the numbers will change with time) then you are good, you will use these environments to run your
-experiment and to visualize and analyze your data.</p>
+experiment and to visualize and analyze your data, respectively.  We recommend that you run <code class="docutils literal"><span class="pre">collection</span></code> on
+work-station 2 (the central computer, look for <code class="docutils literal"><span class="pre">ws2</span></code> in the title at the top of the terminal windows) and
+<code class="docutils literal"><span class="pre">analysis</span></code> on the <code class="docutils literal"><span class="pre">ws3</span></code> computer on the right.</p>
 <p>If you can&#8217;t find the right environments, please ask the instrument scientist.  This is important to make sure
 that there is a clean start for your experiment.  However, if later in your experiment you ever have to restart
-your collection environmnet, then you type</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">bsui</span>
-</pre></div>
-</div>
+your environments, then you type at the command line <code class="docutils literal"><span class="pre">bsui</span></code> for the collection and <code class="docutils literal"><span class="pre">ianalysis</span></code></p>
 <p>2. Make sure that the software has been properly configured for your beamtime. In
 your <code class="docutils literal"><span class="pre">collection-yyQn.x</span></code> environment, type:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">bt</span><span class="o">.</span><span class="n">md</span>
@@ -245,10 +245,10 @@ or if you forgot something have the IS fetch it for you from the archive later.<
 <div class="section" id="check-that-your-analysis-environment-is-correctly-set-up">
 <h2>Check that your analysis environment is correctly set up<a class="headerlink" href="#check-that-your-analysis-environment-is-correctly-set-up" title="Permalink to this headline">¶</a></h2>
 <p>1. Analysis is done in a separate (but very similar) environment to acquisition.
-This will be in a separate terminal window.  At XPD we recommend
-that you run this on work-station 3 (it is the computer on the right-hand side.
+This will be in a separate terminal window.  You can run an analysis
+environment on <code class="docutils literal"><span class="pre">ws2</span></code> and on work-station 3 (it is the computer on the right-hand side.
 Look for <code class="docutils literal"><span class="pre">ws3</span></code> in the terminal title field)
-so make sure that you also look there for the analysis environmnet.
+so make sure that you also look there for the analysis environment.
 Use the instructions given above for <code class="docutils literal"><span class="pre">collection</span></code> to check you have found the right terminal window.
 For data analysis <code class="docutils literal"><span class="pre">show_env()</span></code> should return something like <code class="docutils literal"><span class="pre">analysis-17Q1.0</span></code>.</p>
 <p>If you need to restart the analysis environment later you can do it by typing</p>
@@ -265,13 +265,14 @@ that your analysis environment is linked to the right experiment.  If not
 please get your analysis environment set up by the instrument scientist before proceeding.</p>
 <p>3. Make sure the visualization software is running. We will use <code class="docutils literal"><span class="pre">SrXgui</span></code> to visualize 2D plots
 and <code class="docutils literal"><span class="pre">XPDsuite</span></code> for visualizing 1D plots and getting PDFs.
-Check that they are running by finding windows that looks like:</p>
+Check that they are running by finding windows that look like:</p>
 <p><strong>SrXgui</strong></p>
 <a class="reference internal image-reference" href="_images/srxgui.png"><img alt="_images/srxgui.png" class="align-center" src="_images/srxgui.png" style="width: 400px; height: 300px;" /></a>
 <p><strong>XPDsuite</strong></p>
 <a class="reference internal image-reference" href="_images/XPDsuite.png"><img alt="_images/XPDsuite.png" class="align-center" src="_images/XPDsuite.png" style="width: 400px; height: 300px;" /></a>
-<p>If you can&#8217;t find them, you will need to open them.  On your analysis computer (we recommend <code class="docutils literal"><span class="pre">ws3</span></code>),
-open a new terminal window and type <code class="docutils literal"><span class="pre">SrXgui</span></code>, then open another
+<p>If you can&#8217;t find them, you will need to open them.
+Open a new terminal window and type <code class="docutils literal"><span class="pre">SrXgui</span></code> at the command (note, you don&#8217;t type this from
+inside the <code class="docutils literal"><span class="pre">collection</span></code> or <code class="docutils literal"><span class="pre">analysis</span></code> environments but from a new terminal), then open another
 terminal window and type <code class="docutils literal"><span class="pre">xPDsuite</span></code>.  If you want to use Fit2D for visualizing your data,
 type <code class="docutils literal"><span class="pre">fit2d</span></code> at a terminal prompt on the analysis computer.</p>
 </div>
@@ -279,44 +280,58 @@ type <code class="docutils literal"><span class="pre">fit2d</span></code> at a t
 <h2>Set up your experiment<a class="headerlink" href="#set-up-your-experiment" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="general">
 <h3>0. general<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
-<p>If you want to query any <code class="docutils literal"><span class="pre">xpdAcq</span></code> or <code class="docutils literal"><span class="pre">xpdAn</span></code> function, type the function name with a <code class="docutils literal"><span class="pre">?</span></code> at the end and hit
-return.  Documentation for what parameters the function takes, and any default values, and what
-the function returns will be printed.  For example, we don&#8217;t know what the <code class="docutils literal"><span class="pre">run_calibration()</span></code> function
-does yet, but if you type in your <code class="docutils literal"><span class="pre">collection-yyQn.x</span></code> terminal:</p>
-<div class="highlight-python"><div class="highlight"><pre>run_calibration?
-</pre></div>
-</div>
-<p>it will print on the screen documentation about what the function does and what variables it takes as arguments.</p>
-<p>But you needed to know that <code class="docutils literal"><span class="pre">run_calibration()</span></code> existed in the first place to do that.  You can
-&#8220;discover&#8221; what functions are available to you by starting to type a few letters then hitting the &#8220;tab&#8221;
-key.  IPython will return back a list of all the functions that it knows about that begin with those letters.
-This will include Python imported and built-in functions as well as xpdAcq ones.  For example, try typing <cite>run</cite> and then hitting tab.</p>
+<p>You do things in <code class="docutils literal"><span class="pre">xpdAcq</span></code> and <code class="docutils literal"><span class="pre">xpdAn</span></code> by running &#8216;functions&#8217; that have a name followed
+by parentheses, for example, <code class="docutils literal"><span class="pre">show_env()</span></code>.  If the function needs to know some parameters to work,
+we pass these to the function as &#8216;arguments&#8217; by putting them in a comma-separated sequence in the parentheses,
+e.g., <code class="docutils literal"><span class="pre">xrun(5,7)</span></code> (more on this later).
+This is standard Python syntax.</p>
+<p>If you don&#8217;t know what functions are available to you (and you don&#8217;t)
+you can discover them by typing a few letters and then hitting the &#8216;Tab&#8217; key.  All
+functions that the xpd software knows about that start with that sequence of letters
+will be revealed. Try typing <code class="docutils literal"><span class="pre">s</span></code> then Tab.  Too many in the list?  Then add another
+letter (e.g., type <code class="docutils literal"><span class="pre">h</span></code>) then &#8216;Tab&#8217;.  Can you find <code class="docutils literal"><span class="pre">show_env()</span></code>?
+You can navigate to the one you want using the arrow keys and hit enter.</p>
+<p>Now, if you don&#8217;t know what that function does and what arguments it needs or has as optional (and you don&#8217;t)
+then type the name of the function but without the parentheses, add a <cite>?</cite> at the end, and hit return.
+This information will then be printed to the terminal screen. For example, try typing <code class="docutils literal"><span class="pre">xrun?</span></code> in the
+collection environment.</p>
 </div>
 <div class="section" id="quick-look-at-some-data">
 <h3>0.5 quick look at some data<a class="headerlink" href="#quick-look-at-some-data" title="Permalink to this headline">¶</a></h3>
 <p>Place any sample, but maybe the Ni calibrant, at the sample position.  Let&#8217;s make sure we are getting a nice
 Ni diffraction pattern. In your <code class="docutils literal"><span class="pre">collection-yyQn.x</span></code> terminal type:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">xrun</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># will run an exposure of 60 seconds on your setup sample</span>
-<span class="n">save_last_tiff</span><span class="p">()</span> <span class="c1"># will save the image in the tiff_base/Setup directory</span>
+<span class="n">save_last_tiff</span><span class="p">()</span> <span class="c1"># will save the image in the .../xpdUser/tiff_base/Setup directory</span>
 </pre></div>
 </div>
 <p>Note, if the software gives an error that it cannot find the sample object, then you will need
 to load a sample spreadsheet.  See below: <cite>load Sample information</cite></p>
-<p>Navigate to the <code class="docutils literal"><span class="pre">SrXgui</span></code> image viewer. Click on the folder icon called &#8220;Input dir&#8221; and navigate to
-the <code class="docutils literal"><span class="pre">tiff_base/Setup</span></code> folder then select &#8220;Choose&#8221;.
+<p>Now find the <code class="docutils literal"><span class="pre">SrXgui</span></code> image viewer. Click on the folder icon called &#8220;Input dir&#8221; and navigate to
+the <code class="docutils literal"><span class="pre">.../xpdUser/tiff_base/Setup</span></code> folder then select &#8220;Choose&#8221;.
 You should now see a list of (or maybe just one) tiff files.
 Double-click on the most recent one (in name order it will be the bottom one)
-to view the one you just collected.</p>
+to view the one you just collected. By default, <code class="docutils literal"><span class="pre">save_last_tiff()</span></code> saves a dark-subtracted
+image so you will see a dark corrected image of your sample.</p>
+<p>To zoom in to part of the image, click on the plot with the mouse to make it active,
+then type <code class="docutils literal"><span class="pre">z</span></code> on the keyboard.  The cursor should change to a &#8216;+&#8217;.  Move the cross
+to the top left of the selection you want to make, then hold down the left mouse
+button and move the mouse to the bottom-right corner and let go the left mouse
+button.   To reset the figure type <code class="docutils literal"><span class="pre">Esc</span></code> on the keyboard.  <cite>Remember, for the
+keyboard inputs to work you have to first click on the plot window to make it active</cite>.
+You can toggle linear and log scales using the button, and change the color scale
+using the slider.  To open a new image, double-click on the new sample name in the
+files dialog box.  You may have to click the &#8216;Refresh&#8217; button if the file was
+just written and doesn&#8217;t show.</p>
 </div>
 <div class="section" id="load-sample-information">
 <h3>1. load <code class="docutils literal"><span class="pre">Sample</span></code> information<a class="headerlink" href="#load-sample-information" title="Permalink to this headline">¶</a></h3>
 <p>Your sample information should be loaded in an excel spreadsheet, with a well
 defined format (a template file may be found at <a class="reference external" href="https://groups.google.com/forum/?utm_medium=email&amp;utm_source=footer#!topic/xpd-users/_6NSRWg_-l0">xpdUser Google Group</a>
 ). If the IS didn&#8217;t already
-do it, save your sample xls file to the <code class="docutils literal"><span class="pre">xpdUser/import</span></code> directory using the name
+do it, save your sample xls file to the <code class="docutils literal"><span class="pre">.../xpdUser/import</span></code> directory using the name
 <code class="docutils literal"><span class="pre">&lt;saf_number&gt;_sample.xlsx</span></code>, where you replace <code class="docutils literal"><span class="pre">&lt;saf_number&gt;</span></code> with the number
 of the safety approval form associated with your experiment.  If you are not sure
-what your <code class="docutils literal"><span class="pre">saf_number</span></code> is you can get it by typing following command in your <code class="docutils literal"><span class="pre">``collection-yyQn.x</span></code> terminal:</p>
+what your <code class="docutils literal"><span class="pre">saf_number</span></code> is you can get it by typing the following command in your <code class="docutils literal"><span class="pre">``collection-yyQn.x</span></code> terminal:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">bt</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
 <span class="p">{</span><span class="s1">&#39;bt_experimenters&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tim&#39;</span><span class="p">,</span> <span class="s1">&#39;Liu&#39;</span><span class="p">],</span>
@@ -354,7 +369,7 @@ run <code class="docutils literal"><span class="pre">run_calibration()</span></c
 the beamstop, and uses an auto-masking scheme to get rid of outlier pixels.
 The automasking has been extensively tested on a low-scattering sample so our mask
 building function has been designed to run on data from an empty kapton tube.
-Load an empty kapton tube on the diffractometer, then in your <code class="docutils literal"><span class="pre">collection-yyQn.x</span></code> terminal type</p>
+Load an empty kapton tube, or something similar, on the diffractometer, then in your <code class="docutils literal"><span class="pre">collection-yyQn.x</span></code> terminal type</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">run_mask_builder</span><span class="p">()</span> <span class="c1"># be patient, the process takes 10 minutes!</span>
 </pre></div>
 </div>
@@ -364,12 +379,12 @@ again.  You will always be able to extract your data unmasked, or apply a differ
 at analysis time, but if this mask works well, it will save you a lot of time later if
 you do this step now.</p>
 <p>You can look at the 2D image with and without the mask in SrXgui.
-You can load the mask file by clicking the &#8216;folder&#8217; icon called &#8220;Input dir&#8221;
+You can load the mask file by clicking the &#8216;folder&#8217; icon by the &#8220;Mask file&#8221; field
 in SrXgui, navigating
-to the <code class="docutils literal"><span class="pre">config_base</span></code> folder and click <cite>choose</cite>.  You will likely not see any files
-because the default filter looks for tif files.  Select <code class="docutils literal"><span class="pre">npy</span></code> from the
+to the <code class="docutils literal"><span class="pre">.../xpdUser/config_base</span></code> folder and click <cite>choose</cite>.  If you do not see any files
+the filter is likely not set correctly.  Select <code class="docutils literal"><span class="pre">npy</span></code> from the
 &#8216;Type:&#8217; dropdown menu.  Now you should see the file <code class="docutils literal"><span class="pre">xpdacq_mask.npy</span></code>.
-double-click this file in the list to open it.  Masked pixels will have value
+double-click this file in the list to select it.  Masked pixels will have value
 0.0 (blue) and unmasked pixels will have values 1.0 (red).  You should see
 masked pixels around the edge of detector (edge-mask), pixels in the location
 of the beam-stop, and various other pixels that have anomalous counts in them

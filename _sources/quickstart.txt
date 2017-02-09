@@ -25,7 +25,8 @@ help you to do analysis.  As time goes on, there will be more analysis functiona
 You will use the ``xpdAcq`` software library to "acquire" data and you will use ``xpdAn`` to "analyze" the data.  The software
 is evolving rapidly and will become more powerful with time.  Please check back to the documentation each time you come.
 We hope you like it.  All the software is built using the Python language and runs in an interactive ``IPython`` session.
-You don't need to know too much about this, but the more familiar you are with Python, the more empowered you will be.
+You don't need to know too much about this, but the more familiar you are with Python and IPython, the more empowered you will be.
+There are many books and websites on these topics, and we gives some usage tips below too.
 
 The heart of ``xpdAcq`` is the ``xrun()`` function which  you will type to collect data, giving it as "arguments" (i.e., within the
 parentheses) information
@@ -53,15 +54,13 @@ Check your data collection environment is correctly set up
 to find them.  IPython environments start the line with something like ``In[49]:`` and ``Out[50]``, so you should
 see that in a terminal.  Try typing ``show_env()``.  If you see something like ``collection-17Q1.0`` or ``analysis-17Q1.1``
 (the numbers will change with time) then you are good, you will use these environments to run your 
-experiment and to visualize and analyze your data.
+experiment and to visualize and analyze your data, respectively.  We recommend that you run ``collection`` on 
+work-station 2 (the central computer, look for ``ws2`` in the title at the top of the terminal windows) and
+``analysis`` on the ``ws3`` computer on the right.
 
 If you can't find the right environments, please ask the instrument scientist.  This is important to make sure
 that there is a clean start for your experiment.  However, if later in your experiment you ever have to restart
-your collection environmnet, then you type
-
-.. code-block:: python
-
-  bsui
+your environments, then you type at the command line ``bsui`` for the collection and ``ianalysis``
 
 
 2. Make sure that the software has been properly configured for your beamtime. In
@@ -87,10 +86,10 @@ Check that your analysis environment is correctly set up
 -------------------------------------------------------------
 
 1. Analysis is done in a separate (but very similar) environment to acquisition.
-This will be in a separate terminal window.  At XPD we recommend 
-that you run this on work-station 3 (it is the computer on the right-hand side. 
+This will be in a separate terminal window.  You can run an analysis
+environment on ``ws2`` and on work-station 3 (it is the computer on the right-hand side. 
 Look for ``ws3`` in the terminal title field)
-so make sure that you also look there for the analysis environmnet.
+so make sure that you also look there for the analysis environment.
 Use the instructions given above for ``collection`` to check you have found the right terminal window.
 For data analysis ``show_env()`` should return something like ``analysis-17Q1.0``.
 
@@ -113,7 +112,7 @@ please get your analysis environment set up by the instrument scientist before p
 
 3. Make sure the visualization software is running. We will use ``SrXgui`` to visualize 2D plots
 and ``XPDsuite`` for visualizing 1D plots and getting PDFs.
-Check that they are running by finding windows that looks like:
+Check that they are running by finding windows that look like:
 
 **SrXgui**
 
@@ -129,8 +128,9 @@ Check that they are running by finding windows that looks like:
   :align: center
   :height: 300px
 
-If you can't find them, you will need to open them.  On your analysis computer (we recommend ``ws3``), 
-open a new terminal window and type ``SrXgui``, then open another
+If you can't find them, you will need to open them.  
+Open a new terminal window and type ``SrXgui`` at the command (note, you don't type this from
+inside the ``collection`` or ``analysis`` environments but from a new terminal), then open another
 terminal window and type ``xPDsuite``.  If you want to use Fit2D for visualizing your data,
 type ``fit2d`` at a terminal prompt on the analysis computer.
 
@@ -140,21 +140,23 @@ Set up your experiment
 0. general
 """"""""""
 
-If you want to query any ``xpdAcq`` or ``xpdAn`` function, type the function name with a ``?`` at the end and hit
-return.  Documentation for what parameters the function takes, and any default values, and what
-the function returns will be printed.  For example, we don't know what the ``run_calibration()`` function 
-does yet, but if you type in your ``collection-yyQn.x`` terminal:
+You do things in ``xpdAcq`` and ``xpdAn`` by running 'functions' that have a name followed
+by parentheses, for example, ``show_env()``.  If the function needs to know some parameters to work,
+we pass these to the function as 'arguments' by putting them in a comma-separated sequence in the parentheses,
+e.g., ``xrun(5,7)`` (more on this later).
+This is standard Python syntax. 
 
-.. code-block:: python
+If you don't know what functions are available to you (and you don't)
+you can discover them by typing a few letters and then hitting the 'Tab' key.  All
+functions that the xpd software knows about that start with that sequence of letters
+will be revealed. Try typing ``s`` then Tab.  Too many in the list?  Then add another
+letter (e.g., type ``h``) then 'Tab'.  Can you find ``show_env()``? 
+You can navigate to the one you want using the arrow keys and hit enter.
 
-  run_calibration?
-
-it will print on the screen documentation about what the function does and what variables it takes as arguments.
-
-But you needed to know that ``run_calibration()`` existed in the first place to do that.  You can
-"discover" what functions are available to you by starting to type a few letters then hitting the "tab"
-key.  IPython will return back a list of all the functions that it knows about that begin with those letters.
-This will include Python imported and built-in functions as well as xpdAcq ones.  For example, try typing `run` and then hitting tab.
+Now, if you don't know what that function does and what arguments it needs or has as optional (and you don't)
+then type the name of the function but without the parentheses, add a `?` at the end, and hit return.
+This information will then be printed to the terminal screen. For example, try typing ``xrun?`` in the
+collection environment.
 
 0.5 quick look at some data
 """""""""""""""""""""""""""
@@ -165,16 +167,28 @@ Ni diffraction pattern. In your ``collection-yyQn.x`` terminal type:
 .. code-block:: python
 
   xrun(0,0) # will run an exposure of 60 seconds on your setup sample
-  save_last_tiff() # will save the image in the tiff_base/Setup directory
+  save_last_tiff() # will save the image in the .../xpdUser/tiff_base/Setup directory
 
 Note, if the software gives an error that it cannot find the sample object, then you will need
 to load a sample spreadsheet.  See below: `load Sample information`
 
-Navigate to the ``SrXgui`` image viewer. Click on the folder icon called "Input dir" and navigate to
-the ``tiff_base/Setup`` folder then select "Choose".
+Now find the ``SrXgui`` image viewer. Click on the folder icon called "Input dir" and navigate to
+the ``.../xpdUser/tiff_base/Setup`` folder then select "Choose".
 You should now see a list of (or maybe just one) tiff files.
 Double-click on the most recent one (in name order it will be the bottom one) 
-to view the one you just collected.
+to view the one you just collected. By default, ``save_last_tiff()`` saves a dark-subtracted
+image so you will see a dark corrected image of your sample.
+
+To zoom in to part of the image, click on the plot with the mouse to make it active,
+then type ``z`` on the keyboard.  The cursor should change to a '+'.  Move the cross
+to the top left of the selection you want to make, then hold down the left mouse
+button and move the mouse to the bottom-right corner and let go the left mouse
+button.   To reset the figure type ``Esc`` on the keyboard.  `Remember, for the 
+keyboard inputs to work you have to first click on the plot window to make it active`.
+You can toggle linear and log scales using the button, and change the color scale
+using the slider.  To open a new image, double-click on the new sample name in the
+files dialog box.  You may have to click the 'Refresh' button if the file was
+just written and doesn't show.
 
 1. load ``Sample`` information
 """"""""""""""""""""""""""""""
@@ -183,10 +197,10 @@ Your sample information should be loaded in an excel spreadsheet, with a well
 defined format (a template file may be found at `xpdUser Google Group
 <https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!topic/xpd-users/_6NSRWg_-l0>`_
 ). If the IS didn't already
-do it, save your sample xls file to the ``xpdUser/import`` directory using the name
+do it, save your sample xls file to the ``.../xpdUser/import`` directory using the name
 ``<saf_number>_sample.xlsx``, where you replace ``<saf_number>`` with the number
 of the safety approval form associated with your experiment.  If you are not sure
-what your ``saf_number`` is you can get it by typing following command in your ````collection-yyQn.x`` terminal:
+what your ``saf_number`` is you can get it by typing the following command in your ````collection-yyQn.x`` terminal:
 
 .. code-block:: python
 
@@ -237,7 +251,7 @@ The standard mask removes problematic pixels at the edge of the detector, shadow
 the beamstop, and uses an auto-masking scheme to get rid of outlier pixels.
 The automasking has been extensively tested on a low-scattering sample so our mask
 building function has been designed to run on data from an empty kapton tube.
-Load an empty kapton tube on the diffractometer, then in your ``collection-yyQn.x`` terminal type
+Load an empty kapton tube, or something similar, on the diffractometer, then in your ``collection-yyQn.x`` terminal type
 
 .. code-block:: python
 
@@ -250,12 +264,12 @@ at analysis time, but if this mask works well, it will save you a lot of time la
 you do this step now.
 
 You can look at the 2D image with and without the mask in SrXgui.
-You can load the mask file by clicking the 'folder' icon called "Input dir"
+You can load the mask file by clicking the 'folder' icon by the "Mask file" field
 in SrXgui, navigating
-to the ``config_base`` folder and click `choose`.  You will likely not see any files
-because the default filter looks for tif files.  Select ``npy`` from the 
+to the ``.../xpdUser/config_base`` folder and click `choose`.  If you do not see any files
+the filter is likely not set correctly.  Select ``npy`` from the 
 'Type:' dropdown menu.  Now you should see the file ``xpdacq_mask.npy``. 
-double-click this file in the list to open it.  Masked pixels will have value
+double-click this file in the list to select it.  Masked pixels will have value
 0.0 (blue) and unmasked pixels will have values 1.0 (red).  You should see
 masked pixels around the edge of detector (edge-mask), pixels in the location
 of the beam-stop, and various other pixels that have anomalous counts in them
