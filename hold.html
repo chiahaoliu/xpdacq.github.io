@@ -115,7 +115,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -207,20 +207,20 @@
 <h2>Possible scenarios:<a class="headerlink" href="#possible-scenarios" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><strong>No automated dark collection logic at all:</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">glbl</span><span class="o">.</span><span class="n">auto_dark</span> <span class="o">=</span> <span class="bp">False</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="o">.</span><span class="n">auto_dark</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="n">glbl</span><span class="o">.</span><span class="n">shutter_control</span> <span class="o">=</span> <span class="bp">False</span>
 </pre></div>
 </div>
 <p><strong>Want a fresh dark frame every time ``prun`` is triggered:</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">glbl</span><span class="o">.</span><span class="n">dk_window</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># dark window is 0.001 min = 0.06 secs</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="o">.</span><span class="n">dk_window</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># dark window is 0.001 min = 0.06 secs</span>
 </pre></div>
 </div>
 <p><strong>Want a 0.2 exposure time per frame instead of 0.1s:</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">glbl</span><span class="o">.</span><span class="n">frame_acq_time</span> <span class="o">=</span> <span class="mf">0.2</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="o">.</span><span class="n">frame_acq_time</span> <span class="o">=</span> <span class="mf">0.2</span>
 </pre></div>
 </div>
 <p><strong>Want to run temperature ramp with different device and use alternative shutter:</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">glbl</span><span class="o">.</span><span class="n">temp_controller</span> <span class="o">=</span> <span class="n">eurotherm</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">glbl</span><span class="o">.</span><span class="n">temp_controller</span> <span class="o">=</span> <span class="n">eurotherm</span>
 <span class="n">glbl</span><span class="o">.</span><span class="n">shutter</span> <span class="o">=</span> <span class="n">shctl2</span>
 </pre></div>
 </div>

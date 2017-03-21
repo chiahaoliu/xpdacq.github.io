@@ -91,7 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="beamlinestaff.html">For Beamline Staff</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Troubleshooting</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#how-do-i-start-the-collection-ipython-environment-so-i-can-collect-some-data">How do I start the <code class="docutils literal"><span class="pre">collection</span></code> ipython environment so I can collect some data?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-do-i-check-if-my-beamtime-is-properly-set-up">How do I check if my beamtime is properly set up?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#why-does-my-scan-halt-for-no-reason">Why does my scan halt for no reason?</a></li>
@@ -123,7 +123,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -156,7 +156,7 @@
 <div><ul class="simple">
 <li>In a terminal look to see if it is already activated.  If it is, you should see <code class="docutils literal"><span class="pre">(collection)</span></code> at the beginning of the line.</li>
 </ul>
-<div class="highlight-none"><div class="highlight"><pre>(collection)xf28id1@xf28id1-ws2:~$
+<div class="highlight-none"><div class="highlight"><pre><span></span>(collection)xf28id1@xf28id1-ws2:~$
 </pre></div>
 </div>
 <ul class="simple">
@@ -170,7 +170,7 @@
 <div><ul class="simple">
 <li>In a terminal look to see if it is already activated.  If it is, you should see <code class="docutils literal"><span class="pre">(analysis-dev)</span></code> at the beginning of the line.</li>
 </ul>
-<div class="highlight-none"><div class="highlight"><pre>(analysis-dev)xf28id1@xf28id1-ws2:~$
+<div class="highlight-none"><div class="highlight"><pre><span></span>(analysis-dev)xf28id1@xf28id1-ws2:~$
 </pre></div>
 </div>
 <ul class="simple">
@@ -190,7 +190,7 @@ for you.  Let&#8217;s check if it is the case.</p>
 </ol>
 <blockquote>
 <div><blockquote>
-<div><div class="highlight-python:"><div class="highlight"><pre>&gt;&gt;&gt; bt.md
+<div><div class="highlight-python:"><div class="highlight"><pre><span></span>&gt;&gt;&gt; bt.md
 {&#39;bt_experimenters&#39;: [&#39;Tim&#39;, &#39;Liu&#39;],
 &#39;bt_piLast&#39;: &#39;Billinge&#39;,
 &#39;bt_safN&#39;: &#39;300564&#39;,
@@ -214,7 +214,7 @@ for you.  Let&#8217;s check if it is the case.</p>
 <li>Type <code class="docutils literal"><span class="pre">glbl.area_det</span></code> and return.  It should return:</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">glbl</span><span class="o">.</span><span class="n">area_det</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">glbl</span><span class="o">.</span><span class="n">area_det</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">PerkinElmerContinuous</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;XF:28IDC-ES:1{Det:PE1}&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;pe1&#39;</span><span class="p">,</span> <span class="n">read_attrs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tiff&#39;</span><span class="p">,</span> <span class="s1">&#39;stats1&#39;</span><span class="p">],</span> <span class="n">configuration_attrs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;images_per_set&#39;</span><span class="p">,</span> <span class="s1">&#39;number_of_sets&#39;</span><span class="p">],</span> <span class="n">monitor_attrs</span><span class="o">=</span><span class="p">[])</span>
 </pre></div>
 </div>
@@ -222,7 +222,7 @@ for you.  Let&#8217;s check if it is the case.</p>
 </div></blockquote>
 <p>There are other setups that you can do to make your experiment run smoothly.
 For example, by carrying out a calibration before you start collecting it greatly facilitates data reduction later.
-Please follow the workflow in the <a class="reference internal" href="cheat_sheet.html#cheat-sheet"><span>Code for Example Experiment</span></a> or talk to the IS if you don&#8217;t know how to do this.</p>
+Please follow the workflow in the <a class="reference internal" href="cheat_sheet.html#cheat-sheet"><span class="std std-ref">Code for Example Experiment</span></a> or talk to the IS if you don&#8217;t know how to do this.</p>
 </div>
 <div class="section" id="why-does-my-scan-halt-for-no-reason">
 <h2>Why does my scan halt for no reason?<a class="headerlink" href="#why-does-my-scan-halt-for-no-reason" title="Permalink to this headline">¶</a></h2>
@@ -246,7 +246,7 @@ Then you should see all currently active windows. Close duplicated control panel
 <div class="section" id="where-did-all-my-sample-and-scan-objects-go">
 <h2>Where did all my Sample and Scan objects go?????<a class="headerlink" href="#where-did-all-my-sample-and-scan-objects-go" title="Permalink to this headline">¶</a></h2>
 <p>You just spent hours typing in metadata and creating
-<a class="reference internal" href="usb_Experiment.html#usb-experiment"><span>sample</span></a> and <a class="reference internal" href="usb_Scan.html#usb-scan"><span>scan</span></a>
+<a class="reference internal" href="usb_Experiment.html#usb-experiment"><span class="std std-ref">sample</span></a> and <a class="reference internal" href="usb_Scan.html#usb-scan"><span class="std std-ref">scan</span></a>
 objects, and now they have suddenly disappeared!  This
 is a disaster!</p>
 <p>As Douglas Adams taught us <cite>DON&#8217;T PANIC</cite> .  This is actually
@@ -254,7 +254,7 @@ is a disaster!</p>
 one of the design goals of the software project was to minimize
 users&#8217; typing.  The design had to take into account that the
 collection ipython environment is not so stable
-(e.g., see <a class="reference internal" href="#troubleshooting"><span>Troubleshooting</span></a> ) and we should expect periodic
+(e.g., see <a class="reference internal" href="#troubleshooting"><span class="std std-ref">Troubleshooting</span></a> ) and we should expect periodic
 restarts of it.  How bad if we had to retype our metadata every
 time?  So every time you create an xpdAcq acquisition object,
 the details are saved to a file on the local hard-drive.  When
